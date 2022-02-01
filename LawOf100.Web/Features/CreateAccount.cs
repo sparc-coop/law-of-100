@@ -10,7 +10,7 @@ namespace LawOf100.Features.Features
         {
             var account = new Account("John", userId);
 
-            return account.AccountId;
+            return account.Id;
         }
     }
 }

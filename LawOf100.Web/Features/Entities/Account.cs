@@ -7,7 +7,6 @@ namespace LawOf100.Features.Features.Entities
         private Account()
         {
             Id = Guid.NewGuid().ToString();
-            AccountId = "1";
             Name = "John";
             DateCreated = DateTime.UtcNow;
             DateModified = DateTime.UtcNow;
