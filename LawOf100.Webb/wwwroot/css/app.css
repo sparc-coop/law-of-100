@@ -78,3 +78,66 @@
         
     }
 }*/
+.tracking-page .container .content h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 16px; }
+  .tracking-page .container .content h1 span {
+    font-size: 80px; }
+
+.tracking-page .container .calendar-grid {
+  padding: 40px 0; }
+
+.tracking-page .rating-section {
+  display: flex;
+  flex-direction: column; }
+  .tracking-page .rating-section .headers {
+    display: flex;
+    align-items: center; }
+    .tracking-page .rating-section .headers p {
+      color: #838383;
+      padding: 0;
+      margin: 0;
+      padding-bottom: 5px; }
+  .tracking-page .rating-section .rating-content {
+    display: flex;
+    flex-direction: column; }
+    .tracking-page .rating-section .rating-content .rating-row {
+      display: flex;
+      width: 100%;
+      margin-bottom: 27px; }
+      .tracking-page .rating-section .rating-content .rating-row p {
+        margin: 0px;
+        font-size: 14px;
+        line-height: 24px; }
+    .tracking-page .rating-section .rating-content .day-rating, .tracking-page .rating-section .rating-content .star-rating, .tracking-page .rating-section .rating-content .notes {
+      display: flex;
+      align-items: center; }
+      .tracking-page .rating-section .rating-content .day-rating h4, .tracking-page .rating-section .rating-content .star-rating h4, .tracking-page .rating-section .rating-content .notes h4 {
+        margin: 0;
+        color: #FF6363; }
+    .tracking-page .rating-section .rating-content .day-rating h4 {
+      font-size: 26px;
+      line-height: 29px; }
+    .tracking-page .rating-section .rating-content .star-rating img {
+      padding-right: 9px; }
+    .tracking-page .rating-section .rating-content .star-rating img:last-child {
+      padding-right: 0; }
+    .tracking-page .rating-section .rating-content .notes .missed {
+      color: #838383; }
+    .tracking-page .rating-section .rating-content .notes input {
+      width: 100%; }
+  .tracking-page .rating-section #day {
+    max-width: 122px; }
+  .tracking-page .rating-section #rating {
+    max-width: 249px; }
+  .tracking-page .rating-section .timeline {
+    color: #838383;
+    width: 100%;
+    border: 1px solid #E5E5E5;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 16px;
+    line-height: 22px; }

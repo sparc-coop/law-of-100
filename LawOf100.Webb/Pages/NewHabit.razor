@@ -13,11 +13,11 @@
                 <form action="/" method="post">
                     <div class="name">
                         <h5><label>My name is</label></h5>
-                        <input type="text" name="name" placeholder="Name" />
+                        <input @bind="name" type="text" name="name" placeholder="Name" />
                     </div>
                     <div class="goal">
                         <h5><label>I want to</label></h5>
-                        <input type="text" name="goal" placeholder="Stop Smoking" />
+                        <input @bind="habitName" name="goal" placeholder="Stop Smoking" />
                     </div>
                     <div class="weekdays">
                         <h5><label>I will do this every</label></h5>
@@ -53,7 +53,7 @@
                         </div>
 
                     </div>
-                    <button href="/index" type="submit" class="btn-primary" @onclick="SetDate">Start my 100 days</button>
+                    <button href="/index" type="submit" class="btn-primary" @onclick="CreateHabit">Start my 100 days</button>
                 </form>
             </div>
         </div>
@@ -61,10 +61,12 @@
 </section>
 
 @code {
-    DateTimeOffset Date;
+    public string? habitName { get; set; }
+    public string? name { get; set; }
+    string? Habit;
 
-    async Task SetDate()
+    async Task CreateHabit()
     {
-        //await PublicApi().CreateHabitAsync(habitname)
+        Habit = await PublicApi().CreateHabitAsync(habitName);
     }
 }
