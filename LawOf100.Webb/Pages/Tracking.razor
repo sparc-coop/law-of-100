@@ -33,7 +33,7 @@
                     @*}*@
 
                     <div class="grid-day">
-                        <span>1</span>
+                        <span @bind="currentday">1</span>
                     </div>
 
                 </div>
@@ -151,6 +151,14 @@
 
 
 @code {
+
+    public int currentday { get; set; }
+    public string? Days;
+
+    async Task TrackDay()
+    {
+        Days = await PublicApi().TrackDayAsync(currentday);
+    }
 
     //UserProgression userProgression = new UserProgression();
 

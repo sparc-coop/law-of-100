@@ -11,13 +11,15 @@ namespace LawOf100.Features.Features.Entities
             //The day the user is on
             Day = 1;
 
-            //States of the user's days tacked
+            //States of the user's days tracked
             CurrentDay = "CurrentDay";
             FutureDay = "FutureDay";
             PassedDay = "PassedDay";
             CompleteDay = "CompleteDay";
             FailedDay = "FailedDay";
         }
+
+        //Thinking about Adding notes, Review, Stars, anything else?
 
         public Progression(int day) : this()
         {
