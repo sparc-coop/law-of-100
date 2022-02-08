@@ -6,15 +6,19 @@ namespace LawOf100.Features.Features.Entities
     {
         private Habit()
         {
+            UserId = string.Empty;
             Id = Guid.NewGuid().ToString();
             HabitName = "Stop Smoking";
 
         }
 
-        public Habit(string habitName) : this()
+        public Habit(string userId, string habitName) : this()
         {
+            UserId = userId;
             HabitName = habitName;
         }
+
+        public string UserId { get; private set; }
         public string HabitName { get; set; }
     }
 }

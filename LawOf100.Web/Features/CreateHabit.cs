@@ -16,7 +16,7 @@ namespace LawOf100.Features.Features
 
         public override async Task<string> ExecuteAsync(string habitname)
         {
-            var habit = new Habit (habitname);
+            var habit = new Habit ("userId", habitname);
             await Habits.AddAsync(habit);
 
             // make sure the repo works
