@@ -1,0 +1,70 @@
+﻿@page "/newHabit"
+
+<section class="newhabit">
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <h2 class="page-title">
+                    Ready to start your<br /><span class="highlight-text">100 Days?</span>
+                </h2>
+            </div>
+            
+            <div class="content-wrapper">
+                <form action="/" method="post">
+                    <div class="name">
+                        <h5><label>My name is</label></h5>
+                        <input type="text" name="name" placeholder="Name" />
+                    </div>
+                    <div class="goal">
+                        <h5><label>I want to</label></h5>
+                        <input type="text" name="goal" placeholder="Stop Smoking" />
+                    </div>
+                    <div class="weekdays">
+                        <h5><label>I will do this every</label></h5>
+                        <div class="input-wrapper">
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="monday" />
+                                <label class="label-days" for="monday">Mon</label>
+                            </div>
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="tuesday" />
+                                <label class="label-days" for="tuesday">Tue</label>
+                            </div>
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="wednesday" />
+                                <label class="label-days" for="wednesday">Wed</label>
+                            </div>
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="thursday" />
+                                <label class="label-days" for="thursday">Thu</label>
+                            </div>
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="friday" />
+                                <label class="label-days" for="friday">Fri</label>
+                            </div>
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="saturday" />
+                                <label class="label-days" for="saturday">Sat</label>
+                            </div>
+                            <div class="day">
+                                <input type="checkbox" class="goal-days" id="sunday" />
+                                <label class="label-days" for="sunday">Sun</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button href="/index" type="submit" class="btn-primary" @onclick="SetDate">Start my 100 days</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    DateTimeOffset Date;
+
+    async Task SetDate()
+    {
+        //await PublicApi().CreateHabitAsync(habitname)
+    }
+}

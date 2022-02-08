@@ -16,7 +16,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.Sparcify<Startup>()
-            .AddCosmos<LawOf100Context>(Configuration.GetConnectionString("Database"), "LawOf100")
+            .AddCosmos<LawOf100Context>(Configuration.GetConnectionString("Database"), "lawof100")
             .AddSelfHostedAuthentication<LawOf100Authenticator>(Configuration["BaseUrl"], "Web", Configuration["WebClientUrl"]);
 
         services.AddScoped(typeof(IRepository<>), typeof(CosmosDbRepository<>));
