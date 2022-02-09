@@ -12,6 +12,7 @@ namespace LawOf100.Features.Features.Entities
             Day = 1;
 
             //States of the user's days tracked
+            DayState = "DayPlaceholder";
             CurrentDay = "CurrentDay";
             FutureDay = "FutureDay";
             PassedDay = "PassedDay";
@@ -26,7 +27,13 @@ namespace LawOf100.Features.Features.Entities
             Day = day;
         }
 
+        public Progression (string daystate) : this()
+        {
+            DayState = daystate;
+        }
+
         public int Day { get; set; }
+        public string DayState { get; }
         public string CurrentDay { get; set; }
         public string FutureDay { get; set; }
         public string PassedDay { get; set; }

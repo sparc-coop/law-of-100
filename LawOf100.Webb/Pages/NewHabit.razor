@@ -23,7 +23,7 @@
                         <h5><label>I will do this every</label></h5>
                         <div class="input-wrapper">
                             <div class="day">
-                                <input type="checkbox" class="goal-days" id="monday" />
+                                <input @bind="DaySelection" type="checkbox" class="goal-days" id="monday" />
                                 <label class="label-days" for="monday">Mon</label>
                             </div>
                             <div class="day">
@@ -63,10 +63,17 @@
 @code {
     public string? habitName { get; set; }
     public string? name { get; set; }
+    public string? selectday { get; set; }
     string? Habit;
+    string? SelectedDay;
 
     async Task CreateHabit()
     {
         Habit = await PublicApi().CreateHabitAsync(habitName);
+    }
+
+    async Task DaySelection()
+    {
+        SelectedDay = await PublicApi().DaySelectionAsync(selectday);
     }
 }
