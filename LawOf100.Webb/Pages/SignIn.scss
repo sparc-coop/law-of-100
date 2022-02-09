@@ -1,0 +1,61 @@
+﻿@import "../_variables.scss";
+
+
+.signin, .signup {
+    background: $dark-1;
+    height: 100vh;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 218px;
+
+        h2 {
+            margin: 0;
+            margin-bottom: 8px;
+        }
+
+        .signin-signup {
+            margin: 0;
+            color: $dark-5;
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .email, .password, .confirm-password {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+
+        .confirm-password {
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            width: 109px;
+            height: 42px;
+            border-radius: 5.46px;
+            margin-bottom: 17px;
+        }
+
+        .content-wrapper {
+            color: $dark-5;
+
+            p.tos-text {
+                font-size: 12px;
+                line-height: 19px;
+                color: $dark-5;
+                margin: 0;
+            }
+        }
+    }
+
+    .section-intro, .content-wrapper {
+        max-width: 362px;
+        width: 100%;
+    }
+}
+

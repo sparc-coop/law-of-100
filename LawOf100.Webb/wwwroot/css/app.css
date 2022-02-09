@@ -141,3 +141,51 @@
     margin-top: 50px;
     font-size: 16px;
     line-height: 22px; }
+
+.signin, .signup {
+  background: #F8F8F8;
+  height: 100vh; }
+  .signin .content, .signup .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 218px; }
+    .signin .content h2, .signup .content h2 {
+      margin: 0;
+      margin-bottom: 8px; }
+    .signin .content .signin-signup, .signup .content .signin-signup {
+      margin: 0;
+      color: #838383;
+      font-size: 16px;
+      line-height: 22px; }
+    .signin .content .email, .signin .content .password, .signin .content .confirm-password, .signup .content .email, .signup .content .password, .signup .content .confirm-password {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px; }
+    .signin .content .confirm-password, .signup .content .confirm-password {
+      margin-bottom: 40px; }
+    .signin .content .btn-primary, .signup .content .btn-primary {
+      width: 109px;
+      height: 42px;
+      border-radius: 5.46px;
+      margin-bottom: 17px; }
+    .signin .content .content-wrapper, .signup .content .content-wrapper {
+      color: #838383; }
+      .signin .content .content-wrapper p.tos-text, .signup .content .content-wrapper p.tos-text {
+        font-size: 12px;
+        line-height: 19px;
+        color: #838383;
+        margin: 0; }
+  .signin .section-intro, .signin .content-wrapper, .signup .section-intro, .signup .content-wrapper {
+    max-width: 362px;
+    width: 100%; }
+
+.forgot-password p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 19px;
+  margin-bottom: 40px; }
+
+.signin btn-primary {
+  margin-bottom: 0px; }
