@@ -1,0 +1,110 @@
+﻿@import "../_variables.scss";
+
+.tracking-page {
+    .container {
+        .content {
+            h1 {
+                font-size: 40px;
+                font-weight: 700;
+                margin-bottom: 16px;
+
+                span {
+                    font-size: 80px;
+                }
+            }
+        }
+
+        .calendar-grid {
+            padding: 40px 0;
+        }
+    }
+
+    .rating-section {
+        display: flex;
+        flex-direction: column;
+
+        .headers {
+            display: flex;
+            align-items: center;
+
+            p {
+                color: $dark-5;
+                padding: 0;
+                margin: 0;
+                padding-bottom: 5px;
+            }
+        }
+
+        .rating-content {
+            display: flex;
+            flex-direction: column;
+
+            .rating-row {
+                display: flex;
+                width: 100%;
+                margin-bottom: 27px;
+
+                p {
+                    margin: 0px;
+                    font-size: 14px;
+                    line-height: 24px;
+                }
+            }
+
+            .day-rating, .star-rating, .notes {
+                display: flex;
+                align-items: center;
+
+                h4 {
+                    margin: 0;
+                    color: $primary;
+                }
+            }
+
+            .day-rating {
+                h4 {
+                    font-size: 26px;
+                    line-height: 29px;
+                }
+            }
+
+            .star-rating img {
+                padding-right: 9px;
+            }
+
+            .star-rating img:last-child {
+                padding-right: 0;
+            }
+
+            .notes {
+                .missed {
+                    color: $dark-5;
+                }
+
+                input {
+                    width: 100%;
+                }
+            }
+        }
+
+        #day {
+            max-width: 122px;
+        }
+
+        #rating {
+            max-width: 249px;
+        }
+
+        .timeline {
+            color: $dark-5;
+            width: 100%;
+            border: 1px solid $dark-3;
+            padding-top: 11px;
+            padding-bottom: 11px;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 16px;
+            line-height: 22px;
+        }
+    }
+}
