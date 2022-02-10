@@ -18,7 +18,7 @@ namespace LawOf100.Features.Features
             var day = new Progression (currentday);
             await Days.AddAsync(day);
 
-            day = Days.Query.FirstOrDefault(x => x.Day == 1 /*currentday*/);
+            day = Days.Query.FirstOrDefault(x => x.Day == currentday /*currentday*/);
 
             return day.Id;
         }

@@ -4,7 +4,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Features
 {
-    public class DaySelection : PublicFeature<string, string>
+    public class DaySelection : PublicFeature<string, List<Habit>>
     {
         public DaySelection(IRepository<Habit> selectdays)
         {
@@ -13,14 +13,13 @@ namespace LawOf100.Features.Features
 
         public IRepository<Habit> Selectdays { get; }
 
-        public override async Task<string> ExecuteAsync(string days)
+        public override async Task<List<Habit>> ExecuteAsync(string days)
         {
-            var day = new Habit (days);
-            await Selectdays.AddAsync(day);
+            var selectdays = await Selectdays.Query
+                .Where(x => x.SelectDays == days)
+                .ToListAsync();
 
-            day = Selectdays.Query.FirstOrDefault(x => x.SelectDays == "Monday");
-
-            return day.Id;
+            return selectdays;
         }
     }
 }
