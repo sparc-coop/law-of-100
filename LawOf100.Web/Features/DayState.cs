@@ -1,10 +1,12 @@
 ﻿using LawOf100.Features.Features.Entities;
 using Sparc.Core;
 using Sparc.Features;
+using System.Linq;
+using System.Linq.Dynamic.Core;
 
 namespace LawOf100.Features.Features
 {
-    public class DayState : PublicFeature<string, string>
+    public class DayState : PublicFeature<string, List<Progression>>
     {
         
         public DayState(IRepository<Progression> daystates)
@@ -14,14 +16,21 @@ namespace LawOf100.Features.Features
 
         public IRepository<Progression> DayStates { get; }
 
-        public override async Task<string> ExecuteAsync(string currentstate)
+        public override async Task<List<Progression>> ExecuteAsync(string currentstate)
         {
-            var daystate = new Progression(currentstate);
-            await DayStates.AddAsync(daystate);
+            var daystates = await DayStates.Query
+                .Where(x => x.DayState == currentstate)
+                .ToListAsync();
 
-            daystate = DayStates.Query.FirstOrDefault(x => x.DayState == "Complete");
+            return daystates;
 
-            return daystate.Id;
+
+            //var daystate = new Progression(currentstate);
+            //await DayStates.AddAsync(daystate);
+
+            //daystate = DayStates.Query.FirstOrDefault(x => x.DayState == "Complete");
+
+            //return daystate.Id;
         }
     }
 }

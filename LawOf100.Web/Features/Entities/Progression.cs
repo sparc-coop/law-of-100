@@ -33,7 +33,7 @@ namespace LawOf100.Features.Features.Entities
         }
 
         public int Day { get; set; }
-        public string DayState { get; }
+        public string DayState { get; set; }
         public string CurrentDay { get; set; }
         public string FutureDay { get; set; }
         public string PassedDay { get; set; }
