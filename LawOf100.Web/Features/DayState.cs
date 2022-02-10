@@ -23,14 +23,6 @@ namespace LawOf100.Features.Features
                 .ToListAsync();
 
             return daystates;
-
-
-            //var daystate = new Progression(currentstate);
-            //await DayStates.AddAsync(daystate);
-
-            //daystate = DayStates.Query.FirstOrDefault(x => x.DayState == "Complete");
-
-            //return daystate.Id;
         }
     }
 }

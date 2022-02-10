@@ -20,13 +20,6 @@ namespace LawOf100.Features.Features
                 .ToListAsync();
 
             return selectdays;
-
-            //var day = new Habit (days);
-            //await Selectdays.AddAsync(day);
-
-            //day = Selectdays.Query.FirstOrDefault(x => x.SelectDays == "Monday");
-
-            //return day.Id;
         }
     }
 }
