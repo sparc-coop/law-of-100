@@ -1,4 +1,4 @@
-﻿using LawOf100.Features.Features.Entities;
+﻿using LawOf100.Features.Habits.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace LawOf100.Features._Plugins
