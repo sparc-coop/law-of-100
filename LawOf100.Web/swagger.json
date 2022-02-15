@@ -14,20 +14,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateAccountRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateAccountRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "integer",
-                "format": "int32"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateAccountRequest"
+                  }
+                ]
               }
             }
           }
@@ -65,17 +74,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateHabitRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateHabitRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateHabitRequest"
+                  }
+                ]
               }
             }
           }
@@ -104,10 +125,10 @@
         }
       }
     },
-    "/api/DaySelection": {
+    "/api/GetHabit": {
       "post": {
         "tags": [
-          "DaySelection"
+          "GetHabit"
         ],
         "requestBody": {
           "content": {
@@ -134,17 +155,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               }
             }
@@ -152,26 +173,38 @@
         }
       }
     },
-    "/api/DayState": {
+    "/api/TrackProgress": {
       "post": {
         "tags": [
-          "DayState"
+          "TrackProgress"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TrackProgressRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TrackProgressRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TrackProgressRequest"
+                  }
+                ]
               }
             }
           }
@@ -193,105 +226,6 @@
               "text/json": {
                 "schema": {
                   "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/TrackDay": {
-      "post": {
-        "tags": [
-          "TrackDay"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/UppercaseText": {
-      "post": {
-        "tags": [
-          "UppercaseText"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UppercaseTextResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UppercaseTextResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UppercaseTextResponse"
                 }
               }
             }
@@ -302,10 +236,146 @@
   },
   "components": {
     "schemas": {
-      "UppercaseTextResponse": {
+      "CreateAccountRequest": {
         "type": "object",
         "properties": {
-          "result": {
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateHabitRequest": {
+        "type": "object",
+        "properties": {
+          "habitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "repeatEveryXHours": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Habit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "habitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "progressions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Progression"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "recurrenceOptions": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Recurrence"
+              }
+            ],
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Progression": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dayState": {
+            "type": "string",
+            "nullable": true
+          },
+          "currentDay": {
+            "type": "string",
+            "nullable": true
+          },
+          "futureDay": {
+            "type": "string",
+            "nullable": true
+          },
+          "passedDay": {
+            "type": "string",
+            "nullable": true
+          },
+          "completeDay": {
+            "type": "string",
+            "nullable": true
+          },
+          "failedDay": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Recurrence": {
+        "type": "object",
+        "properties": {
+          "repeatEveryXHours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fudgeFactor": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TrackProgressRequest": {
+        "type": "object",
+        "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSuccessful": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "rating": {
+            "type": "number",
+            "format": "double"
+          },
+          "review": {
             "type": "string",
             "nullable": true
           }
