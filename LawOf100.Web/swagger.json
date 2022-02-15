@@ -451,7 +451,7 @@
             "nullable": true,
             "readOnly": true
           },
-          "recurrenceOptions": {
+          "recurrence": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Recurrence"
@@ -497,6 +497,11 @@
           "failedDay": {
             "type": "string",
             "nullable": true
+          },
+          "actualDate": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "additionalProperties": false
