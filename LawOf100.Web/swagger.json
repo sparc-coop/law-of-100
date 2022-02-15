@@ -5,6 +5,165 @@
     "version": "v1"
   },
   "paths": {
+    "/MicrosoftIdentity/Account/SignIn/{scheme}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "scheme",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "redirectUri",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/MicrosoftIdentity/Account/Challenge/{scheme}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "redirectUri",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "loginHint",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "domainHint",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "claims",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "policy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scheme",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/MicrosoftIdentity/Account/SignOut/{scheme}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "scheme",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/MicrosoftIdentity/Account/ResetPassword/{scheme}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "scheme",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/MicrosoftIdentity/Account/EditProfile/{scheme}": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "parameters": [
+          {
+            "name": "scheme",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/CreateAccount": {
       "post": {
         "tags": [
@@ -257,9 +416,13 @@
             "type": "string",
             "nullable": true
           },
-          "repeatEveryXHours": {
-            "type": "integer",
-            "format": "int32"
+          "recurrenceOptions": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Recurrence"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -279,18 +442,12 @@
             "type": "string",
             "nullable": true
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time",
-            "readOnly": true
-          },
           "progressions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Progression"
             },
-            "nullable": true,
-            "readOnly": true
+            "nullable": true
           },
           "recurrenceOptions": {
             "allOf": [
@@ -298,8 +455,7 @@
                 "$ref": "#/components/schemas/Recurrence"
               }
             ],
-            "nullable": true,
-            "readOnly": true
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -344,16 +500,6 @@
       },
       "Recurrence": {
         "type": "object",
-        "properties": {
-          "repeatEveryXHours": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fudgeFactor": {
-            "type": "number",
-            "format": "double"
-          }
-        },
         "additionalProperties": false
       },
       "TrackProgressRequest": {
