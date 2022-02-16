@@ -1,5 +1,5 @@
 using LawOf100.Features._Plugins;
-using Sparc.Authentication.SelfHosted;
+using Sparc.Authentication.AzureADB2C;
 using Sparc.Core;
 using Sparc.Features;
 using Sparc.Plugins.Database.Cosmos;
@@ -17,7 +17,7 @@ public class Startup
     {
         services.Sparcify<Startup>()
             .AddCosmos<LawOf100Context>(Configuration.GetConnectionString("Database"), "lawof100")
-            .AddSelfHostedAuthentication<LawOf100Authenticator>(Configuration["BaseUrl"], "Web", Configuration["WebClientUrl"]);
+            .AddAzureADB2CAuthentication(Configuration);
 
         services.AddScoped(typeof(IRepository<>), typeof(CosmosDbRepository<>));
         services.AddRazorPages();
@@ -27,7 +27,6 @@ public class Startup
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         app.Sparcify<Startup>(env);
-        app.UseIdentityServer();
         app.UseDeveloperExceptionPage();
     }
 }
