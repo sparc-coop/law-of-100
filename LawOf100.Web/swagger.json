@@ -416,13 +416,9 @@
             "type": "string",
             "nullable": true
           },
-          "recurrenceOptions": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Recurrence"
-              }
-            ],
-            "nullable": true
+          "repeatEveryXHours": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -442,20 +438,27 @@
             "type": "string",
             "nullable": true
           },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
           "progressions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Progression"
             },
-            "nullable": true
+            "nullable": true,
+            "readOnly": true
           },
-          "recurrenceOptions": {
+          "recurrence": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/Recurrence"
               }
             ],
-            "nullable": true
+            "nullable": true,
+            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -494,12 +497,27 @@
           "failedDay": {
             "type": "string",
             "nullable": true
+          },
+          "actualDate": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
           }
         },
         "additionalProperties": false
       },
       "Recurrence": {
         "type": "object",
+        "properties": {
+          "repeatEveryXHours": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fudgeFactor": {
+            "type": "number",
+            "format": "double"
+          }
+        },
         "additionalProperties": false
       },
       "TrackProgressRequest": {
