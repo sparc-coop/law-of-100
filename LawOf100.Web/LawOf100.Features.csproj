@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
 	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.2" />
 	  <PackageReference Include="Sparc.Features" Version="6.1.2" />
-	  <PackageReference Include="Sparc.Authentication.SelfHosted" Version="6.0.2" />
   </ItemGroup>
 
 </Project>

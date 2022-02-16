@@ -157,7 +157,7 @@
 
     async Task TrackDay()
     {
-        Days = await PublicApi().TrackDayAsync(currentday);
+        Days = await PublicApi().TrackProgressAsync(new TrackProgressRequest { });
     }
 
     //UserProgression userProgression = new UserProgression();
