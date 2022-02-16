@@ -332,6 +332,44 @@
         }
       }
     },
+    "/api/GetTimeLine": {
+      "post": {
+        "tags": [
+          "GetTimeLine"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Timeline"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/TrackProgress": {
       "post": {
         "tags": [
@@ -443,6 +481,9 @@
             "format": "date-time",
             "readOnly": true
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "progressions": {
             "type": "array",
             "items": {
@@ -502,6 +543,15 @@
             "type": "string",
             "format": "date-time",
             "readOnly": true
+          },
+          "rating": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "review": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -516,6 +566,33 @@
           "fudgeFactor": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Timeline": {
+        "type": "object",
+        "properties": {
+          "habitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "actualDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "rating": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "review": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

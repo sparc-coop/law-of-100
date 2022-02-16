@@ -41,4 +41,6 @@ public class Progression : Root<string>
     public string CompleteDay { get; set; }
     public string FailedDay { get; set; }
     public DateTime ActualDate { get; internal set; }
+    public decimal? Rating { get; set; }
+    public string? Review { get; set; }
 }

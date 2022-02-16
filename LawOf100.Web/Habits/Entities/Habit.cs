@@ -36,10 +36,9 @@ public class Habit : Root<string>
         }
     }
 
-    internal void TimeLine(string habitname, int day, string rating, string review)
+    internal IEnumerable<Progression> GetProgressions()
     {
-        HabitName = habitname;
-        
+        return Progressions.OrderByDescending(x => x.ActualDate).ToList();
     }
     
     internal void TrackProgress(int day, bool? isSuccessful, decimal? rating = null, string? review = null)
@@ -53,5 +52,4 @@ public class Habit : Root<string>
     public bool IsDeleted { get; set; }
     public List<Progression> Progressions { get; private set; }
     public Recurrence Recurrence { get; private set; }
-    public List<TimeLine> TimeLines { get; private set; }
 }

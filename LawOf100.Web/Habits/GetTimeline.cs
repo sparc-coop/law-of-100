@@ -4,7 +4,8 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Habits
 {
-    public class GetTimeLine : PublicFeature<List<Habit>>
+    public record Timeline(string HabitName, int Day, DateTime ActualDate, decimal? Rating, string? Review);
+    public class GetTimeLine : PublicFeature<List<Timeline>>
     {
         public GetTimeLine(IRepository<Habit> habits)
         {
@@ -13,18 +14,23 @@ namespace LawOf100.Features.Habits
 
         public IRepository<Habit> Habits { get; }
 
-        public override async Task<List<Habit>> ExecuteAsync()
+        public override async Task<List<Timeline>> ExecuteAsync()
         {
             var habits = await Habits.Query
                 .Where(x => x.UserId == User.Id() && x.IsDeleted != true)
                 .ToListAsync();
+
+            var timelineEntries = new List<Timeline>();
             foreach (var habit in habits)
             {
-                //Get Progressions
-                habits.Add();
+                foreach (var progression in habit.GetProgressions())
+                {
+                    var entry = new Timeline(habit.HabitName, progression.Day, progression.ActualDate, progression.Rating, progression.Review);
+                    timelineEntries.Add(entry);
+                }
             }
 
-            return habits;
+            return timelineEntries.OrderByDescending(x => x.ActualDate).ToList();
         }
 
         
