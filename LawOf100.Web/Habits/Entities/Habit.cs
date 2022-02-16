@@ -35,6 +35,12 @@ public class Habit : Root<string>
                 TrackProgress(missedDay, false);
         }
     }
+
+    internal void TimeLine(string habitname, int day, string rating, string review)
+    {
+        HabitName = habitname;
+        
+    }
     
     internal void TrackProgress(int day, bool? isSuccessful, decimal? rating = null, string? review = null)
     {
@@ -44,7 +50,8 @@ public class Habit : Root<string>
     public string UserId { get; private set; }
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }
+    public bool IsDeleted { get; set; }
     public List<Progression> Progressions { get; private set; }
-
     public Recurrence Recurrence { get; private set; }
+    public List<TimeLine> TimeLines { get; private set; }
 }
