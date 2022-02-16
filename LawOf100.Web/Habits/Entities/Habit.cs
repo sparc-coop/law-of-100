@@ -24,6 +24,8 @@ public class Habit : Root<string>
         throw new NotImplementedException();
     }
 
+
+
     public string UserId { get; set; }
     public string HabitName { get; set; }
     public List<Progression> Progressions { get; set; }

@@ -65,7 +65,7 @@
     public string? name { get; set; }
     public string? selectday { get; set; }
     string? Habit;
-    string? SelectedDay;
+    public ICollection<Habit>? SelectedDay;
 
     async Task CreateHabit()
     {
