@@ -25,6 +25,7 @@ public class Progression : Root<string>
     public Progression(int day) : this()
     {
         Day = day;
+        ActualDate = DateTime.UtcNow;
     }
 
     public Progression(string daystate) : this()
@@ -39,4 +40,5 @@ public class Progression : Root<string>
     public string PassedDay { get; set; }
     public string CompleteDay { get; set; }
     public string FailedDay { get; set; }
+    public DateTime ActualDate { get; internal set; }
 }

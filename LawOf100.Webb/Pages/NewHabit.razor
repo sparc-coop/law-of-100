@@ -69,6 +69,6 @@
 
     async Task CreateHabit()
     {
-        Habit = await PublicApi().CreateHabitAsync(new CreateHabitRequest { HabitName = habitName, RecurrenceOptions = null });
+        Habit = await PublicApi().CreateHabitAsync(new CreateHabitRequest { HabitName = habitName, RepeatEveryXHours = 24 });
     }
 }

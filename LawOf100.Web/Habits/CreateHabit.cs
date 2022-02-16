@@ -4,7 +4,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Habits;
 
-public record CreateHabitRequest(string HabitName, Recurrence RecurrenceOptions);
+public record CreateHabitRequest(string HabitName, int RepeatEveryXHours);
 public class CreateHabit : PublicFeature<CreateHabitRequest, string>
 {
 
@@ -17,7 +17,7 @@ public class CreateHabit : PublicFeature<CreateHabitRequest, string>
 
     public override async Task<string> ExecuteAsync(CreateHabitRequest request)
     {
-        var habit = new Habit("userId", request.HabitName);
+        var habit = new Habit("userId", request.HabitName, request.RepeatEveryXHours);
         await Habits.AddAsync(habit);
         return habit.Id;
     }
