@@ -21,5 +21,5 @@ public class Account : Root<string>
     public string Name { get; set; }
     public DateTime DateCreated { get; set; }
     public DateTime DateModified { get; set; }
-
+    public string UserId { get { return Id; } set { Id = value; } }
 }
