@@ -4,7 +4,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Users;
 
-public class GetAccount : PublicFeature<string, Account>
+public class GetAccount : Feature<Account>
 {
 
     public GetAccount(IRepository<Account> accounts)
@@ -14,11 +14,11 @@ public class GetAccount : PublicFeature<string, Account>
 
     public IRepository<Account> Accounts { get; }
 
-    public override async Task<Account> ExecuteAsync(string id)
+    public override async Task<Account> ExecuteAsync()
     {
-        var account = await Accounts.FindAsync(id);
+        var account = await Accounts.FindAsync(User.Id());
         if (account == null)
-            throw new NotFoundException($"Account {id} not found!");
+            throw new NotFoundException($"Account not found!");
 
         return account;
     }
