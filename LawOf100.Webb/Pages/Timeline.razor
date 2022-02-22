@@ -1,6 +1,5 @@
 ﻿@page "/timeline"
 
-
 <section class="timeline">
     <div class="container">
         <div class="content">
@@ -26,7 +25,7 @@
 </section>
 
 @code{
-    private ICollection<LawOf100.Features.Timeline> Timelines;
+    private ICollection<LawOf100.Features.Timeline> Timelines = new List<LawOf100.Features.Timeline>();
 
     protected override async Task OnInitializedAsync()
     {
