@@ -4,7 +4,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Habits;
 
-public record TrackProgressRequest(string HabitId, int Day, bool? IsSuccessful, decimal Rating, string? Review);
+public record TrackProgressRequest(string HabitId, int Day, bool IsSuccessful, decimal Rating, string? Review);
 public class TrackProgress : PublicFeature<TrackProgressRequest, string>
 {
     public TrackProgress(IRepository<Habit> habits)

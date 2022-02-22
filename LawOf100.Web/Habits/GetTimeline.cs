@@ -17,7 +17,7 @@ namespace LawOf100.Features.Habits
         public override async Task<List<Timeline>> ExecuteAsync()
         {
             var habits = await Habits.Query
-                .Where(x => x.UserId == User.Id() && x.IsDeleted != true)
+                .Where(x => x.UserId == "userId" && x.IsDeleted != true)
                 .ToListAsync();
 
             var timelineEntries = new List<Timeline>();

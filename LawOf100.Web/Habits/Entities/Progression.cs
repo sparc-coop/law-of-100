@@ -2,12 +2,10 @@
 
 namespace LawOf100.Features.Habits.Entities;
 
-public class Progression : Root<string>
+public class Progression
 {
     private Progression()
     {
-        Id = Guid.NewGuid().ToString();
-
         //The day the user is on
         Day = 1;
 
@@ -22,15 +20,18 @@ public class Progression : Root<string>
 
     //Thinking about Adding notes, Review, Stars, anything else?
 
-    public Progression(int day) : this()
-    {
-        Day = day;
-        ActualDate = DateTime.UtcNow;
-    }
-
     public Progression(string daystate) : this()
     {
         DayState = daystate;
+    }
+
+    public Progression(int day, bool isSuccessful, decimal? rating, string? review) : this()
+    {
+        Day = day;
+        ActualDate = DateTime.UtcNow;
+        IsSuccessful = isSuccessful;
+        Rating = rating;
+        Review = review;
     }
 
     public int Day { get; set; }
@@ -41,6 +42,7 @@ public class Progression : Root<string>
     public string CompleteDay { get; set; }
     public string FailedDay { get; set; }
     public DateTime ActualDate { get; internal set; }
+    public bool IsSuccessful { get; internal set; }
     public decimal? Rating { get; set; }
     public string? Review { get; set; }
 }

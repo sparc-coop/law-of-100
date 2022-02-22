@@ -618,10 +618,6 @@
       "Progression": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
           "day": {
             "type": "integer",
             "format": "int32"
@@ -654,6 +650,9 @@
             "type": "string",
             "format": "date-time",
             "readOnly": true
+          },
+          "isSuccessful": {
+            "type": "boolean"
           },
           "rating": {
             "type": "number",
@@ -720,8 +719,7 @@
             "format": "int32"
           },
           "isSuccessful": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "rating": {
             "type": "number",

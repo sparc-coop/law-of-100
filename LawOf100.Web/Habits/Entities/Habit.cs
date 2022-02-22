@@ -41,9 +41,9 @@ public class Habit : Root<string>
         return Progressions.OrderByDescending(x => x.ActualDate).ToList();
     }
     
-    internal void TrackProgress(int day, bool? isSuccessful, decimal? rating = null, string? review = null)
+    internal void TrackProgress(int day, bool isSuccessful, decimal? rating = null, string? review = null)
     {
-        // TODO: Add code to actually add the progression to the habit
+        Progressions.Add(new Progression(day, isSuccessful, rating, review));
     }
 
     public string UserId { get; private set; }
