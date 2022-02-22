@@ -1,191 +1,243 @@
-﻿.newhabit {
+﻿@charset "UTF-8";
+.newhabit {
   background: #F8F8F8;
-  padding-bottom: 160px; }
-  .newhabit .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 218px; }
-    .newhabit .content .header {
-      margin-bottom: 36px; }
-      .newhabit .content .header .page-title {
-        margin-bottom: 8px; }
-      .newhabit .content .header span {
-        font-size: 80px;
-        line-height: 90px; }
-    .newhabit .content .content-wrapper .name, .newhabit .content .content-wrapper .goal, .newhabit .content .content-wrapper .weekdays {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 16px; }
-    .newhabit .content .content-wrapper h5 {
-      margin: 0;
-      margin-bottom: 8px; }
-    .newhabit .content .content-wrapper .name, .newhabit .content .content-wrapper .goal {
-      margin-bottom: 32px; }
-      .newhabit .content .content-wrapper .name input, .newhabit .content .content-wrapper .goal input {
-        font-size: 18px;
-        line-height: 28px; }
-    .newhabit .content .content-wrapper .name {
-      max-width: 260px; }
-    .newhabit .content .content-wrapper .goal {
-      max-width: 390px; }
-    .newhabit .content .content-wrapper .weekdays {
-      margin-bottom: 48px; }
-      .newhabit .content .content-wrapper .weekdays .input-wrapper {
-        display: flex; }
-  .newhabit .day {
-    margin-right: 24px;
-    text-align: center; }
-    .newhabit .day .goal-days {
-      -webkit-appearance: none;
-      border: 1px solid #838383;
-      padding: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      position: relative;
-      display: flex;
-      cursor: pointer; }
-    .newhabit .day .goal-days:active, .newhabit .day .goal-days:checked:active {
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
-      cursor: pointer; }
-    .newhabit .day .goal-days:checked + .label-days {
-      background-color: #F8F8F8;
-      color: black;
-      cursor: pointer; }
-    .newhabit .day .goal-days:checked {
-      border: 1px solid black;
-      cursor: pointer; }
-    .newhabit .day .goal-days:checked:after {
-      content: '\2714';
-      font-size: 14px;
-      position: absolute;
-      top: 0px;
-      left: 4px;
-      color: #FF6363;
-      cursor: pointer; }
-    .newhabit .day .label-days {
-      color: #838383; }
-  .newhabit .day:last-child {
-    margin-right: 0px; }
-  .newhabit .btn-primary {
-    width: 188px;
-    height: 42px;
-    border-radius: 5.46px; }
+  padding-bottom: 160px;
+}
+.newhabit .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 218px;
+}
+.newhabit .content .header {
+  margin-bottom: 36px;
+}
+.newhabit .content .header .page-title {
+  margin-bottom: 8px;
+}
+.newhabit .content .header span {
+  font-size: 80px;
+  line-height: 90px;
+}
+.newhabit .content .content-wrapper .name, .newhabit .content .content-wrapper .goal, .newhabit .content .content-wrapper .weekdays {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.newhabit .content .content-wrapper h5 {
+  margin: 0;
+  margin-bottom: 8px;
+}
+.newhabit .content .content-wrapper .name, .newhabit .content .content-wrapper .goal {
+  margin-bottom: 32px;
+}
+.newhabit .content .content-wrapper .name input, .newhabit .content .content-wrapper .goal input {
+  font-size: 18px;
+  line-height: 28px;
+}
+.newhabit .content .content-wrapper .name {
+  max-width: 260px;
+}
+.newhabit .content .content-wrapper .goal {
+  max-width: 390px;
+}
+.newhabit .content .content-wrapper .weekdays {
+  margin-bottom: 48px;
+}
+.newhabit .content .content-wrapper .weekdays .input-wrapper {
+  display: flex;
+}
+.newhabit .day {
+  margin-right: 24px;
+  text-align: center;
+}
+.newhabit .day .goal-days {
+  -webkit-appearance: none;
+  border: 1px solid #838383;
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+.newhabit .day .goal-days:active, .newhabit .day .goal-days:checked:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.newhabit .day .goal-days:checked + .label-days {
+  background-color: #F8F8F8;
+  color: black;
+  cursor: pointer;
+}
+.newhabit .day .goal-days:checked {
+  border: 1px solid black;
+  cursor: pointer;
+}
+.newhabit .day .goal-days:checked:after {
+  content: "✔";
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  color: #FF6363;
+  cursor: pointer;
+}
+.newhabit .day .label-days {
+  color: #838383;
+}
+.newhabit .day:last-child {
+  margin-right: 0px;
+}
+.newhabit .btn-primary {
+  width: 188px;
+  height: 42px;
+  border-radius: 5.46px;
+}
 
 /*@media only screen and (max-width: 480px) {
     .newhabit {
         height: 100%;
-        
+
     }
 }*/
 .tracking-page .container .content h1 {
   font-size: 40px;
   font-weight: 700;
-  margin-bottom: 16px; }
-  .tracking-page .container .content h1 span {
-    font-size: 80px; }
-
+  margin-bottom: 16px;
+}
+.tracking-page .container .content h1 span {
+  font-size: 80px;
+}
 .tracking-page .container .calendar-grid {
-  padding: 40px 0; }
-
+  padding: 40px 0;
+}
 .tracking-page .rating-section {
   display: flex;
-  flex-direction: column; }
-  .tracking-page .rating-section .headers {
-    display: flex;
-    align-items: center; }
-    .tracking-page .rating-section .headers p {
-      color: #838383;
-      padding: 0;
-      margin: 0;
-      padding-bottom: 5px; }
-  .tracking-page .rating-section .rating-content {
-    display: flex;
-    flex-direction: column; }
-    .tracking-page .rating-section .rating-content .rating-row {
-      display: flex;
-      width: 100%;
-      margin-bottom: 27px; }
-      .tracking-page .rating-section .rating-content .rating-row p {
-        margin: 0px;
-        font-size: 14px;
-        line-height: 24px; }
-    .tracking-page .rating-section .rating-content .day-rating, .tracking-page .rating-section .rating-content .star-rating, .tracking-page .rating-section .rating-content .notes {
-      display: flex;
-      align-items: center; }
-      .tracking-page .rating-section .rating-content .day-rating h4, .tracking-page .rating-section .rating-content .star-rating h4, .tracking-page .rating-section .rating-content .notes h4 {
-        margin: 0;
-        color: #FF6363; }
-    .tracking-page .rating-section .rating-content .day-rating h4 {
-      font-size: 26px;
-      line-height: 29px; }
-    .tracking-page .rating-section .rating-content .star-rating img {
-      padding-right: 9px; }
-    .tracking-page .rating-section .rating-content .star-rating img:last-child {
-      padding-right: 0; }
-    .tracking-page .rating-section .rating-content .notes .missed {
-      color: #838383; }
-    .tracking-page .rating-section .rating-content .notes input {
-      width: 100%; }
-  .tracking-page .rating-section #day {
-    max-width: 122px; }
-  .tracking-page .rating-section #rating {
-    max-width: 249px; }
-  .tracking-page .rating-section .timeline {
-    color: #838383;
-    width: 100%;
-    border: 1px solid #E5E5E5;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    text-align: center;
-    margin-top: 50px;
-    font-size: 16px;
-    line-height: 22px; }
+  flex-direction: column;
+}
+.tracking-page .rating-section .headers {
+  display: flex;
+  align-items: center;
+}
+.tracking-page .rating-section .headers p {
+  color: #838383;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 5px;
+}
+.tracking-page .rating-section .rating-content {
+  display: flex;
+  flex-direction: column;
+}
+.tracking-page .rating-section .rating-content .rating-row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 27px;
+}
+.tracking-page .rating-section .rating-content .rating-row p {
+  margin: 0px;
+  font-size: 14px;
+  line-height: 24px;
+}
+.tracking-page .rating-section .rating-content .day-rating, .tracking-page .rating-section .rating-content .star-rating, .tracking-page .rating-section .rating-content .notes {
+  display: flex;
+  align-items: center;
+}
+.tracking-page .rating-section .rating-content .day-rating h4, .tracking-page .rating-section .rating-content .star-rating h4, .tracking-page .rating-section .rating-content .notes h4 {
+  margin: 0;
+  color: #FF6363;
+}
+.tracking-page .rating-section .rating-content .day-rating h4 {
+  font-size: 26px;
+  line-height: 29px;
+}
+.tracking-page .rating-section .rating-content .star-rating img {
+  padding-right: 9px;
+}
+.tracking-page .rating-section .rating-content .star-rating img:last-child {
+  padding-right: 0;
+}
+.tracking-page .rating-section .rating-content .notes .missed {
+  color: #838383;
+}
+.tracking-page .rating-section .rating-content .notes input {
+  width: 100%;
+}
+.tracking-page .rating-section #day {
+  max-width: 122px;
+}
+.tracking-page .rating-section #rating {
+  max-width: 249px;
+}
+.tracking-page .rating-section .timeline {
+  color: #838383;
+  width: 100%;
+  border: 1px solid #E5E5E5;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
+  line-height: 22px;
+}
 
 .signin, .signup {
   background: #F8F8F8;
-  height: 100vh; }
-  .signin .content, .signup .content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 218px; }
-    .signin .content h2, .signup .content h2 {
-      margin: 0;
-      margin-bottom: 8px; }
-    .signin .content .signin-signup, .signup .content .signin-signup {
-      margin: 0;
-      color: #838383;
-      font-size: 16px;
-      line-height: 22px; }
-    .signin .content .email, .signin .content .password, .signin .content .confirm-password, .signup .content .email, .signup .content .password, .signup .content .confirm-password {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 16px; }
-    .signin .content .confirm-password, .signup .content .confirm-password {
-      margin-bottom: 40px; }
-    .signin .content .btn-primary, .signup .content .btn-primary {
-      width: 109px;
-      height: 42px;
-      border-radius: 5.46px;
-      margin-bottom: 17px; }
-    .signin .content .content-wrapper, .signup .content .content-wrapper {
-      color: #838383; }
-      .signin .content .content-wrapper p.tos-text, .signup .content .content-wrapper p.tos-text {
-        font-size: 12px;
-        line-height: 19px;
-        color: #838383;
-        margin: 0; }
-  .signin .section-intro, .signin .content-wrapper, .signup .section-intro, .signup .content-wrapper {
-    max-width: 362px;
-    width: 100%; }
+  height: 100vh;
+}
+.signin .content, .signup .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 218px;
+}
+.signin .content h2, .signup .content h2 {
+  margin: 0;
+  margin-bottom: 8px;
+}
+.signin .content .signin-signup, .signup .content .signin-signup {
+  margin: 0;
+  color: #838383;
+  font-size: 16px;
+  line-height: 22px;
+}
+.signin .content .email, .signin .content .password, .signin .content .confirm-password, .signup .content .email, .signup .content .password, .signup .content .confirm-password {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.signin .content .confirm-password, .signup .content .confirm-password {
+  margin-bottom: 40px;
+}
+.signin .content .btn-primary, .signup .content .btn-primary {
+  width: 109px;
+  height: 42px;
+  border-radius: 5.46px;
+  margin-bottom: 17px;
+}
+.signin .content .content-wrapper, .signup .content .content-wrapper {
+  color: #838383;
+}
+.signin .content .content-wrapper p.tos-text, .signup .content .content-wrapper p.tos-text {
+  font-size: 12px;
+  line-height: 19px;
+  color: #838383;
+  margin: 0;
+}
+.signin .section-intro, .signin .content-wrapper, .signup .section-intro, .signup .content-wrapper {
+  max-width: 362px;
+  width: 100%;
+}
 
 .forgot-password p {
   margin: 0;
   font-size: 12px;
   line-height: 19px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
 .signin btn-primary {
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+}
