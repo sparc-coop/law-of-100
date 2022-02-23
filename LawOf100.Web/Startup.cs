@@ -15,7 +15,7 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-        services.Sparcify<Startup>()
+        services.Sparcify<Startup>(Configuration["WebClientUrl"])
             .AddCosmos<LawOf100Context>(Configuration.GetConnectionString("Database"), "lawof100")
             .AddAzureADB2CAuthentication(Configuration);
 

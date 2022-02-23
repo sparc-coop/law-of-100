@@ -1,0 +1,34 @@
+﻿@page "/timeline"
+
+<section class="timeline">
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <h4>Timeline</h4>
+            </div>
+            <div class="content-wrapper">
+                @foreach (var entry in Timelines)
+                {
+                    <div>
+                        <h4>@entry.HabitName</h4>
+                        <h4>@entry.Day</h4>
+                        <h4>@entry.Review</h4>
+                        @*Username/Nickname*@
+                        @*Reactions/Emojis*@
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div> Test </div>
+</section>
+
+@code{
+    private ICollection<LawOf100.Features.Timeline> Timelines = new List<LawOf100.Features.Timeline>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Timelines = await PublicApi().GetTimeLineAsync();
+    }
+}

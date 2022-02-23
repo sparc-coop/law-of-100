@@ -35,16 +35,21 @@ public class Habit : Root<string>
                 TrackProgress(missedDay, false);
         }
     }
-    
-    internal void TrackProgress(int day, bool? isSuccessful, decimal? rating = null, string? review = null)
+
+    internal IEnumerable<Progression> GetProgressions()
     {
-        // TODO: Add code to actually add the progression to the habit
+        return Progressions.OrderByDescending(x => x.ActualDate).ToList();
+    }
+    
+    internal void TrackProgress(int day, bool isSuccessful, decimal? rating = null, string? review = null)
+    {
+        Progressions.Add(new Progression(day, isSuccessful, rating, review));
     }
 
     public string UserId { get; private set; }
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }
+    public bool IsDeleted { get; set; }
     public List<Progression> Progressions { get; private set; }
-
     public Recurrence Recurrence { get; private set; }
 }

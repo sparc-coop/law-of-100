@@ -2,6 +2,12 @@
 
 public class Recurrence
 {
+    private Recurrence()
+    {
+        RepeatEveryXHours = 24;
+        FudgeFactor = 0.5;
+    }
+    
     public Recurrence(int repeatEveryXHours, double fudgeFactor)
     {
         RepeatEveryXHours = repeatEveryXHours;
