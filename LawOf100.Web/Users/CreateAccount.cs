@@ -4,7 +4,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Users;
 
-public record CreateAccountRequest(string Name, string? ShortIntro);
+public record CreateAccountRequest(string Name, string? ShortIntro, string? Nickname);
 public class CreateAccount : Feature<CreateAccountRequest, string>
 {
     public CreateAccount(IRepository<Account> accounts)
@@ -16,7 +16,7 @@ public class CreateAccount : Feature<CreateAccountRequest, string>
 
     public override async Task<string> ExecuteAsync(CreateAccountRequest request)
     {
-        var account = new Account(User.Id(), request.Name, request.ShortIntro);
+        var account = new Account(User.Id(), request.Name, request.ShortIntro, request.Nickname);
         await Accounts.AddAsync(account);
 
         return account.Id;
