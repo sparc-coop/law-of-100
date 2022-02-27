@@ -60,6 +60,43 @@
     </div>
 </section>
 
+@*<div class="box">
+    <a href="#divOne" class="popup-button">Click me!</a>
+</div> 
+
+<div class="test-overlay" id="divOne">
+    <div class="test-wrapper">
+        
+    </div>
+</div>*@
+
+<button class="open-button" onclick="openSharePopOut()">Open Share Pop up</button>
+
+<div class="share-popup" id="sharePopout">
+    <div class="wrapper">
+
+    
+        <h5>Confirm Your Day</h5>
+        <p class="small">Double check your selection, once you save your day you cannot go back and change it.</p>
+
+        <p class="xsmall">Successful day:</p>
+        <p class="small">"User Input"</p>
+
+        <p class="xsmall">Day Rating:</p>
+        <p class="small">"Star Rating</p>
+
+        <p class="xsmall">Notes:</p>
+        <p class="small">"User Input"</p>
+
+        <label><input type="checkbox"/>Post day on Law of 100 public timeline</label>
+
+        <button type="button" onclick="openSharePopOut()">Confirm & Save</button>
+        <button type="button" onclick="closeSharePopOut()">Cancel</button>
+    </div>
+</div>
+
+
+
 @code {
     public string? habitName { get; set; }
     public string? name { get; set; }

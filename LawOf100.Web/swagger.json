@@ -533,6 +533,14 @@
             "type": "string",
             "nullable": true
           },
+          "nickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortIntro": {
+            "type": "string",
+            "nullable": true
+          },
           "dateCreated": {
             "type": "string",
             "format": "date-time"
@@ -552,6 +560,14 @@
         "type": "object",
         "properties": {
           "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortIntro": {
+            "type": "string",
+            "nullable": true
+          },
+          "nickname": {
             "type": "string",
             "nullable": true
           }
