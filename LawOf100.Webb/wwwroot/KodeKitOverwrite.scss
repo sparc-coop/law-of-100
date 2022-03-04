@@ -1,5 +1,5 @@
 ﻿:root {
-    --primary-500: #F24C00;
+    --primary-500: #181919; //#F24C00
     --primary-700: #802800;
     --primary-900: #662000;
     --secondary-100: #CACCCC;
@@ -12,6 +12,8 @@
     --tertiary-500: #CED1C9;
     --tertiary-700: #BFC2B8;
     --tertiary-900: #8A8C84;
+
+    --active-500: #181919;
 
     h1 {
         font-size: 80px;
@@ -45,8 +47,14 @@
         font-size: 18px;
     }
 
+    p.medium {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
     p.small {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 16px;
     }
 
     p.xsmall {

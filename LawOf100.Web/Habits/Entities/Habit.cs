@@ -46,6 +46,11 @@ public class Habit : Root<string>
         Progressions.Add(new Progression(day, isSuccessful, rating, review));
     }
 
+    internal void HabitConfirmation(int day, bool isSuccessful, decimal? rating = null, string? review = null)
+    {
+        Progressions.Add(new Progression(day, isSuccessful, rating, review));
+    }
+
     public string UserId { get; private set; }
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }
