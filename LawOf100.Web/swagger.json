@@ -164,6 +164,66 @@
         }
       }
     },
+    "/api/Confirmation": {
+      "post": {
+        "tags": [
+          "Confirmation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ConfimationRequest"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ConfimationRequest"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ConfimationRequest"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/CreateAccount": {
       "post": {
         "tags": [
@@ -533,6 +593,14 @@
             "type": "string",
             "nullable": true
           },
+          "nickname": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortIntro": {
+            "type": "string",
+            "nullable": true
+          },
           "dateCreated": {
             "type": "string",
             "format": "date-time"
@@ -548,10 +616,43 @@
         },
         "additionalProperties": false
       },
+      "ConfimationRequest": {
+        "type": "object",
+        "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isSuccessful": {
+            "type": "boolean"
+          },
+          "rating": {
+            "type": "number",
+            "format": "double"
+          },
+          "review": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateAccountRequest": {
         "type": "object",
         "properties": {
           "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortIntro": {
+            "type": "string",
+            "nullable": true
+          },
+          "nickname": {
             "type": "string",
             "nullable": true
           }

@@ -47,6 +47,81 @@
     }
 }
 
+/* Button used to open the Share popup*/
+.open-button {
+    padding: 16px 20px;
+}
+
+/* The Share popup - hidden by default */
+.share-popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #CED1C9;
+    padding: 40px;
+    max-width: 432px;
+
+    .response-wrapper {
+        margin-bottom: 18px;
+    }
+
+    .response-wrapper:last-child {
+        margin-bottom: 26px;
+    }
+
+    h5 {
+        margin-bottom: 12px;
+        color: var(--secondary-900);
+    }
+
+    p.medium {
+        margin-bottom: 24px;
+        color: var(--secondary-700);
+    }
+
+    p.small {
+        color: var(--secondary-700);
+    }
+
+    p.xsmall {
+        margin-bottom: 10px;
+        color: var(--secondary-500);
+    }
+
+    .post-wrapper {
+        margin-bottom: 50px;
+        display: flex;
+        align-items: center;
+        color: var(--secondary-900);
+
+        input {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+    }
+    //create these as global buttons.
+    .primary-button.secondary-button {
+        background: var(--secondary-900);
+        color: var(--tertiary-500);
+        border-radius: 6px;
+    }
+
+    .primary-button {
+        padding: 14px 50px;
+    }
+
+    .secondry-button {
+        padding: 8px 12px;
+    }
+
+    .cancel-button {
+        color: var(--secondary-900);
+        background: none;
+    }
+}
+
 /*@media only screen and (max-width: 480px) {
     .newhabit {
         height: 100%;

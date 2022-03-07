@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>LawOf100.Webb</title>
     <base href="/" />
+    <link rel="stylesheet" type="text/css" href="https://api.kodekit.io/unclay-bespend.css">
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="LawOf100.Web.styles.css" rel="stylesheet" />
@@ -23,6 +24,17 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
 
+
+    <!-- Used for the New Habit Confirmation/Share pop out box -->
+    <script>
+        function openSharePopOut() {
+            document.getElementById("sharePopout").style.display = "block";
+        }
+
+        function closeSharePopOut() {
+            document.getElementById("sharePopout").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
