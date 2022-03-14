@@ -341,10 +341,6 @@ body {
   background: #CED1C9;
 }
 
-button {
-  color: var(--tertiary-500) !important;
-}
-
 .primary-button.secondary-button {
   background: var(--secondary-900);
   border-radius: 6px;
@@ -360,5 +356,9 @@ button {
 
 .cancel-button {
   color: var(--primary-900);
+  background: none;
+}
+
+.cancel-button:hover {
   background: none;
 }
