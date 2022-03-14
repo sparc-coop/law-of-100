@@ -6,9 +6,9 @@ namespace LawOf100.Features._Plugins;
 
 public class LawOf100Context : DbContext
 {
-    public DbSet<Habit> Habits { get; set; }
+    public DbSet<Habit> Habits => Set<Habit>();
 
-    public DbSet<Account> Accounts { get; set; }
+    public DbSet<Account> Accounts => Set<Account>();
 
     public LawOf100Context(DbContextOptions options) : base(options)
     {

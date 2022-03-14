@@ -6,7 +6,6 @@ namespace LawOf100.Features.Habits;
 
 public class GetHabit : PublicFeature<string, Habit>
 {
-
     public GetHabit(IRepository<Habit> habits)
     {
         Habits = habits;
