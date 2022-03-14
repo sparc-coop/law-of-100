@@ -1,0 +1,14 @@
+﻿nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 32px 40px 80px 40px;
+
+    .nav-left, .nav-right {
+        display: flex;
+
+
+        .nav-link {
+            color: var(--primary-900);
+        }
+    }
+}

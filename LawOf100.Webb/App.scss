@@ -8,3 +8,33 @@
 @import "Pages/Timeline";
 @import "Pages/SignIn.scss";
 @import "Pages/SignUp.scss";
+@import "Pages/EntryDay";
+@import "Shared/NavMenu.scss";
+
+/*Global Styles*/
+
+body {
+    background: #CED1C9;
+}
+
+.primary-button.secondary-button {
+    background: var(--secondary-900);
+    border-radius: 6px;
+}
+
+.primary-button {
+    padding: 14px 50px;
+}
+
+.secondry-button {
+    padding: 8px 12px;
+}
+
+.cancel-button {
+    color: var(--primary-900);
+    background: none;
+}
+
+.cancel-button:hover {
+    background: none;
+}
