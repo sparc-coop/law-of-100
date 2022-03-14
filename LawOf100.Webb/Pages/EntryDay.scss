@@ -1,0 +1,68 @@
+﻿.entry-day {
+    .header {
+        text-align: center;
+        margin-bottom: 52px;
+
+        p {
+            margin-bottom: 6px;
+        }
+    }
+
+    .content-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .col-left {
+        width: 40%;
+    }
+
+    .col-right {
+        width: 40%;
+
+        .col-wrapper {
+            .track-day, .rating, .notes {
+                .sub-header {
+                    margin-bottom: 12px;
+                }
+            }
+
+            .track-day {
+                margin-bottom: 36px;
+
+                .input-wrapper {
+                    border: 1px solid var(--primary-900);
+                    border-radius: 6px 6px 6px 6px;
+                    max-width: 216px;
+                    display: flex;
+
+                    input {
+                        display: none;
+                    }
+
+                    label {
+                        padding: 6px 18px;
+                    }
+
+                    input[type="radio"]:checked + label {
+                        background-color: var(--primary-900);
+                        color: var(--tertiary-500);
+                    }
+                }
+            }
+
+            .rating {
+                margin-bottom: 42px;
+            }
+
+            .notes {
+                margin-bottom: 40px;
+
+                textarea {
+                    width: 100%;
+                    height: 100px;
+                }
+            }
+        }
+    }
+}

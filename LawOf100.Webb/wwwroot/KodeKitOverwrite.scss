@@ -1,18 +1,17 @@
 ﻿:root {
-    --primary-500: #181919; //#F24C00
-    --primary-700: #802800;
-    --primary-900: #662000;
-    --secondary-100: #CACCCC;
-    --secondary-300: #969999;
-    --secondary-500: #626666;
-    --secondary-700: #2F3333;
-    --secondary-900: #181919;
+    --secondary-500: #F24C00;
+    --secondary-700: #802800;
+    --secondary-900: #662000;
+    --primary-100: #CACCCC;
+    --primary-300: #969999;
+    --primary-500: #626666;
+    --primary-700: #2F3333;
+    --primary-900: #181919;
     --tertiary-100: #EFF2EB;
     --tertiary-300: #DDE0D7;
     --tertiary-500: #CED1C9;
     --tertiary-700: #BFC2B8;
     --tertiary-900: #8A8C84;
-
     --active-500: #181919;
 
     h1 {
@@ -24,22 +23,26 @@
     }
 
     h3 {
-        font-size: 40px;
+        font-size: 64px;
     }
 
     h4 {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     h5 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     h6 {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     p.xlarge {
+        font-size: 24px;
+    }
+
+    p.large {
         font-size: 20px;
     }
 
@@ -55,6 +58,7 @@
     p.small {
         font-size: 14px;
         line-height: 16px;
+        color: #626666;
     }
 
     p.xsmall {
