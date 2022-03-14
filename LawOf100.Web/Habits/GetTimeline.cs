@@ -23,9 +23,9 @@ namespace LawOf100.Features.Habits
             var timelineEntries = new List<Timeline>();
             foreach (var habit in habits)
             {
-                foreach (var progression in habit.GetProgressions())
+                foreach (var progression in habit.GetTimeline())
                 {
-                    var entry = new Timeline(habit.HabitName, progression.Day, progression.ActualDate, progression.Rating, progression.Review);
+                    var entry = new Timeline(habit.HabitName, progression.Day, progression.ActualDate!.Value, progression.Rating, progression.Review);
                     timelineEntries.Add(entry);
                 }
             }

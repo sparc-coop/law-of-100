@@ -11,7 +11,7 @@ public class Habit : Root<string>
         HabitName = "Stop Smoking";
         StartDate = DateTime.UtcNow;
         Recurrence = new Recurrence(0, 0);
-        Progressions = new List<Progression>();
+        Progressions = Recurrence.InitializeProgressions(StartDate);
     }
 
     public Habit(string userId, string habitName, int repeatEveryXHours) : this()
@@ -19,36 +19,29 @@ public class Habit : Root<string>
         UserId = userId;
         HabitName = habitName;
         Recurrence = new Recurrence(repeatEveryXHours, 0.5);
+        Progressions = Recurrence.InitializeProgressions(StartDate);
     }
 
-    internal void CheckIfOverdue()
+    internal void Recalculate()
     {
-        var lastProgressDate = Progressions.Any()
-            ? Progressions.Max(x => x.ActualDate)
-            : StartDate;
-
-        var daysMissed = Recurrence.DaysMissed(lastProgressDate);
-        if (daysMissed > 0)
-        {
-            var lastProgressDay = Progressions.Max(x => x.Day);
-            for (var missedDay = lastProgressDay + 1; missedDay <= lastProgressDay + daysMissed; missedDay++)
-                TrackProgress(missedDay, false);
-        }
+        Recurrence.RecalculateProgressions(Progressions);
     }
 
-    internal IEnumerable<Progression> GetProgressions()
+    internal IEnumerable<Progression> GetTimeline()
     {
-        return Progressions.OrderByDescending(x => x.ActualDate).ToList();
+        return Progressions
+            .Where(x => x.IsTracked)
+            .OrderByDescending(x => x.ActualDate)
+            .ToList();
     }
     
     internal void TrackProgress(int day, bool isSuccessful, decimal? rating = null, string? review = null)
     {
-        Progressions.Add(new Progression(day, isSuccessful, rating, review));
-    }
+        var progression = Progressions.Find(x => x.Day == day);
+        if (progression == null)
+            throw new Exception($"Day {day} not found!");
 
-    internal void HabitConfirmation(int day, bool isSuccessful, decimal? rating = null, string? review = null)
-    {
-        Progressions.Add(new Progression(day, isSuccessful, rating, review));
+        progression.Track(isSuccessful, rating, review);
     }
 
     public string UserId { get; private set; }
