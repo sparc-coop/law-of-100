@@ -42,6 +42,7 @@ public class Habit : Root<string>
             throw new Exception($"Day {day} not found!");
 
         progression.Track(isSuccessful, rating, review);
+        Recalculate();
     }
 
     public string UserId { get; private set; }
