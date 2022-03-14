@@ -336,6 +336,18 @@
   height: 100px;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 40px 80px 40px;
+}
+nav .nav-left, nav .nav-right {
+  display: flex;
+}
+nav .nav-left .nav-link, nav .nav-right .nav-link {
+  color: var(--primary-900);
+}
+
 /*Global Styles*/
 body {
   background: #CED1C9;

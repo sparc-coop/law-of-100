@@ -1,38 +1,53 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">LawOf100.Webb</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+﻿<nav>
+    <div class="nav-left">
+        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+            Home
+        </NavLink>
+        <NavLink class="nav-link" href="timeline">
+            Timeline
+        </NavLink>
     </div>
-</div>
+    <div class="logo">
+        <img src="images/Logo.svg" />
+    </div>
+    <div class="nav-right">
+        @*Fill in with correct Sign in/ Create account links*@
+        <NavLink class="nav-link" href="sign-in">
+            Sign In
+        </NavLink>
+        <NavLink class="nav-link" href="sign-up">
+            Create Account
+        </NavLink>
+    </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="newHabit">
-                <span class="oi oi-plus" aria-hidden="true"></span> New Habit
-            </NavLink>
-            <NavLink class="nav-link" href="entryDay">
-                <span class="oi oi-plus" aria-hidden="true"></span> Entry Day
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="timeline">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Timeline
-            </NavLink>
-            <NavLink class="nav-link" href="tracking">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Tracking
-            </NavLink>
+    @*After use is signed in This needs to replace content in "nav-right"*@
+    @*<div class="nav-right">
+       
+        <NavLink class="nav-link" href="tracking">
+            Daily Tracker
+        </NavLink>
+        <NavLink class="nav-link" href="/">
+            Profile
+        </NavLink>
+    </div>*@
 
-        </div>
-    </nav>
-</div>
+
+
+
+
+    
+    @*<NavLink class="nav-link" href="newHabit">
+        New Habit
+    </NavLink>
+    <NavLink class="nav-link" href="entryDay">
+        Entry Day
+    </NavLink>
+        
+    <NavLink class="nav-link" href="tracking">
+        <span class="oi oi-list-rich" aria-hidden="true"></span> Tracking
+    </NavLink>*@
+</nav>
+            
 
 @code {
     private bool collapseNavMenu = true;
