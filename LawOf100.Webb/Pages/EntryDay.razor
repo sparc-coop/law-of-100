@@ -5,7 +5,7 @@
         <div class="content">
             <div class="header">
                 <p class="xlarge">100 days to</p>
-                <h4>Learn Guitar</h4>
+                <h3>Learn Guitar</h3>
             </div>
 
             <div class="content-wrapper">
@@ -15,13 +15,13 @@
                         <div class="track-day">
                             <p class="small sub-header">Successful day?</p>
                             <div class="input-wrapper">
-                                <input type="radio" id="Yes" name="rating"/>
+                                <input type="radio" id="Yes" name="rating" @bind="IsSuccessful" />
                                 <label for="Yes">Yes</label>
                             
-                                <input type="radio" id="NotYet" name="rating" checked />
+                                <input type="radio" id="NotYet" name="rating" @bind="IsSuccessful" checked />
                                 <label for="NotYet">Not Yet</label>
 
-                                <input type="radio" id="No" name="rating" />
+                                <input type="radio" id="No" name="rating" @bind="IsSuccessful" />
                                 <label for="No">No</label>
                             </div>
                             
@@ -35,7 +35,7 @@
                         </div>
                         <div class="notes">
                             <p class="small sub-header">Notes about your day</p>
-                            <textarea placeholder="Tell us about your day" maxlength="120" />
+                            <textarea @bind="Review" placeholder="Tell us about your day" maxlength="120" />
                         </div>
 
                         <button class="secondary-button open-button" onclick="openSharePopOut();">Save & Submit Day</button>
@@ -51,7 +51,7 @@
 
                         <div class="response-wrapper">
                             <p class="xsmall">Successful day:</p>
-                            <p class="small">yes</p>
+                            <p class="small">@IsSuccessful</p>
                         </div>
                         <div class="response-wrapper">
                             <p class="xsmall">Day Rating:</p>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="response-wrapper">
                             <p class="xsmall">Notes:</p>
-                            <p class="small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+                            <p class="small">@Review</p>
                         </div>
         
                         <div class="post-wrapper">
@@ -79,5 +79,9 @@
 
 
 @code {
+
+    public bool IsSuccessful { get; set; }
+    public decimal? Rating { get; set; }
+    public string? Review { get; set; }
 
 }
