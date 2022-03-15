@@ -68,12 +68,13 @@
 
 
 
-<button class="open-button" onclick="openSharePopOut()">Open Share Pop up</button>
+<button class="secondary-button open-button" onclick="openSharePopOut()">Open Share Pop up</button>
 
+<div class="share-overlay" id="overlayPopout"></div>
 <div class="share-popup" id="sharePopout">
     <div class="wrapper">
 
-
+    
         <h5>Confirm Your Day</h5>
         <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
 
@@ -87,14 +88,14 @@
         </div>
         <div class="response-wrapper">
             <p class="xsmall">Notes:</p>
-            <p class="small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+            <p class="small">@Review</p>
         </div>
-
+        
         <div class="post-wrapper">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             <label>Post day on Law of 100 public timeline</label>
         </div>
-
+        
 
         <button class="secondary-button" type="button">Confirm & Save</button>
         <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>

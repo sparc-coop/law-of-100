@@ -1,4 +1,5 @@
-﻿@import "wwwroot/KodeKitOverwrite.scss";
+﻿@import "_variables.scss";
+@import "wwwroot/KodeKitOverwrite.scss";
 
 
 @import "Pages/NewHabit";
@@ -16,8 +17,8 @@ body {
     background: #CED1C9;
 }
 
-.primary-button.secondary-button {
-    background: var(--secondary-900);
+.primary-button, .secondary-button {
+    background: var(--primary-900);
     border-radius: 6px;
 }
 

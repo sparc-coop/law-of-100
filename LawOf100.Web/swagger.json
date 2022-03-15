@@ -164,66 +164,6 @@
         }
       }
     },
-    "/api/Confirmation": {
-      "post": {
-        "tags": [
-          "Confirmation"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/ConfimationRequest"
-                  }
-                ]
-              }
-            },
-            "text/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/ConfimationRequest"
-                  }
-                ]
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/ConfimationRequest"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/CreateAccount": {
       "post": {
         "tags": [
@@ -616,31 +556,6 @@
         },
         "additionalProperties": false
       },
-      "ConfimationRequest": {
-        "type": "object",
-        "properties": {
-          "habitId": {
-            "type": "string",
-            "nullable": true
-          },
-          "day": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "isSuccessful": {
-            "type": "boolean"
-          },
-          "rating": {
-            "type": "number",
-            "format": "double"
-          },
-          "review": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CreateAccountRequest": {
         "type": "object",
         "properties": {
@@ -723,37 +638,20 @@
             "type": "integer",
             "format": "int32"
           },
-          "dayState": {
+          "targetDate": {
             "type": "string",
-            "nullable": true
-          },
-          "currentDay": {
-            "type": "string",
-            "nullable": true
-          },
-          "futureDay": {
-            "type": "string",
-            "nullable": true
-          },
-          "passedDay": {
-            "type": "string",
-            "nullable": true
-          },
-          "completeDay": {
-            "type": "string",
-            "nullable": true
-          },
-          "failedDay": {
-            "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
           "actualDate": {
             "type": "string",
             "format": "date-time",
+            "nullable": true,
             "readOnly": true
           },
           "isSuccessful": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
           },
           "rating": {
             "type": "number",
@@ -763,6 +661,10 @@
           "review": {
             "type": "string",
             "nullable": true
+          },
+          "isTracked": {
+            "type": "boolean",
+            "readOnly": true
           }
         },
         "additionalProperties": false
