@@ -41,40 +41,42 @@
                         <button class="secondary-button open-button" onclick="openSharePopOut();">Save & Submit Day</button>
                     </div>
                 </div>
-
-                <div class="share-popup" id="sharePopout">
-                    <div class="wrapper">
-
-    
-                        <h5>Confirm Your Day</h5>
-                        <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
-
-                        <div class="response-wrapper">
-                            <p class="xsmall">Successful day:</p>
-                            <p class="small">@IsSuccessful</p>
-                        </div>
-                        <div class="response-wrapper">
-                            <p class="xsmall">Day Rating:</p>
-                            <p class="small">5/5</p>
-                        </div>
-                        <div class="response-wrapper">
-                            <p class="xsmall">Notes:</p>
-                            <p class="small">@Review</p>
-                        </div>
-        
-                        <div class="post-wrapper">
-                            <input type="checkbox"/>
-                            <label>Post day on Law of 100 public timeline</label>
-                        </div>
-        
-
-                        <button class="secondary-button" type="button">Confirm & Save</button>
-                        <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+
+        <div class="share-overlay" id="overlayPopout"></div>
+        <div class="share-popup" id="sharePopout">
+            <div class="wrapper">
+
+    
+                <h5>Confirm Your Day</h5>
+                <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
+
+                <div class="response-wrapper">
+                    <p class="xsmall">Successful day:</p>
+                    <p class="small"></p>
+                </div>
+                <div class="response-wrapper">
+                    <p class="xsmall">Day Rating:</p>
+                    <p class="small">5/5</p>
+                </div>
+                <div class="response-wrapper">
+                    <p class="xsmall">Notes:</p>
+                    <p class="small"></p>
+                </div>
+        
+                <div class="post-wrapper">
+                    <input type="checkbox"/>
+                    <label>Post day on Law of 100 public timeline</label>
+                </div>
+        
+
+                <button class="secondary-button" type="button">Confirm & Save</button>
+                <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
+            </div>
+        </div>
+        
 </section>
 
 
