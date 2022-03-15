@@ -1,51 +1,145 @@
-﻿@import "../_variables.scss";
+﻿.create-habit {
+    .header {
+        text-align: center;
+        margin-bottom: 52px;
 
+        p {
+            margin-bottom: 6px;
+        }
+    }
 
-.newhabit {
-    background: $dark-1;
-    padding-bottom: 160px;
-
-    .content {
+    .content-wrapper {
         display: flex;
+        justify-content: space-between;
         flex-direction: column;
-        justify-content: center;
-        padding-top: 218px;
+        align-items: center;
+    }
 
-        .header {
-            margin-bottom: 36px;
+    .col-wrapper {
+        width: 30%;
 
-            .page-title {
-                margin-bottom: 8px;
+        .habit-input {
+            width: 100%;
+        }
+
+        .habit-name, .missing-days, .leniency, .notes {
+            .sub-header {
+                margin-bottom: 12px;
             }
         }
 
-        .content-wrapper {
-            .goal {
+        .missing-days .days-options {
+            background: #CED1C9;
+        }
+
+        .leniency {
+            margin-bottom: 36px;
+            justify-content: space-around;
+
+            .input-wrapper {
+                border: 1px solid var(--primary-900);
+                border-radius: 6px 6px 6px 6px;
                 display: flex;
-                flex-direction: column;
-                margin-bottom: 16px;
-            }
-
-            h5 {
-                margin: 0;
-                margin-bottom: 8px;
-            }
-
-            .goal {
-                margin-bottom: 32px;
+                justify-content: space-evenly;
 
                 input {
-                    font-size: 18px;
-                    line-height: 28px;
+                    display: none;
+                }
+
+                label {
+                    padding: 6px 18px;
+                }
+
+                input[type="radio"]:checked + label {
+                    background-color: var(--primary-900);
+                    color: var(--tertiary-500);
                 }
             }
+        }
 
-            .goal {
-                max-width: 390px;
-            }
+        .habit-name, .missing-days {
+            margin-bottom: 42px;
+        }
+
+        .notes {
+            margin-bottom: 40px;
+        }
+
+        .secondary-button {
+            border-radius: 6px;
         }
     }
 }
+
+
+
+
+
+
+/*.create-habit {
+    .header {
+        text-align: center;
+        margin-bottom: 52px;
+
+        p {
+            margin-bottom: 6px;
+        }
+    }
+
+    .content-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .col-wrapper {
+        .habit-name, .missing-days, .notes {
+            .sub-header {
+                margin-bottom: 12px;
+            }
+        }
+
+        .leniency {
+            margin-bottom: 36px;
+
+            .input-wrapper {
+                border: 1px solid var(--primary-900);
+                border-radius: 6px 6px 6px 6px;
+                max-width: 216px;
+                display: flex;
+
+                input {
+                    display: none;
+                }
+
+                label {
+                    padding: 6px 18px;
+                }
+
+                input[type="radio"]:checked + label {
+                    background-color: var(--primary-900);
+                    color: var(--tertiary-500);
+                }
+            }
+        }
+
+        .tolerance-level {
+            margin-bottom: 42px;
+        }
+
+        .notes {
+            margin-bottom: 40px;
+
+            .smaller sub-header {
+                font-size: 13px;
+            }
+
+            .p {
+                font-size: 12px;
+            }
+        }
+    }
+}*/
 
 /* Button used to open the Share popup*/
 .open-button {

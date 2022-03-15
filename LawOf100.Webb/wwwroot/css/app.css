@@ -55,42 +55,125 @@
   line-height: 12px;
 }
 
-.newhabit {
-  background: #F8F8F8;
-  padding-bottom: 160px;
+.create-habit .header {
+  text-align: center;
+  margin-bottom: 52px;
 }
-.newhabit .content {
+.create-habit .header p {
+  margin-bottom: 6px;
+}
+.create-habit .content-wrapper {
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 218px;
+  align-items: center;
 }
-.newhabit .content .header {
+.create-habit .col-wrapper {
+  width: 30%;
+}
+.create-habit .col-wrapper .habit-input {
+  width: 100%;
+}
+.create-habit .col-wrapper .habit-name .sub-header, .create-habit .col-wrapper .missing-days .sub-header, .create-habit .col-wrapper .leniency .sub-header, .create-habit .col-wrapper .notes .sub-header {
+  margin-bottom: 12px;
+}
+.create-habit .col-wrapper .missing-days .days-options {
+  background: #CED1C9;
+}
+.create-habit .col-wrapper .leniency {
   margin-bottom: 36px;
+  justify-content: space-around;
 }
-.newhabit .content .header .page-title {
-  margin-bottom: 8px;
-}
-.newhabit .content .content-wrapper .goal {
+.create-habit .col-wrapper .leniency .input-wrapper {
+  border: 1px solid var(--primary-900);
+  border-radius: 6px 6px 6px 6px;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+  justify-content: space-evenly;
 }
-.newhabit .content .content-wrapper h5 {
-  margin: 0;
-  margin-bottom: 8px;
+.create-habit .col-wrapper .leniency .input-wrapper input {
+  display: none;
 }
-.newhabit .content .content-wrapper .goal {
-  margin-bottom: 32px;
+.create-habit .col-wrapper .leniency .input-wrapper label {
+  padding: 6px 18px;
 }
-.newhabit .content .content-wrapper .goal input {
-  font-size: 18px;
-  line-height: 28px;
+.create-habit .col-wrapper .leniency .input-wrapper input[type=radio]:checked + label {
+  background-color: var(--primary-900);
+  color: var(--tertiary-500);
 }
-.newhabit .content .content-wrapper .goal {
-  max-width: 390px;
+.create-habit .col-wrapper .habit-name, .create-habit .col-wrapper .missing-days {
+  margin-bottom: 42px;
+}
+.create-habit .col-wrapper .notes {
+  margin-bottom: 40px;
+}
+.create-habit .col-wrapper .secondary-button {
+  border-radius: 6px;
 }
 
+/*.create-habit {
+    .header {
+        text-align: center;
+        margin-bottom: 52px;
+
+        p {
+            margin-bottom: 6px;
+        }
+    }
+
+    .content-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+    }
+
+    .col-wrapper {
+        .habit-name, .missing-days, .notes {
+            .sub-header {
+                margin-bottom: 12px;
+            }
+        }
+
+        .leniency {
+            margin-bottom: 36px;
+
+            .input-wrapper {
+                border: 1px solid var(--primary-900);
+                border-radius: 6px 6px 6px 6px;
+                max-width: 216px;
+                display: flex;
+
+                input {
+                    display: none;
+                }
+
+                label {
+                    padding: 6px 18px;
+                }
+
+                input[type="radio"]:checked + label {
+                    background-color: var(--primary-900);
+                    color: var(--tertiary-500);
+                }
+            }
+        }
+
+        .tolerance-level {
+            margin-bottom: 42px;
+        }
+
+        .notes {
+            margin-bottom: 40px;
+
+            .smaller sub-header {
+                font-size: 13px;
+            }
+
+            .p {
+                font-size: 12px;
+            }
+        }
+    }
+}*/
 /* Button used to open the Share popup*/
 .open-button {
   padding: 16px 20px;
