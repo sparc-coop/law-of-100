@@ -5,10 +5,15 @@
 
     .nav-left, .nav-right {
         display: flex;
+        width: 50%;
 
 
         .nav-link {
             color: var(--primary-900);
         }
+    }
+
+    .nav-right{
+        justify-content: flex-end;
     }
 }
