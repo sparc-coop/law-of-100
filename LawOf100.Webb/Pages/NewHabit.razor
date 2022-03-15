@@ -1,74 +1,79 @@
 ﻿@page "/newHabit"
 
-<section class="createhabit">
+<section class="create-habit">
     <div class="container">
         <div class="content">
             <div class="header">
-                @*call user name*@
-                <h6>Welcome Kieran</h6>
-                <h2>Let's plan your 100 days</h2>
+                @*Confirm if we will have the same name or if it will just be "Welcome"*@
+                <p class="xlarge">Welcome Kieran</p>
+                <h3>Let's plan your 100 days</h3>
             </div>
 
             <div class="content-wrapper">
-                <form action="/" method="post">
+                <div class="col-wrapper">
 
-                    <div class="goal">
-                        <h5><label>I want to</label></h5>
-                        <input @bind="habitName"  name="goal" placeholder="Learn Guitar" />
-                    </div>
+                    <form action="/" method="post">
 
-                    <div class="missingdays">
-                        <h5><label>Without missing</label></h5>
-                        @*call the missing days*@
-                        <select name="days">
-                            <option value="1">1 day</option>
-                            <option value="2">2 days</option>
-                            <option value="3">3 days</option>
-                            <option value="4">4 days</option>
-                            <option value="5">5 days</option>
-                            <option value="6">6 days</option>
-                            <option value="7">7 days</option>
-                        </select>
-                    </div>
-
-                    @*It's not a checbox type. Create a button or container.*@
-                    @*<div class="leniency">
-                        <h5><label>Missed day leniency</label></h5>
-                        <div class="input-wrapper">
-                            <div class="flexibility">
-                                <input type="checkbox" class="leniency-level" id="relaxed" />
-                                <label class="label-leniency" for="relaxed">Relaxed</label>
-                            </div>
-                            <div class="flexibility">
-                                <input type="checkbox" class="leniency-level" id="relaxed" />
-                                <label class="label-leniency" for="relaxed">Average</label>
-                            </div>
-                            <div class="flexibility">
-                                <input type="checkbox" class="leniency-level" id="relaxed" />
-                                <label class="label-leniency" for="relaxed">Strict</label>
-                            </div>
+                        <div class="habit-name">
+                            <p class="small sub-header">I want to</p>
+                            @*Should we keep this placeholder?*@
+                            <input class="habit-input" @bind="habitName" placeholder="Learn Guitar" />
                         </div>
-                    </div>*@
 
-                    <div>
-                        <h6>Please note:</h6>
-                        <p>Missing more days than selected will cause that day to be automatically filled as a miss.</p>
+                        <div class="missing-days">
+                            <p class="small sub-header">Without missing</p>
+                            @*Call the missing days property. It is related to recurrence, so it can change*@
+
+                            <select name="days">
+                                <option class="days-options" value="1">1 day</option>
+                                <option class="days-options" value="2">2 days</option>
+                                <option class="days-options" value="3">3 days</option>
+                                <option class="days-options" value="4">4 days</option>
+                                <option class="days-options" value="5">5 days</option>
+                            </select>
+
+                        </div>
+
+                        <div class="leniency">
+                            <p class="small sub-header">Missed day leniency</p>
+                            <div class="input-wrapper">
+                                @*Which property should we call here?*@
+
+                                <input type="radio" id="Relaxed" name="tolerance-level" @*@bind="" *@ />
+                                <label for="Relaxed">Relaxed</label>
+
+                                <input type="radio" id="Average" name="tolerance-level" @*@bind="" *@ checked />
+                                <label for="Average">Average</label>
+
+                                <input type="radio" id="Strict" name="tolerance-level" @*@bind="" *@ />
+                                <label for="Strict">Strict</label>
+                            </div>
+
+
+                        </div>
+                    </form>
+
+                    <div class="notes">
+                        <p class="small sub-header">Please Note:</p>
+                        <p class="small sub-header">Missing more days than selected will cause that day to be automatically filled as a miss.</p>
                     </div>
 
-                    <button type="submit" class="btn btn-dark" @onclick="CreateHabit" >Save & Start 100 Days</button>
+                    <button type=submit class="secondary-button" onclick="CreateHabit">Save & Start 100 Days</button>
+                </div>
 
-                </form>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <button class="open-button" onclick="openSharePopOut()">Open Share Pop up</button>
 
 <div class="share-popup" id="sharePopout">
     <div class="wrapper">
 
-    
+
         <h5>Confirm Your Day</h5>
         <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
 
@@ -84,12 +89,12 @@
             <p class="xsmall">Notes:</p>
             <p class="small">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
         </div>
-        
+
         <div class="post-wrapper">
-            <input type="checkbox"/>
+            <input type="checkbox" />
             <label>Post day on Law of 100 public timeline</label>
         </div>
-        
+
 
         <button class="secondary-button" type="button">Confirm & Save</button>
         <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
@@ -103,7 +108,7 @@
     public string? name { get; set; }
     string? Habit;
 
-   
+
 
     public bool IsSuccessful { get; set; }
     public decimal? Rating { get; set; }
