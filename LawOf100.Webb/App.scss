@@ -2,14 +2,16 @@
 @import "wwwroot/KodeKitOverwrite.scss";
 
 
-@import "Pages/NewHabit";
+@import "Shared/NavMenu";
+
 @import "Pages/Index";
-@import "Pages/Tracking";
-@import "Pages/Timeline";
-@import "Pages/SignIn.scss";
-@import "Pages/SignUp.scss";
-@import "Pages/EntryDay";
-@import "Shared/NavMenu.scss";
+
+@import "Habits/Index";
+@import "Habits/Timeline";
+@import "Habits/EntryDay";
+
+@import "Users/SignIn";
+@import "Users/SignUp";
 
 /*Global Styles*/
 

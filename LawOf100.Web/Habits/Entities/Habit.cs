@@ -14,11 +14,11 @@ public class Habit : Root<string>
         Progressions = Recurrence.InitializeProgressions(StartDate);
     }
 
-    public Habit(string userId, string habitName, int repeatEveryXHours) : this()
+    public Habit(string userId, string habitName, int repeatEveryXHours, double fudgeFactor) : this()
     {
         UserId = userId;
         HabitName = habitName;
-        Recurrence = new Recurrence(repeatEveryXHours, 0.5);
+        Recurrence = new Recurrence(repeatEveryXHours, fudgeFactor);
         Progressions = Recurrence.InitializeProgressions(StartDate);
     }
 

@@ -584,6 +584,10 @@
           "repeatEveryXHours": {
             "type": "integer",
             "format": "int32"
+          },
+          "fudgeFactor": {
+            "type": "number",
+            "format": "double"
           }
         },
         "additionalProperties": false

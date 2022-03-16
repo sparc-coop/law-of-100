@@ -1,0 +1,60 @@
+﻿<div class="col-wrapper">
+    <form action="/" method="post">
+        <div class="habit-name">
+            <p class="small sub-header">I want to</p>
+            @*Should we keep this placeholder?*@
+            <input class="habit-input" @bind="Habit.HabitName" placeholder="Learn Guitar" />
+        </div>
+
+        <div class="missing-days">
+            <p class="small sub-header">Without missing</p>
+
+            <select name="days" @bind="Habit.RepeatEveryXHours">
+                <option class="days-options" value="24">1 day</option>
+                <option class="days-options" value="48">2 days</option>
+                <option class="days-options" value="72">3 days</option>
+                <option class="days-options" value="96">4 days</option>
+                <option class="days-options" value="120">5 days</option>
+            </select>
+        </div>
+
+        <div class="leniency">
+            <p class="small sub-header">Missed day leniency</p>
+            <div class="input-wrapper">
+                <InputRadioGroup @bind-Value="Habit.FudgeFactor">
+                    <label>
+                        <InputRadio Value="0.9" />
+                        Relaxed
+                    </label>
+                    <label>
+                        <InputRadio Value="0.5" />
+                        Average
+                    </label>
+                    <label>
+                        <InputRadio Value="0.2" />
+                        Strict
+                    </label>
+                </InputRadioGroup>
+            </div>
+
+
+        </div>
+    </form>
+
+    <div class="notes">
+        <p class="small sub-header">Please Note:</p>
+        <p class="small sub-header">Missing more days than selected will cause that day to be automatically filled as a miss.</p>
+    </div>
+
+    <button type=submit class="secondary-button" @onclick="Create">Save & Start 100 Days</button>
+</div>
+
+@code {
+    CreateHabitRequest Habit = new();
+
+    async Task Create()
+    {
+        var id = await PublicApi().CreateHabitAsync(Habit);
+        Nav.NavigateTo($"/habits/{id}");
+    }
+}
