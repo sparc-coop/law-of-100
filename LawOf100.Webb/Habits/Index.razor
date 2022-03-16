@@ -24,7 +24,6 @@
 {
     <DayGrid Days="TheHabit.Progressions" />
 
-
     <button class="secondary-button open-button" onclick="openSharePopOut()">Open Share Pop up</button>
 
     <div class="share-overlay" id="overlayPopout"></div>
@@ -42,7 +41,5 @@
     {
         if (HabitId != null)
             TheHabit = await PublicApi().GetHabitAsync(HabitId);
-        else
-            TheHabit = new Habit();
     }
 }
