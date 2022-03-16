@@ -1,60 +1,75 @@
-﻿<div class="col-wrapper">
-    <form action="/" method="post">
-        <div class="habit-name">
-            <p class="small sub-header">I want to</p>
-            @*Should we keep this placeholder?*@
-            <input class="habit-input" @bind="Habit.HabitName" placeholder="Learn Guitar" />
-        </div>
-
-        <div class="missing-days">
-            <p class="small sub-header">Without missing</p>
-
-            <select name="days" @bind="Habit.RepeatEveryXHours">
-                <option class="days-options" value="24">1 day</option>
-                <option class="days-options" value="48">2 days</option>
-                <option class="days-options" value="72">3 days</option>
-                <option class="days-options" value="96">4 days</option>
-                <option class="days-options" value="120">5 days</option>
-            </select>
-        </div>
-
-        <div class="leniency">
-            <p class="small sub-header">Missed day leniency</p>
-            <div class="input-wrapper">
-                <InputRadioGroup @bind-Value="Habit.FudgeFactor">
-                    <label>
-                        <InputRadio Value="0.9" />
-                        Relaxed
-                    </label>
-                    <label>
-                        <InputRadio Value="0.5" />
-                        Average
-                    </label>
-                    <label>
-                        <InputRadio Value="0.2" />
-                        Strict
-                    </label>
-                </InputRadioGroup>
+﻿<section class="create-habit">
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                @*Confirm if we will have the same name or if it will just be "Welcome"*@
+                <p class="xlarge">Welcome Kieran</p>
+                <h3>Let's plan your 100 days</h3>
             </div>
 
+            <div class="content-wrapper">
 
+                <div class="col-wrapper">
+                    <EditForm Model="Habit">
+                        <div class="habit-name">
+                            <p class="small sub-header">I want to</p>
+                            @*Should we keep this placeholder?*@
+                            <input class="habit-input" @bind="Habit.HabitName" placeholder="Learn Guitar" />
+                        </div>
+
+                        <div class="missing-days">
+                            <p class="small sub-header">Without missing</p>
+
+                            <select name="days" @bind="Habit.RepeatEveryXHours">
+                                <option class="days-options" value="24">1 day</option>
+                                <option class="days-options" value="48">2 days</option>
+                                <option class="days-options" value="72">3 days</option>
+                                <option class="days-options" value="96">4 days</option>
+                                <option class="days-options" value="120">5 days</option>
+                            </select>
+                        </div>
+
+                        <div class="leniency">
+                            <p class="small sub-header">Missed day leniency</p>
+                            <div class="input-wrapper">
+                                <InputRadioGroup @bind-Value="Habit.FudgeFactor">
+                                    <label class="@(Habit.FudgeFactor == 0.9 ? "selected" : "")">
+                                        <InputRadio Value="0.9" />
+                                        Relaxed
+                                    </label>
+                                    <label class="@(Habit.FudgeFactor == 0.5 ? "selected" : "")">
+                                        <InputRadio Value="0.5" />
+                                        Average
+                                    </label>
+                                    <label class="@(Habit.FudgeFactor == 0.2 ? "selected" : "")">
+                                        <InputRadio Value="0.2" />
+                                        Strict
+                                    </label>
+                                </InputRadioGroup>
+                            </div>
+
+
+                        </div>
+                    </EditForm>
+
+                    <div class="notes">
+                        <p class="small sub-header">Please Note:</p>
+                        <p class="small sub-header">Missing more days than selected will cause that day to be automatically filled as a miss.</p>
+                    </div>
+
+                    <button type=submit class="secondary-button" @onclick="Create">Save & Start 100 Days</button>
+                </div>
+            </div>
         </div>
-    </form>
-
-    <div class="notes">
-        <p class="small sub-header">Please Note:</p>
-        <p class="small sub-header">Missing more days than selected will cause that day to be automatically filled as a miss.</p>
     </div>
-
-    <button type=submit class="secondary-button" @onclick="Create">Save & Start 100 Days</button>
-</div>
+</section>
 
 @code {
     CreateHabitRequest Habit = new();
 
     async Task Create()
     {
-        var id = await PublicApi().CreateHabitAsync(Habit);
-        Nav.NavigateTo($"/habits/{id}");
+        var habit = await PublicApi().CreateHabitAsync(Habit);
+        Nav.NavigateTo($"/habits/{habit.Id}");
     }
 }
