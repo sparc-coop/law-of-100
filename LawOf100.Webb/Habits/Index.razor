@@ -28,7 +28,7 @@
     [Parameter] public string? HabitId { get; set; }
     Habit? TheHabit { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
             TheHabit = await PublicApi().GetHabitAsync(HabitId);
