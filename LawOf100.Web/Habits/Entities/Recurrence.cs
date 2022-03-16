@@ -58,7 +58,7 @@ public class Recurrence
 
     public bool IsPastFudgeFactor(DateTime day)
     {
-        return day.AddHours(RepeatEveryXHours * FudgeFactor) > DateTime.UtcNow;
+        return day.AddHours(RepeatEveryXHours * FudgeFactor) < DateTime.UtcNow;
     }
 
     public DateTime NextDay(DateTime fromDate)

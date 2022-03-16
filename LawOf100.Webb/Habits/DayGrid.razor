@@ -23,6 +23,6 @@
     }
 
     string IsTracked(Progression day) => day.IsTracked ? "day-tracked" : "";
-    string IsSuccessful(Progression day) => day.IsSuccessful == true ? "day-success" : day.IsSuccessful == false ? "day-fail" : "";
+    string IsSuccessful(Progression day) => day.IsSuccessful == true ? "day-success" : day.IsSuccessful == false ? day.ActualDate == null ? "day-missed" : "day-fail" : "";
     string IsCurrent(Progression day) => day.Day == currentDay ? "day-current" : "";
 }

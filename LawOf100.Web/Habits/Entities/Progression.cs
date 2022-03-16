@@ -16,12 +16,17 @@ public class Progression
         TargetDate = targetDate;
     }
 
-    public void Track(bool isSuccessful, decimal? rating = null, string? review = null)
+    public void Track(bool isSuccessful, decimal? rating = null, string? review = null, DateTime? actualDate = null)
     {
-        ActualDate = DateTime.UtcNow;
+        ActualDate = actualDate ?? DateTime.UtcNow;
         IsSuccessful = isSuccessful;
         Rating = rating;
         Review = review;
+    }
+    internal void Miss()
+    {
+        IsSuccessful = false;
+        ActualDate = null;
     }
 
     public int Day { get; set; }
@@ -30,5 +35,5 @@ public class Progression
     public bool? IsSuccessful { get; internal set; }
     public decimal? Rating { get; set; }
     public string? Review { get; set; }
-    public bool IsTracked => ActualDate.HasValue;
+    public bool IsTracked => IsSuccessful.HasValue;
 }

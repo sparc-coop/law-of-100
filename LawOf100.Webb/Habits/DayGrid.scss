@@ -11,14 +11,38 @@
 
     > * {
         padding: 16px;
+        border: 1px solid transparent;
+        border-radius: 100px;
+
+        &:hover {
+            border-color: var(--primary-500);
+            cursor: pointer;
+        }
     }
-    
-    .day-current { 
-        background-image: url('/images/Star-Fill.svg'); 
+
+
+
+    .day-current {
+        background-image: url('/images/Star-Fill.svg');
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
         color: var(--primary-900);
         font-weight: 600;
-    } 
+    }
+
+    .day-success {
+        color: var(--secondary-700);
+        text-decoration: line-through;
+    }
+
+    .day-fail {
+        color: var(--primary-700);
+    }
+
+    .day-missed {
+        color: var(--primary-700);
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
