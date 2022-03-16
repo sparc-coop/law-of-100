@@ -1,0 +1,48 @@
+﻿@page "/habits/create"
+@page "/habits/{HabitId}"
+
+<section class="create-habit">
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                @*Confirm if we will have the same name or if it will just be "Welcome"*@
+                <p class="xlarge">Welcome Kieran</p>
+                <h3>Let's plan your 100 days</h3>
+            </div>
+
+            <div class="content-wrapper">
+                @if (HabitId == null)
+                {
+                    <CreateHabit />
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (TheHabit?.Id != null)
+{
+    <DayGrid Days="TheHabit.Progressions" />
+
+
+    <button class="secondary-button open-button" onclick="openSharePopOut()">Open Share Pop up</button>
+
+    <div class="share-overlay" id="overlayPopout"></div>
+    <div class="share-popup" id="sharePopout">
+        <EntryDay />
+    </div>
+}
+
+
+@code {
+    [Parameter] public string? HabitId { get; set; }
+    Habit? TheHabit { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (HabitId != null)
+            TheHabit = await PublicApi().GetHabitAsync(HabitId);
+        else
+            TheHabit = new Habit();
+    }
+}
