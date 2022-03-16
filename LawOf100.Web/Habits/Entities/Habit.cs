@@ -11,7 +11,7 @@ public class Habit : Root<string>
         HabitName = "Stop Smoking";
         StartDate = DateTime.UtcNow;
         Recurrence = new Recurrence(0, 0);
-        Progressions = Recurrence.InitializeProgressions(StartDate);
+        Progressions = new();
     }
 
     public Habit(string userId, string habitName, int repeatEveryXHours, double fudgeFactor) : this()

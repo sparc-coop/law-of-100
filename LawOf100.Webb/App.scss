@@ -7,8 +7,10 @@
 @import "Pages/Index";
 
 @import "Habits/Index";
+@import "Habits/CreateHabit";
 @import "Habits/Timeline";
 @import "Habits/EntryDay";
+@import "Habits/DayGrid";
 
 @import "Users/SignIn";
 @import "Users/SignUp";
@@ -39,4 +41,8 @@ body {
 
 .cancel-button:hover {
     background: none;
+}
+
+#blazor-error-ui {
+    display: none;
 }

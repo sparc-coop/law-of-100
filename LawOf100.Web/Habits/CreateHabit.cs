@@ -5,7 +5,7 @@ using Sparc.Features;
 namespace LawOf100.Features.Habits;
 
 public record CreateHabitRequest(string HabitName, int RepeatEveryXHours, double FudgeFactor);
-public class CreateHabit : PublicFeature<CreateHabitRequest, string>
+public class CreateHabit : PublicFeature<CreateHabitRequest, Habit>
 {
 
     public CreateHabit(IRepository<Habit> habits)
@@ -15,10 +15,10 @@ public class CreateHabit : PublicFeature<CreateHabitRequest, string>
 
     public IRepository<Habit> Habits { get; }
 
-    public override async Task<string> ExecuteAsync(CreateHabitRequest request)
+    public override async Task<Habit> ExecuteAsync(CreateHabitRequest request)
     {
         var habit = new Habit("userId", request.HabitName, request.RepeatEveryXHours, request.FudgeFactor);
         await Habits.AddAsync(habit);
-        return habit.Id;
+        return habit;
     }
 }

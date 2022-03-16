@@ -14,6 +14,10 @@
     --tertiary-900: #8A8C84;
     --active-500: #181919;
 
+    h1, h2, h3, h4, h5, h6, .subtitle {
+        --font-family: 'Clash Display', sans-serif;
+    }
+
     h1 {
         font-size: 80px;
     }
@@ -36,6 +40,7 @@
 
     h6 {
         font-size: 28px;
+        font-weight: 400;
     }
 
     p.xlarge {
