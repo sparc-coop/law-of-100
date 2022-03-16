@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/LawOf100.Web/Properties/ServiceDependencies/lawof100-api - Web Deploy/profile.arm.json
