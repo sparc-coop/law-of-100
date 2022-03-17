@@ -5,9 +5,10 @@
     background-color: var(--active-500);
     color: var(--primary-500);
     padding: 24px;
-    margin: 52px 0 16px;
+    margin: 52px auto 16px;
     text-align: center;
     border-radius: 6px;
+    max-width: 594px;
 
     > * {
         padding: 16px;

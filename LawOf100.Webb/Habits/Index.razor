@@ -6,8 +6,8 @@
     <CreateHabit />
 }
 
-
-@if (TheHabit?.Id != null)
+<div class="grid-wrapper">
+    @if (TheHabit?.Id != null)
 {
 
     <section class="habit-index">
@@ -20,9 +20,9 @@
         
     //Set to display none
         <EntryDay />
-
-
 }
+</div>
+
 
 
 @code {

@@ -60,5 +60,22 @@
 }
 
 /*Styles need for Calaender*/
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto;
+}
 
+.habit-index {
+    /*When Entry Day is showing*/
+    grid-column: 2 / 4;
+}
 
+.calendar-grid {
+    grid-column: 2 / 4;
+    transition: all 1s linear;
+}
+
+.entry-day{
+
+}
