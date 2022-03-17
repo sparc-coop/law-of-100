@@ -62,6 +62,7 @@
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 32px 40px 80px 40px;
 }
 nav .nav-left, nav .nav-right {
@@ -70,6 +71,10 @@ nav .nav-left, nav .nav-right {
 }
 nav .nav-left .nav-link, nav .nav-right .nav-link {
   color: var(--primary-900);
+  margin-right: 32px;
+}
+nav .nav-left:last-child, nav .nav-right:last-child {
+  margin-right: 0px;
 }
 nav .nav-right {
   justify-content: flex-end;
@@ -128,12 +133,7 @@ nav .nav-right {
   margin-top: 4px;
 }
 
-/*@media only screen and (max-width: 480px) {
-    .newhabit {
-        height: 100%;
-
-    }
-}*/
+/*Styles need for Calaender*/
 .create-habit .header {
   text-align: center;
   margin-bottom: 52px;
@@ -193,6 +193,9 @@ nav .nav-right {
   border-radius: 6px;
 }
 
+.entry-day {
+  display: none;
+}
 .entry-day .header {
   text-align: center;
   margin-bottom: 52px;
@@ -203,24 +206,30 @@ nav .nav-right {
 .entry-day .content-wrapper {
   display: flex;
   justify-content: space-between;
+  margin-top: 112px;
 }
 .entry-day .col-left {
-  width: 40%;
+  width: 53%;
 }
 .entry-day .col-right {
-  width: 40%;
+  width: 43%;
+}
+.entry-day .col-right .col-wrapper {
+  max-width: 63%;
 }
 .entry-day .col-right .col-wrapper .track-day .sub-header, .entry-day .col-right .col-wrapper .rating .sub-header, .entry-day .col-right .col-wrapper .notes .sub-header {
   margin-bottom: 12px;
 }
 .entry-day .col-right .col-wrapper .track-day {
   margin-bottom: 36px;
+  width: 78%;
 }
 .entry-day .col-right .col-wrapper .track-day .input-wrapper {
   border: 1px solid var(--primary-900);
   border-radius: 6px 6px 6px 6px;
-  max-width: 216px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
 }
 .entry-day .col-right .col-wrapper .track-day .input-wrapper input {
   display: none;
