@@ -22,6 +22,8 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
@@ -34,6 +36,11 @@
         function closeSharePopOut() {
             document.getElementById("sharePopout").style.display = "none";
             document.getElementById("overlayPopout").style.display = "none";
+        }
+
+        function myFunction() {
+            document.getElementById("grid-animation").classList.toggle("calendar-grid-animation");
+            document.getElementById("entry-day-animation").classList.toggle("entry-day-animation");
         }
     </script>
 </body>

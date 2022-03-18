@@ -67,15 +67,58 @@
 }
 
 .habit-index {
-    /*When Entry Day is showing*/
     grid-column: 2 / 4;
 }
 
 .calendar-grid {
     grid-column: 2 / 4;
     transition: all 1s linear;
+    animation-name: grid-left;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-duration: 2s;
 }
 
-.entry-day{
-
+.entry-day {
+    animation-name: fade;
+    animation-direction: alternate;
+    animation-duration: 2s;
+    display: none;
+    opacity: 0;
 }
+
+.calendar-grid-animation {
+    grid-column: 2;
+}
+
+.entry-day-animation {
+    animation-name: fade;
+    animation-direction: alternate;
+    animation-duration: 2s;
+    display: block;
+    opacity: 1;
+}
+
+@keyframes fade{
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes grid-left{
+    0% {
+        grid-column: 2 / 4;
+    }
+
+    100%{
+        grid-column: 2;
+    }
+}
+
+/*grid-column: 2/3;*/
