@@ -441,17 +441,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               }
             }
@@ -657,6 +657,11 @@
             "nullable": true,
             "readOnly": true
           },
+          "isPublic": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
           "rating": {
             "type": "number",
             "format": "double",
@@ -735,6 +740,9 @@
           "review": {
             "type": "string",
             "nullable": true
+          },
+          "isPublic": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

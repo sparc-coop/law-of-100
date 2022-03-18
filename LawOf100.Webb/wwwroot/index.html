@@ -26,15 +26,16 @@
 
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
     <script>
-        function openSharePopOut() {
-            document.getElementById("sharePopout").style.display = "block";
-            document.getElementById("overlayPopout").style.display = "block";
-        }
+    function openSharePopOut() {
+        document.getElementById("sharePopout").style.display = "block";
+        document.getElementById("overlayPopout").style.display = "block";
+    }
 
-        function closeSharePopOut() {
-            document.getElementById("sharePopout").style.display = "none";
-            document.getElementById("overlayPopout").style.display = "none";
-        }
+    function closeSharePopOut() {
+        document.getElementById("sharePopout").style.display = "none";
+        document.getElementById("overlayPopout").style.display = "none";
+    }
+    getElementRectangle = (element, parm) => { return element.getBoundingClientRect(); };
     </script>
 </body>
 

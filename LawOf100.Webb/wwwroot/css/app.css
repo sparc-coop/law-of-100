@@ -312,6 +312,25 @@ nav .nav-right {
   cursor: pointer;
 }
 
+.star-rating {
+  position: relative;
+  padding: 1rem;
+  white-space: nowrap;
+}
+.star-rating svg {
+  width: 50px;
+  fill: gold;
+}
+.star-rating .cover {
+  background: white;
+  height: 100%;
+  overflow: hidden;
+  mix-blend-mode: color;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .signin, .signup {
   background: #F8F8F8;
   height: 100vh;
