@@ -109,36 +109,6 @@ nav .nav-right {
   animation-duration: 1s;
 }
 
-.entry-day {
-  display: none;
-  opacity: 0;
-}
-
-.entry-day-animation {
-  animation-name: fade;
-  animation-direction: alternate;
-  animation-duration: 1s;
-  transition: all 1s linear;
-  display: block;
-  opacity: 1;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-    display: none;
-    max-width: 112px;
-  }
-  10% {
-    opacity: 0;
-    max-width: 112px;
-  }
-  100% {
-    opacity: 1;
-    display: block;
-    max-width: 400px;
-  }
-}
 .create-habit .header {
   text-align: center;
   margin-bottom: 52px;
@@ -198,6 +168,10 @@ nav .nav-right {
   border-radius: 6px;
 }
 
+.entry-day {
+  display: none;
+  opacity: 0;
+}
 .entry-day .header {
   text-align: center;
   margin-bottom: 52px;
@@ -307,6 +281,27 @@ nav .nav-right {
   opacity: 0.6;
 }
 
+.entry-day-animation {
+  animation-name: fade;
+  animation-direction: alternate;
+  animation-duration: 1s;
+  transition: all 1s linear;
+  display: block;
+  opacity: 1;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    display: none;
+    max-width: 112px;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+    max-width: 420px;
+  }
+}
 .calendar-grid {
   display: grid;
   grid-template: repeat(10, auto)/repeat(10, auto);
