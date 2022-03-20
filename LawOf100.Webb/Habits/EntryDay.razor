@@ -70,7 +70,25 @@
                 </div>
         
 
-                <button class="secondary-button" type="button">Confirm & Save</button>
+                <button class="secondary-button" type="button" onclick="closeSharePopOut(); openSharePopOut2(); ">Confirm & Save</button>
+                <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
+            </div>
+        </div>
+
+        <div class="share-popup" id="sharePopout2">
+            <div class="wrapper">
+
+    
+                <h5>First day down </h5>
+                <p class="medium">Why not share your success with your social following? </p>
+
+                <div class="response-wrapper">
+                    <p class="xsmall">Motivational Tip:</p>
+                    <p class="small">Sharing your journey publicly has been proven to act as a motivator</p>
+                </div>
+        
+
+                <button class="secondary-button" type="button"><span id="twitter"><img src="images/Twitter.svg" /></span>Share on Twitter</button>
                 <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
             </div>
         </div>

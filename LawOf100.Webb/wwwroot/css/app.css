@@ -86,89 +86,39 @@ nav .nav-right {
   align-items: center;
 }
 
-/* Button used to open the Share popup*/
-.open-button {
-  padding: 16px 20px;
-}
-
-/* The Share popup - hidden by default */
-.share-popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #CED1C9;
-  padding: 40px;
-  max-width: 432px;
-}
-.share-popup .response-wrapper {
-  margin-bottom: 18px;
-}
-.share-popup .response-wrapper:last-child {
-  margin-bottom: 26px;
-}
-.share-popup h5 {
-  margin-bottom: 12px;
-  color: var(--primary-900);
-}
-.share-popup p.medium {
-  margin-bottom: 24px;
-  color: var(--primary-700);
-}
-.share-popup p.small {
-  color: var(--primary-700);
-}
-.share-popup p.xsmall {
-  margin-bottom: 10px;
-  color: var(--primary-500);
-}
-.share-popup .post-wrapper {
-  margin-bottom: 50px;
-  display: flex;
-  align-items: center;
-  color: var(--primary-900);
-}
-.share-popup .post-wrapper input {
-  margin-right: 10px;
-  margin-top: 4px;
-}
-
 /*Styles need for Calaender*/
 .grid-wrapper {
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: auto auto auto auto auto;
+}
+
+.grid-wrapper-animation {
+  grid-template-columns: auto 0 auto auto auto;
 }
 
 .habit-index {
-  grid-column: 2/4;
+  grid-column: 2/5;
 }
 
 .calendar-grid {
-  grid-column: 2/4;
+  grid-column: 3;
   transition: all 1s linear;
   animation-name: grid-left;
   animation-delay: 0;
   animation-direction: alternate;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 .entry-day {
-  animation-name: fade;
-  animation-direction: alternate;
-  animation-duration: 2s;
   display: none;
   opacity: 0;
-}
-
-.calendar-grid-animation {
-  grid-column: 2;
 }
 
 .entry-day-animation {
   animation-name: fade;
   animation-direction: alternate;
-  animation-duration: 2s;
+  animation-duration: 1s;
+  transition: all 1s linear;
   display: block;
   opacity: 1;
 }
@@ -177,21 +127,18 @@ nav .nav-right {
   0% {
     opacity: 0;
     display: none;
+    max-width: 112px;
+  }
+  10% {
+    opacity: 0;
+    max-width: 112px;
   }
   100% {
     opacity: 1;
     display: block;
+    max-width: 400px;
   }
 }
-@keyframes grid-left {
-  0% {
-    grid-column: 2/4;
-  }
-  100% {
-    grid-column: 2;
-  }
-}
-/*grid-column: 2/3;*/
 .create-habit .header {
   text-align: center;
   margin-bottom: 52px;
@@ -312,6 +259,41 @@ nav .nav-right {
   background: #CED1C9;
   padding: 40px;
   max-width: 432px;
+}
+.share-popup .response-wrapper {
+  margin-bottom: 18px;
+}
+.share-popup .response-wrapper:last-child {
+  margin-bottom: 26px;
+}
+.share-popup h5 {
+  margin-bottom: 12px;
+  color: var(--primary-900);
+}
+.share-popup p.medium {
+  margin-bottom: 24px;
+  color: var(--primary-700);
+}
+.share-popup p.small {
+  color: var(--primary-700);
+}
+.share-popup p.xsmall {
+  margin-bottom: 10px;
+  color: var(--primary-500);
+}
+.share-popup .post-wrapper {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  color: var(--primary-900);
+}
+.share-popup .post-wrapper input {
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+#twitter {
+  margin-right: 6px;
 }
 
 .share-overlay {

@@ -1,4 +1,4 @@
-﻿<div id="grid-animation" class="calendar-grid">
+﻿<div class="calendar-grid">
     @foreach (var day in Days)
     {
         <time datetime="@Format(day)" class="@IsTracked(day) @IsSuccessful(day) @IsCurrent(day)">

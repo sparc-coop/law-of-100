@@ -22,7 +22,6 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
 
@@ -36,11 +35,17 @@
         function closeSharePopOut() {
             document.getElementById("sharePopout").style.display = "none";
             document.getElementById("overlayPopout").style.display = "none";
+            document.getElementById("sharePopout2").style.display = "none";
         }
 
-        function myFunction() {
-            document.getElementById("grid-animation").classList.toggle("calendar-grid-animation");
+        function openSharePopOut2() {
+            document.getElementById("sharePopout2").style.display = "block";
+            document.getElementById("overlayPopout").style.display = "block";
+        }
+
+        function animation() {
             document.getElementById("entry-day-animation").classList.toggle("entry-day-animation");
+            document.getElementById("grid-wrapper-animation").classList.toggle("grid-wrapper-animation");
         }
     </script>
 </body>
