@@ -193,6 +193,78 @@ nav .nav-right {
   border-radius: 6px;
 }
 
+.timeline {
+  font-family: "Clash Display";
+}
+.timeline .header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.timeline .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 500px;
+}
+.timeline .content-wrapper .dayAndHabit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.timeline .content-wrapper .eachDayTitle {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.005em;
+  margin: 10px 0px 4px;
+}
+.timeline .content-wrapper p {
+  font-size: 11px;
+  line-height: 12px;
+  color: var(--primary-500);
+  font-family: "Clash Display";
+}
+.timeline .content-wrapper .day-count {
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--primary-900);
+}
+.timeline .content-wrapper .habitName {
+  font-weight: 400;
+}
+.timeline .content-wrapper .username {
+  font-size: 13px;
+  line-height: 12px;
+  text-decoration-line: underline;
+  margin: 4px 0px;
+}
+.timeline .content-wrapper .reactionsMenu {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+}
+.timeline .content-wrapper .reactionsMenu > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  max-height: 18px;
+  max-width: 45px;
+  border: 1px solid #BFC2B8;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.timeline .content-wrapper .reactionsMenu > div .lessThanOne {
+  mix-blend-mode: luminosity;
+}
+.timeline .content-wrapper .reactionsMenu > div.selected {
+  background-color: #181919;
+  color: white;
+}
+.timeline .content-wrapper .reactionsMenu > div p {
+  margin-left: 6px;
+}
+
 .entry-day .header {
   text-align: center;
   margin-bottom: 52px;
@@ -310,6 +382,65 @@ nav .nav-right {
   color: var(--primary-700);
   text-decoration: underline;
   cursor: pointer;
+}
+
+.communityTimeline p {
+  font-family: "Clash Display";
+}
+.communityTimeline > .container {
+  width: 928px;
+  margin: 0 auto;
+  max-width: 90%;
+}
+.communityTimeline > .container > .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.communityTimeline > .container > .content .completedDays {
+  background: #BFC2B8;
+  border-radius: 6px;
+  padding: 32px;
+  width: 288px;
+}
+.communityTimeline > .container > .content .completedDays .completedDays__title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.communityTimeline > .container > .content .completedDays .completedDays__title p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #181919;
+}
+.communityTimeline > .container > .content .completedDays .completedDays__title .viewMore {
+  text-decoration: underline;
+  color: #8A8C84;
+  font-size: 12px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay {
+  margin-bottom: 24px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay__date {
+  font-size: 10px;
+  color: #8A8C84;
+  line-height: 12px;
+  margin-bottom: 2px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay__text {
+  color: #181919;
+  font-weight: 400;
+  font-size: 14px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay__user {
+  color: #626666;
+  text-decoration: underline;
+  line-height: 12px;
+  font-size: 10px;
+  cursor: pointer;
+}
+.communityTimeline > .container > .content .completedDays .completedDay:last-child {
+  margin-bottom: 0px;
 }
 
 .signin, .signup {

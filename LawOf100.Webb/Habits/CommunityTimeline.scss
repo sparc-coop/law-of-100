@@ -1,0 +1,74 @@
+﻿.communityTimeline {
+    p {
+        font-family: 'Clash Display';
+    }
+    > .container {
+        width: 928px;
+        margin: 0 auto;
+        max-width: 90%;
+
+        > .content {
+             display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            .completedDays {
+                background: #BFC2B8;
+                border-radius: 6px;
+                padding: 32px;
+                width: 288px;
+
+                .completedDays__title {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 20px;
+
+                     p {
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: #181919;
+                    }
+
+                    .viewMore {
+                        text-decoration: underline;
+                        color: #8A8C84;
+                        font-size: 12px;
+                    }
+
+
+
+                   
+                } 
+
+                .completedDay {
+                    margin-bottom: 24px;
+
+                    &__date {
+                        font-size: 10px;
+                        color: #8A8C84;
+                        line-height: 12px;
+                        margin-bottom: 2px;
+                    }
+
+                    &__text {
+                        color: #181919;
+                        font-weight: 400;
+                        font-size: 14px;    
+                    }
+                    
+                    &__user {
+                        color: #626666;
+                        text-decoration: underline;
+                        line-height: 12px;
+                        font-size: 10px;
+                        cursor: pointer;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0px
+                    }
+                }
+            }
+        }
+    }
+}

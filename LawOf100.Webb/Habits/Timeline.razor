@@ -1,34 +1,64 @@
-﻿@page "/timeline"
-
-<section class="timeline">
+﻿<section class="timeline">
     <div class="container">
         <div class="content">
             <div class="header">
-                <h3>Timeline</h3>
+                <h5>Timeline</h5>
             </div>
             <div class="content-wrapper">
                 @foreach (var entry in Timelines)
                 {
-                    <div>
-                        <h4>@entry.HabitName</h4>
-                        <h4>@entry.Day</h4>
-                        <h4>@entry.Review</h4>
+                    <div class="eachDay">
+                        <div class="dayAndHabit">
+                            <p class="day-count">Day @entry.Day</p>
+                            <p>◦</p>
+                            <p class="habitName">@entry.HabitName</p>
+                        </div>
+
+                        <h6 class="eachDayTitle">@entry.Review aaaa</h6>
+
+                        @*Change this code!!!!!!!!!!!!!*@
+                        <p class="username">real_username</p>
                         @*Username/Nickname*@
-                        @*Reactions/Emojis*@
+
+
+                        @*Need to write the logic*@
+                        <div class="reactionsMenu">
+                            <div OnClick="HandleReactions">
+                                <img src="images/ClapHandsemoji.svg" alt="clap hands emoji" class="lessThanOne" />
+                            </div>
+                            <div OnClick="HandleReactions">
+                                <img src="images/Fireemoji-1.svg" alt="fire emoji"/>
+                                <p>12</p>
+                            </div>
+                            <div OnClick="HandleReactions">
+                                <img src="images/Partyemoji-2.svg" alt="party emoji" />
+                                <p>18</p>
+                            </div>
+                            <div OnClick="HandleReactions">
+                                <img src="images/HandsUpemoji-3.svg" alt="hands up emoji" />
+                                <p>22</p>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 }
             </div>
         </div>
     </div>
-
-    <div> Test </div>
 </section>
 
-@code{
+@code {
     private ICollection<LawOf100.Features.Timeline> Timelines = new List<LawOf100.Features.Timeline>();
 
     protected override async Task OnInitializedAsync()
     {
         Timelines = await PublicApi().GetTimeLineAsync();
     }
+
+    //void HandleReactions(object sender, EventArgs e)
+    //{
+    //    Console.WriteLine(sender);
+    //}
 }
