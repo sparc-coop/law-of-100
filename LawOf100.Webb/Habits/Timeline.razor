@@ -2,7 +2,19 @@
     <div class="container">
         <div class="content">
             <div class="header">
-                <h5>Timeline</h5>
+                @*This code is not working, I think I'm not accessing the property correctly. Need to rewrite this*@
+                @*@if ((DateTime.Now.Day - ActualDate.Day) < 1)
+                    {
+                    <h5>Today</h5>
+                    }
+                    else if ((DateTime.Now.Day - ActualDate.Day) == 1)
+                    {
+                    <h5>Yesterday</h5>
+                    }
+                    else
+                    {
+                    <h5>@DateTime.Now.ToString("MMMM dd, yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-us"))</h5>
+                    }*@
             </div>
             <div class="content-wrapper">
                 @foreach (var entry in Timelines)
@@ -16,9 +28,8 @@
 
                         <h6 class="eachDayTitle">@entry.Review aaaa</h6>
 
-                        @*Change this code!!!!!!!!!!!!!*@
-                        <p class="username">real_username</p>
-                        @*Username/Nickname*@
+                        @*Need to put the href and the real property*@
+                        <a href="" class="username">real_username</a>
 
 
                         @*Need to write the logic*@
@@ -27,7 +38,7 @@
                                 <img src="images/ClapHandsemoji.svg" alt="clap hands emoji" class="lessThanOne" />
                             </div>
                             <div OnClick="HandleReactions">
-                                <img src="images/Fireemoji-1.svg" alt="fire emoji"/>
+                                <img src="images/Fireemoji-1.svg" alt="fire emoji" />
                                 <p>12</p>
                             </div>
                             <div OnClick="HandleReactions">
@@ -40,7 +51,6 @@
                             </div>
 
                         </div>
-
 
                     </div>
                 }
@@ -56,6 +66,8 @@
     {
         Timelines = await PublicApi().GetTimeLineAsync();
     }
+
+    DateTime ActualDate { get; }
 
     //void HandleReactions(object sender, EventArgs e)
     //{
