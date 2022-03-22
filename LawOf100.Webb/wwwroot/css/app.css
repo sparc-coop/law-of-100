@@ -102,11 +102,6 @@ nav .nav-right {
 
 .calendar-grid {
   grid-column: 3;
-  transition: all 1s linear;
-  animation-name: grid-left;
-  animation-delay: 0;
-  animation-direction: alternate;
-  animation-duration: 1s;
 }
 
 .create-habit .header {
@@ -171,6 +166,7 @@ nav .nav-right {
 .entry-day {
   display: none;
   opacity: 0;
+  max-width: 420px;
 }
 .entry-day .header {
   text-align: center;
