@@ -8,10 +8,6 @@
                         <InputRadio Value="true" />
                         Yes
                     </label>
-                    <label class="@(Progression.IsSuccessful == null ? "selected" : "")">
-                        <InputRadio Value="null" />
-                        Not Yet
-                    </label>
                     <label class="@(Progression.IsSuccessful == false ? "selected" : "")">
                         <InputRadio Value="false" />
                         No
@@ -66,7 +62,7 @@
 
 @code {
     [Parameter] public string HabitId { get; set; }
-    [Parameter] EventCallback<Habit> OnSubmit { get; set; }
+    [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
 
     TrackProgressRequest Progression = new() { IsPublic = true };
 

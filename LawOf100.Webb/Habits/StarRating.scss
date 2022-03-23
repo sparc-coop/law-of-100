@@ -1,15 +1,18 @@
 ﻿.star-rating {
     position: relative;
-    padding: 1rem;
+    padding: 16px;
     white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
 
     svg {
-        width: 50px;
-        fill: gold;
+        pointer-events: none;
+        fill: var(--secondary-500);
+
     }
 
     .cover {
-        background: white;
+        background: var(--tertiary-500);
         height: 100%;
         overflow: hidden;
         mix-blend-mode: color;
