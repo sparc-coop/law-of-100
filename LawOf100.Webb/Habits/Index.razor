@@ -6,7 +6,7 @@
     <CreateHabit />
 }
 
-<div class="grid-wrapper" id="grid-wrapper-animation">
+<div class="grid-wrapper">
     @if (TheHabit?.Id != null)
 {
 
@@ -18,10 +18,9 @@
     //Grid
     <DayGrid Days="TheHabit.Progressions" />
         
-    //Set to display none
-        <EntryDay />
+    <EntryDay />
 
-       <button type="button" onclick="animation()" id="test" style="width: 50px;">Press Me</button> 
+    <button type="button" onclick="animation()" id="test" style="width: 50px;">Press Me</button> 
 }
 </div>
 

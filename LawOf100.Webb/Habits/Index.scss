@@ -7,12 +7,8 @@
 /*Styles need for Calaender*/
 .grid-wrapper {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(5, auto);
 }
-
-/*.grid-wrapper-animation {
-    grid-template-columns: auto 0 auto auto auto;
-}*/
 
 .habit-index {
     grid-column: 2/5;
