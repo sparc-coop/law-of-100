@@ -14,7 +14,7 @@ public class Account : Root<string>
         DateModified = DateTime.UtcNow;
     }
 
-    public Account(string id, string name, string? intro, string? nickname) : this()
+    public Account(string id, string name, string? intro, string nickname) : this()
     {
         Id = id;
         Name = name;
@@ -23,7 +23,7 @@ public class Account : Root<string>
     }
 
     public string Name { get; set; }
-    public string? Nickname { get; set; }
+    public string Nickname { get; set; }
     public string? ShortIntro { get; set; }
     public DateTime DateCreated { get; set; }
     public DateTime DateModified { get; set; }
