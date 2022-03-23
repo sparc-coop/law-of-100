@@ -61,7 +61,7 @@
 </div>
 
 @code {
-    [Parameter] public string HabitId { get; set; }
+    [Parameter] public string? HabitId { get; set; }
     [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
 
     TrackProgressRequest Progression = new() { IsPublic = true };

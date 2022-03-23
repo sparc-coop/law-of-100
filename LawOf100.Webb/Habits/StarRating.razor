@@ -29,7 +29,7 @@
 
     double PreviewValue = 0;
     double ValueAsPercentage => (IsPreviewing ? PreviewValue : Value) / 5 * 100;
-    BoundingClientRect FiveStarRect;
+    BoundingClientRect FiveStarRect = new();
     double OffsetX;
     bool IsPreviewing;
     ElementReference Stars;
