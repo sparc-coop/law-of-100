@@ -1,7 +1,8 @@
 ﻿.entry-day {
-    display: none;
-    opacity: 0;
-    max-width: 420px;
+    max-width: 16px;
+    transition: max-width 1s ease-out 0.75s;
+    width: 100%;
+    height: 0;
 
     .header {
         text-align: center;
@@ -10,6 +11,11 @@
         p {
             margin-bottom: 6px;
         }
+    }
+
+    .container {
+        transition: opacity 0.75s ease-out;
+        opacity: 0;
     }
 
     .content-wrapper {
@@ -138,6 +144,81 @@
 }
 
 .entry-day-animation {
+    /*animation: fadeIn 1s;*/
+    /*animation: widthIn 1s;*/
+    /*animation-fill-mode: forwards;*/
+    transition: max-width 1s ease-out !important;
+    max-width: 420px;
+    opacity: 1;
+
+    .container {
+        transition: opacity 0.75s ease-out 1s;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn{
+
+    0%{
+        max-width: 16px;
+    }
+
+    49%{
+        max-width: 420px;
+    }
+    50% {
+        opacity: 0;
+        max-width: 420px;
+    }
+
+    100% {
+        opacity: 1;
+        max-width: 420px;
+    }
+}
+
+@keyframes fadeOut {
+
+    0% {
+        max-width: 420px;
+        opacity: 1;
+    }
+
+    49% {
+        max-width: 420px;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+        max-width: 420px;
+    }
+
+    100% {
+        opacity: 0;
+        max-width: 0;
+    }
+}
+
+@keyframes widthIn {
+
+    0% {
+        max-width: 0;
+    }
+
+    100% {
+        max-width: 420px;
+    }
+}
+
+#test{
+    grid-row: 3;
+    grid-column: 2;
+    position: absolute;
+}
+
+
+/*.entry-day-animation {
     animation-name: fade;
     animation-direction: alternate;
     animation-duration: 1s;
@@ -159,3 +240,15 @@
         max-width: 420px;
     }
 }
+
+@keyframes hide {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    100% {
+        opacity: 1;
+        display: block;
+    }
+}*/
