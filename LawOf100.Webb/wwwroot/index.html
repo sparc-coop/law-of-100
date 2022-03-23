@@ -24,6 +24,7 @@
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
 
 
+
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
     <script>
         function openSharePopOut() {
@@ -34,6 +35,16 @@
         function closeSharePopOut() {
             document.getElementById("sharePopout").style.display = "none";
             document.getElementById("overlayPopout").style.display = "none";
+            document.getElementById("sharePopout2").style.display = "none";
+        }
+
+        function openSharePopOut2() {
+            document.getElementById("sharePopout2").style.display = "block";
+            document.getElementById("overlayPopout").style.display = "block";
+        }
+
+        function animation() {
+            document.getElementById("entry-day-animation").classList.toggle("entry-day-animation");
         }
     </script>
 </body>

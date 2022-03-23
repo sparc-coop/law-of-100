@@ -1,4 +1,14 @@
 ﻿.entry-day {
+    max-width: 16px;
+    transition: max-width 1s ease-out 0.75s;
+    width: 100%;
+    height: 0;
+
+    .container {
+        transition: opacity 0.75s ease-out;
+        opacity: 0;
+    }
+
     .header {
         text-align: center;
         margin-bottom: 52px;
@@ -8,65 +18,58 @@
         }
     }
 
+
+
     .content-wrapper {
-        display: flex;
-        justify-content: space-between;
+        margin-top: 112px;
     }
 
-    .col-left {
-        width: 40%;
-    }
+    .col-wrapper {
+        .track-day, .rating, .notes {
+            .sub-header {
+                margin-bottom: 12px;
+            }
+        }
 
-    .col-right {
-        width: 40%;
+        .track-day {
+            margin-bottom: 36px;
+            width: 78%;
 
-        .col-wrapper {
-            .track-day, .rating, .notes {
-                .sub-header {
-                    margin-bottom: 12px;
+            .input-wrapper {
+                border: 1px solid var(--primary-900);
+                border-radius: 6px 6px 6px 6px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                text-align: center;
+
+                input {
+                    display: none;
                 }
-            }
 
-            .track-day {
-                margin-bottom: 36px;
-
-                .input-wrapper {
-                    border: 1px solid var(--primary-900);
-                    border-radius: 6px 6px 6px 6px;
-                    max-width: 216px;
-                    display: flex;
-
-                    input {
-                        display: none;
-                    }
-
-                    label {
-                        padding: 6px 18px;
-                    }
-
-                    input[type="radio"]:checked + label {
-                        background-color: var(--primary-900);
-                        color: var(--tertiary-500);
-                    }
+                label {
+                    padding: 6px 18px;
                 }
-            }
 
-            .rating {
-                margin-bottom: 42px;
-            }
-
-            .notes {
-                margin-bottom: 40px;
-
-                textarea {
-                    width: 100%;
-                    height: 100px;
+                input[type="radio"]:checked + label {
+                    background-color: var(--primary-900);
+                    color: var(--tertiary-500);
                 }
             }
         }
-    }
 
-    
+        .rating {
+            margin-bottom: 42px;
+        }
+
+        .notes {
+            margin-bottom: 40px;
+
+            textarea {
+                width: 100%;
+                height: 100px;
+            }
+        }
+    }
 }
 
 /* Button used to open the Share popup*/
@@ -86,6 +89,48 @@
     padding: 40px;
     max-width: 432px;
 
+    .response-wrapper {
+        margin-bottom: 18px;
+    }
+
+    .response-wrapper:last-child {
+        margin-bottom: 26px;
+    }
+
+    h5 {
+        margin-bottom: 12px;
+        color: var(--primary-900);
+    }
+
+    p.medium {
+        margin-bottom: 24px;
+        color: var(--primary-700);
+    }
+
+    p.small {
+        color: var(--primary-700);
+    }
+
+    p.xsmall {
+        margin-bottom: 10px;
+        color: var(--primary-500);
+    }
+
+    .post-wrapper {
+        margin-bottom: 50px;
+        display: flex;
+        align-items: center;
+        color: var(--primary-900);
+
+        input {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+    }
+}
+
+#twitter {
+    margin-right: 6px;
 }
 
 .share-overlay {
@@ -95,6 +140,24 @@
     height: 100%;
     background: #626666;
     top: 0;
+    left: 0;
     opacity: 0.6;
 
+}
+
+.entry-day-animation {
+    transition: max-width 1s ease-out !important;
+    max-width: 420px;
+    opacity: 1;
+
+    .container {
+        transition: opacity 0.75s ease-out 1s;
+        opacity: 1;
+    }
+}
+
+#test{
+    grid-row: 3;
+    grid-column: 2;
+    position: absolute;
 }

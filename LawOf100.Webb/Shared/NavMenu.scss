@@ -1,6 +1,7 @@
 ﻿nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 32px 40px 80px 40px;
 
     .nav-left, .nav-right {
@@ -10,7 +11,12 @@
 
         .nav-link {
             color: var(--primary-900);
+            margin-right: 32px;
         }
+    }
+
+    .nav-left:last-child, .nav-right:last-child{
+        margin-right: 0px;
     }
 
     .nav-right{
