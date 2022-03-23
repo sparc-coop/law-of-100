@@ -62,6 +62,7 @@
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 32px 40px 80px 40px;
 }
 nav .nav-left, nav .nav-right {
@@ -70,6 +71,10 @@ nav .nav-left, nav .nav-right {
 }
 nav .nav-left .nav-link, nav .nav-right .nav-link {
   color: var(--primary-900);
+  margin-right: 32px;
+}
+nav .nav-left:last-child, nav .nav-right:last-child {
+  margin-right: 0px;
 }
 nav .nav-right {
   justify-content: flex-end;
@@ -81,59 +86,20 @@ nav .nav-right {
   align-items: center;
 }
 
-/* Button used to open the Share popup*/
-.open-button {
-  padding: 16px 20px;
+/*Styles need for Calaender*/
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
 }
 
-/* The Share popup - hidden by default */
-.share-popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #CED1C9;
-  padding: 40px;
-  max-width: 432px;
-}
-.share-popup .response-wrapper {
-  margin-bottom: 18px;
-}
-.share-popup .response-wrapper:last-child {
-  margin-bottom: 26px;
-}
-.share-popup h5 {
-  margin-bottom: 12px;
-  color: var(--primary-900);
-}
-.share-popup p.medium {
-  margin-bottom: 24px;
-  color: var(--primary-700);
-}
-.share-popup p.small {
-  color: var(--primary-700);
-}
-.share-popup p.xsmall {
-  margin-bottom: 10px;
-  color: var(--primary-500);
-}
-.share-popup .post-wrapper {
-  margin-bottom: 50px;
-  display: flex;
-  align-items: center;
-  color: var(--primary-900);
-}
-.share-popup .post-wrapper input {
-  margin-right: 10px;
-  margin-top: 4px;
+.habit-index {
+  grid-column: 2/5;
 }
 
-/*@media only screen and (max-width: 480px) {
-    .newhabit {
-        height: 100%;
+.calendar-grid {
+  grid-column: 3;
+}
 
-    }
-}*/
 .create-habit .header {
   text-align: center;
   margin-bottom: 52px;
@@ -193,6 +159,88 @@ nav .nav-right {
   border-radius: 6px;
 }
 
+.timeline {
+  font-family: "Clash Display";
+}
+.timeline .header {
+  text-align: left;
+  margin-bottom: 24px;
+}
+.timeline .content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 500px;
+}
+.timeline .content-wrapper .dayAndHabit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.timeline .content-wrapper .eachDayTitle {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: -0.005em;
+  margin: 10px 0px 4px;
+}
+.timeline .content-wrapper p, .timeline .content-wrapper a {
+  font-size: 11px;
+  line-height: 12px;
+  color: var(--primary-500);
+  font-family: "Clash Display";
+}
+.timeline .content-wrapper .day-count {
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--primary-900);
+}
+.timeline .content-wrapper .habitName {
+  font-weight: 400;
+}
+.timeline .content-wrapper .username {
+  font-size: 13px;
+  line-height: 12px;
+  text-decoration-line: underline;
+  margin: 4px 0px;
+}
+.timeline .content-wrapper .reactionsMenu {
+  display: flex;
+  gap: 6px;
+  margin-top: 16px;
+}
+.timeline .content-wrapper .reactionsMenu > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 7px;
+  max-height: 18px;
+  max-width: 45px;
+  border: 1px solid #BFC2B8;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.timeline .content-wrapper .reactionsMenu > div .lessThanOne {
+  mix-blend-mode: luminosity;
+}
+.timeline .content-wrapper .reactionsMenu > div.selected {
+  background-color: #181919;
+  color: white;
+}
+.timeline .content-wrapper .reactionsMenu > div p {
+  margin-left: 6px;
+}
+
+.entry-day {
+  max-width: 16px;
+  transition: max-width 1s ease-out 0.75s;
+  width: 100%;
+  height: 0;
+}
+.entry-day .container {
+  transition: opacity 0.75s ease-out;
+  opacity: 0;
+}
 .entry-day .header {
   text-align: center;
   margin-bottom: 52px;
@@ -201,44 +249,39 @@ nav .nav-right {
   margin-bottom: 6px;
 }
 .entry-day .content-wrapper {
-  display: flex;
-  justify-content: space-between;
+  margin-top: 112px;
 }
-.entry-day .col-left {
-  width: 40%;
-}
-.entry-day .col-right {
-  width: 40%;
-}
-.entry-day .col-right .col-wrapper .track-day .sub-header, .entry-day .col-right .col-wrapper .rating .sub-header, .entry-day .col-right .col-wrapper .notes .sub-header {
+.entry-day .col-wrapper .track-day .sub-header, .entry-day .col-wrapper .rating .sub-header, .entry-day .col-wrapper .notes .sub-header {
   margin-bottom: 12px;
 }
-.entry-day .col-right .col-wrapper .track-day {
+.entry-day .col-wrapper .track-day {
   margin-bottom: 36px;
+  width: 78%;
 }
-.entry-day .col-right .col-wrapper .track-day .input-wrapper {
+.entry-day .col-wrapper .track-day .input-wrapper {
   border: 1px solid var(--primary-900);
   border-radius: 6px 6px 6px 6px;
-  max-width: 216px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
 }
-.entry-day .col-right .col-wrapper .track-day .input-wrapper input {
+.entry-day .col-wrapper .track-day .input-wrapper input {
   display: none;
 }
-.entry-day .col-right .col-wrapper .track-day .input-wrapper label {
+.entry-day .col-wrapper .track-day .input-wrapper label {
   padding: 6px 18px;
 }
-.entry-day .col-right .col-wrapper .track-day .input-wrapper input[type=radio]:checked + label {
+.entry-day .col-wrapper .track-day .input-wrapper input[type=radio]:checked + label {
   background-color: var(--primary-900);
   color: var(--tertiary-500);
 }
-.entry-day .col-right .col-wrapper .rating {
+.entry-day .col-wrapper .rating {
   margin-bottom: 42px;
 }
-.entry-day .col-right .col-wrapper .notes {
+.entry-day .col-wrapper .notes {
   margin-bottom: 40px;
 }
-.entry-day .col-right .col-wrapper .notes textarea {
+.entry-day .col-wrapper .notes textarea {
   width: 100%;
   height: 100px;
 }
@@ -260,6 +303,41 @@ nav .nav-right {
   padding: 40px;
   max-width: 432px;
 }
+.share-popup .response-wrapper {
+  margin-bottom: 18px;
+}
+.share-popup .response-wrapper:last-child {
+  margin-bottom: 26px;
+}
+.share-popup h5 {
+  margin-bottom: 12px;
+  color: var(--primary-900);
+}
+.share-popup p.medium {
+  margin-bottom: 24px;
+  color: var(--primary-700);
+}
+.share-popup p.small {
+  color: var(--primary-700);
+}
+.share-popup p.xsmall {
+  margin-bottom: 10px;
+  color: var(--primary-500);
+}
+.share-popup .post-wrapper {
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  color: var(--primary-900);
+}
+.share-popup .post-wrapper input {
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+#twitter {
+  margin-right: 6px;
+}
 
 .share-overlay {
   display: none;
@@ -268,7 +346,24 @@ nav .nav-right {
   height: 100%;
   background: #626666;
   top: 0;
+  left: 0;
   opacity: 0.6;
+}
+
+.entry-day-animation {
+  transition: max-width 1s ease-out !important;
+  max-width: 420px;
+  opacity: 1;
+}
+.entry-day-animation .container {
+  transition: opacity 0.75s ease-out 1s;
+  opacity: 1;
+}
+
+#test {
+  grid-row: 3;
+  grid-column: 2;
+  position: absolute;
 }
 
 .calendar-grid {
@@ -278,9 +373,10 @@ nav .nav-right {
   background-color: var(--active-500);
   color: var(--primary-500);
   padding: 24px;
-  margin: 52px 0 16px;
+  margin: 52px auto 16px;
   text-align: center;
   border-radius: 6px;
+  max-width: 594px;
 }
 .calendar-grid > * {
   padding: 16px;
@@ -312,25 +408,63 @@ nav .nav-right {
   cursor: pointer;
 }
 
-.star-rating {
-  position: relative;
-  padding: 16px;
-  white-space: nowrap;
+.communityTimeline p {
+  font-family: "Clash Display";
+}
+.communityTimeline > .container {
+  width: 928px;
+  margin: 0 auto;
+  max-width: 90%;
+}
+.communityTimeline > .container > .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.communityTimeline > .container > .content .completedDays {
+  background: #BFC2B8;
+  border-radius: 6px;
+  padding: 32px;
+  width: 288px;
+}
+.communityTimeline > .container > .content .completedDays .completedDays__title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.communityTimeline > .container > .content .completedDays .completedDays__title p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #181919;
+}
+.communityTimeline > .container > .content .completedDays .completedDays__title .viewMore {
+  text-decoration: underline;
+  color: #8A8C84;
+  font-size: 12px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay {
+  margin-bottom: 24px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay__date {
+  font-size: 10px;
+  color: #8A8C84;
+  line-height: 12px;
+  margin-bottom: 2px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay__text {
+  color: #181919;
+  font-weight: 400;
+  font-size: 14px;
+}
+.communityTimeline > .container > .content .completedDays .completedDay__user {
+  color: #626666;
+  text-decoration: underline;
+  line-height: 12px;
+  font-size: 10px;
   cursor: pointer;
-  display: inline-block;
 }
-.star-rating svg {
-  pointer-events: none;
-  fill: var(--secondary-500);
-}
-.star-rating .cover {
-  background: var(--tertiary-500);
-  height: 100%;
-  overflow: hidden;
-  mix-blend-mode: color;
-  position: absolute;
-  top: 0;
-  right: 0;
+.communityTimeline > .container > .content .completedDays .completedDay:last-child {
+  margin-bottom: 0px;
 }
 
 .signin, .signup {

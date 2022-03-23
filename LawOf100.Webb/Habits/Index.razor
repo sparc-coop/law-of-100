@@ -6,22 +6,24 @@
     <CreateHabit />
 }
 
-@if (TheHabit?.Id != null)
+<div class="grid-wrapper">
+    @if (TheHabit?.Id != null)
 {
-    <section class="habit-index">
+
+    <section id="header-test" class="habit-index">
         <h6>100 days to</h6>
         <h3>@TheHabit.HabitName</h3>
-        <DayGrid Days="TheHabit.Progressions" />
-
-        <button class="secondary-button open-button" onclick="openSharePopOut()">Open Share Pop up</button>
     </section>
 
-    <div class="share-overlay" id="overlayPopout"></div>
-    <div class="share-popup" id="sharePopout">
-        <EntryDay />
-    </div>
+    //Grid
+    <DayGrid Days="TheHabit.Progressions" />
+        
+    <EntryDay />
 
+    <button type="button" onclick="animation()" id="test" style="width: 50px;">Press Me</button> 
 }
+</div>
+
 
 
 @code {
