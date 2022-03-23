@@ -4,7 +4,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Users;
 
-public record CreateAccountRequest(string Name, string? ShortIntro, string? Nickname);
+public record CreateAccountRequest(string Name, string? ShortIntro, string Nickname);
 public class CreateAccount : Feature<CreateAccountRequest, string>
 {
     public CreateAccount(IRepository<Account> accounts)
