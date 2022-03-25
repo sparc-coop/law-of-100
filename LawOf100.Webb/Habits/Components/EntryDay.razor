@@ -1,4 +1,4 @@
-﻿<section class="entry-day @(IsEntryFormVisible ? "entry-day-animation" : "")">
+﻿<section class="entry-day">
     <div class="container">
         <div class="content">
             <div class="content-wrapper">
@@ -89,19 +89,15 @@
     </div>
 </section>
 
-<button @onclick="EnterDay">Update Day</button>
-
 
 @code {
     [Parameter] public string? HabitId { get; set; }
     [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
 
     TrackProgressRequest Progression = new() { IsPublic = true };
-    bool IsEntryFormVisible;
     bool IsConfirmationPopoutVisible;
     bool IsSharePopoutVisible;
 
-    void EnterDay() => IsEntryFormVisible = true;
 
     void Confirm() => IsSharePopoutVisible = true;
 

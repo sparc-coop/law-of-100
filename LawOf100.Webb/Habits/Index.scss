@@ -1,19 +1,47 @@
 ﻿.habit-index {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-/*Styles need for Calaender*/
-.grid-wrapper {
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-}
+        h6 {
+            margin-bottom: 12px;
+        }
+    }
+    /*Styles need for Calaender*/
+    .grid-wrapper {
+        display: grid;
+        grid-template: auto auto / 3fr auto;
+        max-width: 960px;
+        margin: 0 auto;
+    }
 
-.habit-index {
-    grid-column: 2/5;
-}
+    .is-not-created {
+        .create-habit {
+            max-height: 500px;
+        }
+    }
 
-.calendar-grid {
-    grid-column: 3;
+    .entry-day-animation {
+        .entry-day {
+            transition: max-width 1s ease-out !important;
+            max-width: 420px;
+            opacity: 1;
+
+            .container {
+                transition: opacity 0.75s ease-out 1s;
+                opacity: 1;
+            }
+        }
+    }
+
+    .new-habit-animation {
+        .create-habit {
+            max-height: 16px;
+
+            .container {
+                opacity: 0;
+            }
+        }
+    }
 }

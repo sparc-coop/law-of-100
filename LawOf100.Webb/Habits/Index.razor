@@ -1,34 +1,60 @@
 ﻿@page "/habits/create"
 @page "/habits/{HabitId}"
 
-@if (HabitId == null)
-{
-    <CreateHabit />
-}
-
-<div class="grid-wrapper">
-    @if (Habit?.Id != null)
-    {
-        <section class="habit-index">
+<div class="habit-index">
+    <header>
+        @if (Habit?.Id != null)
+        {
             <h6>100 days to</h6>
             <h3>@Habit.HabitName</h3>
-        </section>
+        }
+        else
+        {
+            <h6>Welcome Kieran</h6>
+            <h3>Let's plan your 100 days</h3>
+        }
+    </header>
 
-        <DayGrid Habit="Habit" />
+    <div class="grid-wrapper @(Habit?.Id == null ? "is-not-created" : "") @(IsCreating ? "new-habit-animation" : "") @(IsEnteringDay ? "entry-day-animation" : "")">
+        <CreateHabit OnSubmit="BeginHabit" />
 
-        <EntryDay OnSubmit="RefreshHabit" />
-        <Timeline HabitId="HabitId" />
-    }
+        <div></div> @* Placeholder for top right column of animating grid *@
+
+        <div>
+            <DayGrid Habit="Habit" />
+            @if (Habit?.CurrentDay != null)
+            {
+                <button @onclick="EnterDay">Update Day @Habit.CurrentDay</button>
+            }
+        </div>
+
+        @if (Habit?.Id != null)
+        {
+            <EntryDay OnSubmit="RefreshHabit" />
+            <Timeline HabitId="HabitId" />
+        }
+    </div>
 </div>
 
 @code {
     [Parameter] public string? HabitId { get; set; }
-    Habit? Habit { get; set; }
+    Habit? Habit { get; set; } = new();
+    bool IsCreating;
+    bool IsEnteringDay;
 
     protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
             Habit = await PublicApi().GetHabitAsync(HabitId);
+    }
+
+    void EnterDay() => IsEnteringDay = true;
+
+    void BeginHabit(Habit habit)
+    {
+        Habit = habit;
+        IsCreating = true;
+        Nav.NavigateTo($"/habits/{habit.Id}");
     }
 
     void RefreshHabit(Habit habit) => Habit = habit;

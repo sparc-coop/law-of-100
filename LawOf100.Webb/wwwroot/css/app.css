@@ -13,6 +13,7 @@
   --tertiary-700: #BFC2B8;
   --tertiary-900: #8A8C84;
   --active-500: #181919;
+  --font-family: "Clash Display", sans-serif;
 }
 :root h1, :root h2, :root h3, :root h4, :root h5, :root h6, :root .subtitle {
   --font-family: "Clash Display", sans-serif;
@@ -61,6 +62,18 @@
 :root input, :root select {
   border-color: var(--active-500);
 }
+:root label {
+  font-size: 14px;
+  color: var(--primary-500);
+}
+:root label input, :root label select {
+  margin-top: 12px;
+  width: 100%;
+}
+:root button {
+  color: var(--tertiary-500);
+  font-weight: 300;
+}
 
 nav {
   display: flex;
@@ -98,81 +111,106 @@ nav .nav-right {
   }
 }
 .habit-index {
+  /*Styles need for Calaender*/
+}
+.habit-index header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-/*Styles need for Calaender*/
-.grid-wrapper {
+.habit-index header h6 {
+  margin-bottom: 12px;
+}
+.habit-index .grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template: auto auto/3fr auto;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.habit-index .is-not-created .create-habit {
+  max-height: 500px;
+}
+.habit-index .entry-day-animation .entry-day {
+  transition: max-width 1s ease-out !important;
+  max-width: 420px;
+  opacity: 1;
+}
+.habit-index .entry-day-animation .entry-day .container {
+  transition: opacity 0.75s ease-out 1s;
+  opacity: 1;
+}
+.habit-index .new-habit-animation .create-habit {
+  max-height: 16px;
+}
+.habit-index .new-habit-animation .create-habit .container {
+  opacity: 0;
 }
 
-.habit-index {
-  grid-column: 2/5;
+.create-habit {
+  max-width: 350px;
+  margin: 0 auto;
+  max-height: 16px;
+  position: relative;
+  z-index: 100;
+  transition: max-height 1s ease-in !important;
 }
-
-.calendar-grid {
-  grid-column: 3;
+.create-habit .container {
+  transition: opacity 0.75s ease-in 1s;
 }
-
-.create-habit .header {
+.create-habit .col-wrapper {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.create-habit header {
   text-align: center;
   margin-bottom: 52px;
 }
-.create-habit .header p {
-  margin-bottom: 6px;
-}
-.create-habit .content-wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-}
-.create-habit .col-wrapper {
-  width: 30%;
-}
-.create-habit .col-wrapper .habit-input {
-  width: 100%;
-}
-.create-habit .col-wrapper .habit-name .sub-header, .create-habit .col-wrapper .missing-days .sub-header, .create-habit .col-wrapper .leniency .sub-header, .create-habit .col-wrapper .notes .sub-header {
+.create-habit header h6 {
   margin-bottom: 12px;
 }
-.create-habit .col-wrapper .missing-days .days-options {
+.create-habit label {
+  display: block;
+  margin-bottom: 27px;
+}
+.create-habit select {
   background: #CED1C9;
 }
-.create-habit .col-wrapper .leniency {
-  margin-bottom: 36px;
-  justify-content: space-around;
-}
-.create-habit .col-wrapper .leniency .input-wrapper {
+.create-habit .radio-wrapper {
   border: 1px solid var(--primary-900);
   border-radius: 6px 6px 6px 6px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 12px;
 }
-.create-habit .col-wrapper .leniency .input-wrapper input {
+.create-habit .radio-wrapper input {
   opacity: 0;
   position: absolute;
 }
-.create-habit .col-wrapper .leniency .input-wrapper label {
+.create-habit .radio-wrapper label {
   padding: 6px 18px;
   position: relative;
   cursor: pointer;
   text-align: center;
+  margin: 0;
 }
-.create-habit .col-wrapper .leniency .input-wrapper label.selected {
+.create-habit .radio-wrapper label.selected {
   background-color: var(--primary-900);
   color: var(--tertiary-500);
 }
-.create-habit .col-wrapper .habit-name, .create-habit .col-wrapper .missing-days {
-  margin-bottom: 42px;
-}
-.create-habit .col-wrapper .notes {
+.create-habit aside {
   margin-bottom: 40px;
+  color: var(--primary-500);
 }
-.create-habit .col-wrapper .secondary-button {
+.create-habit aside header {
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+}
+.create-habit aside p {
+  font-size: 12px;
+}
+.create-habit .secondary-button {
   border-radius: 6px;
 }
 
@@ -373,16 +411,6 @@ nav .nav-right {
   display: block;
 }
 
-.entry-day-animation {
-  transition: max-width 1s ease-out !important;
-  max-width: 420px;
-  opacity: 1;
-}
-.entry-day-animation .container {
-  transition: opacity 0.75s ease-out 1s;
-  opacity: 1;
-}
-
 #test {
   grid-row: 3;
   grid-column: 2;
@@ -396,10 +424,12 @@ nav .nav-right {
   background-color: var(--active-500);
   color: var(--primary-500);
   padding: 24px;
-  margin: 52px auto 16px;
+  margin: 16px auto;
   text-align: center;
   border-radius: 6px;
   max-width: 594px;
+  z-index: 1000;
+  position: relative;
 }
 .calendar-grid > * {
   padding: 16px;

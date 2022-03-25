@@ -1,25 +1,17 @@
 ﻿<section class="create-habit">
     <div class="container">
         <div class="content">
-            <div class="header">
-                @*Confirm if we will have the same name or if it will just be "Welcome"*@
-                <p class="xlarge">Welcome Kieran</p>
-                <h3>Let's plan your 100 days</h3>
-            </div>
-
             <div class="content-wrapper">
 
                 <div class="col-wrapper">
                     <EditForm Model="Habit">
-                        <div class="habit-name">
-                            <p class="small sub-header">I want to</p>
-                            @*Should we keep this placeholder?*@
-                            <input class="habit-input" @bind="Habit.HabitName" placeholder="Learn Guitar" />
-                        </div>
+                            <label>
+                                I want to
+                                <input @bind="Habit.HabitName" placeholder="Learn Guitar" />
+                            </label>
 
-                        <div class="missing-days">
-                            <p class="small sub-header">Without missing</p>
-
+                        <label>
+                            Without missing
                             <select name="days" @bind="Habit.RepeatEveryXHours">
                                 <option class="days-options" value="24">1 day</option>
                                 <option class="days-options" value="48">2 consecutive days</option>
@@ -27,11 +19,11 @@
                                 <option class="days-options" value="96">4 consecutive days</option>
                                 <option class="days-options" value="120">5 consecutive days</option>
                             </select>
-                        </div>
+                        </label>
 
-                        <div class="leniency">
-                            <p class="small sub-header">Missed day leniency</p>
-                            <div class="input-wrapper">
+                        <label>
+                            Missed day leniency
+                            <div class="radio-wrapper">
                                 <InputRadioGroup @bind-Value="Habit.FudgeFactor">
                                     <label class="@(Habit.FudgeFactor == 0.9 ? "selected" : "")">
                                         <InputRadio Value="0.9" />
@@ -47,15 +39,13 @@
                                     </label>
                                 </InputRadioGroup>
                             </div>
-
-
-                        </div>
+                        </label>
                     </EditForm>
 
-                    <div class="notes">
-                        <p class="small sub-header">Please Note:</p>
-                        <p class="small sub-header">Missing more days than selected will cause that day to be automatically filled as a miss.</p>
-                    </div>
+                    <aside>
+                        <header>Please Note:</header>
+                        <p>Missing more days than selected will cause that day to be automatically filled as a miss.</p>
+                    </aside>
 
                     <button type=submit class="secondary-button" @onclick="Create">Save & Start 100 Days</button>
                 </div>
@@ -65,11 +55,12 @@
 </section>
 
 @code {
+    [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
     CreateHabitRequest Habit = new();
 
     async Task Create()
     {
         var habit = await PublicApi().CreateHabitAsync(Habit);
-        Nav.NavigateTo($"/habits/{habit.Id}");
+        await OnSubmit.InvokeAsync(habit);
     }
 }

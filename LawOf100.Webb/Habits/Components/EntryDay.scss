@@ -146,24 +146,13 @@
     top: 0;
     left: 0;
     opacity: 0.6;
+
     &-visible {
         display: block;
     }
-
 }
 
-.entry-day-animation {
-    transition: max-width 1s ease-out !important;
-    max-width: 420px;
-    opacity: 1;
-
-    .container {
-        transition: opacity 0.75s ease-out 1s;
-        opacity: 1;
-    }
-}
-
-#test{
+#test {
     grid-row: 3;
     grid-column: 2;
     position: absolute;

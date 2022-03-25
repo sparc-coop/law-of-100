@@ -13,6 +13,7 @@
     --tertiary-700: #BFC2B8;
     --tertiary-900: #8A8C84;
     --active-500: #181919;
+    --font-family: 'Clash Display', sans-serif;
 
     h1, h2, h3, h4, h5, h6, .subtitle {
         --font-family: 'Clash Display', sans-serif;
@@ -73,5 +74,20 @@
 
     input, select {
         border-color: var(--active-500);
+    }
+
+    label {
+        font-size: 14px;
+        color: var(--primary-500);
+
+        input, select {
+            margin-top: 12px;
+            width: 100%;
+        }
+    }
+
+    button {
+        color: var(--tertiary-500);
+        font-weight: 300;
     }
 }
