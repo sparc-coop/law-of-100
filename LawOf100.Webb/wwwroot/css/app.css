@@ -467,8 +467,29 @@ nav .nav-right {
   margin-bottom: 0px;
 }
 
+.star-rating {
+  position: relative;
+  padding: 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+}
+.star-rating svg {
+  pointer-events: none;
+  fill: var(--secondary-500);
+}
+.star-rating .cover {
+  background: var(--tertiary-500);
+  height: 100%;
+  overflow: hidden;
+  mix-blend-mode: color;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .signin, .signup {
-  background: #F8F8F8;
+  background: #f8f8f8;
   height: 100vh;
 }
 .signin .content, .signup .content {
