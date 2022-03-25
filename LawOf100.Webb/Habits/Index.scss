@@ -8,6 +8,42 @@
 .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(5, auto);
+
+    .timeline {
+        grid-row: 4;
+        grid-column: 3;
+        margin: auto;
+        transition: max-width 1s ease-out 0.75s;
+        width: 100%;
+        height: 0;
+        max-width: 594px;
+
+        .container {
+            transition: opacity 0.75s ease-out;
+            opacity: 0;
+
+            .content {
+                transition: display 0.75s ease-out 1.50s;
+                display: none;
+            }
+        }
+    }
+
+    .timeline-animation {
+        transition: max-width 1s ease-out 0.75s;
+        max-width: 594px;
+        opacity: 1;
+
+        .container {
+            transition: opacity 0.75s ease-out 0.75s !important;
+            opacity: 1;
+
+            .content {
+                transition: display 0.75s ease-out 0.75s;
+                display: block;
+            }
+        }
+    }
 }
 
 .habit-index {

@@ -198,6 +198,36 @@ nav .nav-right {
   display: grid;
   grid-template-columns: repeat(5, auto);
 }
+.grid-wrapper .timeline {
+  grid-row: 4;
+  grid-column: 3;
+  margin: auto;
+  transition: max-width 1s ease-out 0.75s;
+  width: 100%;
+  height: 0;
+  max-width: 594px;
+}
+.grid-wrapper .timeline .container {
+  transition: opacity 0.75s ease-out;
+  opacity: 0;
+}
+.grid-wrapper .timeline .container .content {
+  transition: display 0.75s ease-out 1.5s;
+  display: none;
+}
+.grid-wrapper .timeline-animation {
+  transition: max-width 1s ease-out 0.75s;
+  max-width: 594px;
+  opacity: 1;
+}
+.grid-wrapper .timeline-animation .container {
+  transition: opacity 0.75s ease-out 0.75s !important;
+  opacity: 1;
+}
+.grid-wrapper .timeline-animation .container .content {
+  transition: display 0.75s ease-out 0.75s;
+  display: block;
+}
 
 .habit-index {
   grid-column: 2/5;
