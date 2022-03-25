@@ -9,14 +9,14 @@
 <div class="grid-wrapper">
     @if (Habit?.Id != null)
     {
-        <section id="header-test" class="habit-index">
+        <section class="habit-index">
             <h6>100 days to</h6>
             <h3>@Habit.HabitName</h3>
         </section>
 
         <DayGrid Habit="Habit" />
 
-        <EntryDay />
+        <EntryDay OnSubmit="RefreshHabit" />
     }
 </div>
 
@@ -29,4 +29,6 @@
         if (HabitId != null)
             Habit = await PublicApi().GetHabitAsync(HabitId);
     }
+
+    void RefreshHabit(Habit habit) => Habit = habit;
 }
