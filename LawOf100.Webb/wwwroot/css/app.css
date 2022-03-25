@@ -80,6 +80,110 @@ nav .nav-right {
   justify-content: flex-end;
 }
 
+.home {
+  text-align: center;
+}
+.home .container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+.home .header {
+  max-width: 70%;
+  margin-bottom: 54px;
+  margin: auto;
+}
+.home .header p {
+  max-width: 60%;
+  margin: auto;
+  margin-top: 22px;
+}
+.home .calendar-container {
+  margin-bottom: 254px;
+}
+.home .the-law {
+  margin-bottom: 178px;
+}
+.home .the-law h6 {
+  margin-bottom: 2px;
+}
+.home .the-law h2 {
+  margin-bottom: 32px;
+}
+.home .the-law p {
+  max-width: 56%;
+  margin: auto;
+}
+.home .how-to-start {
+  margin-bottom: 190px;
+}
+.home .how-to-start .header-wrapper {
+  margin-bottom: 72px;
+}
+.home .how-to-start .step-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.home .how-to-start .step-wrapper .steps {
+  width: 33%;
+  margin: auto;
+}
+.home .how-to-start .step-wrapper .steps p.xlarge {
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+.home .how-to-start .step-wrapper .steps p.medium {
+  max-width: 76%;
+  margin: auto;
+}
+.home .overview {
+  margin-bottom: 206px;
+}
+.home .overview h4 {
+  margin-bottom: 26px;
+}
+.home .overview p {
+  max-width: 60%;
+  margin: auto;
+}
+.home .law-help-bg {
+  background: var(--tertiary-700);
+  padding: 164px 0 214px;
+}
+.home .law-help h2 {
+  margin-bottom: 32px;
+}
+.home .law-help p {
+  max-width: 60%;
+  margin: auto;
+}
+.home .law-help .law-features {
+  margin-top: 116px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.home .law-help .law-features .feature {
+  max-width: 50%;
+  margin: auto;
+}
+.home .law-help .law-features .feature p.xlarge {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+.home .law-help .law-features .feature p {
+  max-width: 72%;
+}
+.home .law-help .law-features .feature:nth-child(n+3) {
+  margin-top: 66px;
+}
+.home p.xlarge {
+  color: var(--primary-900);
+  font-family: "Clash Display";
+}
+.home p {
+  margin: auto;
+}
+
 .habit-index {
   display: flex;
   flex-direction: column;
