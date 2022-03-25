@@ -369,7 +369,7 @@ nav .nav-right {
 }
 
 .entry-day {
-  max-width: 16px;
+  max-width: 14px;
   transition: max-width 1s ease-out 0.75s;
   width: 100%;
   height: 0;
