@@ -20,10 +20,10 @@
         
     <EntryDay />
 
-    //Timeline Goes here
+    //Timeline
     <Timeline />
 
-    <button type="button" onclick="entryDayAnimation()" class="update-day">Update Day @currentDay</button> 
+    <button type="button" onclick="entryDayAnimation()" class="update-day">Update Day 1</button> 
 }
 </div>
 
@@ -33,17 +33,9 @@
     [Parameter] public string? HabitId { get; set; }
     Habit? TheHabit { get; set; }
 
-    [Parameter] public ICollection<Progression> Days { get; set; }
-    int currentDay;
-
     protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
             TheHabit = await PublicApi().GetHabitAsync(HabitId);
-    }
-
-    protected override void OnInitialized()
-    {
-        currentDay = Days.FirstOrDefault(x => !x.IsTracked)?.Day ?? 0;
     }
 }
