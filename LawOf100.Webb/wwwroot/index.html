@@ -34,14 +34,12 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
 
-
-
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
     <script>
-    function openSharePopOut() {
-        document.getElementById("sharePopout").style.display = "block";
-        document.getElementById("overlayPopout").style.display = "block";
-    }
+        function openSharePopOut() {
+            document.getElementById("sharePopout").style.display = "block";
+            document.getElementById("overlayPopout").style.display = "block";
+        }
 
         function closeSharePopOut() {
             document.getElementById("sharePopout").style.display = "none";
@@ -57,7 +55,7 @@
         function animation() {
             document.getElementById("entry-day-animation").classList.toggle("entry-day-animation");
         }
-        getElementRectangle = (element, parm) => { return element.getBoundingClientRect(); };
+        getElementRectangle = (element) => { return element.getBoundingClientRect(); };
     </script>
 </body>
 
