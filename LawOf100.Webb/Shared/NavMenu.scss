@@ -15,11 +15,26 @@
         }
     }
 
-    .nav-left:last-child, .nav-right:last-child{
+    .nav-left:last-child, .nav-right:last-child {
         margin-right: 0px;
     }
 
-    .nav-right{
+    .nav-right {
         justify-content: flex-end;
+    }
+}
+
+.big-star img {
+    position: absolute;
+    top: -25vw;
+    right: -25vw;
+    width: 50vw;
+    animation: spin 150s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
     }
 }

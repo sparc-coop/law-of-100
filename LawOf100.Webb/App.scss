@@ -3,15 +3,15 @@
 
 @import "Shared/NavMenu";
 
-@import "Pages/Index";
+@import "Home/Index";
 
 @import "Habits/Index";
-@import "Habits/CreateHabit";
-@import "Habits/Timeline";
-@import "Habits/EntryDay";
-@import "Habits/DayGrid";
+@import "Habits/Components/CreateHabit";
+@import "Habits/Components/Timeline";
+@import "Habits/Components/EntryDay";
+@import "Habits/Components/DayGrid";
 @import "Habits/CommunityTimeline";
-@import "Habits/StarRating";
+@import "Habits/Components/StarRating";
 
 @import "Users/SignIn";
 @import "Users/SignUp";

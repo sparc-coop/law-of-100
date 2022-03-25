@@ -70,4 +70,8 @@
         font-size: 12px;
         line-height: 12px;
     }
+
+    input, select {
+        border-color: var(--active-500);
+    }
 }
