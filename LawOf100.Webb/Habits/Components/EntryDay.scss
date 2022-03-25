@@ -89,6 +89,10 @@
     padding: 40px;
     max-width: 432px;
 
+    &-visible {
+        display: block;
+    }
+
     .response-wrapper {
         margin-bottom: 18px;
     }
@@ -142,6 +146,9 @@
     top: 0;
     left: 0;
     opacity: 0.6;
+    &-visible {
+        display: block;
+    }
 
 }
 

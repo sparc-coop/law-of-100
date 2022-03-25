@@ -19,8 +19,6 @@
     <DayGrid Days="TheHabit.Progressions" />
         
     <EntryDay />
-
-    <button type="button" onclick="animation()" id="test" style="width: 50px;">Press Me</button> 
 }
 </div>
 
@@ -35,4 +33,6 @@
         if (HabitId != null)
             TheHabit = await PublicApi().GetHabitAsync(HabitId);
     }
+
+
 }

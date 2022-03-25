@@ -1,102 +1,117 @@
-﻿<section id="entry-day-animation" class="entry-day">
-     <div class="container">
+﻿<section id="entry-day-animation" class="entry-day @(IsEntryFormVisible ? "entry-day-animation" : "")">
+    <div class="container">
         <div class="content">
             <div class="content-wrapper">
-                    <div class="col-wrapper">
-    <EditForm Model="Progression">
-        <div class="track-day">
-            <p class="small sub-header">Successful day?</p>
-            <div class="input-wrapper">
-                <InputRadioGroup @bind-Value="Progression.IsSuccessful">
-                    <label class="@(Progression.IsSuccessful == true ? "selected" : "")">
-                        <InputRadio Value="true" />
-                        Yes
-                    </label>
-                    <label class="@(Progression.IsSuccessful == false ? "selected" : "")">
-                        <InputRadio Value="false" />
-                        No
-                    </label>
-                </InputRadioGroup>
-            </div>
-        </div>
-        <div class="rating">
-            <p class="small sub-header">Rate your day</p>
-            <div class="img-wrapper">
-                <StarRating @bind-Value="Progression.Rating" />
-            </div>
-        </div>
-        <div class="notes">
-            <p class="small sub-header">Notes about your day</p>
-            <textarea @bind="Progression.Review" placeholder="Tell us about your day" maxlength="120" />
-        </div>
+                <div class="col-wrapper">
+                    <EditForm Model="Progression">
+                        <div class="track-day">
+                            <p class="small sub-header">Successful day?</p>
+                            <div class="input-wrapper">
+                                <InputRadioGroup @bind-Value="Progression.IsSuccessful">
+                                    <label class="@(Progression.IsSuccessful == true ? "selected" : "")">
+                                        <InputRadio Value="true" />
+                                        Yes
+                                    </label>
+                                    <label class="@(Progression.IsSuccessful == false ? "selected" : "")">
+                                        <InputRadio Value="false" />
+                                        No
+                                    </label>
+                                </InputRadioGroup>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <p class="small sub-header">Rate your day</p>
+                            <div class="img-wrapper">
+                                <StarRating @bind-Value="Progression.Rating" />
+                            </div>
+                        </div>
+                        <div class="notes">
+                            <p class="small sub-header">Notes about your day</p>
+                            <textarea @bind="Progression.Review" placeholder="Tell us about your day" maxlength="120" />
+                        </div>
 
-                        <button class="secondary-button open-button" onclick="openSharePopOut();">Save & Submit Day</button>
-        </EditForm>
-                    </div>
+                        <button class="secondary-button open-button" @onclick="Confirm">Save & Submit Day</button>
+                    </EditForm>
+                </div>
             </div>
         </div>
     </div>
 
-<div class="share-overlay" id="overlayPopout"></div>
-<div class="share-popup" id="sharePopout">
-    <div class="wrapper">
-        <h5>Confirm Your Day</h5>
-        <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
+    <div class="share-overlay @(SharePopOutIsVisible ? "share-overlay-visible" : "")"></div>
+    <div class="share-popup @(SharePopOutIsVisible ? "share-popup-visible" : "")">
+        <div class="wrapper">
+            <h5>Confirm Your Day</h5>
+            <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
 
-        <div class="response-wrapper">
-            <p class="xsmall">Successful day:</p>
-            <p class="small"></p>
-        </div>
-        <div class="response-wrapper">
-            <p class="xsmall">Day Rating:</p>
-            <p class="small">5/5</p>
-        </div>
-        <div class="response-wrapper">
-            <p class="xsmall">Notes:</p>
-            <p class="small"></p>
-        </div>
-
-        <div class="post-wrapper">
-            <input type="checkbox" @bind="Progression.IsPublic" />
-            <label>Post day on Law of 100 public timeline</label>
-        </div>
-
-
-                <button class="secondary-button" type="button" onclick="closeSharePopOut(); openSharePopOut2(); ">Confirm & Save</button>
-                <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
+            <div class="response-wrapper">
+                <p class="xsmall">Successful day:</p>
+                <p class="small"></p>
             </div>
-        </div>
-
-        <div class="share-popup" id="sharePopout2">
-            <div class="wrapper">
-
-    
-                <h5>First day down </h5>
-                <p class="medium">Why not share your success with your social following? </p>
-
-                <div class="response-wrapper">
-                    <p class="xsmall">Motivational Tip:</p>
-                    <p class="small">Sharing your journey publicly has been proven to act as a motivator</p>
-                </div>
-        
-
-                <button class="secondary-button" type="button"><span id="twitter"><img src="images/Twitter.svg" /></span>Share on Twitter</button>
-                <button class="cancel-button" type="button" onclick="closeSharePopOut()">Cancel</button>
+            <div class="response-wrapper">
+                <p class="xsmall">Day Rating:</p>
+                <p class="small">5/5</p>
             </div>
+            <div class="response-wrapper">
+                <p class="xsmall">Notes:</p>
+                <p class="small"></p>
+            </div>
+
+            <div class="post-wrapper">
+                <input type="checkbox" @bind="Progression.IsPublic" />
+                <label>Post day on Law of 100 public timeline</label>
+            </div>
+
+            <button class="secondary-button" type="button" @onclick="SubmitDay">Confirm & Save</button>
+            <button class="cancel-button" type="button" @onclick="Cancel">Cancel</button>
         </div>
-        
+    </div>
+
+    <div class="share-popup" id="sharePopout2">
+        <div class="wrapper">
+
+
+            <h5>First day down </h5>
+            <p class="medium">Why not share your success with your social following? </p>
+
+            <div class="response-wrapper">
+                <p class="xsmall">Motivational Tip:</p>
+                <p class="small">Sharing your journey publicly has been proven to act as a motivator</p>
+            </div>
+
+
+            <button class="secondary-button" type="button"><span id="twitter"><img src="images/Twitter.svg" /></span>Share on Twitter</button>
+            <button class="cancel-button" type="button" @onclick="Cancel">Cancel</button>
+        </div>
+    </div>
 </section>
+
+<button type="button" @onclick="EnterDay">Update Day</button> 
 
 
 @code {
-    [Parameter] public string? HabitId { get; set; }
-    [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
+        [Parameter] public string? HabitId { get; set; }
+        [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
 
-    TrackProgressRequest Progression = new() { IsPublic = true };
+        TrackProgressRequest Progression = new() { IsPublic = true };
+        bool IsEntryFormVisible;
+        bool IsConfirmationPopoutVisible;
+        bool IsSharePopoutVisible;
 
-    async Task SubmitDay()
-    {
-        var habit = await PublicApi().TrackProgressAsync(Progression);
-        await OnSubmit.InvokeAsync(habit);
-    }
-}
+        void EnterDay() => IsEntryFormVisible = true;
+
+        void Confirm() => IsSharePopoutVisible = true;
+
+        async Task SubmitDay()
+        {
+            var habit = await PublicApi().TrackProgressAsync(Progression);
+            await OnSubmit.InvokeAsync(habit);
+            IsSharePopoutVisible = false;
+            IsConfirmationPopoutVisible = true;
+
+        }
+
+        void Cancel()
+        {
+            IsConfirmationPopoutVisible = false;
+            IsSharePopoutVisible = false;
+        }
