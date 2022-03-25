@@ -23,7 +23,7 @@
     //Timeline Goes here
     <Timeline />
 
-    <button type="button" onclick="animation()" class="update-day">Update Day 1</button> 
+    <button type="button" onclick="entryDayAnimation()" class="update-day">Update Day @currentDay</button> 
 }
 </div>
 
@@ -33,9 +33,17 @@
     [Parameter] public string? HabitId { get; set; }
     Habit? TheHabit { get; set; }
 
+    [Parameter] public ICollection<Progression> Days { get; set; }
+    int currentDay;
+
     protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
             TheHabit = await PublicApi().GetHabitAsync(HabitId);
+    }
+
+    protected override void OnInitialized()
+    {
+        currentDay = Days.FirstOrDefault(x => !x.IsTracked)?.Day ?? 0;
     }
 }
