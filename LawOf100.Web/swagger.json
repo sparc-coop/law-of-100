@@ -615,6 +615,12 @@
           "isDeleted": {
             "type": "boolean"
           },
+          "currentDay": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
           "progressions": {
             "type": "array",
             "items": {

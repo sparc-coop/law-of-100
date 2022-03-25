@@ -73,6 +73,7 @@ public class Habit : Root<string>
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }
     public bool IsDeleted { get; set; }
+    public int? CurrentDay => Progressions.FirstOrDefault(x => !x.IsTracked)?.Day;
     public List<Progression> Progressions { get; private set; }
     public Recurrence Recurrence { get; private set; }
 }

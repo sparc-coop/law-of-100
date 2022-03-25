@@ -1,5 +1,5 @@
 ﻿<div class="calendar-grid">
-    @foreach (var day in Days)
+    @foreach (var day in Habit.Progressions)
     {
         <time datetime="@Format(day)" class="@IsTracked(day) @IsSuccessful(day) @IsCurrent(day)">
             @day.Day
@@ -8,13 +8,7 @@
 </div>
 
 @code {
-    [Parameter] public ICollection<Progression> Days { get; set; }
-    int currentDay;
-
-    protected override void OnInitialized()
-    {
-        currentDay = Days.FirstOrDefault(x => !x.IsTracked)?.Day ?? 0;
-    }
+    [Parameter] public Habit Habit { get; set; }
 
     string Format(Progression day)
     {
@@ -24,5 +18,5 @@
 
     string IsTracked(Progression day) => day.IsTracked ? "day-tracked" : "";
     string IsSuccessful(Progression day) => day.IsSuccessful == true ? "day-success" : day.IsSuccessful == false ? day.ActualDate == null ? "day-missed" : "day-fail" : "";
-    string IsCurrent(Progression day) => day.Day == currentDay ? "day-current" : "";
+    string IsCurrent(Progression day) => day.Day == Habit.CurrentDay ? "day-current" : "";
 }

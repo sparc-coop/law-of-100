@@ -7,32 +7,26 @@
 }
 
 <div class="grid-wrapper">
-    @if (TheHabit?.Id != null)
-{
+    @if (Habit?.Id != null)
+    {
+        <section id="header-test" class="habit-index">
+            <h6>100 days to</h6>
+            <h3>@Habit.HabitName</h3>
+        </section>
 
-    <section id="header-test" class="habit-index">
-        <h6>100 days to</h6>
-        <h3>@TheHabit.HabitName</h3>
-    </section>
+        <DayGrid Habit="Habit" />
 
-    //Grid
-    <DayGrid Days="TheHabit.Progressions" />
-        
-    <EntryDay />
-}
+        <EntryDay />
+    }
 </div>
-
-
 
 @code {
     [Parameter] public string? HabitId { get; set; }
-    Habit? TheHabit { get; set; }
+    Habit? Habit { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
-            TheHabit = await PublicApi().GetHabitAsync(HabitId);
+            Habit = await PublicApi().GetHabitAsync(HabitId);
     }
-
-
 }
