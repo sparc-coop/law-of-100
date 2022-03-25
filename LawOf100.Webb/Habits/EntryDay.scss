@@ -156,8 +156,15 @@
     }
 }
 
-#test{
+.update-day {
     grid-row: 3;
-    grid-column: 2;
-    position: absolute;
+    grid-column: 3;
+    background: inherit;
+    padding: 8px 12px;
+    border: 1px solid var(--primary-900);
+    width: 100%;
+    max-width: 594px;
+    margin: auto;
+    text-align: center;
+    color: var(--primary-900);
 }
