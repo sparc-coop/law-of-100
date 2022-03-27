@@ -1,9 +1,9 @@
 ﻿.star-rating {
     position: relative;
-    padding: 16px;
     white-space: nowrap;
     cursor: pointer;
-    display: inline-block;
+    display: block;
+    max-width: 130px;
 
     svg {
         pointer-events: none;

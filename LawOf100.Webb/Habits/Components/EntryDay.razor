@@ -6,7 +6,7 @@
                     <EditForm Model="Progression">
                         <div class="track-day">
                             <p class="small sub-header">Successful day?</p>
-                            <div class="input-wrapper">
+                            <div class="radio-wrapper">
                                 <InputRadioGroup @bind-Value="Progression.IsSuccessful">
                                     <label class="@(Progression.IsSuccessful == true ? "selected" : "")">
                                         <InputRadio Value="true" />
@@ -37,32 +37,36 @@
         </div>
     </div>
 
-    <div class="share-overlay @(IsSharePopoutVisible ? "share-overlay-visible" : "")"></div>
+    <div class="share-overlay @(IsSharePopoutVisible || IsConfirmationPopoutVisible  ? "share-overlay-visible" : "")"></div>
     <div class="share-popup @(IsSharePopoutVisible ? "share-popup-visible" : "")">
         <div class="wrapper">
             <h5>Confirm Your Day</h5>
-            <p class="medium">Double check your selection, once you save your day you cannot go back and change it.</p>
+            <p>Double check your selection, as once you save your day you cannot go back and change it.</p>
 
-            <div class="response-wrapper">
-                <p class="xsmall">Successful day:</p>
-                <p class="small"></p>
-            </div>
-            <div class="response-wrapper">
-                <p class="xsmall">Day Rating:</p>
-                <p class="small">5/5</p>
-            </div>
-            <div class="response-wrapper">
-                <p class="xsmall">Notes:</p>
-                <p class="small"></p>
-            </div>
+            <label>
+                Successful day:
+                <input disabled value="@(Progression.IsSuccessful ? "Yes" : "No")" />
+            </label>
+            <label>
+                Day Rating:
+                <StarRating @bind-Value="Progression.Rating" IsDisabled=true />
+            </label>
+            <label>
+                Notes:
+                <textarea disabled>
+                    @Progression.Review
+                </textarea>
+            </label>
 
-            <div class="post-wrapper">
+            <label>
                 <input type="checkbox" @bind="Progression.IsPublic" />
-                <label>Post day on Law of 100 public timeline</label>
-            </div>
+                Post day on Law of 100 public timeline
+            </label>
 
-            <button class="secondary-button" @onclick="SubmitDay">Confirm & Save</button>
-            <button class="cancel-button" @onclick="Cancel">Cancel</button>
+            <div class="actions">
+                <button @onclick="SubmitDay">Confirm & Save</button>
+                <button class="cancel-button" @onclick="Cancel">Cancel</button>
+            </div>
         </div>
     </div>
 
@@ -91,7 +95,7 @@
 
 
 @code {
-    [Parameter] public string? HabitId { get; set; }
+    [Parameter] public Habit? Habit { get; set; }
     [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
 
     TrackProgressRequest Progression = new() { IsPublic = true };
@@ -103,8 +107,11 @@
 
     async Task SubmitDay()
     {
-        var habit = await PublicApi().TrackProgressAsync(Progression);
+        Progression.HabitId = Habit!.Id;
+        Progression.Day = Habit!.CurrentDay ?? 0;
+        var habit = await Api.TrackProgressAsync(Progression);
         await OnSubmit.InvokeAsync(habit);
+        Progression = new() { IsPublic = true };
         IsSharePopoutVisible = false;
         IsConfirmationPopoutVisible = true;
 

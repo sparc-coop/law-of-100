@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     margin: 32px 40px 80px 40px;
+    position: relative;
+    z-index: 1005;
 
     .nav-left, .nav-right {
         display: flex;

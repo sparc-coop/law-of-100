@@ -1,51 +1,73 @@
-﻿@page "/habits/create"
+﻿@page "/habit"
+@page "/habits/create"
 @page "/habits/{HabitId}"
 
-<div class="habit-index">
-    <header>
-        @if (Habit?.Id != null)
-        {
-            <h6>100 days to</h6>
-            <h3>@Habit.HabitName</h3>
-        }
-        else
-        {
-            <h6>Welcome Kieran</h6>
-            <h3>Let's plan your 100 days</h3>
-        }
-    </header>
-
-    <div class="grid-wrapper @(Habit?.Id == null ? "is-not-created" : "") @(IsCreating ? "new-habit-animation" : "") @(IsEnteringDay ? "entry-day-animation" : "")">
-        <CreateHabit OnSubmit="BeginHabit" />
-
-        <div></div> @* Placeholder for top right column of animating grid *@
-
-        <div>
-            <DayGrid Habit="Habit" />
-            @if (Habit?.CurrentDay != null)
+@if (!IsLoading)
+{
+    <div class="habit-index">
+        <header>
+            @if (Habit?.Id != null)
             {
-                <button @onclick="EnterDay">Update Day @Habit.CurrentDay</button>
+                <h6>100 days to</h6>
+                <h3>@Habit.HabitName</h3>
+            }
+            else
+            {
+                <h6>Welcome @(Account?.Name)</h6>
+                <h3>Let's plan your 100 days</h3>
+            }
+        </header>
+
+        <div class="grid-wrapper @(Habit?.Id == null ? "is-not-created" : "") @(IsCreating ? "new-habit-animation" : "") @(IsEnteringDay ? "entry-day-animation" : "")">
+            <CreateHabit OnSubmit="BeginHabit" />
+
+            <div></div> @* Placeholder for top right column of animating grid *@
+
+            <div>
+                <DayGrid Habit="Habit" />
+                @if (Habit?.CurrentDay != null && Habit.UserId == Account?.Id)
+                {
+                    <button class="secondary" @onclick="EnterDay">Update Day @Habit.CurrentDay</button>
+                }
+            </div>
+
+            @if (Habit?.Id != null)
+            {
+                <EntryDay Habit=@Habit OnSubmit="RefreshHabit" />
+                <Timeline Habit=@Habit />
             }
         </div>
-
-        @if (Habit?.Id != null)
-        {
-            <EntryDay OnSubmit="RefreshHabit" />
-            <Timeline HabitId="HabitId" />
-        }
     </div>
-</div>
+}
 
 @code {
     [Parameter] public string? HabitId { get; set; }
     Habit? Habit { get; set; } = new();
+    Account? Account;
     bool IsCreating;
     bool IsEnteringDay;
+    bool IsLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Account = await Api.GetAccountAsync();
+        if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
+        {
+            if (!Account.IsProfileSet)
+                Nav.NavigateTo("/profile");
+            else if (Account.CurrentHabitId == null)
+                Nav.NavigateTo("/habits/create");
+            else
+                Nav.NavigateTo($"/habits/{Account.CurrentHabitId}");
+        }
+    }
 
     protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
             Habit = await PublicApi().GetHabitAsync(HabitId);
+
+        IsLoading = false;
     }
 
     void EnterDay() => IsEnteringDay = true;
@@ -57,5 +79,9 @@
         Nav.NavigateTo($"/habits/{habit.Id}");
     }
 
-    void RefreshHabit(Habit habit) => Habit = habit;
+    void RefreshHabit(Habit habit)
+    {
+        IsEnteringDay = false;
+        Habit = habit;
+    }
 }

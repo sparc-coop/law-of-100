@@ -1,9 +1,6 @@
 ﻿<section class="timeline">
     <div class="container">
         <div class="content">
-            <div class="header">
-                <h5> @DateTime.Now.ToString("MMMM dd, yyyy", System.Globalization.CultureInfo.CreateSpecificCulture("en-us"))</h5>
-            </div>
             @if (Timelines != null)
             {
                 <div class="content-wrapper">
@@ -51,12 +48,12 @@
 </section>
 
 @code {
-    [Parameter] public string? HabitId { get; set; }
+    [Parameter] public Habit? Habit { get; set; }
     ICollection<LawOf100.Features.Timeline>? Timelines;
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnParametersSetAsync()
     {
-        Timelines = await PublicApi().GetTimeLineAsync(HabitId);
+        Timelines = await PublicApi().GetTimeLineAsync(Habit!.Id);
     }
 
     DateTime ActualDate { get; }

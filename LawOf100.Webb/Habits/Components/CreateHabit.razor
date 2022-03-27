@@ -60,7 +60,7 @@
 
     async Task Create()
     {
-        var habit = await PublicApi().CreateHabitAsync(Habit);
+        var habit = await Api.CreateHabitAsync(Habit);
         await OnSubmit.InvokeAsync(habit);
     }
 }

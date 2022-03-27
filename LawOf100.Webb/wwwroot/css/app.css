@@ -59,20 +59,35 @@
   font-size: 12px;
   line-height: 12px;
 }
-:root input, :root select {
+:root input, :root select, :root textarea {
   border-color: var(--active-500);
 }
 :root label {
   font-size: 14px;
   color: var(--primary-500);
 }
-:root label input, :root label select {
+:root label input:not([type=checkbox]), :root label select, :root label textarea {
   margin-top: 12px;
   width: 100%;
+  font-family: "Inter";
+}
+:root label input[type=checkbox] {
+  display: inline-grid;
+  margin-right: 9px;
 }
 :root button {
   color: var(--tertiary-500);
+  background-color: var(--active-500);
   font-weight: 300;
+}
+:root button.secondary {
+  background-color: transparent;
+  color: var(--active-500);
+  font-weight: 400;
+  border: 1px solid var(--active-500);
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 20px;
 }
 
 nav {
@@ -80,6 +95,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin: 32px 40px 80px 40px;
+  position: relative;
+  z-index: 1005;
 }
 nav .nav-left, nav .nav-right {
   display: flex;
@@ -109,9 +126,6 @@ nav .nav-right {
   100% {
     transform: rotate(360deg);
   }
-}
-.habit-index {
-  /*Styles need for Calaender*/
 }
 .habit-index header {
   display: flex;
@@ -145,6 +159,12 @@ nav .nav-right {
 .habit-index .new-habit-animation .create-habit .container {
   opacity: 0;
 }
+.habit-index button.secondary {
+  width: 100%;
+  max-width: 594px;
+  margin: 24px auto;
+  display: block;
+}
 
 .create-habit {
   max-width: 350px;
@@ -175,28 +195,6 @@ nav .nav-right {
 .create-habit select {
   background: #CED1C9;
 }
-.create-habit .radio-wrapper {
-  border: 1px solid var(--primary-900);
-  border-radius: 6px 6px 6px 6px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-top: 12px;
-}
-.create-habit .radio-wrapper input {
-  opacity: 0;
-  position: absolute;
-}
-.create-habit .radio-wrapper label {
-  padding: 6px 18px;
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-  margin: 0;
-}
-.create-habit .radio-wrapper label.selected {
-  background-color: var(--primary-900);
-  color: var(--tertiary-500);
-}
 .create-habit aside {
   margin-bottom: 40px;
   color: var(--primary-500);
@@ -216,6 +214,9 @@ nav .nav-right {
 
 .timeline {
   font-family: "Clash Display";
+  width: 100%;
+  max-width: 594px;
+  margin: 48px auto;
 }
 .timeline .header {
   text-align: left;
@@ -225,7 +226,6 @@ nav .nav-right {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 500px;
 }
 .timeline .content-wrapper .dayAndHabit {
   display: flex;
@@ -303,6 +303,9 @@ nav .nav-right {
 .entry-day .header p {
   margin-bottom: 6px;
 }
+.entry-day .radio-wrapper {
+  grid-template-columns: 1fr 1fr;
+}
 .entry-day .content-wrapper {
   margin-top: 112px;
 }
@@ -357,6 +360,7 @@ nav .nav-right {
   background: #CED1C9;
   padding: 40px;
   max-width: 432px;
+  z-index: 10001;
 }
 .share-popup-visible {
   display: block;
@@ -367,20 +371,30 @@ nav .nav-right {
 .share-popup .response-wrapper:last-child {
   margin-bottom: 26px;
 }
+.share-popup label {
+  display: block;
+  margin-bottom: 18px;
+}
+.share-popup .actions {
+  margin-top: 50px;
+}
 .share-popup h5 {
   margin-bottom: 12px;
-  color: var(--primary-900);
 }
-.share-popup p.medium {
+.share-popup p {
+  font-family: "Inter";
   margin-bottom: 24px;
   color: var(--primary-700);
 }
-.share-popup p.small {
-  color: var(--primary-700);
+.share-popup input[disabled], .share-popup textarea[disabled] {
+  border: 0;
+  padding: 0;
+  color: var(--active-500);
 }
-.share-popup p.xsmall {
-  margin-bottom: 10px;
-  color: var(--primary-500);
+.share-popup .star-rating {
+  transform: scale(0.7, 0.7);
+  transform-origin: left center;
+  margin: 9px 0;
 }
 .share-popup .post-wrapper {
   margin-bottom: 50px;
@@ -406,6 +420,7 @@ nav .nav-right {
   top: 0;
   left: 0;
   opacity: 0.6;
+  z-index: 10000;
 }
 .share-overlay-visible {
   display: block;
@@ -522,10 +537,10 @@ nav .nav-right {
 
 .star-rating {
   position: relative;
-  padding: 16px;
   white-space: nowrap;
   cursor: pointer;
-  display: inline-block;
+  display: block;
+  max-width: 130px;
 }
 .star-rating svg {
   pointer-events: none;
@@ -601,6 +616,38 @@ nav .nav-right {
   margin-bottom: 0px;
 }
 
+.profile {
+  text-align: center;
+}
+.profile h2 {
+  font-size: 48px;
+  margin-bottom: 13px;
+}
+.profile p {
+  margin-bottom: 34px;
+  font-family: "Inter";
+}
+.profile label {
+  display: block;
+  margin-bottom: 27px;
+  max-width: 350px;
+  margin: 0 auto 27px;
+  text-align: left;
+}
+.profile label aside {
+  text-align: right;
+  margin-top: 8px;
+  font: 400 12px/15px "Inter";
+}
+.profile textarea {
+  min-height: 140px;
+}
+.profile button {
+  width: 100%;
+  max-width: 350px;
+  margin-top: 40px;
+}
+
 /*Global Styles*/
 body {
   background: #CED1C9;
@@ -619,13 +666,39 @@ body {
   padding: 8px 12px;
 }
 
-.cancel-button {
+button.cancel-button {
   color: var(--primary-900);
+  font-weight: 400;
+  min-width: 100px;
+  text-align: center;
   background: none;
 }
 
 .cancel-button:hover {
   background: none;
+}
+
+.radio-wrapper {
+  border: 1px solid var(--primary-900);
+  border-radius: 6px 6px 6px 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 12px;
+}
+.radio-wrapper input {
+  opacity: 0;
+  position: absolute;
+}
+.radio-wrapper label {
+  padding: 6px 18px;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+}
+.radio-wrapper label.selected {
+  background-color: var(--primary-900);
+  color: var(--tertiary-500);
 }
 
 #blazor-error-ui {

@@ -18,7 +18,7 @@ namespace LawOf100.Features.Habits
         {
             var habits = habitId == null
                 ? await Habits.Query
-                .Where(x => x.UserId == "userId" && x.IsDeleted != true)
+                .Where(x => x.UserId == User.Id() && x.IsDeleted != true)
                 .ToListAsync()
                 : new List<Habit> { (await Habits.FindAsync(habitId))! };
 

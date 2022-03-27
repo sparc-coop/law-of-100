@@ -8,7 +8,7 @@
             margin-bottom: 12px;
         }
     }
-    /*Styles need for Calaender*/
+
     .grid-wrapper {
         display: grid;
         grid-template: auto auto / 3fr auto;
@@ -43,5 +43,12 @@
                 opacity: 0;
             }
         }
+    }
+
+    button.secondary {
+        width: 100%;
+        max-width: 594px;
+        margin: 24px auto;
+        display: block;
     }
 }

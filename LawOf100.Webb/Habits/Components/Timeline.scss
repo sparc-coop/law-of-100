@@ -1,5 +1,9 @@
 ﻿.timeline {
     font-family: 'Clash Display';
+    width: 100%;
+    max-width: 594px;
+    margin: 48px auto;
+
     .header {
         text-align: left;
         margin-bottom: 24px;
@@ -9,8 +13,6 @@
         display: flex;
         flex-direction: column;
         gap: 40px;
-        width: 500px;
-
 
         .dayAndHabit {
             display: flex;

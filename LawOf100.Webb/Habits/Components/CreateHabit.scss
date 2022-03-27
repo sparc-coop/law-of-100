@@ -33,32 +33,6 @@
         background: #CED1C9;
     }
 
-    .radio-wrapper {
-        border: 1px solid var(--primary-900);
-        border-radius: 6px 6px 6px 6px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        margin-top: 12px;
-
-        input {
-            opacity: 0;
-            position: absolute;
-        }
-
-        label {
-            padding: 6px 18px;
-            position: relative;
-            cursor: pointer;
-            text-align: center;
-            margin: 0;
-
-            &.selected {
-                background-color: var(--primary-900);
-                color: var(--tertiary-500);
-            }
-        }
-    }
-
     aside {
         margin-bottom: 40px;
         color: var(--primary-500);

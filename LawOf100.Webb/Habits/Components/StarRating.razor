@@ -25,10 +25,11 @@
 @inject IJSRuntime Js
 @code {
     [Parameter] public double Value { get; set; } = 3;
+    [Parameter] public bool IsDisabled { get; set; }
     [Parameter] public EventCallback<double> ValueChanged { get; set; }
 
     double PreviewValue = 0;
-    double ValueAsPercentage => (IsPreviewing ? PreviewValue : Value) / 5 * 100;
+    double ValueAsPercentage => (!IsDisabled && IsPreviewing ? PreviewValue : Value) / 5 * 100;
     BoundingClientRect FiveStarRect = new();
     double OffsetX;
     bool IsPreviewing;
@@ -41,13 +42,17 @@
 
     void PreviewRating(MouseEventArgs args)
     {
+        if (IsDisabled) return;
+
         OffsetX = args.ClientX - FiveStarRect.Left;
-        PreviewValue = OffsetX < 0 ? 0 : OffsetX > FiveStarRect.Width - 16 ? 5 : OffsetX / FiveStarRect.Width * 5;
+        PreviewValue = OffsetX < 0 ? 0 : OffsetX > FiveStarRect.Width ? 5 : OffsetX / FiveStarRect.Width * 5;
     }
 
-    void UpdateRating()
+    async Task UpdateRating()
     {
+        if (IsDisabled) return;
         Value = PreviewValue;
+        await ValueChanged.InvokeAsync(Value);
     }
 
     public class BoundingClientRect
