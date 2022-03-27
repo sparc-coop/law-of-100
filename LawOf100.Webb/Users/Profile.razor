@@ -1,44 +1,57 @@
 ﻿@page "/profile"
 
-<section class="profile">
-    <div class="container">
-        <header>
-            <h2>Welcome!</h2>
-            <p>We just need some info from you to create your account.</p>
-        </header>
-        <div class="content-wrapper">
-            <label>
-                First name
-                <input @bind="Account.Name" />
-            </label>
-            <label>
-                Nickname
-                <input @bind="Account.Nickname" />
-            </label>
-            <label>
-                Short Intro
-                <textarea maxlength="120" @bind="Account.ShortIntro" @bind:event="oninput" />
-                <aside>
-                    @(Account.ShortIntro?.Length ?? 0) / 120
-                </aside>
-            </label>
-            <button @onclick=Save>Save & Continue</button>
-        </div>
-    </div>
-</section>
+@if (!IsLoading)
+{
+        <section class="profile">
+            <div class="container">
+                <header>
+                    <h2>Welcome!</h2>
+                @if (ExistingAccount?.IsProfileSet == false)
+                {
+                    <p>We just need some info from you to create your account.</p>
+                }
+                else
+                {
+                    <p>Update your profile info here.</p>
+                }
+                </header>
+                    <div class="content-wrapper">
+                        <label>
+                            First name
+                            <input @bind="Account.Name" />
+                        </label>
+                        <label>
+                            Nickname
+                            <input @bind="Account.Nickname" />
+                        </label>
+                        <label>
+                            Short Intro
+                            <textarea maxlength="120" @bind="Account.ShortIntro" @bind:event="oninput" />
+                            <aside>
+                        @(Account.ShortIntro?.Length ?? 0) / 120
+                            </aside>
+                        </label>
+                        <button @onclick=Save>Save & Continue</button>
+                    </div>
+                </div>
+            </section>
+}
 
 @code {
     UpdateAccountRequest Account = new();
+    Account? ExistingAccount;
+    bool IsLoading = true;
 
     protected override async Task OnInitializedAsync()
     {
-        var account = await Api.GetAccountAsync();
+        ExistingAccount = await Api.GetAccountAsync();
         Account = new()
             {
-                Name = account.Name,
-                Nickname = account.Nickname,
-                ShortIntro = account.ShortIntro
+                Name = ExistingAccount.Name,
+                Nickname = ExistingAccount.Nickname,
+                ShortIntro = ExistingAccount.ShortIntro
             };
+        IsLoading = false;
     }
 
     async Task Save()
