@@ -5,10 +5,10 @@
 
                 <div class="col-wrapper">
                     <EditForm Model="Habit">
-                            <label>
-                                I want to
-                                <input @bind="Habit.HabitName" placeholder="Learn Guitar" />
-                            </label>
+                        <label>
+                            I want to
+                            <input @bind="Habit.HabitName" placeholder="Learn Guitar" />
+                        </label>
 
                         <label>
                             Without missing
@@ -39,13 +39,14 @@
                                     </label>
                                 </InputRadioGroup>
                             </div>
+                            <aside>
+                                <header>Please Note:</header>
+                                <p>Missing more days than selected will cause that day to be automatically filled as a miss.</p>
+                            </aside>
                         </label>
                     </EditForm>
 
-                    <aside>
-                        <header>Please Note:</header>
-                        <p>Missing more days than selected will cause that day to be automatically filled as a miss.</p>
-                    </aside>
+
 
                     <button type=submit class="secondary-button" @onclick="Create">Save & Start 100 Days</button>
                 </div>
@@ -56,7 +57,7 @@
 
 @code {
     [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
-    CreateHabitRequest Habit = new();
+    CreateHabitRequest Habit = new() { FudgeFactor = 0.5, RepeatEveryXHours = 24 };
 
     async Task Create()
     {

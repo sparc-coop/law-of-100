@@ -34,10 +34,12 @@
     }
 
     aside {
+        margin-top: 16px;
         margin-bottom: 40px;
         color: var(--primary-500);
 
         header {
+            display: block;
             text-align: left;
             padding: 0;
             margin: 0;

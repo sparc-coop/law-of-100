@@ -23,7 +23,7 @@
 
             <div></div> @* Placeholder for top right column of animating grid *@
 
-            <div>
+            <div class="calendar-grid-wrapper">
                 <DayGrid Habit="Habit" />
                 @if (Habit?.CurrentDay != null && Habit.UserId == Account?.Id)
                 {

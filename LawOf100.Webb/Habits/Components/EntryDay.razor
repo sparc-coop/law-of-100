@@ -27,7 +27,10 @@
                         </div>
                         <div class="notes">
                             <p class="small sub-header">Notes about your day</p>
-                            <textarea @bind="Progression.Review" placeholder="Tell us about your day" maxlength="120" />
+                            <textarea @bind="Progression.Review" @bind:event="oninput" placeholder="Tell us about your day" maxlength="120" />
+                            <aside>
+                                @(Progression.Review?.Length ?? 0) / 120
+                            </aside>
                         </div>
 
                         <button class="secondary-button open-button" @onclick="Confirm">Save & Submit Day</button>

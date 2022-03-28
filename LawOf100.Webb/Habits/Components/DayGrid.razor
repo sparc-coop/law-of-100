@@ -30,5 +30,5 @@
 
     string IsTracked(Progression day) => day.IsTracked ? "day-tracked" : "";
     string IsSuccessful(Progression day) => day.IsSuccessful == true ? "day-success" : day.IsSuccessful == false ? day.ActualDate == null ? "day-missed" : "day-fail" : "";
-    string IsCurrent(Progression day) => day.Day == Habit.CurrentDay ? "day-current" : "";
+    string IsCurrent(Progression day) => (Habit.CurrentDay == null && day.Day == 1) || day.Day == Habit.CurrentDay ? "day-current" : "";
 }

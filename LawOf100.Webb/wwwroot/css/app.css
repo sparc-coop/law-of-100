@@ -60,25 +60,42 @@
   line-height: 12px;
 }
 :root input, :root select, :root textarea {
+  --active-500: #181919;
+  --secondary-500: #F24C00;
   border-color: var(--active-500);
+}
+:root input:active, :root input:focus, :root select:active, :root select:focus, :root textarea:active, :root textarea:focus {
+  border-color: var(--secondary-500);
 }
 :root label {
   font-size: 14px;
   color: var(--primary-500);
 }
 :root label input:not([type=checkbox]), :root label select, :root label textarea {
-  margin-top: 12px;
+  margin-top: 8px;
   width: 100%;
   font-family: "Inter";
 }
 :root label input[type=checkbox] {
   display: inline-grid;
   margin-right: 9px;
+  border: 2px solid var(--primary-500);
+}
+:root label input[type=checkbox]:active, :root label input[type=checkbox]:focus, :root label input[type=checkbox]:checked {
+  border-color: var(--secondary-500);
+}
+:root label input[type=checkbox]::before {
+  box-shadow: inset 1em 1em #f24c00;
 }
 :root button, :root a.button {
   color: var(--tertiary-500);
   background-color: #181919;
-  font-weight: 300;
+  font-weight: 400;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+:root button:hover, :root a.button:hover {
+  background-color: var(--secondary-500);
+  color: var(--active-500);
 }
 :root button.secondary, :root a.button.secondary {
   background-color: transparent;
@@ -88,6 +105,10 @@
   padding: 8px 16px;
   text-align: center;
   font-size: 20px;
+}
+:root button.secondary:hover, :root a.button.secondary:hover {
+  background-color: transparent;
+  color: var(--secondary-500);
 }
 :root a.button {
   padding: 6px 12px;
@@ -114,6 +135,10 @@ nav .nav-left:last-child, nav .nav-right:last-child {
 }
 nav .nav-right {
   justify-content: flex-end;
+}
+nav button {
+  position: relative;
+  top: -10px;
 }
 
 .big-star img {
@@ -144,8 +169,17 @@ nav .nav-right {
   max-width: 960px;
   margin: 0 auto;
 }
+.habit-index .calendar-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .habit-index .is-not-created .create-habit {
   max-height: 500px;
+}
+.habit-index .is-not-created .calendar-grid {
+  max-height: 350px;
+  overflow: hidden;
 }
 .habit-index .entry-day-animation .entry-day {
   transition: max-width 1s ease-out !important;
@@ -164,7 +198,7 @@ nav .nav-right {
 }
 .habit-index button.secondary {
   width: 100%;
-  max-width: 594px;
+  max-width: 450px;
   margin: 24px auto;
   display: block;
 }
@@ -199,10 +233,12 @@ nav .nav-right {
   background: #CED1C9;
 }
 .create-habit aside {
+  margin-top: 16px;
   margin-bottom: 40px;
   color: var(--primary-500);
 }
 .create-habit aside header {
+  display: block;
   text-align: left;
   padding: 0;
   margin: 0;
@@ -313,7 +349,7 @@ nav .nav-right {
   margin-top: 112px;
 }
 .entry-day .col-wrapper .track-day .sub-header, .entry-day .col-wrapper .rating .sub-header, .entry-day .col-wrapper .notes .sub-header {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .entry-day .col-wrapper .track-day {
   margin-bottom: 36px;
@@ -337,7 +373,7 @@ nav .nav-right {
   color: var(--tertiary-500);
 }
 .entry-day .col-wrapper .rating {
-  margin-bottom: 42px;
+  margin-bottom: 26px;
 }
 .entry-day .col-wrapper .notes {
   margin-bottom: 40px;
@@ -345,6 +381,12 @@ nav .nav-right {
 .entry-day .col-wrapper .notes textarea {
   width: 100%;
   height: 100px;
+}
+.entry-day .col-wrapper .notes aside {
+  text-align: right;
+  margin-top: 8px;
+  font: 400 12px/15px "Inter";
+  color: var(--primary-500);
 }
 
 /* Button used to open the Share popup*/
@@ -364,6 +406,7 @@ nav .nav-right {
   padding: 40px;
   max-width: 432px;
   z-index: 10001;
+  border-radius: 6px;
 }
 .share-popup-visible {
   display: block;
@@ -397,7 +440,7 @@ nav .nav-right {
 .share-popup .star-rating {
   transform: scale(0.7, 0.7);
   transform-origin: left center;
-  margin: 9px 0;
+  margin: 8px 0 0 0;
 }
 .share-popup .post-wrapper {
   margin-bottom: 50px;
@@ -438,23 +481,24 @@ nav .nav-right {
 }
 
 .calendar-grid {
-  display: grid;
-  grid-template: repeat(10, auto)/repeat(10, auto);
-  grid-gap: 0;
+  display: inline-grid;
+  grid-template: repeat(10, 40px)/repeat(10, 40px);
+  grid-gap: 4px;
   background-color: var(--active-500);
   color: var(--primary-500);
   padding: 24px;
   margin: 16px auto;
   text-align: center;
   border-radius: 6px;
-  max-width: 594px;
   z-index: 1000;
   position: relative;
 }
 .calendar-grid > * {
-  padding: 16px;
+  line-height: 38px;
+  text-align: center;
   border: 1px solid transparent;
   border-radius: 100px;
+  font-family: "Inter";
 }
 .calendar-grid > *:hover {
   border-color: var(--primary-500);
@@ -656,6 +700,8 @@ nav .nav-right {
 /*Global Styles*/
 body {
   background: #CED1C9;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .primary-button, .secondary-button {
@@ -679,8 +725,9 @@ button.cancel-button {
   background: none;
 }
 
-.cancel-button:hover {
-  background: none;
+button.cancel-button:hover:hover {
+  background-color: transparent;
+  color: var(--secondary-500);
 }
 
 .radio-wrapper {
@@ -688,7 +735,7 @@ button.cancel-button {
   border-radius: 6px 6px 6px 6px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 .radio-wrapper input {
   opacity: 0;
@@ -700,6 +747,9 @@ button.cancel-button {
   cursor: pointer;
   text-align: center;
   margin: 0;
+}
+.radio-wrapper label:hover {
+  color: var(--active-500);
 }
 .radio-wrapper label.selected {
   background-color: var(--primary-900);

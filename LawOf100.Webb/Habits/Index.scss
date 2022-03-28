@@ -16,9 +16,20 @@
         margin: 0 auto;
     }
 
+    .calendar-grid-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
     .is-not-created {
         .create-habit {
             max-height: 500px;
+        }
+
+        .calendar-grid {
+            max-height: 350px;
+            overflow: hidden;
         }
     }
 
@@ -47,7 +58,7 @@
 
     button.secondary {
         width: 100%;
-        max-width: 594px;
+        max-width: 450px;
         margin: 24px auto;
         display: block;
     }

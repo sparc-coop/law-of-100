@@ -1,21 +1,22 @@
 ﻿.calendar-grid {
-    display: grid;
-    grid-template: repeat(10, auto) / repeat(10, auto);
-    grid-gap: 0;
+    display: inline-grid;
+    grid-template: repeat(10, 40px) / repeat(10, 40px);
+    grid-gap: 4px;
     background-color: var(--active-500);
     color: var(--primary-500);
     padding: 24px;
     margin: 16px auto;
     text-align: center;
     border-radius: 6px;
-    max-width: 594px;
     z-index: 1000;
     position: relative;
 
     > * {
-        padding: 16px;
+        line-height: 38px;
+        text-align: center;
         border: 1px solid transparent;
         border-radius: 100px;
+        font-family: 'Inter';
 
         &:hover {
             border-color: var(--primary-500);

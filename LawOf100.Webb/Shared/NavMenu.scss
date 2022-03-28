@@ -24,6 +24,11 @@
     .nav-right {
         justify-content: flex-end;
     }
+
+    button {
+        position: relative;
+        top: -10px;
+    }
 }
 
 .big-star img {

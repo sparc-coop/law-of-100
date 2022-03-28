@@ -18,15 +18,15 @@
                     <div class="content-wrapper">
                         <label>
                             First name
-                            <input @bind="Account.Name" />
+                            <input @bind="Account.Name" placeholder="Jane P. Doe" />
                         </label>
                         <label>
                             Nickname
-                            <input @bind="Account.Nickname" />
+                            <input @bind="Account.Nickname" placeholder="janepdoe" />
                         </label>
                         <label>
                             Short Intro
-                            <textarea maxlength="120" @bind="Account.ShortIntro" @bind:event="oninput" />
+                            <textarea maxlength="120" @bind="Account.ShortIntro" @bind:event="oninput" placeholder="Improving my life one day at a time" />
                             <aside>
                         @(Account.ShortIntro?.Length ?? 0) / 120
                             </aside>
