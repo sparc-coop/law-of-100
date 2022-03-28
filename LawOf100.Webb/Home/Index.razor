@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using LawOf100.Web.Habits
+@implements IDisposable
 
 <PageTitle>Index</PageTitle>
 
@@ -11,7 +12,7 @@
         </div>
 
         <div class="calendar-container">
-            @*Grid here*@
+            <DayGrid Habit=ExampleHabit />
         </div>
 
         <div class="the-law">
@@ -21,7 +22,7 @@
             <p>
                 You may have noticed a lot of “100-day” challenges on the internet.  That is because taking repetitive action towards a goal helps you better achieve it, and 100 seems to be the magical number. After those first 100 days, many people find it becomes routine, and they keep doing it out of pure habit.<br /> <br />
 
-                Don’t believe me? Check out <a href="https://jamesclear.com/repetitions">this study</a> by Jerry Uelsmann, a professor at the University of Florida. 
+                Don’t believe me? Check out <a href="https://jamesclear.com/repetitions" target="_blank">this study</a> by Jerry Uelsmann, a professor at the University of Florida.
             </p>
         </div>
 
@@ -30,20 +31,20 @@
                 <h6>And, you know what?</h6>
                 <h4>It is easier than you think...</h4>
             </div>
-            
+
             <div class="step-wrapper">
                 <div class="steps">
                     <img src="/images/star-1.svg" />
                     <p class="xlarge">Choose your goal</p>
                     <p class="medium">Set a desired outcome. This could be to quit a bad habit, learn a new skill or improve an existing one</p>
                 </div>
-                
+
                 <div class="steps">
                     <img src="/images/star-2.svg" />
                     <p class="xlarge">Set a day each week</p>
                     <p class="medium">Set a desired outcome. This could be to quit a bad habit, learn a new skill or improve an existing one</p>
                 </div>
-                
+
                 <div class="steps">
                     <img src="/images/star-3.svg" />
                     <p class="xlarge">Stick to it</p>
@@ -107,7 +108,7 @@
             </div>
 
             <div class="calendar-container">
-            @*Grid here*@
+                <DayGrid Habit=ExampleHabit />
             </div>
         </div>
     </div>
@@ -115,4 +116,44 @@
 
 
 @code {
+    Habit ExampleHabit = new() { CurrentDay = 1 };
+    System.Threading.Timer? Timer;
+    Random Random = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        ExampleHabit.Progressions = new List<Progression>();
+        for (var i = 1; i <= 100; i++)
+            ExampleHabit.Progressions.Add(new Progression { Day = i });
+
+        Timer = new(TrackRandomDay, new System.Threading.AutoResetEvent(false), 1000, 1000);
+    }
+
+    async void TrackRandomDay(object? stateInfo)
+        {
+            bool? isSuccess = Random.NextDouble() < 0.8 ? true : false;
+            int? rating = Random.NextDouble() > 0.5 ? Random.Next(5) + 1 : null;
+
+            var progression = ExampleHabit.Progressions.Single(x => x.Day == ExampleHabit.CurrentDay);
+            progression.IsSuccessful = isSuccess;
+            progression.Rating = rating;
+            progression.IsTracked = true;
+
+            ExampleHabit.CurrentDay++;
+            StateHasChanged();
+
+            if (ExampleHabit.CurrentDay > 103)
+            {
+            // Reset the progressions after 3 seconds
+            ExampleHabit.Progressions = new List<Progression>();
+                for (var i = 1; i <= 100; i++)
+                    ExampleHabit.Progressions.Add(new Progression { Day = i });
+                ExampleHabit.CurrentDay = 1;
+            }    
+        }
+
+    void IDisposable.Dispose()
+    {
+        Timer!.Dispose();
+    }
 }
