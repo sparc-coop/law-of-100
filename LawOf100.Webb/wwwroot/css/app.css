@@ -172,10 +172,10 @@ nav .nav-right {
   max-height: 16px;
   position: relative;
   z-index: 100;
-  transition: max-height 1s ease-in !important;
+  transition: max-height 1s ease-in 0.75s !important;
 }
 .create-habit .container {
-  transition: opacity 0.75s ease-in 1s;
+  transition: opacity 0.75s ease-in;
 }
 .create-habit .col-wrapper {
   padding-top: 60px;
