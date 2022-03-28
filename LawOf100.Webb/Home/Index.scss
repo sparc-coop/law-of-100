@@ -1,1 +1,134 @@
-﻿
+﻿.home {
+    text-align: center;
+
+
+    .container {
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+
+    .header {
+        max-width: 70%;
+        margin-bottom: 54px;
+        margin: auto;
+
+        p {
+            max-width: 60%;
+            margin: auto;
+            margin-top: 22px;
+        }
+    }
+
+    .calendar-container {
+        margin-bottom: 254px;
+    }
+
+    .the-law {
+        margin-bottom: 178px;
+
+        h6 {
+            margin-bottom: 2px;
+        }
+
+        h2 {
+            margin-bottom: 32px;
+        }
+
+        p {
+            max-width: 56%;
+            margin: auto;
+        }
+    }
+
+    .how-to-start {
+        margin-bottom: 190px;
+
+        .header-wrapper {
+            margin-bottom: 72px;
+        }
+
+        .step-wrapper {
+            display: flex;
+            justify-content: space-between;
+
+            .steps {
+                width: 33%;
+                margin: auto;
+
+                p.xlarge {
+                    margin-bottom: 16px;
+                    margin-top: 24px;
+                }
+
+                p.medium {
+                    max-width: 76%;
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+    .overview {
+        margin-bottom: 206px;
+
+        h4 {
+            margin-bottom: 26px;
+        }
+
+        p {
+            max-width: 60%;
+            margin: auto;
+        }
+    }
+
+    .law-help-bg {
+        background: var(--tertiary-700);
+        padding: 164px 0 214px;
+    }
+
+    .law-help {
+
+        h2 {
+            margin-bottom: 32px;
+        }
+
+        p {
+            max-width: 60%;
+            margin: auto;
+        }
+
+        .law-features {
+            margin-top: 116px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .feature {
+                max-width: 50%;
+                margin: auto;
+
+                p.xlarge {
+                    margin-top: 32px;
+                    margin-bottom: 16px;
+                }
+
+                p {
+                    max-width: 72%;
+                }
+            }
+
+            .feature:nth-child(n+3) {
+                margin-top: 66px;
+            }
+        }
+    }
+
+    p.xlarge {
+        color: var(--primary-900);
+        font-family: 'Clash Display';
+    }
+
+    p {
+        margin: auto;
+    }
+}
