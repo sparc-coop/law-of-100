@@ -82,12 +82,12 @@
                 <p class="small">Sharing your journey publicly has been proven to act as a motivator</p>
             </div>
 
-            <button class="secondary-button">
+            <a class="button twitter-share-button secondary-button" href="https://twitter.com/intent/tweet?text=@(ShareText)&url=@(ShareUrl)&hashtags=lawof100">
                 <span id="twitter">
                     <img src="images/Twitter.svg" />
                 </span>
                 Share on Twitter
-            </button>
+            </a>
             <button class="cancel-button" @onclick="Cancel">Cancel</button>
         </div>
     </div>
@@ -101,6 +101,8 @@
     TrackProgressRequest Progression = new() { IsPublic = true };
     bool IsConfirmationPopoutVisible;
     bool IsSharePopoutVisible;
+    string? ShareText;
+    string? ShareUrl;
 
 
     void Confirm() => IsSharePopoutVisible = true;
@@ -111,7 +113,11 @@
         Progression.Day = Habit!.CurrentDay ?? 0;
         var habit = await Api.TrackProgressAsync(Progression);
         await OnSubmit.InvokeAsync(habit);
+
+        ShareText = Uri.EscapeDataString($"{Math.Round(Progression.Rating, 1)}/5 {Progression.Review}");
+        ShareUrl = Uri.EscapeDataString(Nav.ToAbsoluteUri(Nav.Uri).AbsoluteUri);
         Progression = new() { IsPublic = true };
+
         IsSharePopoutVisible = false;
         IsConfirmationPopoutVisible = true;
 
@@ -122,4 +128,5 @@
         IsConfirmationPopoutVisible = false;
         IsSharePopoutVisible = false;
     }
+
 }
