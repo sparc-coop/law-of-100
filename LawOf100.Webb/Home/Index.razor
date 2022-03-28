@@ -130,27 +130,27 @@
     }
 
     async void TrackRandomDay(object? stateInfo)
+    {
+        bool? isSuccess = Random.NextDouble() < 0.8 ? true : false;
+        int? rating = Random.NextDouble() > 0.5 ? Random.Next(5) + 1 : null;
+
+        var progression = ExampleHabit.Progressions.Single(x => x.Day == ExampleHabit.CurrentDay);
+        progression.IsSuccessful = isSuccess;
+        progression.Rating = rating;
+        progression.IsTracked = true;
+
+        ExampleHabit.CurrentDay++;
+        StateHasChanged();
+
+        if (ExampleHabit.CurrentDay > 103)
         {
-            bool? isSuccess = Random.NextDouble() < 0.8 ? true : false;
-            int? rating = Random.NextDouble() > 0.5 ? Random.Next(5) + 1 : null;
-
-            var progression = ExampleHabit.Progressions.Single(x => x.Day == ExampleHabit.CurrentDay);
-            progression.IsSuccessful = isSuccess;
-            progression.Rating = rating;
-            progression.IsTracked = true;
-
-            ExampleHabit.CurrentDay++;
-            StateHasChanged();
-
-            if (ExampleHabit.CurrentDay > 103)
-            {
             // Reset the progressions after 3 seconds
             ExampleHabit.Progressions = new List<Progression>();
-                for (var i = 1; i <= 100; i++)
-                    ExampleHabit.Progressions.Add(new Progression { Day = i });
-                ExampleHabit.CurrentDay = 1;
-            }    
+            for (var i = 1; i <= 100; i++)
+                ExampleHabit.Progressions.Add(new Progression { Day = i });
+            ExampleHabit.CurrentDay = 1;
         }
+    }
 
     void IDisposable.Dispose()
     {

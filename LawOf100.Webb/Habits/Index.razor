@@ -50,9 +50,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Account = await Api.GetAccountAsync();
         if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
         {
+            Account = await Api.GetAccountAsync();
             if (!Account.IsProfileSet)
                 Nav.NavigateTo("/profile");
             else if (Account.CurrentHabitId == null)
