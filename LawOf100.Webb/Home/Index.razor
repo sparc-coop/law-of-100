@@ -126,7 +126,7 @@
         for (var i = 1; i <= 100; i++)
             ExampleHabit.Progressions.Add(new Progression { Day = i });
 
-        Timer = new(TrackRandomDay, new System.Threading.AutoResetEvent(false), 1000, 1000);
+        Timer = new(TrackRandomDay, new System.Threading.AutoResetEvent(false), 3000, 3000);
     }
 
     async void TrackRandomDay(object? stateInfo)
