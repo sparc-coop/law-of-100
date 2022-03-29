@@ -1,0 +1,152 @@
+﻿* {
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #CED1C9;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+button {
+    font-size: 100%;
+    border: 0;
+    padding: 0;
+    font-family: 'Clash Display';
+    width: 352px;
+}
+
+button a{
+    color: inherit;
+}
+
+.secondary-button a {
+    color: #CED1C9 !important;
+}
+
+.secondary-button {
+    background: #181919;
+    color: #CED1C9;
+    border-radius: 6px;
+    padding: 14px 50px;
+    font-size: 20px;
+    line-height: 20px;
+    width: 352px;
+}
+
+.invert-button {
+    background: inherit;
+    border: 1px solid #181919;
+    color: #181919;
+    font-size: 20px;
+    line-height: 20px;
+    padding: 14px 50px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+
+p.small {
+    color: #626666;
+    max-width: 352px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+p.medium{
+    color: #626666;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+p.xsmall{
+    font-size: 12px;
+    line-height: 18px;
+}
+
+a, a:active, a:visited {
+    text-decoration: none;
+    color: #F24C00;
+}
+
+.content{
+
+}
+
+.tos {
+    color: #626666;
+    position: absolute;
+    bottom: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.tos a {
+    color: #181919;
+}
+
+.login{
+    margin-top: 160px;
+}
+
+.login .content{
+    text-align: center;
+}
+
+.login .content .header {
+    margin-bottom: 34px;
+}
+
+.login .content .header h4 {
+    font-size: 48px;
+    line-height: 48px;
+    font-family: 'Clash Display';
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: #181919;
+}
+
+.login .content .header p {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #2F3333;
+}
+
+.login .content .button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    margin-bottom: 18px;
+}
+
+.or {
+    margin: 32px auto;
+    display: flex;
+    align-items: center;
+    font-family: 'Clash Display';
+    font-size: 20px;
+    line-height: 20px;
+    max-width: 352px;
+}
+
+.line {
+    border: 1px solid #181919;
+    width: 100%;
+    height: 0;
+}
+
+.line:first-child{
+    margin-right: 16px;
+}
+.line:last-child {
+    margin-left: 16px;
+}

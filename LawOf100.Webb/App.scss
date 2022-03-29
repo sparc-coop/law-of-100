@@ -3,6 +3,8 @@
 
 
 @import "Shared/NavMenu";
+@import "Shared/SignIn.css";
+@import "Shared/SignUp.css";
 
 @import "Pages/Index";
 
@@ -33,6 +35,12 @@ body {
 
 .secondry-button {
     padding: 8px 12px;
+}
+
+.invert-button{
+    background: inherit;
+    color: var(--primary-900);
+    border: 1px solid var(---primary-900);
 }
 
 .cancel-button {
