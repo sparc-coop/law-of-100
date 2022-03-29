@@ -14,22 +14,22 @@ body {
 }
 
 button {
-    font-size: 100%;
     border: 0;
     padding: 0;
     font-family: 'Clash Display';
     width: 352px;
+    cursor: pointer;
 }
 
 button a{
-    color: inherit;
+    color: inherit !important;
 }
 
-.secondary-button a {
+.primary-button a {
     color: #CED1C9 !important;
 }
 
-.secondary-button {
+.primary-button {
     background: #181919;
     color: #CED1C9;
     border-radius: 6px;
@@ -37,6 +37,19 @@ button a{
     font-size: 20px;
     line-height: 20px;
     width: 352px;
+}
+
+.secondary-button {
+    background: #181919;
+    color: #CED1C9 !important;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.secondary-button:active {
+    color: #CED1C9;
 }
 
 .invert-button {
@@ -66,6 +79,13 @@ p.medium{
 p.xsmall{
     font-size: 12px;
     line-height: 18px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #2F3333;
 }
 
 a, a:active, a:visited {
@@ -113,18 +133,11 @@ a, a:active, a:visited {
     color: #181919;
 }
 
-.login .content .header p {
-    font-size: 18px;
-    line-height: 32px;
-    font-weight: 400;
-    color: #2F3333;
-}
-
 .login .content .button-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 10px;
+    row-gap: 24px;
     margin-bottom: 18px;
 }
 
@@ -149,4 +162,55 @@ a, a:active, a:visited {
 }
 .line:last-child {
     margin-left: 16px;
+}
+
+/*Nav*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 40px 80px 40px;
+}
+
+nav ul {
+    font-size: 16px;
+    line-height: 16px;
+    color: #181919;
+    display: flex;
+}
+
+nav nav-item a:active{
+    color: inherit !important;
+}
+
+nav ul .nav-item:first-child{
+    margin-right: 32px;
+}
+
+nav a {
+    color: #181919;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    width: 50%;
+}
+
+.nav-link {
+    color: var(--primary-900);
+    margin-right: 32px;
+}
+
+.nav-left:last-child, .nav-right:last-child {
+    margin-right: 0px;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

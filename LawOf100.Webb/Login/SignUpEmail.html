@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link href="SignUp.css" rel="stylesheet" />
+    <link href="SignUpEmail.css" rel="stylesheet" />
     <link href="../App.scss" rel="stylesheet" />
 </head>
 <body>
@@ -29,8 +29,7 @@
         </div>
     </nav>
 
-
-    <div class="login">
+    <div class="login-email">
         <div class="container">
             <div class="content">
                 <div class="header">
@@ -38,19 +37,27 @@
                     <p>Create an account to get started.</p>
                 </div>
 
+                <form>
+                    <div class="input-wrapper">
+                        <label for="email">Email*</label>
+                        <input id="email" name="email" placeholder="johnsmith123@gmail.com" required />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="password">Password*</label>
+                        <input id="password" name="password" placeholder="password123" required />
+                        <img class="hide" src="../wwwroot/images/Eye Slash, Hide, Invisible.svg" />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="confirm">Confirm Password*</label>
+                        <input id="confirm" name="confirm" placeholder="password123" required />
+                        <img class="hide" src="../wwwroot/images/Eye Slash, Hide, Invisible.svg" />
+                    </div>
 
-                <div class="button-wrapper">
-                    <button class="primary-button"><a href="https://twitter.com">Sign up with Twitter</a></button>
-                    <button class="primary-button"><a href="https://www.google.com">Sign up with Google</a></button>
-                    <button class="primary-button"><a href="https://www.facebook.com">Sign up with Facebook</a></button>
-                </div>
-
-                <p class="small">(Using a social account is quick and automatically sets up your account. It also allows you to share your journey socially if you want to.)</p>
-
-                <div class="or"><span class="line"></span>or <span class="line"></span></div>
-
-                <button class="invert-button"><a href="SignUpEmail.html">Sign up with Email</a></button>
-                <p class="medium">Already have an account? <a href="SignIn.html">Sign In</a></p>
+                    <div class="submit">
+                        <a class="image-wrapper" href="SignUp.html"><img src="../wwwroot/images/Arrow-Left.svg" /></a>
+                        <button class="primary-button" type="submit">Create Account</button>
+                    </div>
+                </form>
 
                 <div class="tos">
                     <p class="xsmall">By signing up you agree to our <a href="/">Terms of Service</a></p>
