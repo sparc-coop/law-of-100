@@ -1,2 +1,224 @@
-﻿body {
+﻿* {
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #CED1C9;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 362px;
+}
+
+button {
+    border: 0;
+    padding: 0;
+    font-family: 'Clash Display';
+    max-width: 352px;
+    width: 100%;
+    cursor: pointer;
+}
+
+    button a {
+        color: inherit;
+    }
+
+.primary-button a {
+    color: #CED1C9 !important;
+}
+
+.primary-button {
+    background: #181919;
+    color: #CED1C9;
+    border-radius: 6px;
+    padding: 14px 50px;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.secondary-button {
+    background: #181919;
+    color: #CED1C9 !important;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 16px;
+}
+
+    .secondary-button:active {
+        color: #CED1C9;
+    }
+
+p.small {
+    color: #626666;
+    max-width: 352px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+p.medium {
+    color: #626666;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+p.xsmall {
+    font-size: 12px;
+    line-height: 18px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #2F3333;
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+a, a:active, a:visited {
+    text-decoration: none;
+    color: #F24C00;
+}
+
+.signin {
+    margin-top: 160px;
+}
+
+    .signin .content {
+        text-align: center;
+    }
+
+        .signin .content .header {
+            margin-bottom: 34px;
+        }
+
+            .signin .content .header h4 {
+                font-size: 48px;
+                line-height: 48px;
+                font-family: 'Clash Display';
+                font-weight: 500;
+                margin-bottom: 12px;
+                color: #181919;
+            }
+
+        .signin .content .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 10px;
+            margin-bottom: 18px;
+        }
+
+form {
+    color: #626666;
+    font-size: 14px;
+    line-height: 16.8px;
+}
+
+    form label {
+        font-family: 'Clash Display';
+        text-align: start;
+        margin: 0;
+        margin-bottom: 8px;
+    }
+
+    form input {
+        font-size: 16px;
+        line-height: 22.4px;
+        padding: 12px 16px;
+        background: inherit;
+        border: 1px solid #181919;
+        border-radius: 6px;
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+    /*Used for the Eye on inputs*/
+    .input-wrapper img {
+        position: absolute;
+        bottom: 14px;
+        right: 16px;
+        cursor: pointer;
+    }
+
+.input-wrapper:nth-child(2) {
+    margin-bottom: 48px;
+}
+
+.submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .submit .image-wrapper {
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .submit button {
+        max-width: 192px;
+        padding: 14px 20px;
+        margin: 0;
+        width: 100%;
+    }
+
+/*Nav*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 40px 80px 40px;
+}
+
+    nav ul {
+        font-size: 16px;
+        line-height: 16px;
+        color: #181919;
+        display: flex;
+    }
+
+        nav ul .nav-item:first-child {
+            margin-right: 32px;
+        }
+
+    nav a {
+        color: #181919;
+    }
+
+.nav-left, .nav-right {
+    display: flex;
+    width: 50%;
+}
+
+.nav-link {
+    color: var(--primary-900);
+    margin-right: 32px;
+}
+
+.nav-left:last-child, .nav-right:last-child {
+    margin-right: 0px;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

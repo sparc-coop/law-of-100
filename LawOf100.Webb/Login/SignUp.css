@@ -88,6 +88,10 @@ p {
     color: #2F3333;
 }
 
+textarea:focus, input:focus {
+    outline: none;
+}
+
 a, a:active, a:visited {
     text-decoration: none;
     color: #F24C00;
@@ -128,7 +132,7 @@ a, a:active, a:visited {
     font-size: 48px;
     line-height: 48px;
     font-family: 'Clash Display';
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 12px;
     color: #181919;
 }

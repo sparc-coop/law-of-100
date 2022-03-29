@@ -10,7 +10,6 @@ body {
 .container {
     width: 100%;
     margin: 0 auto;
-    max-width: 362px;
 }
 
 button {
@@ -48,9 +47,9 @@ button {
     line-height: 16px;
 }
 
-.secondary-button:active {
-    color: #CED1C9;
-}
+    .secondary-button:active {
+        color: #CED1C9;
+    }
 
 p.small {
     color: #626666;
@@ -70,7 +69,7 @@ p.xsmall {
     line-height: 18px;
 }
 
- p {
+p {
     font-size: 18px;
     line-height: 32px;
     font-weight: 400;
@@ -101,19 +100,19 @@ a, a:active, a:visited {
         color: #181919;
     }
 
-.login-email {
+.login-account {
     margin-top: 160px;
 }
 
-    .login-email .content {
+    .login-account .content {
         text-align: center;
     }
 
-        .login-email .content .header {
+        .login-account .content .header {
             margin-bottom: 34px;
         }
 
-            .login-email .content .header h4 {
+            .login-account .content .header h4 {
                 font-size: 48px;
                 line-height: 48px;
                 font-family: 'Clash Display';
@@ -122,7 +121,7 @@ a, a:active, a:visited {
                 color: #181919;
             }
 
-        .login-email .content .button-wrapper {
+        .login-account .content .button-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -134,6 +133,7 @@ form {
     color: #626666;
     font-size: 14px;
     line-height: 16.8px;
+    max-width: 362px;
 }
 
     form label {
@@ -143,7 +143,7 @@ form {
         margin-bottom: 8px;
     }
 
-    form input {
+    form input, textarea {
         font-size: 16px;
         line-height: 22.4px;
         padding: 12px 16px;
@@ -154,41 +154,39 @@ form {
         margin: 0;
     }
 
-    .input-wrapper{
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        margin-bottom: 24px;
-    }
-        
-        /*Used for the Eye on inputs*/
-        .input-wrapper img {
-            position: absolute;
-            bottom: 14px;
-            right: 16px;
-            cursor: pointer;
-        }
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 24px;
+}
 
-    .input-wrapper:last-child{
+    /*Used for the Eye on inputs*/
+    .input-wrapper img {
+        position: absolute;
+        bottom: 14px;
+        right: 16px;
+        cursor: pointer;
+    }
+
+    .input-wrapper:last-child {
         margin-bottom: 48px;
     }
-    .submit{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
 
-    .submit .image-wrapper{
+.submit {
+    margin-top: 40px;
+}
+
+    .submit .image-wrapper {
         margin: 0;
         cursor: pointer;
     }
 
-.submit button {
-    max-width: 192px;
-    padding: 14px 20px;
-    margin: 0;
-    width: 100%;
-}
+    .submit button {
+        padding: 14px 20px;
+        margin: 0;
+        width: 100%;
+    }
 
 /*Nav*/
 nav {

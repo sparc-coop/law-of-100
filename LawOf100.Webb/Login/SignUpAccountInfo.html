@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0;" charset="utf-8" />
-    <title>Law of 100 Sign In</title>
+    <title>Law of 100 Sign Up</title>
     <link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link href="SignIn.css" rel="stylesheet" />
+    <link href="SignUpAccountInfo.css" rel="stylesheet" />
     <link href="../App.scss" rel="stylesheet" />
 </head>
 <body>
@@ -29,30 +29,36 @@
         </div>
     </nav>
 
-    <div class="signin">
+    <div class="login-account">
         <div class="container">
             <div class="content">
                 <div class="header">
-                    <h4>Sign In</h4>
-                    <p>Are we making or breaking a habit?</p>
+                    <h4>Welcome!</h4>
+                    <p>We just need some info from you to create your account.</p>
                 </div>
 
                 <form>
                     <div class="input-wrapper">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" placeholder="johnsmith123@gmail.com" />
+                        <label for="fname">First name*</label>
+                        <input id="fname" name="fname" placeholder="John" required />
                     </div>
                     <div class="input-wrapper">
-                        <label for="password">Password</label>
-                        <input id="password" name="password" placeholder="password123" />
-                        <img class="hide" src="../wwwroot/images/Eye Slash, Hide, Invisible.svg" />
+                        <label for="nickname">Nickname</label>
+                        <input id="nickname" name="nickname" placeholder="habitmaker707" />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="intro">Short Intro</label>
+                        <textarea id="intro" name="intro" maxlength="120" placeholder="Hi, im John." ></textarea>
                     </div>
 
                     <div class="submit">
-                        <a class="image-wrapper" href="SignUp.html"><img src="../wwwroot/images/Arrow-Left.svg" /></a>
-                        <button class="primary-button" type="submit">Sign In</button>
+                        <button class="primary-button" type="submit">Save & Continue</button>
                     </div>
                 </form>
+
+                <div class="tos">
+                    <p class="xsmall">By signing up you agree to our <a href="/">Terms of Service</a></p>
+                </div>
 
             </div>
         </div>
