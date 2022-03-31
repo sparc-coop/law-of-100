@@ -1,0 +1,140 @@
+﻿:root {
+    --secondary-500: #F24C00;
+    --secondary-700: #802800;
+    --secondary-900: #662000;
+    --primary-100: #CACCCC;
+    --primary-300: #969999;
+    --primary-500: #626666;
+    --primary-700: #2F3333;
+    --primary-900: #181919;
+    --tertiary-100: #EFF2EB;
+    --tertiary-300: #DDE0D7;
+    --tertiary-500: #CED1C9;
+    --tertiary-700: #BFC2B8;
+    --tertiary-900: #8A8C84;
+    --active-500: #181919;
+    --font-family: 'Clash Display', sans-serif;
+
+    h1, h2, h3, h4, h5, h6, .subtitle {
+        --font-family: 'Clash Display', sans-serif;
+    }
+
+    h1 {
+        font-size: 80px;
+    }
+
+    h2 {
+        font-size: 72px;
+    }
+
+    h3 {
+        font-size: 64px;
+    }
+
+    h4 {
+        font-size: 40px;
+    }
+
+    h5 {
+        font-size: 32px;
+    }
+
+    h6 {
+        font-size: 28px;
+        font-weight: 400;
+    }
+
+    p.xlarge {
+        font-size: 24px;
+    }
+
+    p.large {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    p.medium {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    p.small {
+        font-size: 14px;
+        line-height: 16px;
+        color: #626666;
+    }
+
+    p.xsmall {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    input, select, textarea {
+        --active-500: #181919;
+        --secondary-500: #F24C00;
+        border-color: var(--active-500);
+
+        &:active, &:focus {
+            border-color: var(--secondary-500);
+        }
+    }
+
+    label {
+        font-size: 14px;
+        color: var(--primary-500);
+
+        input:not([type=checkbox]), select, textarea {
+            margin-top: 8px;
+            width: 100%;
+            font-family: 'Inter';
+        }
+
+        input[type=checkbox] {
+            display: inline-grid;
+            margin-right: 9px;
+            border: 2px solid var(--primary-500);
+
+            &:active, &:focus, &:checked {
+                border-color: var(--secondary-500);
+            }
+
+            &::before {
+                box-shadow: inset 1em 1em #f24c00;
+            }
+        }
+    }
+
+    button, a.button {
+        color: var(--tertiary-500);
+        background-color: #181919;
+        font-weight: 400;
+        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+        &:hover {
+            background-color: var(--secondary-500);
+            color: var(--active-500);
+        }
+
+        &.secondary {
+            background-color: transparent;
+            color: var(--active-500);
+            font-weight: 400;
+            border: 1px solid var(--active-500);
+            padding: 8px 16px;
+            text-align: center;
+            font-size: 20px;
+
+            &:hover {
+                background-color: transparent;
+                color: var(--secondary-500);
+            }
+        }
+    }
+
+    a.button {
+        padding: 6px 12px;
+    }
+}

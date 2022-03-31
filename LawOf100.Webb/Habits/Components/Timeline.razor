@@ -1,0 +1,65 @@
+﻿<section class="timeline">
+    <div class="container">
+        <div class="content">
+            @if (Timelines != null)
+            {
+                <div class="content-wrapper">
+                    @foreach (var entry in Timelines) 
+                    {
+                        <div class="eachDay">
+                            <div class="dayAndHabit">
+                                <p class="day-count">Day @entry.Day</p>
+                                <p>◦</p>
+                                <p class="habitName">@entry.HabitName</p>
+                            </div>
+
+                            <h6 class="eachDayTitle">@entry.Review</h6>
+
+                            @*Need to put the href and the real property*@
+                            <a href="" class="username">real_username</a>
+
+
+                            @*Need to write the logic*@
+                            <div class="reactionsMenu">
+                                <div OnClick="HandleReactions">
+                                    <img src="images/ClapHandsemoji.svg" alt="clap hands emoji" class="lessThanOne" />
+                                </div>
+                                <div OnClick="HandleReactions">
+                                    <img src="images/Fireemoji-1.svg" alt="fire emoji" />
+                                    <p>12</p>
+                                </div>
+                                <div OnClick="HandleReactions">
+                                    <img src="images/Partyemoji-2.svg" alt="party emoji" />
+                                    <p>18</p>
+                                </div>
+                                <div OnClick="HandleReactions">
+                                    <img src="images/HandsUpemoji-3.svg" alt="hands up emoji" />
+                                    <p>22</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter] public Habit? Habit { get; set; }
+    ICollection<LawOf100.Features.Timeline>? Timelines;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Timelines = await PublicApi().GetTimeLineAsync(Habit!.Id);
+    }
+
+    DateTime ActualDate { get; }
+
+    //void HandleReactions(object sender, EventArgs e)
+    //{
+    //    Console.WriteLine(sender);
+    //}
+}

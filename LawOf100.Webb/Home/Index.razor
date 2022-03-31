@@ -1,0 +1,159 @@
+﻿@page "/"
+@using LawOf100.Web.Habits
+@implements IDisposable
+
+<PageTitle>Index</PageTitle>
+
+<section class="home">
+    <div class="container">
+        <div class="header">
+            <h1>Make or break a habit, one day at a time.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+        </div>
+
+        <div class="calendar-container">
+            <DayGrid Habit=ExampleHabit />
+        </div>
+
+        <div class="the-law">
+            <h6>The Law of</h6>
+            <h2>One-Hundred</h2>
+
+            <p>
+                You may have noticed a lot of “100-day” challenges on the internet.  That is because taking repetitive action towards a goal helps you better achieve it, and 100 seems to be the magical number. After those first 100 days, many people find it becomes routine, and they keep doing it out of pure habit.<br /> <br />
+
+                Don’t believe me? Check out <a href="https://jamesclear.com/repetitions" target="_blank">this study</a> by Jerry Uelsmann, a professor at the University of Florida.
+            </p>
+        </div>
+
+        <div class="how-to-start">
+            <div class="header-wrapper">
+                <h6>And, you know what?</h6>
+                <h4>It is easier than you think...</h4>
+            </div>
+
+            <div class="step-wrapper">
+                <div class="steps">
+                    <img src="/images/star-1.svg" />
+                    <p class="xlarge">Choose your goal</p>
+                    <p class="medium">Set a desired outcome. This could be to quit a bad habit, learn a new skill or improve an existing one</p>
+                </div>
+
+                <div class="steps">
+                    <img src="/images/star-2.svg" />
+                    <p class="xlarge">Set a day each week</p>
+                    <p class="medium">Set a desired outcome. This could be to quit a bad habit, learn a new skill or improve an existing one</p>
+                </div>
+
+                <div class="steps">
+                    <img src="/images/star-3.svg" />
+                    <p class="xlarge">Stick to it</p>
+                    <p class="medium">Set a desired outcome. This could be to quit a bad habit, learn a new skill or improve an existing one</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="overview">
+            <h4>Seems obvious, right?</h4>
+
+            <p>
+                Many people say that. They even state how easy it would be. But after a few days/weeks so many of us lose interest and give up/move on. Very few of us stick to it long enough where we look back and see the difference.<br /><br />
+                Take a second to look back at some things you wish you had stuck to over the last few years, and where you would be now if you had stuck with it?<br /><br />
+                We all feel bad looking back, knowing where we could have been, what we could have done if we had just stuck to our plans.
+            </p>
+        </div>
+    </div>
+
+    <div class="law-help-bg">
+        <div class="container">
+            <div class="law-help">
+                <h6>How The Law of 100</h6>
+                <h2>Helps you stick with it</h2>
+                <p>
+                    Many factors go into sticking with The Law of 100. Such as making it easy to do, keeping motivation high, reducing the feeling of isolation and enforcing gratification.<br /><br />
+                    So our very core focuses on those 4 keys points to help you stick with it.
+                </p>
+
+                <div class="law-features">
+                    <div class="feature">
+                        <img src="/images/Track-Journey.svg" />
+                        <p class="xlarge">Quickly track your journey</p>
+                        <p class="medium">Reducing friction and making it as easy as possible to update your progress and mark another day off your list.</p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/Share-Journey.svg" />
+                        <p class="xlarge">Share your progress</p>
+                        <p class="medium">Show off how well you are doing by sharing it with everyone else on the site, motivating them to keep going</p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/Others-Journey.svg" />
+                        <p class="xlarge">See others on their journey</p>
+                        <p class="medium">Demotivated? See how others are doing on their journey, that should give you the push you need to keep going!</p>
+                    </div>
+                    <div class="feature">
+                        <img src="/images/Review-Journey.svg" />
+                        <p class="xlarge">Review your days</p>
+                        <p class="medium">After the 100 days, nothing beats looking back and seeing how far you have come since starting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="start-day-one">
+            <div class="header">
+                <h2>Start your day one.</h2>
+                <p>Start your journey into making or breaking a habit now.</p>
+            </div>
+
+            <div class="calendar-container">
+                <DayGrid Habit=ExampleHabit />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@code {
+    Habit ExampleHabit = new() { CurrentDay = 1 };
+    System.Threading.Timer? Timer;
+    Random Random = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        ExampleHabit.Progressions = new List<Progression>();
+        for (var i = 1; i <= 100; i++)
+            ExampleHabit.Progressions.Add(new Progression { Day = i });
+
+        Timer = new(TrackRandomDay, new System.Threading.AutoResetEvent(false), 3000, 3000);
+    }
+
+    async void TrackRandomDay(object? stateInfo)
+    {
+        bool? isSuccess = Random.NextDouble() < 0.8 ? true : false;
+        int? rating = Random.NextDouble() > 0.5 ? Random.Next(5) + 1 : null;
+
+        var progression = ExampleHabit.Progressions.Single(x => x.Day == ExampleHabit.CurrentDay);
+        progression.IsSuccessful = isSuccess;
+        progression.Rating = rating;
+        progression.IsTracked = true;
+
+        ExampleHabit.CurrentDay++;
+        StateHasChanged();
+
+        if (ExampleHabit.CurrentDay > 103)
+        {
+            // Reset the progressions after 3 seconds
+            ExampleHabit.Progressions = new List<Progression>();
+            for (var i = 1; i <= 100; i++)
+                ExampleHabit.Progressions.Add(new Progression { Day = i });
+            ExampleHabit.CurrentDay = 1;
+        }
+    }
+
+    void IDisposable.Dispose()
+    {
+        Timer!.Dispose();
+    }
+}

@@ -1,0 +1,67 @@
+﻿<section class="create-habit">
+    <div class="container">
+        <div class="content">
+            <div class="content-wrapper">
+
+                <div class="col-wrapper">
+                    <EditForm Model="Habit">
+                        <label>
+                            I want to
+                            <input @bind="Habit.HabitName" placeholder="Learn Guitar" />
+                        </label>
+
+                        <label>
+                            Without missing
+                            <select name="days" @bind="Habit.RepeatEveryXHours">
+                                <option class="days-options" value="24">1 day</option>
+                                <option class="days-options" value="48">2 consecutive days</option>
+                                <option class="days-options" value="72">3 consecutive days</option>
+                                <option class="days-options" value="96">4 consecutive days</option>
+                                <option class="days-options" value="120">5 consecutive days</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Missed day leniency
+                            <div class="radio-wrapper">
+                                <InputRadioGroup @bind-Value="Habit.FudgeFactor">
+                                    <label class="@(Habit.FudgeFactor == 0.9 ? "selected" : "")">
+                                        <InputRadio Value="0.9" />
+                                        Relaxed
+                                    </label>
+                                    <label class="@(Habit.FudgeFactor == 0.5 ? "selected" : "")">
+                                        <InputRadio Value="0.5" />
+                                        Average
+                                    </label>
+                                    <label class="@(Habit.FudgeFactor == 0.2 ? "selected" : "")">
+                                        <InputRadio Value="0.2" />
+                                        Strict
+                                    </label>
+                                </InputRadioGroup>
+                            </div>
+                            <aside>
+                                <header>Please Note:</header>
+                                <p>Missing more days than selected will cause that day to be automatically filled as a miss.</p>
+                            </aside>
+                        </label>
+                    </EditForm>
+
+
+
+                    <button type=submit class="secondary-button" @onclick="Create">Save & Start 100 Days</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
+    CreateHabitRequest Habit = new() { FudgeFactor = 0.5, RepeatEveryXHours = 24 };
+
+    async Task Create()
+    {
+        var habit = await Api.CreateHabitAsync(Habit);
+        await OnSubmit.InvokeAsync(habit);
+    }
+}

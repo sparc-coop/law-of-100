@@ -1,8 +1,5 @@
-﻿@import "../_variables.scss";
-
-
-.signin, .signup {
-    background: $dark-1;
+﻿.signin, .signup {
+    background: #f8f8f8;
     height: 100vh;
 
     .content {
@@ -19,7 +16,7 @@
 
         .signin-signup {
             margin: 0;
-            color: $dark-5;
+            color: #838383;
             font-size: 16px;
             line-height: 22px;
         }
@@ -42,12 +39,12 @@
         }
 
         .content-wrapper {
-            color: $dark-5;
+            color: #838383;
 
             p.tos-text {
                 font-size: 12px;
                 line-height: 19px;
-                color: $dark-5;
+                color: #838383;
                 margin: 0;
             }
         }

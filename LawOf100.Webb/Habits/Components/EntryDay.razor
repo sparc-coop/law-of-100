@@ -1,0 +1,135 @@
+﻿<section class="entry-day">
+    <div class="container">
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="col-wrapper">
+                    <EditForm Model="Progression">
+                        <div class="track-day">
+                            <p class="small sub-header">Successful day?</p>
+                            <div class="radio-wrapper">
+                                <InputRadioGroup @bind-Value="Progression.IsSuccessful">
+                                    <label class="@(Progression.IsSuccessful == true ? "selected" : "")">
+                                        <InputRadio Value="true" />
+                                        Yes
+                                    </label>
+                                    <label class="@(Progression.IsSuccessful == false ? "selected" : "")">
+                                        <InputRadio Value="false" />
+                                        No
+                                    </label>
+                                </InputRadioGroup>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <p class="small sub-header">Rate your day</p>
+                            <div class="img-wrapper">
+                                <StarRating @bind-Value="Progression.Rating" />
+                            </div>
+                        </div>
+                        <div class="notes">
+                            <p class="small sub-header">Notes about your day</p>
+                            <textarea @bind="Progression.Review" @bind:event="oninput" placeholder="Tell us about your day" maxlength="120" />
+                            <aside>
+                                @(Progression.Review?.Length ?? 0) / 120
+                            </aside>
+                        </div>
+
+                        <button class="secondary-button open-button" @onclick="Confirm">Save & Submit Day</button>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="share-overlay @(IsSharePopoutVisible || IsConfirmationPopoutVisible  ? "share-overlay-visible" : "")"></div>
+    <div class="share-popup @(IsSharePopoutVisible ? "share-popup-visible" : "")">
+        <div class="wrapper">
+            <h5>Confirm Your Day</h5>
+            <p>Double check your selection, as once you save your day you cannot go back and change it.</p>
+
+            <label>
+                Successful day:
+                <input disabled value="@(Progression.IsSuccessful ? "Yes" : "No")" />
+            </label>
+            <label>
+                Day Rating:
+                <StarRating @bind-Value="Progression.Rating" IsDisabled=true />
+            </label>
+            <label>
+                Notes:
+                <textarea disabled>
+                    @Progression.Review
+                </textarea>
+            </label>
+
+            <label>
+                <input type="checkbox" @bind="Progression.IsPublic" />
+                Post day on Law of 100 public timeline
+            </label>
+
+            <div class="actions">
+                <button @onclick="SubmitDay">Confirm & Save</button>
+                <button class="cancel-button" @onclick="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="share-popup @(IsConfirmationPopoutVisible ? "share-popup-visible" : "")">
+        <div class="wrapper">
+
+
+            <h5>First day down</h5>
+            <p class="medium">Why not share your success with your social following?</p>
+
+            <div class="response-wrapper">
+                <p class="xsmall">Motivational Tip:</p>
+                <p class="small">Sharing your journey publicly has been proven to act as a motivator</p>
+            </div>
+
+            <a class="button twitter-share-button secondary-button" href="https://twitter.com/intent/tweet?text=@(ShareText)&url=@(ShareUrl)&hashtags=lawof100">
+                <span id="twitter">
+                    <img src="images/Twitter.svg" />
+                </span>
+                Share on Twitter
+            </a>
+            <button class="cancel-button" @onclick="Cancel">Cancel</button>
+        </div>
+    </div>
+</section>
+
+
+@code {
+    [Parameter] public Habit? Habit { get; set; }
+    [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
+
+    TrackProgressRequest Progression = new() { IsPublic = true };
+    bool IsConfirmationPopoutVisible;
+    bool IsSharePopoutVisible;
+    string? ShareText;
+    string? ShareUrl;
+
+
+    void Confirm() => IsSharePopoutVisible = true;
+
+    async Task SubmitDay()
+    {
+        Progression.HabitId = Habit!.Id;
+        Progression.Day = Habit!.CurrentDay ?? 0;
+        var habit = await Api.TrackProgressAsync(Progression);
+        await OnSubmit.InvokeAsync(habit);
+
+        ShareText = Uri.EscapeDataString($"{Math.Round(Progression.Rating, 1)}/5 {Progression.Review}");
+        ShareUrl = Uri.EscapeDataString(Nav.ToAbsoluteUri(Nav.Uri).AbsoluteUri);
+        Progression = new() { IsPublic = true };
+
+        IsSharePopoutVisible = false;
+        IsConfirmationPopoutVisible = true;
+
+    }
+
+    void Cancel()
+    {
+        IsConfirmationPopoutVisible = false;
+        IsSharePopoutVisible = false;
+    }
+
+}

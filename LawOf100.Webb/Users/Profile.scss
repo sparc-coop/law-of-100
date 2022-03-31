@@ -1,0 +1,36 @@
+﻿.profile {
+    text-align: center;
+
+    h2 {
+        font-size: 48px;
+        margin-bottom: 13px;
+    }
+
+    p {
+        margin-bottom: 34px;
+        font-family: 'Inter';
+    }
+
+    label {
+        display: block;
+        margin-bottom: 27px;
+        max-width: 350px;
+        margin: 0 auto 27px;
+        text-align: left;
+        aside {
+            text-align: right;
+            margin-top: 8px;
+            font: 400 12px/15px 'Inter';
+        }
+    }
+
+    textarea {
+        min-height: 140px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 350px;
+        margin-top: 40px;
+    }
+}

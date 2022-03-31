@@ -4,35 +4,45 @@
             Home
         </NavLink>
         <NavLink class="nav-link" href="timeline">
-            Timeline
+            Community Timeline
         </NavLink>
     </div>
     <div class="logo">
         <img src="images/Logo.svg" />
     </div>
-    <div class="nav-right">
-        @*Fill in with correct Sign in/ Create account links*@
-        <NavLink class="nav-link" href="sign-in">
-            Sign In
-        </NavLink>
-        <NavLink class="nav-link" href="sign-up">
-            Create Account
-        </NavLink>
-    </div>
+    <AuthorizeView>
+        <NotAuthorized>
+            <div class="nav-right">
+                <NavLink class="nav-link" href="@ReturnUrl">
+                    Sign In
+                </NavLink>
+                <NavLink class="nav-link" href="@ReturnUrl">
+                    Create Account
+                </NavLink>
+            </div>
+        </NotAuthorized>
 
-    @*After use is signed in This needs to replace content in "nav-right"*@
-    @*<div class="nav-right">
-       
-        <NavLink class="nav-link" href="tracking">
-            Daily Tracker
-        </NavLink>
-        <NavLink class="nav-link" href="/">
-            Profile
-        </NavLink>
-    </div>*@
+        <Authorized>
+            <div class="nav-right">
+                <NavLink class="nav-link" href="/habit">
+                    Daily Tracker
+                </NavLink>
+                <NavLink class="nav-link" href="/profile">
+                    Profile
+                </NavLink>
+                <button @onclick=BeginSignOut>
+                    Log Out
+                </button>
+            </div>
+        </Authorized>
+    </AuthorizeView>
 </nav>
-            
 
+<figure class="big-star">
+    <img src="/images/Star-Big.svg" />
+</figure>
+
+@inject SignOutSessionStateManager SignOutManager
 @code {
     private bool collapseNavMenu = true;
 
@@ -41,5 +51,13 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    string ReturnUrl => "/authentication/login?returnUrl=" + Uri.EscapeDataString(Nav.ToAbsoluteUri("/habit").AbsoluteUri);
+
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Nav.NavigateTo("authentication/logout");
     }
 }

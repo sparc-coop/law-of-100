@@ -164,66 +164,6 @@
         }
       }
     },
-    "/api/CreateAccount": {
-      "post": {
-        "tags": [
-          "CreateAccount"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/CreateAccountRequest"
-                  }
-                ]
-              }
-            },
-            "text/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/CreateAccountRequest"
-                  }
-                ]
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/CreateAccountRequest"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/CreateHabit": {
       "post": {
         "tags": [
@@ -366,6 +306,25 @@
         "tags": [
           "GetTimeLine"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -441,17 +400,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Habit"
                 }
               }
             }
@@ -470,7 +429,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Account"
+                    "$ref": "#/components/schemas/UpdateAccountRequest"
                   }
                 ]
               }
@@ -479,7 +438,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Account"
+                    "$ref": "#/components/schemas/UpdateAccountRequest"
                   }
                 ]
               }
@@ -488,7 +447,7 @@
               "schema": {
                 "allOf": [
                   {
-                    "$ref": "#/components/schemas/Account"
+                    "$ref": "#/components/schemas/UpdateAccountRequest"
                   }
                 ]
               }
@@ -501,17 +460,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Account"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Account"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/Account"
                 }
               }
             }
@@ -549,25 +508,15 @@
             "type": "string",
             "format": "date-time"
           },
+          "isProfileSet": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "currentHabitId": {
+            "type": "string",
+            "nullable": true
+          },
           "userId": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateAccountRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "shortIntro": {
-            "type": "string",
-            "nullable": true
-          },
-          "nickname": {
             "type": "string",
             "nullable": true
           }
@@ -615,6 +564,12 @@
           "isDeleted": {
             "type": "boolean"
           },
+          "currentDay": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true,
+            "readOnly": true
+          },
           "progressions": {
             "type": "array",
             "items": {
@@ -653,6 +608,11 @@
             "readOnly": true
           },
           "isSuccessful": {
+            "type": "boolean",
+            "nullable": true,
+            "readOnly": true
+          },
+          "isPublic": {
             "type": "boolean",
             "nullable": true,
             "readOnly": true
@@ -733,6 +693,27 @@
             "format": "double"
           },
           "review": {
+            "type": "string",
+            "nullable": true
+          },
+          "isPublic": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAccountRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "shortIntro": {
+            "type": "string",
+            "nullable": true
+          },
+          "nickname": {
             "type": "string",
             "nullable": true
           }
