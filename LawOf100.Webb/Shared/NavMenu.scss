@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     margin: 32px 40px 80px 40px;
+    position: relative;
+    z-index: 1005;
 
     .nav-left, .nav-right {
         display: flex;
@@ -15,11 +17,31 @@
         }
     }
 
-    .nav-left:last-child, .nav-right:last-child{
+    .nav-left:last-child, .nav-right:last-child {
         margin-right: 0px;
     }
 
-    .nav-right{
+    .nav-right {
         justify-content: flex-end;
+    }
+
+    button {
+        position: relative;
+        top: -10px;
+    }
+}
+
+.big-star img {
+    position: absolute;
+    top: -25vw;
+    right: -25vw;
+    width: 50vw;
+    animation: spin 150s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
     }
 }

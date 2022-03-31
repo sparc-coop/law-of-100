@@ -1,0 +1,34 @@
+﻿<div class="calendar-grid">
+    @foreach (var day in Habit.Progressions)
+    {
+        <time datetime="@Format(day)" class="@IsTracked(day) @IsSuccessful(day) @IsCurrent(day)">
+            @day.Day
+        </time>
+    }
+</div>
+
+@code {
+    [Parameter] public Habit Habit { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (Habit.Progressions == null)
+        {
+            Habit.Progressions = new List<Progression>();
+            for (var i = 1; i <= 100; i++)
+            {
+                Habit.Progressions.Add(new Progression { Day = i });
+            }
+        }
+    }
+
+    string Format(Progression day)
+    {
+        var date = day.ActualDate ?? day.TargetDate;
+        return date == null ? "" : $"{date:yyyy-MM-dd}T{date:hh:mm:ss}Z";
+    }
+
+    string IsTracked(Progression day) => day.IsTracked ? "day-tracked" : "";
+    string IsSuccessful(Progression day) => day.IsSuccessful == true ? "day-success" : day.IsSuccessful == false ? day.ActualDate == null ? "day-missed" : "day-fail" : "";
+    string IsCurrent(Progression day) => (Habit.CurrentDay == null && day.Day == 1) || day.Day == Habit.CurrentDay ? "day-current" : "";
+}

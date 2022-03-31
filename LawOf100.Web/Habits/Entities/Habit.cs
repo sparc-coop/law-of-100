@@ -56,14 +56,14 @@ public class Habit : Root<string>
             .ToList();
     }
     
-    internal void TrackProgress(int day, bool? isSuccessful, decimal? rating = null, string? review = null)
+    internal void TrackProgress(int day, bool? isSuccessful, decimal? rating = null, string? review = null, bool? isPublic = false)
     {
         var progression = Progressions.Find(x => x.Day == day);
         if (progression == null)
             throw new Exception($"Day {day} not found!");
 
         if (isSuccessful.HasValue)
-            progression.Track(isSuccessful.Value, rating, review);
+            progression.Track(isSuccessful.Value, rating, review, isPublic);
         else
             progression.Miss();
         Recalculate();
@@ -73,6 +73,7 @@ public class Habit : Root<string>
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }
     public bool IsDeleted { get; set; }
+    public int? CurrentDay => Progressions.FirstOrDefault(x => !x.IsTracked)?.Day;
     public List<Progression> Progressions { get; private set; }
     public Recurrence Recurrence { get; private set; }
 }

@@ -15,7 +15,7 @@ public class Program
         builder.Services.AddScoped<IConfiguration>(_ => builder.Configuration);
 
         builder.AddB2CApi<LawOf100Api>(
-            "https://kodekitui.onmicrosoft.com/ccba7246-6276-4566-a964-12d7a2b48198/KodekitAPI.Access",
+            "https://lawof100.onmicrosoft.com/9a4ea546-b5c9-4d27-918e-1029e60f7089/LawOf100.Access",
             builder.Configuration["ApiUrl"]);
 
         await builder.Build().RunAsync();

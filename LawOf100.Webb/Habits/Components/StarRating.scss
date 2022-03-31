@@ -1,0 +1,23 @@
+﻿.star-rating {
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+    display: block;
+    max-width: 130px;
+
+    svg {
+        pointer-events: none;
+        fill: var(--secondary-500);
+
+    }
+
+    .cover {
+        background: var(--tertiary-500);
+        height: 100%;
+        overflow: hidden;
+        mix-blend-mode: color;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

@@ -18,7 +18,10 @@ public class GetAccount : Feature<Account>
     {
         var account = await Accounts.FindAsync(User.Id());
         if (account == null)
-            throw new NotFoundException($"Account not found!");
+        {
+            account = new Account(User.Id());
+            await Accounts.AddAsync(account);
+        }
 
         return account;
     }
