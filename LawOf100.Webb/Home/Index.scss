@@ -137,3 +137,81 @@
         margin-top: 193px;
     }
 }
+
+
+@media only screen and (max-width: 580px){
+    .home {
+        .header {
+            max-width: 90%;
+
+            p {
+                max-width: 60%;
+                margin: auto;
+                margin-top: 22px;
+            }
+        }
+
+        .law {
+            p {
+                max-width: 72%;
+            }
+        }
+
+        .how-to-start {
+            .step-wrapper {
+                display: flex;
+                flex-direction: column;
+                row-gap: 32px;
+
+                .steps {
+                    width: 100%;
+
+                    p.medium {
+                        width: 44%;
+                    }
+                }
+            }
+        }
+
+        .law-help {
+            .law-features {
+                flex-direction: column;
+                row-gap: 50px;
+            }
+        }
+
+        .the-law p, .overview p, law-help p {
+            max-width: 80%;
+        }
+    }
+
+    .start-button {
+        margin: 32px 0px 64px;
+
+        a {
+            color: #CED1C9;
+        }
+    }
+}
+
+@media only screen and (max-width: 481px) {
+    .home {
+        .how-to-start {
+            .step-wrapper {
+                .steps {
+                    p.medium {
+                        width: 80%;
+                    }
+                }
+            }
+        }
+
+        .law-help {
+            .law-features {
+                .feature{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

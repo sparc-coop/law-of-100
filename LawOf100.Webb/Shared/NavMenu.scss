@@ -17,7 +17,7 @@
         }
     }
 
-    .nav-left:last-child, .nav-right:last-child {
+    .nav-right a:last-child {
         margin-right: 0px;
     }
 
@@ -43,5 +43,32 @@
 @keyframes spin {
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.mobile-nav{
+    display: none;
+}
+
+@media only screen and (max-width: 481px){
+    .desktop-nav{
+        display: none;
+    }
+
+    .mobile-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 32px 40px 80px 40px;
+        position: relative;
+        z-index: 1005;
+    }
+
+    nav {
+        .nav-left, .nav-right {
+            .nav-link {
+                margin-right: 16px;
+            }
+        }
     }
 }

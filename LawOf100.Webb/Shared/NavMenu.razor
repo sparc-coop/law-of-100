@@ -1,4 +1,4 @@
-﻿<nav>
+﻿<nav class="desktop-nav">
     <div class="nav-left">
         <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
             Home
@@ -30,6 +30,34 @@
                 <NavLink class="nav-link" href="/profile">
                     Profile
                 </NavLink>
+                <button @onclick=BeginSignOut>
+                    Log Out
+                </button>
+            </div>
+        </Authorized>
+    </AuthorizeView>
+</nav>
+
+<nav class="mobile-nav">
+    <div class="nav-left">
+        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+            Home
+        </NavLink>
+    </div>
+    <div class="logo">
+        <img src="images/Logo.svg" />
+    </div>
+    <AuthorizeView>
+        <NotAuthorized>
+            <div class="nav-right">
+                <NavLink class="nav-link" href="@ReturnUrl">
+                    Sign In
+                </NavLink>
+            </div>
+        </NotAuthorized>
+
+        <Authorized>
+            <div class="nav-right">
                 <button @onclick=BeginSignOut>
                     Log Out
                 </button>

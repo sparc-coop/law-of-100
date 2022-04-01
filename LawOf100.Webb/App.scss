@@ -86,3 +86,13 @@ button.cancel-button:hover {
 #blazor-error-ui {
     display: none;
 }
+
+.mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 580px) {
+    .mobile{
+        display: block;
+    }
+}

@@ -20,31 +20,81 @@
 }
 :root h1 {
   font-size: 80px;
+  line-height: 80px;
+}
+@media only screen and (max-width: 580px) {
+  :root h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
 }
 :root h2 {
   font-size: 72px;
+  line-height: 80px;
+}
+@media only screen and (max-width: 580px) {
+  :root h2 {
+    font-size: 44px;
+    line-height: 48px;
+  }
 }
 :root h3 {
   font-size: 64px;
 }
+@media only screen and (max-width: 580px) {
+  :root h3 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+}
 :root h4 {
   font-size: 40px;
 }
+@media only screen and (max-width: 580px) {
+  :root h4 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
 :root h5 {
   font-size: 32px;
+}
+@media only screen and (max-width: 580px) {
+  :root h5 {
+    font-size: 28px;
+    line-height: 28px;
+  }
 }
 :root h6 {
   font-size: 28px;
   font-weight: 400;
 }
+@media only screen and (max-width: 580px) {
+  :root h6 {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
 :root p.xlarge {
   font-size: 24px;
+}
+@media only screen and (max-width: 580px) {
+  :root p.xlarge {
+    font-size: 20px;
+    line-height: 20px;
+  }
 }
 :root p.large {
   font-size: 20px;
 }
 :root p {
   font-size: 18px;
+}
+@media only screen and (max-width: 580px) {
+  :root p {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 :root p.medium {
   font-size: 16px;
@@ -130,7 +180,7 @@ nav .nav-left .nav-link, nav .nav-right .nav-link {
   color: var(--primary-900);
   margin-right: 32px;
 }
-nav .nav-left:last-child, nav .nav-right:last-child {
+nav .nav-right a:last-child {
   margin-right: 0px;
 }
 nav .nav-right {
@@ -153,6 +203,28 @@ nav button {
 @keyframes spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+.mobile-nav {
+  display: none;
+}
+
+@media only screen and (max-width: 481px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 40px 80px 40px;
+    position: relative;
+    z-index: 1005;
+  }
+
+  nav .nav-left .nav-link, nav .nav-right .nav-link {
+    margin-right: 16px;
   }
 }
 .home {
@@ -263,6 +335,52 @@ nav button {
   margin-top: 193px;
 }
 
+@media only screen and (max-width: 580px) {
+  .home .header {
+    max-width: 90%;
+  }
+  .home .header p {
+    max-width: 60%;
+    margin: auto;
+    margin-top: 22px;
+  }
+  .home .law p {
+    max-width: 72%;
+  }
+  .home .how-to-start .step-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+  }
+  .home .how-to-start .step-wrapper .steps {
+    width: 100%;
+  }
+  .home .how-to-start .step-wrapper .steps p.medium {
+    width: 44%;
+  }
+  .home .law-help .law-features {
+    flex-direction: column;
+    row-gap: 50px;
+  }
+  .home .the-law p, .home .overview p, .home law-help p {
+    max-width: 80%;
+  }
+
+  .start-button {
+    margin: 32px 0px 64px;
+  }
+  .start-button a {
+    color: #CED1C9;
+  }
+}
+@media only screen and (max-width: 481px) {
+  .home .how-to-start .step-wrapper .steps p.medium {
+    width: 80%;
+  }
+  .home .law-help .law-features .feature {
+    max-width: 100%;
+  }
+}
 .habit-index header {
   display: flex;
   flex-direction: column;
@@ -894,4 +1012,14 @@ button.cancel-button:hover:hover {
 
 #blazor-error-ui {
   display: none;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 580px) {
+  .mobile {
+    display: block;
+  }
 }
