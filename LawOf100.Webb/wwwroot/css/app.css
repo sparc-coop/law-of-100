@@ -209,7 +209,7 @@ nav button {
   display: none;
 }
 
-@media only screen and (max-width: 481px) {
+@media only screen and (max-width: 580px) {
   .desktop-nav {
     display: none;
   }
@@ -381,6 +381,9 @@ nav button {
     max-width: 100%;
   }
 }
+.habit-index {
+  margin: 0 10px;
+}
 .habit-index header {
   display: flex;
   flex-direction: column;
@@ -388,6 +391,9 @@ nav button {
 }
 .habit-index header h6 {
   margin-bottom: 12px;
+}
+.habit-index header h3 {
+  text-align: center;
 }
 .habit-index .grid-wrapper {
   display: grid;
@@ -949,6 +955,11 @@ nav button {
   width: 100%;
   max-width: 350px;
   margin-top: 40px;
+}
+@media only screen and (max-width: 480px) {
+  .profile .container {
+    margin: 0 10px;
+  }
 }
 
 /*Global Styles*/
