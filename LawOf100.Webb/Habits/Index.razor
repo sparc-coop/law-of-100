@@ -51,9 +51,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
-        {
-            Account = await Api.GetAccountAsync(new Features.Device
+        Account = await Api.GetAccountAsync(new Features.Device
         {
             Id = Device.Id,
             PushToken = Device.PushToken,
@@ -65,7 +63,9 @@
             DeviceType = Device.DeviceType,
             VersionString = Device.VersionString
         });
-
+        
+        if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
+        {
             if (!Account.IsProfileSet)
                 Nav.NavigateTo("/profile");
             else if (Account.CurrentHabitId == null)

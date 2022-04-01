@@ -12,7 +12,7 @@
 	  <PackageReference Include="Sparc.Core" Version="6.2.4" />
 	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.7" />
 	  <PackageReference Include="Sparc.Features" Version="6.1.3" />
-	  <PackageReference Include="Sparc.Notifications.Azure" Version="6.0.10" />
+	  <PackageReference Include="Sparc.Notifications.Azure" Version="6.0.11" />
   </ItemGroup>
 
 </Project>
