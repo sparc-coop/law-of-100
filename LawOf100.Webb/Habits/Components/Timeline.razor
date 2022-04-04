@@ -1,10 +1,10 @@
 ﻿<section class="timeline">
     <div class="container">
         <div class="content">
-            @if (Timelines != null)
+            @if (Entries != null)
             {
                 <div class="content-wrapper">
-                    @foreach (var entry in Timelines) 
+                    @foreach (var entry in Entries) 
                     {
                         <div class="eachDay">
                             <div class="dayAndHabit">
@@ -16,8 +16,10 @@
                             <h6 class="eachDayTitle">@entry.Review</h6>
 
                             @*Need to put the href and the real property*@
-                            <a href="" class="username">real_username</a>
-
+                            @if (entry.Username != null)
+                            {
+                                <a href="/habits/@entry.HabitId" class="username">@@@entry.Username</a>
+                            }
 
                             @*Need to write the logic*@
                             <div class="reactionsMenu">
@@ -49,17 +51,5 @@
 
 @code {
     [Parameter] public Habit? Habit { get; set; }
-    ICollection<LawOf100.Features.Timeline>? Timelines;
-
-    protected override async Task OnParametersSetAsync()
-    {
-        Timelines = await PublicApi().GetTimeLineAsync(Habit!.Id);
-    }
-
-    DateTime ActualDate { get; }
-
-    //void HandleReactions(object sender, EventArgs e)
-    //{
-    //    Console.WriteLine(sender);
-    //}
+    [Parameter] public IEnumerable<LawOf100.Features.Timeline> Entries { get; set; }
 }

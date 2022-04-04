@@ -66,12 +66,15 @@ public class Habit : Root<string>
             progression.Track(isSuccessful.Value, rating, review, isPublic);
         else
             progression.Miss();
+
+        LastTrackedDate = DateTime.UtcNow;
         Recalculate();
     }
 
     public string UserId { get; private set; }
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }
+    public DateTime? LastTrackedDate { get; private set; }
     public bool IsDeleted { get; set; }
     public int? CurrentDay => Progressions.FirstOrDefault(x => !x.IsTracked)?.Day;
     public List<Progression> Progressions { get; private set; }

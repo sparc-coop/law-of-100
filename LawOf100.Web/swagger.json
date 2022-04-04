@@ -284,6 +284,44 @@
         }
       }
     },
+    "/api/GetCommunityTimeline": {
+      "post": {
+        "tags": [
+          "GetCommunityTimeline"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TimelineDay"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TimelineDay"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TimelineDay"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetHabit": {
       "post": {
         "tags": [
@@ -641,6 +679,12 @@
             "format": "date-time",
             "readOnly": true
           },
+          "lastTrackedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "readOnly": true
+          },
           "isDeleted": {
             "type": "boolean"
           },
@@ -730,7 +774,15 @@
       "Timeline": {
         "type": "object",
         "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
           "habitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
             "type": "string",
             "nullable": true
           },
@@ -749,6 +801,23 @@
           },
           "review": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimelineDay": {
+        "type": "object",
+        "properties": {
+          "dayName": {
+            "type": "string",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Timeline"
+            },
             "nullable": true
           }
         },
