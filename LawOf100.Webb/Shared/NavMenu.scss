@@ -9,6 +9,7 @@
     .nav-left, .nav-right {
         display: flex;
         width: 50%;
+        align-items: center;
 
 
         .nav-link {
@@ -27,7 +28,6 @@
 
     button {
         position: relative;
-        top: -10px;
     }
 }
 

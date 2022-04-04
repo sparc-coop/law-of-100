@@ -175,6 +175,7 @@ nav {
 nav .nav-left, nav .nav-right {
   display: flex;
   width: 50%;
+  align-items: center;
 }
 nav .nav-left .nav-link, nav .nav-right .nav-link {
   color: var(--primary-900);
@@ -188,7 +189,6 @@ nav .nav-right {
 }
 nav button {
   position: relative;
-  top: -10px;
 }
 
 .big-star img {
