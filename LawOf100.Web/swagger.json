@@ -427,6 +427,66 @@
         }
       }
     },
+    "/api/ToggleReaction": {
+      "post": {
+        "tags": [
+          "ToggleReaction"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Reaction"
+                  }
+                ]
+              }
+            },
+            "text/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Reaction"
+                  }
+                ]
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Reaction"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToggleReactionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToggleReactionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToggleReactionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/TrackProgress": {
       "post": {
         "tags": [
@@ -753,6 +813,57 @@
           "isTracked": {
             "type": "boolean",
             "readOnly": true
+          },
+          "reactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReactionCount"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Reaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reactionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "reactionDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReactionCount": {
+        "type": "object",
+        "properties": {
+          "reactionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -802,6 +913,17 @@
           "review": {
             "type": "string",
             "nullable": true
+          },
+          "reactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReactionCount"
+            },
+            "nullable": true
+          },
+          "activeReaction": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -818,6 +940,23 @@
             "items": {
               "$ref": "#/components/schemas/Timeline"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ToggleReactionResponse": {
+        "type": "object",
+        "properties": {
+          "reactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReactionCount"
+            },
+            "nullable": true
+          },
+          "activeReaction": {
+            "type": "string",
             "nullable": true
           }
         },

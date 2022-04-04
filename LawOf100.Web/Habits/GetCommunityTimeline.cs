@@ -8,14 +8,16 @@ namespace LawOf100.Features.Habits;
 public record TimelineDay(string DayName, List<Timeline> Entries);
 public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
 {
-    public GetCommunityTimeline(IRepository<Habit> habits, IRepository<Account> users)
+    public GetCommunityTimeline(IRepository<Habit> habits, IRepository<Account> users, IRepository<Reaction> reactions)
     {
         Habits = habits;
         Users = users;
+        Reactions = reactions;
     }
 
     public IRepository<Habit> Habits { get; }
     public IRepository<Account> Users { get; }
+    public IRepository<Reaction> Reactions { get; }
 
     public override async Task<List<TimelineDay>> ExecuteAsync()
     {
@@ -27,12 +29,25 @@ public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
         var userIds = habits.Select(x => x.UserId).Distinct().ToList();
         var users = await Users.Query.Where(x => userIds.Contains(x.UserId)).ToListAsync();
 
+        var habitIds = habits.Select(x => x.Id).ToList();
+        var reactions = User.Id() == null
+            ? new List<Reaction>()
+            : await Reactions.Query.Where(x => x.UserId == User.Id() && habitIds.Contains(x.HabitId)).ToListAsync();
+
         var timelineEntries = new List<Timeline>();
         foreach (var habit in habits)
         {
             foreach (var progression in habit.GetTimeline().Where(x => x.IsPublic == true))
             {
-                var entry = new Timeline(habit.Id, habit.HabitName, UsernameForId(users, habit.UserId), progression.Day, progression.ActualDate!.Value, progression.Rating, progression.Review);
+                var entry = new Timeline(habit.Id, 
+                    habit.HabitName, 
+                    UsernameForId(users, habit.UserId), 
+                    progression.Day, 
+                    progression.ActualDate!.Value, 
+                    progression.Rating, 
+                    progression.Review, 
+                    progression.Reactions,
+                    ReactionFor(reactions, habit.Id, progression));
                 timelineEntries.Add(entry);
             }
         }
@@ -48,6 +63,11 @@ public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
             .ToList();
 
         return timelines;
+    }
+
+    string? ReactionFor(List<Reaction> reactions, string habitId, Progression progression)
+    {
+        return reactions.FirstOrDefault(x => x.HabitId == habitId && x.Day == progression.Day)?.ReactionType;
     }
 
     string? UsernameForId(List<Account> users, string id)
