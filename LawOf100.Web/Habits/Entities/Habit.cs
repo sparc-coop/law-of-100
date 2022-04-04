@@ -108,6 +108,18 @@ public class Habit : Root<string>
         Recalculate();
     }
 
+    public DateTime? NextEditableDate()
+    {
+        // returns a date if the habit is currently *not* editable until the returned date
+        
+        var currentProgression = Progressions.Find(x => x.Day == CurrentDay);
+        var nextDate = currentProgression?.TargetDate.AddHours(-1 * Recurrence.RepeatEveryXHours * Recurrence.FudgeFactor);
+        if (nextDate > DateTime.UtcNow)
+            return nextDate;
+
+        return null;
+    }
+
     public string UserId { get; private set; }
     public string HabitName { get; private set; }
     public DateTime StartDate { get; private set; }

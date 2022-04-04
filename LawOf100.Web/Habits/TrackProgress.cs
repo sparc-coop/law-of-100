@@ -26,11 +26,15 @@ public class TrackProgress : Feature<TrackProgressRequest, Habit>
         habit.TrackProgress(request.Day, request.IsSuccessful, request.Rating, request.Review, request.IsPublic);
         await Habits.UpdateAsync(habit);
 
-        Message message = new($"Time to track Day {request.Day}!",
-            "Click here to track and share your day's progress with Law of 100.");
-        message.ClickAction = $"/habit";
+        Message message = new($"Time to track Day {habit.CurrentDay}!",
+            "Click here to track and share your day's progress with Law of 100.")
+        {
+            ClickAction = $"/habit"
+        };
 
-        await Notifications.ScheduleAsync(User.Id(), message, habit.Progressions.Find(x => x.Day == request.Day).ActualDate.Value.AddSeconds(10));
+        var nextEditableDate = habit.NextEditableDate();
+        if (nextEditableDate != null)
+            await Notifications.ScheduleAsync(User.Id(), message, nextEditableDate.Value);
 
         return habit;
     }

@@ -21,6 +21,14 @@
         flex-direction: column;
         justify-content: center;
 
+        p {
+            text-align: center;
+            aside {
+                font-size: 14px;
+                color: var(--primary-500);
+            }
+        }
+
         .secondary-button {
             max-width: 450px;
             margin: 12px auto;

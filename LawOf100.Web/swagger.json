@@ -705,6 +705,14 @@
               "$ref": "#/components/schemas/Timeline"
             },
             "nullable": true
+          },
+          "isEditable": {
+            "type": "boolean"
+          },
+          "nextEditableDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false

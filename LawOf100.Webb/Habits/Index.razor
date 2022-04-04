@@ -25,9 +25,20 @@
 
             <div class="calendar-grid-wrapper">
                 <DayGrid Habit="Habit" />
-                @if (Habit?.CurrentDay != null && Habit.UserId == Account?.Id)
+                @if (IsEditable)
                 {
-                    <button class="secondary" @onclick="EnterDay">Update Day @Habit.CurrentDay</button>
+                    @if (NextEditableDate != null)
+                    {
+                        <p>
+                            Come back after @NextEditableDate.Value.ToString("MMMM d") @NextEditableDate.Value.ToString("h:mm tt")
+                            <aside>(@((int)(NextEditableDate.Value - DateTime.Now).TotalHours) hours from now)</aside>
+                        </p>
+                    }
+                    else
+                    {
+                        <button class="secondary" @onclick="EnterDay">Update Day @Habit.CurrentDay</button>
+                    }
+
                     <a class="button twitter-share-button secondary-button" href="@Share()">
                         <span id="twitter">
                             <img src="images/Twitter.svg" />
@@ -47,50 +58,54 @@
 }
 
 @inject Sparc.Core.Device Device
+@inject AuthenticationStateProvider Auth
 @code {
     [Parameter] public string? Username { get; set; }
     [Parameter] public string? HabitId { get; set; }
     Habit? Habit { get; set; } = new();
     ICollection<LawOf100.Features.Timeline>? TimelineEntries { get; set; }
     Account? Account;
+    bool IsAuthenticated;
     bool IsCreating;
     bool IsEnteringDay;
     bool IsLoading = true;
+    bool IsEditable;
+    DateTimeOffset? NextEditableDate;
 
     protected override async Task OnInitializedAsync()
     {
-        Account = await Api.GetAccountAsync(new Features.Device
-            {
-                Id = Device.Id,
-                PushToken = Device.PushToken,
-                Idiom = Device.Idiom,
-                Manufacturer = Device.Manufacturer,
-                Model = Device.Model,
-                Name = Device.Name,
-                Platform = "Web",
-                DeviceType = Device.DeviceType,
-                VersionString = Device.VersionString
-            });
+        IsAuthenticated = (await Auth.GetAuthenticationStateAsync()).User.Identity?.IsAuthenticated == true;
 
-        if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
+        if (IsAuthenticated)
         {
-            if (!Account.IsProfileSet)
-                Nav.NavigateTo("/profile");
-            else if (Account.CurrentHabitId == null)
-                Nav.NavigateTo("/habits/create");
-            else
-                Nav.NavigateTo($"/habits/{Account.Nickname}/{Account.CurrentHabitId}");
+            Account = await Api.GetAccountAsync(new Features.Device
+                {
+                    Id = Device.Id,
+                    PushToken = Device.PushToken,
+                    Idiom = Device.Idiom,
+                    Manufacturer = Device.Manufacturer,
+                    Model = Device.Model,
+                    Name = Device.Name,
+                    Platform = "Web",
+                    DeviceType = Device.DeviceType,
+                    VersionString = Device.VersionString
+                });
+
+            if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
+            {
+                if (!Account.IsProfileSet)
+                    Nav.NavigateTo("/profile");
+                else if (Account.CurrentHabitId == null)
+                    Nav.NavigateTo("/habits/create");
+                else
+                    Nav.NavigateTo($"/habits/{Account.Nickname}/{Account.CurrentHabitId}");
+            }
         }
     }
 
     protected override async Task OnParametersSetAsync()
     {
-        if (HabitId != null)
-        {
-            var habit = await PublicApi().GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId });
-            Habit = habit.Habit;
-            TimelineEntries = habit.Timeline;
-        }
+        await LoadHabit();
         IsLoading = false;
     }
 
@@ -100,13 +115,28 @@
     {
         Habit = habit;
         IsCreating = true;
-        Nav.NavigateTo($"/habits/{Account.Nickname}/{habit.Id}");
+        Nav.NavigateTo($"/habits/{Account!.Nickname}/{habit.Id}");
     }
 
-    void RefreshHabit(Habit habit)
+    async Task RefreshHabit(Habit habit)
     {
         IsEnteringDay = false;
-        Habit = habit;
+        await LoadHabit();
+    }
+
+    async Task LoadHabit()
+    {
+        if (HabitId != null)
+        {
+            var habit = IsAuthenticated
+                ? await Api.GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId })
+                : await PublicApi().GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId });
+
+            Habit = habit.Habit;
+            TimelineEntries = habit.Timeline;
+            IsEditable = habit.IsEditable;
+            NextEditableDate = habit.NextEditableDate?.ToLocalTime();
+        }
     }
 
     string Share()
