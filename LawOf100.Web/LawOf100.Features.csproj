@@ -9,8 +9,10 @@
 
   <ItemGroup>
 	  <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
-	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.2" />
-	  <PackageReference Include="Sparc.Features" Version="6.1.2" />
+	  <PackageReference Include="Sparc.Core" Version="6.2.4" />
+	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.7" />
+	  <PackageReference Include="Sparc.Features" Version="6.1.3" />
+	  <PackageReference Include="Sparc.Notifications.Azure" Version="6.0.11" />
   </ItemGroup>
 
 </Project>

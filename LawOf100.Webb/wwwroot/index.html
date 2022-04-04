@@ -35,28 +35,65 @@
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
 
     <script>
-        window.twttr = (function (d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0],
+    window.twttr = (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0],
             t = window.twttr || {};
-          if (d.getElementById(id)) return t;
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "https://platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js, fjs);
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
 
-          t._e = [];
-          t.ready = function(f) {
+        t._e = [];
+        t.ready = function (f) {
             t._e.push(f);
-          };
+        };
 
-          return t;
-        }(document, "script", "twitter-wjs"));
+        return t;
+    }(document, "script", "twitter-wjs"));
     </script>
 
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
     <script>
-        getElementRectangle = (element) => { return element.getBoundingClientRect(); };
+    getElementRectangle = (element) => { return element.getBoundingClientRect(); };
     </script>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js'
+        import { getMessaging, getToken, onMessage } from 'https://www.gstatic.com/firebasejs/9.6.10/firebase-messaging.js'
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBDqWSzVu3i79VyPqTr4xP0DzTeHMwILtQ",
+            authDomain: "law-of-100.firebaseapp.com",
+            projectId: "law-of-100",
+            storageBucket: "law-of-100.appspot.com",
+            messagingSenderId: "602819901577",
+            appId: "1:602819901577:web:3192c976719b4947232e58",
+            measurementId: "G-MZTDQZE90E"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        const messaging = getMessaging(app);
+
+        getToken(messaging, { vapidKey: 'BLlx_Ytlf8KtrkgTgVRTLpD5fNTkyYfgy_b3x5vvUEgMdUQavN3woSdbTbuOxbbRA7BKyoTZNCezFZKqsx5m9as' }).then((currentToken) => {
+            if (currentToken) {
+                localStorage.setItem('sparc-device-pushtoken', currentToken);
+            } else {
+                // Show permission request UI
+                console.log('No registration token available. Request permission to generate one.');
+                // ...
+            }
+        }).catch((err) => {
+            console.log('An error occurred while retrieving token. ', err);
+            // ...
+        });
+
+        onMessage(messaging, (payload) => {
+            console.log('Message received. ', payload);
+            // ...
+        });
+  </script>
 </body>
 
 </html>

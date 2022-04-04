@@ -2,6 +2,7 @@ using LawOf100.Features._Plugins;
 using Sparc.Authentication.AzureADB2C;
 using Sparc.Core;
 using Sparc.Features;
+using Sparc.Notifications.Azure;
 using Sparc.Plugins.Database.Cosmos;
 
 namespace LawOf100.Features;
@@ -15,9 +16,12 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+        var section = Configuration.GetSection("Notifications").Get<AzureConfiguration>();
+        
         services.Sparcify<Startup>(Configuration["WebClientUrl"])
             .AddCosmos<LawOf100Context>(Configuration.GetConnectionString("Database"), "lawof100")
-            .AddAzureADB2CAuthentication(Configuration);
+            .AddAzureADB2CAuthentication(Configuration)
+            .AddAzurePushNotifications(Configuration.GetSection("Notifications"));
 
         services.AddScoped(typeof(IRepository<>), typeof(CosmosDbRepository<>));
         services.AddRazorPages();

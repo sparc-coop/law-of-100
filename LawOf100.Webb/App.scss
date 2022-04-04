@@ -38,61 +38,59 @@ body {
     padding: 8px 12px;
 }
 
+.invert-button {
+    background: inherit;
+    color: var(--primary-900);
+    border: 1px solid var(---primary-900);
+    }
+
 button.cancel-button {
     color: var(--primary-900);
     font-weight: 400;
     min-width: 100px;
     text-align: center;
     background: none;
+
 }
 
-button.cancel-button:hover {
-    &:hover {
-        background-color: transparent;
-        color: var(--secondary-500);
-    }
-}
 
-.radio-wrapper {
-    border: 1px solid var(--primary-900);
-    border-radius: 6px 6px 6px 6px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 8px;
-
-    input {
-        opacity: 0;
-        position: absolute;
-    }
-
-    label {
-        padding: 6px 18px;
-        position: relative;
-        cursor: pointer;
-        text-align: center;
-        margin: 0;
-
+    button.cancel-button:hover {
         &:hover {
-            color: var(--active-500);
-        }
-
-        &.selected {
-            background-color: var(--primary-900);
-            color: var(--tertiary-500);
+            background-color: transparent;
+            color: var(--secondary-500);
         }
     }
-}
 
-#blazor-error-ui {
-    display: none;
-}
+    .radio-wrapper {
+        border: 1px solid var(--primary-900);
+        border-radius: 6px 6px 6px 6px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 8px;
 
-.mobile{
-    display: none;
-}
+        input {
+            opacity: 0;
+            position: absolute;
+        }
 
-@media only screen and (max-width: 580px) {
-    .mobile{
-        display: block;
+        label {
+            padding: 6px 18px;
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+            margin: 0;
+
+            &:hover {
+                color: var(--active-500);
+            }
+
+            &.selected {
+                background-color: var(--primary-900);
+                color: var(--tertiary-500);
+            }
+        }
     }
-}
+
+    #blazor-error-ui {
+        display: none;
+    }

@@ -40,6 +40,7 @@
     </div>
 }
 
+@inject Sparc.Core.Device Device
 @code {
     [Parameter] public string? HabitId { get; set; }
     Habit? Habit { get; set; } = new();
@@ -50,9 +51,21 @@
 
     protected override async Task OnInitializedAsync()
     {
+        Account = await Api.GetAccountAsync(new Features.Device
+        {
+            Id = Device.Id,
+            PushToken = Device.PushToken,
+            Idiom = Device.Idiom,
+            Manufacturer = Device.Manufacturer,
+            Model = Device.Model,
+            Name = Device.Name,
+            Platform = "Web",
+            DeviceType = Device.DeviceType,
+            VersionString = Device.VersionString
+        });
+        
         if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
         {
-            Account = await Api.GetAccountAsync();
             if (!Account.IsProfileSet)
                 Nav.NavigateTo("/profile");
             else if (Account.CurrentHabitId == null)

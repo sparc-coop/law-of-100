@@ -1,6 +1,6 @@
 using LawOf100.Features;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Sparc.Authentication.Blazor;
+using Sparc.Platforms.Web;
 
 namespace LawOf100.Web;
 
@@ -9,6 +9,8 @@ public class Program
     public static async Task Main(string[] args)
     {
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+        builder.Sparcify();
 
         builder.RootComponents.Add<App>("#app");
 
