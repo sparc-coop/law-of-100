@@ -856,6 +856,12 @@ body {
   padding: 8px 12px;
 }
 
+.invert-button {
+  background: inherit;
+  color: var(--primary-900);
+  border: 1px solid var(---primary-900);
+}
+
 button.cancel-button {
   color: var(--primary-900);
   font-weight: 400;

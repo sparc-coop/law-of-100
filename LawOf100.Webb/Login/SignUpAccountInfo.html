@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;" charset="utf-8" />
+    <title>Law of 100 Sign Up</title>
+    <link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="SignUpAccountInfo.css" rel="stylesheet" />
+    <link href="../App.scss" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <ul>
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="timeline">Timeline</a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <img src="../wwwroot/images/Logo.svg" />
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li class="nav-item"><a href="SignIn">Sign In</a></li>
+                <li class="nav-item"><a class="secondary-button" href="SignUp.html">Create Account</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="login-account">
+        <div class="container">
+            <div class="content">
+                <div class="header">
+                    <h4>Welcome!</h4>
+                    <p>We just need some info from you to create your account.</p>
+                </div>
+
+                <form>
+                    <div class="input-wrapper">
+                        <label for="fname">First name*</label>
+                        <input id="fname" name="fname" placeholder="John" required />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="nickname">Nickname</label>
+                        <input id="nickname" name="nickname" placeholder="habitmaker707" />
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="intro">Short Intro</label>
+                        <textarea id="intro" name="intro" maxlength="120" placeholder="Hi, im John."></textarea>
+                    </div>
+
+                    <div class="submit">
+                        <button class="primary-button" type="submit">Save & Continue</button>
+                    </div>
+                </form>
+
+                <div class="tos">
+                    <p class="xsmall">By signing up you agree to our <a href="/">Terms of Service</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="api"></div>
+
+
+</body>
+</html>
