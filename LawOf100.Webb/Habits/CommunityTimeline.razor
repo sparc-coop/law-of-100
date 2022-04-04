@@ -1,29 +1,41 @@
-﻿@page "/communityTimeline"
+﻿@page "/community"
 
 <section class="communityTimeline">
     <div class="container">
         <div class="content">
-            <Timeline />
+            @if (TimelineDays != null)
+            {
+                <section>
+                    @foreach (var day in TimelineDays)
+                    {
+                        <h5>
+                            @day.DayName
+                        </h5>
+                        <Timeline Entries="@day.Entries" />
+                    }
+                </section>
+            }
+
             <div class="completedDays">
                 <div class="completedDays__title">
                     <p>Previous 100 Dayers</p>
                     <p class="viewMore">View All</p>
                 </div>
-               <div class="completedDay">
+                <div class="completedDay">
                     <p class="completedDay__date">15/02/2022</p>
                     <p class="completedDay__text">I’ve done it, 100 days!! 🥳</p>
-                    <p class="completedDay__user">&#64;andrebiachi</p>             
-               </div>
+                    <p class="completedDay__user">&#64;andrebiachi</p>
+                </div>
                 <div class="completedDay">
                     <p class="completedDay__date">15/02/2022</p>
                     <p class="completedDay__text">If you had asked me 100 days ago, if I could do this, I would of said no way.</p>
-                    <p class="completedDay__user">&#64;andrebiachi</p>             
-               </div>
+                    <p class="completedDay__user">&#64;andrebiachi</p>
+                </div>
 
-               @*This code is here just to remember to limit to 5 the number of reviews*@
-               @*@foreach (var entry in Timelines.Take(5))
-                {
-                }*@
+                @*This code is here just to remember to limit to 5 the number of reviews*@
+                @*@foreach (var entry in Timelines.Take(5))
+                    {
+                    }*@
 
             </div>
         </div>
@@ -32,5 +44,10 @@
 </section>
 
 @code {
+    ICollection<TimelineDay>? TimelineDays;
 
+    protected override async Task OnInitializedAsync()
+    {
+        TimelineDays = await PublicApi().GetCommunityTimelineAsync();
+    }
 }

@@ -34,7 +34,7 @@
             @if (Habit?.Id != null)
             {
                 <EntryDay Habit=@Habit OnSubmit="RefreshHabit" />
-                <Timeline Habit=@Habit />
+                <Timeline Entries=TimelineEntries />
             }
         </div>
     </div>
@@ -43,6 +43,7 @@
 @code {
     [Parameter] public string? HabitId { get; set; }
     Habit? Habit { get; set; } = new();
+    ICollection<LawOf100.Features.Timeline>? TimelineEntries { get; set; }
     Account? Account;
     bool IsCreating;
     bool IsEnteringDay;
@@ -65,9 +66,11 @@
     protected override async Task OnParametersSetAsync()
     {
         if (HabitId != null)
+        {
             Habit = await PublicApi().GetHabitAsync(HabitId);
-
-        IsLoading = false;
+            TimelineEntries = await PublicApi().GetTimeLineAsync(HabitId);
+            IsLoading = false;
+        }
     }
 
     void EnterDay() => IsEnteringDay = true;
