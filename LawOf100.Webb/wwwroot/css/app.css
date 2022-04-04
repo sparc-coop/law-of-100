@@ -1065,8 +1065,8 @@ button.cancel-button:hover:hover {
   display: none;
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 480px) {
   .mobile {
-    display: block;
+    display: inline-flex;
   }
 }
