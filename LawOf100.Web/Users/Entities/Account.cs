@@ -28,10 +28,24 @@ public class Account : Root<string>
 
     public string Name { get; set; }
     public string Nickname { get; set; }
+
+    internal void RegisterDevice(Device device)
+    {
+        if (device?.Id == null)
+            return;
+        
+        var idx = Devices.FindIndex(x => x.Id == device.Id);
+        if (idx > -1)
+            Devices[idx] = device;
+        else
+            Devices.Add(device);
+    }
+
     public string? ShortIntro { get; set; }
     public DateTime DateCreated { get; set; }
     public DateTime DateModified { get; set; }
     public bool IsProfileSet => !string.IsNullOrWhiteSpace(Name) || !string.IsNullOrWhiteSpace(Nickname);
+    public List<Device> Devices { get; set; } = new();
 
     internal void Update(string name, string nickname, string? shortIntro)
     {
