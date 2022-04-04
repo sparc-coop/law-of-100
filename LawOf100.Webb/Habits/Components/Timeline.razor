@@ -4,44 +4,9 @@
             @if (Entries != null)
             {
                 <div class="content-wrapper">
-                    @foreach (var entry in Entries) 
+                    @foreach (var entry in Entries)
                     {
-                        <div class="eachDay">
-                            <div class="dayAndHabit">
-                                <p class="day-count">Day @entry.Day</p>
-                                <p>◦</p>
-                                <p class="habitName">@entry.HabitName</p>
-                            </div>
-
-                            <h6 class="eachDayTitle">@entry.Review</h6>
-
-                            @*Need to put the href and the real property*@
-                            @if (entry.Username != null)
-                            {
-                                <a href="/habits/@entry.Username/@entry.HabitId" class="username">@@@entry.Username</a>
-                            }
-
-                            @*Need to write the logic*@
-                            <div class="reactionsMenu">
-                                <div OnClick="HandleReactions">
-                                    <img src="images/ClapHandsemoji.svg" alt="clap hands emoji" class="lessThanOne" />
-                                </div>
-                                <div OnClick="HandleReactions">
-                                    <img src="images/Fireemoji-1.svg" alt="fire emoji" />
-                                    <p>12</p>
-                                </div>
-                                <div OnClick="HandleReactions">
-                                    <img src="images/Partyemoji-2.svg" alt="party emoji" />
-                                    <p>18</p>
-                                </div>
-                                <div OnClick="HandleReactions">
-                                    <img src="images/HandsUpemoji-3.svg" alt="hands up emoji" />
-                                    <p>22</p>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <TimelineEntry Entry=entry />
                     }
                 </div>
             }
@@ -51,5 +16,5 @@
 
 @code {
     [Parameter] public Habit? Habit { get; set; }
-    [Parameter] public IEnumerable<LawOf100.Features.Timeline> Entries { get; set; }
+    [Parameter] public IEnumerable<LawOf100.Features.Timeline>? Entries { get; set; }
 }
