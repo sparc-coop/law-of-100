@@ -30,6 +30,25 @@ public class Progression
         ActualDate = null;
     }
 
+    public void AddReaction(string type)
+    {
+        if (Reactions == null)
+            Reactions = new();
+
+        if (!Reactions.Any(x => x.ReactionType == type))
+            Reactions.Add(new(type));
+
+        Reactions.First(x => x.ReactionType == type).Count += 1;
+    }
+
+    public void RemoveReaction(string type)
+    {
+        if (Reactions == null || (!Reactions.Any(x => x.ReactionType == type)))
+            return;
+
+        Reactions.First(x => x.ReactionType == type).Count -= 1;
+    }
+
     public int Day { get; set; }
     public DateTime TargetDate { get; internal set; }
     public DateTime? ActualDate { get; internal set; }
@@ -38,4 +57,18 @@ public class Progression
     public decimal? Rating { get; set; }
     public string? Review { get; set; }
     public bool IsTracked => IsSuccessful.HasValue;
+    public List<ReactionCount>? Reactions { get; set; }
 }
+
+public class ReactionCount
+{
+    private ReactionCount()
+    {
+        ReactionType = "";
+    }
+
+    public ReactionCount(string type) => ReactionType = type;
+    
+    public string ReactionType { get; set; }
+    public int Count { get; set; }
+};

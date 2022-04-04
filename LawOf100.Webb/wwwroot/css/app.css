@@ -425,9 +425,12 @@ nav button {
 .timeline .content-wrapper .reactionsMenu > div .lessThanOne {
   mix-blend-mode: luminosity;
 }
-.timeline .content-wrapper .reactionsMenu > div.selected {
+.timeline .content-wrapper .reactionsMenu > div.active {
   background-color: #181919;
   color: white;
+}
+.timeline .content-wrapper .reactionsMenu > div.inactive {
+  pointer-events: none;
 }
 .timeline .content-wrapper .reactionsMenu > div p {
   margin-left: 6px;

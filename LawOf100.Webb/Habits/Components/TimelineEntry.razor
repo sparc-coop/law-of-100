@@ -1,0 +1,32 @@
+﻿<div class="eachDay">
+    <div class="dayAndHabit">
+        <p class="day-count">Day @Entry.Day</p>
+        <p>◦</p>
+        <p class="habitName">@Entry.HabitName</p>
+    </div>
+
+    <h6 class="eachDayTitle">@Entry.Review</h6>
+
+    @if (Entry.Username != null)
+    {
+        <a href="/habits/@Entry.HabitId" class="username">@@@Entry.Username</a>
+    }
+
+    <div class="reactionsMenu">
+        <EmojiReaction TimelineEntry=Entry ReactionType="Fire" ReactionChanged=UpdateReactions />
+        <EmojiReaction TimelineEntry=Entry ReactionType="Clap" ReactionChanged=UpdateReactions />
+        <EmojiReaction TimelineEntry=Entry ReactionType="Party" ReactionChanged=UpdateReactions />
+        <EmojiReaction TimelineEntry=Entry ReactionType="Handsup" ReactionChanged=UpdateReactions />
+    </div>
+</div>
+
+@code {
+    [Parameter] public LawOf100.Features.Timeline Entry { get; set; }
+
+    void UpdateReactions(ToggleReactionResponse response)
+    {
+        Entry.Reactions = response.Reactions.ToList();
+        Entry.ActiveReaction = response.ActiveReaction;
+        StateHasChanged();
+    }
+}
