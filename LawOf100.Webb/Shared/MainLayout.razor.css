@@ -20,19 +20,35 @@ main {
     background-color: var(--tertiary-700);
     z-index: 100000;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0px 40px;
 }
 
-#app > footer div {
-    font: 400 12px/12px 'Inter';
-    color: var(--primary-500);
-    line-height: 72px;
-}
+    #app > footer div {
+        font: 400 12px/12px 'Inter';
+        color: var(--primary-500);
+    }
 
 #app > footer div a {
     color: var(--primary-500);
 }
+
+    #app > footer .logo {
+        line-height: 0;
+        width: 33%;
+        display: flex;
+        justify-content: center;
+    }
+    #app > footer .footer-left {
+        width: 33%;
+    }
+    #app > footer .footer-right {
+        width: 33%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    
 
 .top-row {
     background-color: #f7f7f7;
