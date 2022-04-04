@@ -34,7 +34,5 @@ namespace LawOf100.Features.Habits
 
             return timelineEntries.OrderByDescending(x => x.ActualDate).ToList();
         }
-
-        
     }
 }

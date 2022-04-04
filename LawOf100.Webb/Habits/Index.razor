@@ -28,6 +28,12 @@
                 @if (Habit?.CurrentDay != null && Habit.UserId == Account?.Id)
                 {
                     <button class="secondary" @onclick="EnterDay">Update Day @Habit.CurrentDay</button>
+                    <a class="button twitter-share-button secondary-button" href="@Share()">
+                        <span id="twitter">
+                            <img src="images/Twitter.svg" />
+                        </span>
+                        Share Progress on Twitter
+                    </a>
                 }
             </div>
 
@@ -53,18 +59,18 @@
     protected override async Task OnInitializedAsync()
     {
         Account = await Api.GetAccountAsync(new Features.Device
-        {
-            Id = Device.Id,
-            PushToken = Device.PushToken,
-            Idiom = Device.Idiom,
-            Manufacturer = Device.Manufacturer,
-            Model = Device.Model,
-            Name = Device.Name,
-            Platform = "Web",
-            DeviceType = Device.DeviceType,
-            VersionString = Device.VersionString
-        });
-        
+            {
+                Id = Device.Id,
+                PushToken = Device.PushToken,
+                Idiom = Device.Idiom,
+                Manufacturer = Device.Manufacturer,
+                Model = Device.Model,
+                Name = Device.Name,
+                Platform = "Web",
+                DeviceType = Device.DeviceType,
+                VersionString = Device.VersionString
+            });
+
         if (Nav.ToBaseRelativePath(Nav.Uri) == "habit")
         {
             if (!Account.IsProfileSet)
@@ -99,5 +105,26 @@
     {
         IsEnteringDay = false;
         Habit = habit;
+    }
+
+    string Share()
+    {
+        var shareText = Uri.EscapeDataString($"💯 days to {Habit!.HabitName}:\n{ShareGrid()}");
+        var shareUrl = Uri.EscapeDataString($"https://lawof100.co/{Nav.ToBaseRelativePath(Nav.Uri)}");
+
+        return $"https://twitter.com/intent/tweet?text={shareText}&url={shareUrl}";
+    }
+
+    string ShareGrid()
+    {
+        var str = new System.Text.StringBuilder();
+        var count = 0;
+        foreach (var day in Habit!.Progressions)
+        {
+            str.Append(day.IsSuccessful == true ? "🟩" : day.IsTracked == false ? "⬜" : "🟧");
+            if (++count % 10 == 0)
+                str.Append("\n");
+        }
+        return str.ToString();
     }
 }
