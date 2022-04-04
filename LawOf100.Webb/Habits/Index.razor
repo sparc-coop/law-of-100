@@ -1,6 +1,6 @@
 ﻿@page "/habit"
 @page "/habits/create"
-@page "/habits/{HabitId}"
+@page "/habits/{Username}/{HabitId}"
 
 @if (!IsLoading)
 {
@@ -48,6 +48,7 @@
 
 @inject Sparc.Core.Device Device
 @code {
+    [Parameter] public string? Username { get; set; }
     [Parameter] public string? HabitId { get; set; }
     Habit? Habit { get; set; } = new();
     ICollection<LawOf100.Features.Timeline>? TimelineEntries { get; set; }
@@ -78,7 +79,7 @@
             else if (Account.CurrentHabitId == null)
                 Nav.NavigateTo("/habits/create");
             else
-                Nav.NavigateTo($"/habits/{Account.CurrentHabitId}");
+                Nav.NavigateTo($"/habits/{Account.Nickname}/{Account.CurrentHabitId}");
         }
     }
 
@@ -86,10 +87,11 @@
     {
         if (HabitId != null)
         {
-            Habit = await PublicApi().GetHabitAsync(HabitId);
-            TimelineEntries = await PublicApi().GetTimeLineAsync(HabitId);
-            IsLoading = false;
+            var habit = await PublicApi().GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId });
+            Habit = habit.Habit;
+            TimelineEntries = habit.Timeline;
         }
+        IsLoading = false;
     }
 
     void EnterDay() => IsEnteringDay = true;
@@ -98,7 +100,7 @@
     {
         Habit = habit;
         IsCreating = true;
-        Nav.NavigateTo($"/habits/{habit.Id}");
+        Nav.NavigateTo($"/habits/{Account.Nickname}/{habit.Id}");
     }
 
     void RefreshHabit(Habit habit)

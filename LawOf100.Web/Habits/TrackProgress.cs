@@ -19,8 +19,8 @@ public class TrackProgress : Feature<TrackProgressRequest, Habit>
 
     public override async Task<Habit> ExecuteAsync(TrackProgressRequest request)
     {
-        var habit = await Habits.FindAsync(request.HabitId);
-        if (habit == null || habit.UserId != User.Id())
+        var habit = Habits.Query.FirstOrDefault(x => x.UserId == User.Id() && x.Id == request.HabitId);
+        if (habit == null)
             throw new NotFoundException($"Habit {request.HabitId} not found!");
 
         habit.TrackProgress(request.Day, request.IsSuccessful, request.Rating, request.Review, request.IsPublic);
@@ -28,7 +28,7 @@ public class TrackProgress : Feature<TrackProgressRequest, Habit>
 
         Message message = new($"Time to track Day {request.Day}!",
             "Click here to track and share your day's progress with Law of 100.");
-        message.ClickAction = $"/habits/{request.HabitId}";
+        message.ClickAction = $"/habit";
 
         await Notifications.ScheduleAsync(User.Id(), message, habit.Progressions.Find(x => x.Day == request.Day).ActualDate.Value.AddSeconds(10));
 

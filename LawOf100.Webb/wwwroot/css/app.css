@@ -282,6 +282,14 @@ nav button {
   flex-direction: column;
   justify-content: center;
 }
+.habit-index .calendar-grid-wrapper .secondary-button {
+  max-width: 450px;
+  margin: 12px auto;
+  display: block;
+}
+.habit-index .calendar-grid-wrapper .secondary-button #twitter {
+  top: -3px;
+}
 .habit-index .is-not-created .create-habit {
   max-height: 500px;
 }

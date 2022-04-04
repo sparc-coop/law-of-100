@@ -5,6 +5,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Habits;
 
+public record Timeline(string HabitId, string HabitName, string? Username, int Day, DateTime ActualDate, decimal? Rating, string? Review);
 public record TimelineDay(string DayName, List<Timeline> Entries);
 public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
 {
