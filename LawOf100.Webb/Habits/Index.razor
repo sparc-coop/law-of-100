@@ -21,8 +21,6 @@
         <div class="grid-wrapper @(Habit?.Id == null ? "is-not-created" : "") @(IsCreating ? "new-habit-animation" : "") @(IsEnteringDay ? "entry-day-animation" : "")">
             <CreateHabit OnSubmit="BeginHabit" />
 
-            <div></div> @* Placeholder for top right column of animating grid *@
-
             <div class="calendar-grid-wrapper">
                 <DayGrid Habit="Habit" />
                 @if (IsEditable)

@@ -4,8 +4,16 @@
     flex-direction: column;
 }
 
+html{
+    height: 100%;
+}
+
 main {
     flex: 1;
+}
+
+.main{
+    min-height: 75vh;
 }
 
 .sidebar {
@@ -13,7 +21,7 @@ main {
 }
 
 #app > footer {
-    bottom: 0;
+    /*bottom: 0;*/
     left: 0;
     right: 0;
     height: 72px;
@@ -23,6 +31,7 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 0px 40px;
+    position: absolute;
 }
 
     #app > footer div {

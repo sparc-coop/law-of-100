@@ -181,6 +181,9 @@ nav .nav-left .nav-link, nav .nav-right .nav-link {
   color: var(--primary-900);
   margin-right: 32px;
 }
+nav .nav-left .nav-link:hover, nav .nav-right .nav-link:hover {
+  color: var(--secondary-500);
+}
 nav .nav-right a:last-child {
   margin-right: 0px;
 }
@@ -189,6 +192,22 @@ nav .nav-right {
 }
 nav button {
   position: relative;
+}
+
+.logo .box {
+  width: 32px;
+  height: 32px;
+  background-color: #181919;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.logo .box svg {
+  position: absolute;
+  margin: 6px 0 0 6px;
+  transition: all 0.25s linear;
+}
+.logo .box:hover svg {
+  transform: scale(1.5);
 }
 
 .big-star img {
@@ -333,6 +352,11 @@ nav button {
 }
 .home .start-day-one {
   margin-top: 193px;
+}
+.home .cut-off {
+  height: 306px;
+  margin-bottom: 0;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 580px) {
@@ -482,7 +506,7 @@ nav button {
   transition: opacity 0.75s ease-in;
 }
 .create-habit .col-wrapper {
-  padding-top: 60px;
+  padding-top: 52px;
   padding-bottom: 60px;
 }
 .create-habit header {
@@ -522,7 +546,7 @@ nav button {
   font-family: "Clash Display";
   width: 100%;
   max-width: 594px;
-  margin: 48px auto;
+  margin: 24px auto 80px;
 }
 .timeline .header {
   text-align: left;

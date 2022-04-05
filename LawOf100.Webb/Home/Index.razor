@@ -16,7 +16,7 @@
         </div>
 
         <div class="calendar-container">
-            <DayGrid Habit=ExampleHabit />
+            <DayGrid Habit=StateHabit />
         </div>
 
         <div class="the-law">
@@ -115,8 +115,8 @@
                 <a class="primary-button" href="/habit">Start your 100 days</a>
             </div>
 
-            <div class="calendar-container">
-                <DayGrid Habit=ExampleHabit />
+            <div class="calendar-container cut-off">
+                <DayGrid Habit=StateHabit />
             </div>
         </div>
     </div>
@@ -125,6 +125,7 @@
 
 @code {
     Habit ExampleHabit = new() { CurrentDay = 1 };
+    Habit StateHabit = new() { CurrentDay = 1 };
     System.Threading.Timer? Timer;
     Random Random = new();
 
@@ -135,6 +136,11 @@
             ExampleHabit.Progressions.Add(new Progression { Day = i });
 
         Timer = new(TrackRandomDay, new System.Threading.AutoResetEvent(false), 3000, 3000);
+
+        //Non animated grid
+        StateHabit.Progressions = new List<Progression>();
+        for (var i = 1; i <= 100; i++)
+            StateHabit.Progressions.Add(new Progression { Day = i });
     }
 
     async void TrackRandomDay(object? stateInfo)

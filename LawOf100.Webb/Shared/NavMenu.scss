@@ -16,6 +16,10 @@
             color: var(--primary-900);
             margin-right: 32px;
         }
+
+        .nav-link:hover{
+            color: var(--secondary-500);
+        }
     }
 
     .nav-right a:last-child {
@@ -28,6 +32,26 @@
 
     button {
         position: relative;
+    }
+}
+
+.logo {
+    .box {
+        width: 32px;
+        height: 32px;
+        background-color: #181919;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .box svg {
+        position: absolute;
+        margin: 6px 0 0 6px;
+        transition: all 0.25s linear
+    }
+
+    .box:hover svg {
+        transform: scale(1.5);
     }
 }
 
