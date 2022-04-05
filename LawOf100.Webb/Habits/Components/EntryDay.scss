@@ -80,8 +80,16 @@
         }
     }
 
+    #twitter{
+        margin-right: 6px;
+
+        img{
+            vertical-align: text-bottom;
+        }
+    }
+
     .twitter-share-button:hover{
-        color: var(--secondary-500);
+        color: var(--primary-900);
     }
 }
 
