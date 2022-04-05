@@ -72,9 +72,13 @@
                     mix-blend-mode: luminosity;
                 }
 
-                &.selected {
+                &.active {
                     background-color: #181919;
                     color: white;                    
+                }
+
+                &.inactive {
+                    pointer-events: none;
                 }
 
                 p {

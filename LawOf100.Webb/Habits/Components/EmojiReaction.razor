@@ -1,0 +1,55 @@
+﻿<AuthorizeView>
+    <Authorized>
+        <div @onclick=React class="@(TimelineEntry.ActiveReaction == ReactionType ? "active" : "")">
+            <img src="@Icons[ReactionType]" alt="@ReactionType emoji" />
+            @if (Count > 0)
+            {
+                <p>@Count</p>
+            }
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div class="inactive">
+            <img src="@Icons[ReactionType]" alt="@ReactionType emoji" />
+            @if (Count > 0)
+            {
+                <p>@Count</p>
+            }
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
+@inject IJSRuntime Js
+@code {
+    [Parameter] public LawOf100.Features.Timeline TimelineEntry { get; set; }
+    [Parameter] public string? ReactionType { get; set; }
+    [Parameter] public EventCallback<ToggleReactionResponse> ReactionChanged { get; set; }
+    int Count;
+
+    Dictionary<string, string> Icons = new()
+    {
+        { "Clap", "images/ClapHandsemoji.svg" },
+        { "Fire", "images/Fireemoji-1.svg" },
+        { "Party", "images/Partyemoji-2.svg" },
+        { "Handsup", "images/HandsUpemoji-3.svg" }
+    };
+
+    protected override void OnParametersSet()
+    {
+        Count = TimelineEntry.Reactions?.FirstOrDefault(x => x.ReactionType == ReactionType)?.Count ?? 0;
+    }
+
+    async Task React()
+    {
+        Reaction reaction = new()
+            {
+                UserId = "",
+                HabitId = TimelineEntry.HabitId,
+                Day = TimelineEntry.Day,
+                ReactionType = ReactionType
+            };
+
+        var result = await Api.ToggleReactionAsync(reaction);
+        await ReactionChanged.InvokeAsync(result);
+    }
+}

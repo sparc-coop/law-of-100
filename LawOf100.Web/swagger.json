@@ -284,6 +284,44 @@
         }
       }
     },
+    "/api/GetCommunityTimeline": {
+      "post": {
+        "tags": [
+          "GetCommunityTimeline"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TimelineDay"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TimelineDay"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TimelineDay"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetHabit": {
       "post": {
         "tags": [
@@ -293,17 +331,29 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/GetHabitRequest"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/GetHabitRequest"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/GetHabitRequest"
+                  }
+                ]
               }
             }
           }
@@ -314,17 +364,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Habit"
+                  "$ref": "#/components/schemas/GetHabitResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Habit"
+                  "$ref": "#/components/schemas/GetHabitResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Habit"
+                  "$ref": "#/components/schemas/GetHabitResponse"
                 }
               }
             }
@@ -332,26 +382,38 @@
         }
       }
     },
-    "/api/GetTimeLine": {
+    "/api/ToggleReaction": {
       "post": {
         "tags": [
-          "GetTimeLine"
+          "ToggleReaction"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Reaction"
+                  }
+                ]
               }
             },
             "text/json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Reaction"
+                  }
+                ]
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "string"
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Reaction"
+                  }
+                ]
               }
             }
           }
@@ -362,26 +424,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Timeline"
-                  }
+                  "$ref": "#/components/schemas/ToggleReactionResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Timeline"
-                  }
+                  "$ref": "#/components/schemas/ToggleReactionResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Timeline"
-                  }
+                  "$ref": "#/components/schemas/ToggleReactionResponse"
                 }
               }
             }
@@ -621,6 +674,49 @@
         },
         "additionalProperties": false
       },
+      "GetHabitRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetHabitResponse": {
+        "type": "object",
+        "properties": {
+          "habit": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Habit"
+              }
+            ],
+            "nullable": true
+          },
+          "timeline": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Timeline"
+            },
+            "nullable": true
+          },
+          "isEditable": {
+            "type": "boolean"
+          },
+          "nextEditableDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Habit": {
         "type": "object",
         "properties": {
@@ -639,6 +735,12 @@
           "startDate": {
             "type": "string",
             "format": "date-time",
+            "readOnly": true
+          },
+          "lastTrackedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
             "readOnly": true
           },
           "isDeleted": {
@@ -709,6 +811,57 @@
           "isTracked": {
             "type": "boolean",
             "readOnly": true
+          },
+          "reactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReactionCount"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Reaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
+          "day": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "reactionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "reactionDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReactionCount": {
+        "type": "object",
+        "properties": {
+          "reactionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -730,7 +883,15 @@
       "Timeline": {
         "type": "object",
         "properties": {
+          "habitId": {
+            "type": "string",
+            "nullable": true
+          },
           "habitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
             "type": "string",
             "nullable": true
           },
@@ -748,6 +909,51 @@
             "nullable": true
           },
           "review": {
+            "type": "string",
+            "nullable": true
+          },
+          "reactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReactionCount"
+            },
+            "nullable": true
+          },
+          "activeReaction": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TimelineDay": {
+        "type": "object",
+        "properties": {
+          "dayName": {
+            "type": "string",
+            "nullable": true
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Timeline"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ToggleReactionResponse": {
+        "type": "object",
+        "properties": {
+          "reactions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReactionCount"
+            },
+            "nullable": true
+          },
+          "activeReaction": {
             "type": "string",
             "nullable": true
           }

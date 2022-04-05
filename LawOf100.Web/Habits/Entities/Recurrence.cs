@@ -14,7 +14,7 @@ public class Recurrence
         FudgeFactor = fudgeFactor;
     }
 
-    public int RepeatEveryXHours { get; }
+    public int RepeatEveryXHours { get; set; }
 
     internal List<Progression> InitializeProgressions(DateTime startDate)
     {
@@ -54,11 +54,11 @@ public class Recurrence
         }
     }
 
-    public double FudgeFactor { get; }
+    public double FudgeFactor { get; set; }
 
     public bool IsPastFudgeFactor(DateTime day)
     {
-        return day.AddHours(RepeatEveryXHours * FudgeFactor) < DateTime.UtcNow;
+        return day.AddHours(RepeatEveryXHours * (1 + FudgeFactor)) < DateTime.UtcNow;
     }
 
     public DateTime NextDay(DateTime fromDate)
