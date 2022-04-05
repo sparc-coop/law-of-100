@@ -429,6 +429,7 @@ nav button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  grid-row: 2;
 }
 .habit-index .calendar-grid-wrapper p {
   text-align: center;
@@ -445,13 +446,16 @@ nav button {
 .habit-index .calendar-grid-wrapper .secondary-button #twitter {
   top: -3px;
 }
+.habit-index .is-not-created {
+  /*.calendar-grid {
+      max-height: 350px;
+      overflow: hidden;
+      margin-bottom: auto;
+  }*/
+}
 .habit-index .is-not-created .create-habit {
   max-height: 500px;
-}
-.habit-index .is-not-created .calendar-grid {
-  max-height: 350px;
-  overflow: hidden;
-  margin-bottom: auto;
+  display: block;
 }
 .habit-index .entry-day-animation .entry-day {
   transition: max-width 1s ease-out !important;
@@ -467,6 +471,9 @@ nav button {
 }
 .habit-index .new-habit-animation .create-habit .container {
   opacity: 0;
+}
+.habit-index .timeline {
+  grid-row: 3;
 }
 .habit-index button.secondary {
   width: 100%;
