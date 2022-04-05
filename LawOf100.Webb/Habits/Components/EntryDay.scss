@@ -79,6 +79,10 @@
             }
         }
     }
+
+    .twitter-share-button:hover{
+        color: var(--secondary-500);
+    }
 }
 
 /* Button used to open the Share popup*/
@@ -156,12 +160,6 @@
     }
 }
 
-#twitter {
-    margin-right: 6px;
-    position: relative;
-    top: -12px;
-}
-
 .share-overlay {
     display: none;
     position: absolute;
@@ -189,4 +187,15 @@
     margin: auto;
     text-align: center;
     color: var(--primary-900);
+}
+
+@media only screen and (max-width: 768px) {
+    .share-overlay {
+        height: 200%;
+    }
+
+    .share-popup{
+        max-width: 78%;
+        width: 100%;
+    }
 }

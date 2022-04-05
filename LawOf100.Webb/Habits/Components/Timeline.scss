@@ -2,7 +2,7 @@
     font-family: 'Clash Display';
     width: 100%;
     max-width: 594px;
-    margin: 48px auto;
+    margin: 24px auto 80px;
 
     .header {
         text-align: left;
@@ -74,7 +74,7 @@
 
                 &.active {
                     background-color: #181919;
-                    color: white;                    
+                    color: white;
                 }
 
                 &.inactive {

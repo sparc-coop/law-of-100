@@ -9,15 +9,20 @@
     .nav-left, .nav-right {
         display: flex;
         width: 50%;
+        align-items: center;
 
 
         .nav-link {
             color: var(--primary-900);
             margin-right: 32px;
         }
+
+        .nav-link:hover{
+            color: var(--secondary-500);
+        }
     }
 
-    .nav-left:last-child, .nav-right:last-child {
+    .nav-right a:last-child {
         margin-right: 0px;
     }
 
@@ -27,7 +32,26 @@
 
     button {
         position: relative;
-        top: -10px;
+    }
+}
+
+.logo {
+    .box {
+        width: 32px;
+        height: 32px;
+        background-color: #181919;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .box svg {
+        position: absolute;
+        margin: 6px 0 0 6px;
+        transition: all 0.25s linear
+    }
+
+    .box:hover svg {
+        transform: scale(1.5);
     }
 }
 
@@ -43,5 +67,32 @@
 @keyframes spin {
     100% {
         transform: rotate(360deg);
+    }
+}
+
+.mobile-nav{
+    display: none;
+}
+
+@media only screen and (max-width: 580px){
+    .desktop-nav{
+        display: none;
+    }
+
+    .mobile-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 32px 40px 80px 40px;
+        position: relative;
+        z-index: 1005;
+    }
+
+    nav {
+        .nav-left, .nav-right {
+            .nav-link {
+                margin-right: 16px;
+            }
+        }
     }
 }
