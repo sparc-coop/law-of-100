@@ -26,6 +26,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        grid-row: 2;
 
         p {
             text-align: center;
@@ -79,6 +80,10 @@
                 opacity: 0;
             }
         }
+    }
+
+    .timeline{
+        grid-row: 3;
     }
 
     button.secondary {

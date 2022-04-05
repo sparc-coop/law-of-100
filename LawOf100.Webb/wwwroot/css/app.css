@@ -429,6 +429,7 @@ nav button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  grid-row: 2;
 }
 .habit-index .calendar-grid-wrapper p {
   text-align: center;
@@ -467,6 +468,9 @@ nav button {
 }
 .habit-index .new-habit-animation .create-habit .container {
   opacity: 0;
+}
+.habit-index .timeline {
+  grid-row: 3;
 }
 .habit-index button.secondary {
   width: 100%;
@@ -683,8 +687,14 @@ nav button {
   font: 400 12px/15px "Inter";
   color: var(--primary-500);
 }
+.entry-day #twitter {
+  margin-right: 6px;
+}
+.entry-day #twitter img {
+  vertical-align: text-bottom;
+}
 .entry-day .twitter-share-button:hover {
-  color: var(--secondary-500);
+  color: var(--primary-900);
 }
 
 /* Button used to open the Share popup*/
