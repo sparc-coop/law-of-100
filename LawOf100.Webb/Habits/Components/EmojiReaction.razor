@@ -36,7 +36,7 @@
 
     protected override void OnParametersSet()
     {
-        Count = TimelineEntry.Reactions.FirstOrDefault(x => x.ReactionType == ReactionType)?.Count ?? 0;
+        Count = TimelineEntry.Reactions?.FirstOrDefault(x => x.ReactionType == ReactionType)?.Count ?? 0;
     }
 
     async Task React()

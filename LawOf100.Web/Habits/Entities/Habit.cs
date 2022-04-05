@@ -1,4 +1,7 @@
 ﻿using Sparc.Core;
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LawOf100.Features.Habits.Entities;
 
@@ -16,10 +19,44 @@ public class Habit : Root<string>
 
     public Habit(string userId, string habitName, int repeatEveryXHours, double fudgeFactor) : this()
     {
+        Id = Slugify(habitName);
         UserId = userId;
         HabitName = habitName;
         Recurrence = new Recurrence(repeatEveryXHours, fudgeFactor);
         Progressions = Recurrence.InitializeProgressions(StartDate);
+    }
+
+    private string Slugify(string habitName)
+    {
+        string str = RemoveAccent(habitName).ToLower();
+        // invalid chars           
+        str = Regex.Replace(str, @"[^a-z0-9\s-]", "");
+        // convert multiple spaces into one space   
+        str = Regex.Replace(str, @"\s+", " ").Trim();
+        // cut and trim 
+        str = str.Substring(0, str.Length <= 45 ? str.Length : 45).Trim();
+        str = Regex.Replace(str, @"\s", "-"); // hyphens   
+        return str;
+    }
+
+    public static string RemoveAccent(string text)
+    {
+        var normalizedString = text.Normalize(NormalizationForm.FormD);
+        var stringBuilder = new StringBuilder(capacity: normalizedString.Length);
+
+        for (int i = 0; i < normalizedString.Length; i++)
+        {
+            char c = normalizedString[i];
+            var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
+            }
+        }
+
+        return stringBuilder
+            .ToString()
+            .Normalize(NormalizationForm.FormC);
     }
 
     internal static Habit Random()
@@ -69,6 +106,18 @@ public class Habit : Root<string>
 
         LastTrackedDate = DateTime.UtcNow;
         Recalculate();
+    }
+
+    public DateTime? NextEditableDate()
+    {
+        // returns a date if the habit is currently *not* editable until the returned date
+        
+        var currentProgression = Progressions.Find(x => x.Day == CurrentDay);
+        var nextDate = currentProgression?.TargetDate.AddHours(-1 * Recurrence.RepeatEveryXHours * Recurrence.FudgeFactor);
+        if (nextDate > DateTime.UtcNow)
+            return nextDate;
+
+        return null;
     }
 
     public string UserId { get; private set; }

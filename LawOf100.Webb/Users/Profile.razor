@@ -2,10 +2,10 @@
 
 @if (!IsLoading)
 {
-        <section class="profile">
-            <div class="container">
-                <header>
-                    <h2>Welcome!</h2>
+    <section class="profile">
+        <div class="container">
+            <header>
+                <h2>Welcome!</h2>
                 @if (ExistingAccount?.IsProfileSet == false)
                 {
                     <p>We just need some info from you to create your account.</p>
@@ -14,49 +14,55 @@
                 {
                     <p>Update your profile info here.</p>
                 }
-                </header>
-                    <div class="content-wrapper">
-                        <label>
-                            First name
-                            <input @bind="Account.Name" placeholder="Jane P. Doe" />
-                        </label>
-                        <label>
-                            Nickname
-                            <input @bind="Account.Nickname" placeholder="janepdoe" />
-                        </label>
-                        <label>
-                            Short Intro
-                            <textarea maxlength="120" @bind="Account.ShortIntro" @bind:event="oninput" placeholder="Improving my life one day at a time" />
-                            <aside>
+            </header>
+            <div class="content-wrapper">
+                <label>
+                    Your name
+                    <input @bind="Account.Name" placeholder="Jane P. Doe" />
+                </label>
+                <label>
+                    Username
+                    <input @bind="Account.Nickname" placeholder="janepdoe" />
+                    @if (Error != null)
+                    {
+                        <aside class="error">@Error</aside>
+                    }
+                </label>
+                <label>
+                    Short Intro
+                    <textarea maxlength="120" @bind="Account.ShortIntro" @bind:event="oninput" placeholder="Improving my life one day at a time" />
+                    <aside>
                         @(Account.ShortIntro?.Length ?? 0) / 120
-                            </aside>
-                        </label>
-                        <button @onclick=Save>Save & Continue</button>
-                    </div>
-                </div>
-            </section>
+                    </aside>
+                </label>
+                <button @onclick=Save>Save & Continue</button>
+            </div>
+        </div>
+    </section>
 }
 
+@using System.Text.RegularExpressions
 @inject Sparc.Core.Device Device
 @code {
     UpdateAccountRequest Account = new();
     Account? ExistingAccount;
     bool IsLoading = true;
+    string? Error;
 
     protected override async Task OnInitializedAsync()
     {
         ExistingAccount = await Api.GetAccountAsync(new Features.Device
-        {
-            Id = Device.Id,
-            PushToken = Device.PushToken,
-            Idiom = Device.Idiom,
-            Manufacturer = Device.Manufacturer,
-            Model = Device.Model,
-            Name = Device.Name,
-            Platform = Device.Platform,
-            DeviceType = Device.DeviceType,
-            VersionString = Device.VersionString
-        });
+            {
+                Id = Device.Id,
+                PushToken = Device.PushToken,
+                Idiom = Device.Idiom,
+                Manufacturer = Device.Manufacturer,
+                Model = Device.Model,
+                Name = Device.Name,
+                Platform = Device.Platform,
+                DeviceType = Device.DeviceType,
+                VersionString = Device.VersionString
+            });
         Account = new()
             {
                 Name = ExistingAccount.Name,
@@ -66,9 +72,25 @@
         IsLoading = false;
     }
 
+    static Regex GoodUsername = new Regex(@"^[A-Za-z0-9_\-]+$");
     async Task Save()
     {
-        await Api.UpdateAccountAsync(Account);
-        Nav.NavigateTo("/habit");
+        Error = null;
+        if (!GoodUsername.IsMatch(Account.Nickname))
+        {
+            Error = "Please choose a username with only letters, digits, underscores, and hyphens.";
+            return;
+        }
+
+        try
+        {
+            await Api.UpdateAccountAsync(Account);
+            Nav.NavigateTo("/habit");
+        }
+        catch
+        {
+            Error = "Unfortunately, this username is already taken! Try another.";
+            return;
+        }
     }
 }

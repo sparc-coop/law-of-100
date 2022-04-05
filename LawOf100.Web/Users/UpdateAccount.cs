@@ -16,6 +16,11 @@ public class UpdateAccount : Feature<UpdateAccountRequest, Account>
 
     public override async Task<Account> ExecuteAsync(UpdateAccountRequest request)
     {
+        // Check for duplicate nicknames
+        var otherAccountsWithNickname = Accounts.Query.Where(x => x.Nickname == request.Nickname && x.Id != User.Id()).Count();
+        if (otherAccountsWithNickname > 0)
+            throw new Exception("Unfortunately, someone else is already using that nickname.");
+        
         var account = await Accounts.FindAsync(User.Id());
         if (account == null)
         {
