@@ -145,7 +145,7 @@
 }
 :root button:hover, :root a.button:hover {
   background-color: var(--secondary-500);
-  color: var(--active-500);
+  color: var(--tertiary-500);
 }
 :root button.secondary, :root a.button.secondary {
   background-color: transparent;
@@ -354,7 +354,7 @@ nav button {
   margin-top: 193px;
 }
 .home .cut-off {
-  height: 306px;
+  max-height: 350px;
   margin-bottom: 0;
   overflow: hidden;
 }
@@ -451,6 +451,7 @@ nav button {
 .habit-index .is-not-created .calendar-grid {
   max-height: 350px;
   overflow: hidden;
+  margin-bottom: auto;
 }
 .habit-index .entry-day-animation .entry-day {
   transition: max-width 1s ease-out !important;
@@ -682,6 +683,9 @@ nav button {
   font: 400 12px/15px "Inter";
   color: var(--primary-500);
 }
+.entry-day .twitter-share-button:hover {
+  color: var(--secondary-500);
+}
 
 /* Button used to open the Share popup*/
 .open-button {
@@ -910,6 +914,11 @@ nav button {
   margin-bottom: 0px;
 }
 
+@media only screen and (max-width: 768px) {
+  .communityTimeline .completedDays {
+    display: none;
+  }
+}
 .star-rating {
   position: relative;
   white-space: nowrap;

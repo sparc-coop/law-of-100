@@ -79,6 +79,10 @@
             }
         }
     }
+
+    .twitter-share-button:hover{
+        color: var(--secondary-500);
+    }
 }
 
 /* Button used to open the Share popup*/

@@ -68,3 +68,11 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) {
+    .communityTimeline {
+        .completedDays {
+            display: none;
+        }
+    }
+}
