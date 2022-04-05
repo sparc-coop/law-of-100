@@ -448,7 +448,6 @@ nav button {
 }
 .habit-index .is-not-created .create-habit {
   max-height: 500px;
-  display: block;
 }
 .habit-index .is-not-created .calendar-grid {
   max-height: 350px;
