@@ -82,7 +82,6 @@
     <img src="/images/Star-Big.svg" />
 </figure>
 
-@inject SignOutSessionStateManager SignOutManager
 @code {
     private bool collapseNavMenu = true;
 
@@ -97,7 +96,6 @@
 
     private async Task BeginSignOut(MouseEventArgs args)
     {
-        await SignOutManager.SetSignOutState();
         Nav.NavigateTo("authentication/logout");
     }
 }
