@@ -1002,52 +1002,62 @@ nav button {
 }
 
 .signin, .signup {
-  background: #f8f8f8;
-  height: 100vh;
+  background: var(--tertiary-500);
+  padding: 64px 32px;
+  text-align: center;
 }
-.signin .content, .signup .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 218px;
+.signin .container, .signup .container {
+  max-width: 350px;
+  margin: 0 auto;
 }
-.signin .content h2, .signup .content h2 {
-  margin: 0;
+.signin header, .signup header {
+  margin-bottom: 32px;
+}
+.signin header h4, .signup header h4 {
+  margin-bottom: 12px;
+}
+.signin button, .signup button {
+  margin-bottom: 24px;
+  width: 100%;
+}
+.signin .heading, .signin .intro, .signin .localAccount .divider, .signup .heading, .signup .intro, .signup .localAccount .divider {
+  display: none;
+}
+.signin #createAccount, .signup #createAccount {
+  display: block;
+}
+.signin .password-label, .signup .password-label {
+  position: relative;
+}
+.signin #forgotPassword, .signup #forgotPassword {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  font-size: 12px;
+}
+.signin .divider, .signup .divider {
+  margin: 32px 0;
+}
+.signin .divider h2, .signup .divider h2 {
+  font: 400 20px/20px "Clash Display";
+  text-transform: lowercase;
+}
+.signin label[for], .signup label[for] {
+  display: block;
+  text-align: left;
   margin-bottom: 8px;
 }
-.signin .content .signin-signup, .signup .content .signin-signup {
-  margin: 0;
-  color: #838383;
-  font-size: 16px;
-  line-height: 22px;
-}
-.signin .content .email, .signin .content .password, .signin .content .confirm-password, .signup .content .email, .signup .content .password, .signup .content .confirm-password {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-}
-.signin .content .confirm-password, .signup .content .confirm-password {
-  margin-bottom: 40px;
-}
-.signin .content .btn-primary, .signup .content .btn-primary {
-  width: 109px;
-  height: 42px;
-  border-radius: 5.46px;
-  margin-bottom: 17px;
-}
-.signin .content .content-wrapper, .signup .content .content-wrapper {
-  color: #838383;
-}
-.signin .content .content-wrapper p.tos-text, .signup .content .content-wrapper p.tos-text {
-  font-size: 12px;
-  line-height: 19px;
-  color: #838383;
-  margin: 0;
-}
-.signin .section-intro, .signin .content-wrapper, .signup .section-intro, .signup .content-wrapper {
-  max-width: 362px;
+.signin input, .signup input {
   width: 100%;
+  margin-bottom: 24px;
+  text-align: left;
+}
+.signin .buttons, .signup .buttons {
+  text-align: right;
+}
+.signin #next, .signup #next {
+  width: 50%;
+  text-align: center;
 }
 
 .forgot-password p {
