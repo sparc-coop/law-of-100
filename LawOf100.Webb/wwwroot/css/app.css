@@ -210,6 +210,57 @@ nav button {
   transform: scale(1.5);
 }
 
+.splash {
+  position: fixed;
+  top: calc(50vh - 32px);
+  left: calc(50vw - 32px);
+  z-index: 10000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.splash figure {
+  width: 64px;
+  height: 64px;
+  background-color: #181919;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.splash svg {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  animation: 2s ease-in-out splash infinite;
+}
+.splash span {
+  color: var(--active-500);
+  font: 400 20px/28px "Clash Display";
+  animation: 2s ease-in-out splashtext infinite;
+}
+
+@keyframes splash {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes splashtext {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .big-star img {
   position: absolute;
   top: -25vw;
