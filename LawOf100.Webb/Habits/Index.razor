@@ -126,10 +126,7 @@
     {
         if (HabitId != null)
         {
-            var habit = IsAuthenticated
-                ? await Api.GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId })
-                : await PublicApi().GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId });
-
+            var habit = await Api.GetHabitAsync(new GetHabitRequest { Username = Username, HabitId = HabitId });
             Habit = habit.Habit;
             TimelineEntries = habit.Timeline;
             IsEditable = habit.IsEditable;

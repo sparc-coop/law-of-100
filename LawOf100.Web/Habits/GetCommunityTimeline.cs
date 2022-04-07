@@ -5,7 +5,7 @@ using Sparc.Features;
 
 namespace LawOf100.Features.Habits;
 
-public record Timeline(string HabitId, string HabitName, string? Username, int Day, DateTime ActualDate, decimal? Rating, string? Review, List<ReactionCount?> Reactions, string? ActiveReaction);
+public record Timeline(string HabitId, string HabitName, string? Username, int Day, DateTime ActualDate, decimal? Rating, string? Review, List<ReactionCount?> Reactions, List<string> ActiveReactions);
 public record TimelineDay(string DayName, List<Timeline> Entries);
 public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
 {
@@ -48,7 +48,7 @@ public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
                     progression.Rating, 
                     progression.Review, 
                     progression.Reactions,
-                    ReactionFor(reactions, habit.Id, progression));
+                    ReactionsFor(reactions, habit.Id, progression));
                 timelineEntries.Add(entry);
             }
         }
@@ -66,9 +66,11 @@ public class GetCommunityTimeline : PublicFeature<List<TimelineDay>>
         return timelines;
     }
 
-    string? ReactionFor(List<Reaction> reactions, string habitId, Progression progression)
+    List<string> ReactionsFor(List<Reaction> reactions, string habitId, Progression progression)
     {
-        return reactions.FirstOrDefault(x => x.HabitId == habitId && x.Day == progression.Day)?.ReactionType;
+        return reactions.Where(x => x.HabitId == habitId && x.Day == progression.Day)
+            .Select(x => x.ReactionType)
+            .ToList();
     }
 
     string? UsernameForId(List<Account> users, string id)

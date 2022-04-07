@@ -68,8 +68,11 @@
                 border-radius: 100px;
                 cursor: pointer;
 
-                .lessThanOne {
+                &.lessThanOne {
                     mix-blend-mode: luminosity;
+                    &:hover {
+                        mix-blend-mode: normal;
+                    }
                 }
 
                 &.active {
