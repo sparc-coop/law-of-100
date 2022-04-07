@@ -372,6 +372,7 @@ nav button {
 @media only screen and (max-width: 580px) {
   .home .header {
     max-width: 90%;
+    margin: auto;
   }
   .home .header p {
     max-width: 60%;
@@ -380,6 +381,9 @@ nav button {
   }
   .home .law p {
     max-width: 72%;
+  }
+  .home .how-to-start .header-wrapper {
+    margin-bottom: 40px;
   }
   .home .how-to-start .step-wrapper {
     display: flex;
@@ -390,27 +394,43 @@ nav button {
     width: 100%;
   }
   .home .how-to-start .step-wrapper .steps p.medium {
-    width: 44%;
+    width: 80%;
+  }
+  .home .law-help p {
+    max-width: 80%;
   }
   .home .law-help .law-features {
     flex-direction: column;
-    row-gap: 50px;
+    row-gap: 72px;
+    margin-top: 40px;
+  }
+  .home .law-help .law-features .feature {
+    max-width: 80%;
+  }
+  .home .law-help .law-features .feature p {
+    max-width: 100%;
+  }
+  .home .law-help .law-features .feature:nth-child(n+3) {
+    margin-top: 0px;
   }
   .home .the-law p, .home .overview p, .home law-help p {
     max-width: 80%;
   }
+  .home .calendar-container, .home .law, .home .how-to-start, .home .law-help {
+    margin-bottom: 120px;
+  }
+  .home .cut-off {
+    margin-bottom: 0px;
+  }
 
   .start-button {
-    margin: 32px 0px 64px;
+    margin: 32px 0px 0px 0px;
   }
   .start-button a {
     color: #CED1C9;
   }
 }
 @media only screen and (max-width: 481px) {
-  .home .how-to-start .step-wrapper .steps p.medium {
-    width: 80%;
-  }
   .home .law-help .law-features .feature {
     max-width: 100%;
   }
@@ -779,7 +799,7 @@ nav button {
   display: none;
   position: absolute;
   width: 100%;
-  height: 130%;
+  height: 128%;
   background: #626666;
   top: 0;
   left: 0;
@@ -882,6 +902,22 @@ nav button {
   }
   100% {
     transform: scale(1, 1) translate(-50%, -50%);
+  }
+}
+@media only screen and (max-width: 480px) {
+  .calendar-grid {
+    grid-template: repeat(10, 32px)/repeat(10, 32px);
+    grid-gap: 0px;
+    padding: 8px;
+  }
+
+  .calendar-grid .day-current::before {
+    background-size: 40px 40px;
+  }
+
+  .calendar-grid > * {
+    line-height: 32px;
+    font-size: 14px;
   }
 }
 .communityTimeline p {
@@ -1139,7 +1175,7 @@ button.cancel-button:hover:hover {
   display: none;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 580px) {
   .mobile {
     display: inline-flex;
   }

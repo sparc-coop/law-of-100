@@ -164,6 +164,7 @@
     .home {
         .header {
             max-width: 90%;
+            margin: auto;
 
             p {
                 max-width: 60%;
@@ -179,6 +180,10 @@
         }
 
         .how-to-start {
+            .header-wrapper {
+                margin-bottom: 40px;
+            }
+
             .step-wrapper {
                 display: flex;
                 flex-direction: column;
@@ -188,26 +193,51 @@
                     width: 100%;
 
                     p.medium {
-                        width: 44%;
+                        width: 80%;
                     }
                 }
             }
         }
 
         .law-help {
+
+            p{
+               max-width: 80%;
+            }
             .law-features {
                 flex-direction: column;
-                row-gap: 50px;
+                row-gap: 72px;
+                margin-top: 40px;
+
+                .feature {
+                    max-width: 80%;
+
+                    p{
+                        max-width: 100%;
+                    }
+                }
+
+                .feature:nth-child(n+3){
+                    margin-top: 0px;
+                }
             }
         }
 
         .the-law p, .overview p, law-help p {
             max-width: 80%;
         }
+
+        .calendar-container, .law, .how-to-start, .law-help {
+            margin-bottom: 120px;
+        }
+
+        .cut-off{
+            margin-bottom: 0px;
+        }
     }
 
     .start-button {
-        margin: 32px 0px 64px;
+        margin: 32px 0px 0px 0px;
 
         a {
             color: #CED1C9;
@@ -217,16 +247,6 @@
 
 @media only screen and (max-width: 481px) {
     .home {
-        .how-to-start {
-            .step-wrapper {
-                .steps {
-                    p.medium {
-                        width: 80%;
-                    }
-                }
-            }
-        }
-
         .law-help {
             .law-features {
                 .feature{

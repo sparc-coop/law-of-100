@@ -74,3 +74,21 @@
         transform: scale(1, 1) translate(-50%, -50%);
     }
 }
+
+@media only screen and (max-width: 480px) {
+    .calendar-grid {
+        grid-template: repeat(10, 32px) / repeat(10, 32px);
+        grid-gap: 0px;
+        padding: 8px;
+
+    }
+
+    .calendar-grid .day-current::before {
+        background-size: 40px 40px;
+    }
+
+    .calendar-grid > * {
+        line-height: 32px;
+        font-size: 14px;
+    }
+}

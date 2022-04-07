@@ -130,3 +130,16 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+
+@media only screen and (max-width: 580px) {
+    #app > footer .footer-left {
+        display: none;
+    }
+
+    #app > footer .logo {
+        line-height: 0;
+        width: auto;
+        display: flex;
+        justify-content: center;
+    }
+}
