@@ -13,7 +13,7 @@ main {
 }
 
 .main{
-    min-height: 75vh;
+    min-height: 77vh;
 }
 
 .sidebar {
@@ -42,6 +42,10 @@ main {
 #app > footer div a {
     color: var(--primary-500);
 }
+
+    #app > footer div a:hover {
+        color: var(--active-500);
+    }
 
     #app > footer .logo {
         line-height: 0;

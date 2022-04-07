@@ -255,8 +255,7 @@ nav button {
 }
 .home .header {
   max-width: 70%;
-  margin-bottom: 54px;
-  margin: auto;
+  margin: 54px auto;
 }
 .home .header p {
   max-width: 60%;
@@ -268,7 +267,7 @@ nav button {
   margin-top: 50px;
 }
 .home .the-law {
-  margin-bottom: 178px;
+  margin-bottom: 260px;
 }
 .home .the-law h6 {
   margin-bottom: 2px;
@@ -281,10 +280,13 @@ nav button {
   margin: auto;
 }
 .home .how-to-start {
-  margin-bottom: 190px;
+  margin-bottom: 260px;
 }
 .home .how-to-start .header-wrapper {
-  margin-bottom: 72px;
+  margin-bottom: 100px;
+}
+.home .how-to-start .header-wrapper h6 {
+  margin-bottom: 4px;
 }
 .home .how-to-start .step-wrapper {
   display: flex;
@@ -295,15 +297,15 @@ nav button {
   margin: auto;
 }
 .home .how-to-start .step-wrapper .steps p.xlarge {
-  margin-bottom: 16px;
-  margin-top: 24px;
+  margin-top: 12px;
+  font-weight: 500;
 }
 .home .how-to-start .step-wrapper .steps p.medium {
   max-width: 76%;
   margin: auto;
 }
 .home .overview {
-  margin-bottom: 206px;
+  margin-bottom: 260px;
 }
 .home .overview h4 {
   margin-bottom: 26px;
@@ -314,7 +316,7 @@ nav button {
 }
 .home .law-help-bg {
   background: var(--tertiary-700);
-  padding: 164px 0 214px;
+  padding: 260px 0;
 }
 .home .law-help h2 {
   margin-bottom: 32px;
@@ -334,8 +336,8 @@ nav button {
   margin: auto;
 }
 .home .law-help .law-features .feature p.xlarge {
-  margin-top: 32px;
-  margin-bottom: 16px;
+  margin-top: 16px;
+  font-weight: 500;
 }
 .home .law-help .law-features .feature p {
   max-width: 72%;
@@ -351,12 +353,20 @@ nav button {
   margin: auto;
 }
 .home .start-day-one {
-  margin-top: 193px;
+  margin-top: 260px;
 }
 .home .cut-off {
   max-height: 350px;
   margin-bottom: 0;
   overflow: hidden;
+}
+
+.start-button a {
+  color: #CED1C9;
+}
+
+.start-button:hover a {
+  color: var(--active-500);
 }
 
 @media only screen and (max-width: 580px) {
@@ -471,6 +481,7 @@ nav button {
 }
 .habit-index .timeline {
   grid-row: 3;
+  max-width: 484px;
 }
 .habit-index button.secondary {
   width: 100%;
@@ -693,6 +704,9 @@ nav button {
 .entry-day #twitter img {
   vertical-align: text-bottom;
 }
+.entry-day .twitter-share-button {
+  margin: 6px auto 18px;
+}
 .entry-day .twitter-share-button:hover {
   color: var(--primary-900);
 }
@@ -765,7 +779,7 @@ nav button {
   display: none;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 130%;
   background: #626666;
   top: 0;
   left: 0;
@@ -783,10 +797,15 @@ nav button {
   padding: 8px 12px;
   border: 1px solid var(--primary-900);
   width: 100%;
-  max-width: 594px;
+  max-width: 484px;
   margin: auto;
   text-align: center;
   color: var(--primary-900);
+}
+
+.update-day:hover {
+  border: 1px solid var(--active-500);
+  color: var(--active-500);
 }
 
 @media only screen and (max-width: 768px) {
