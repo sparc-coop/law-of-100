@@ -13,11 +13,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="BuildWebCompiler" Version="1.12.405" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.1" />
-		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.1">
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="6.0.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
@@ -27,7 +27,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Sparc.Core" Version="6.2.4" />
-		<PackageReference Include="Sparc.Platforms.Web" Version="6.2.7" />
+		<PackageReference Include="Sparc.Platforms.Web" Version="6.3.6" />
 		<TrimmerRootAssembly Include="Microsoft.Authentication.WebAssembly.Msal" />
 	</ItemGroup>
 

@@ -610,8 +610,11 @@ nav button {
   border-radius: 100px;
   cursor: pointer;
 }
-.timeline .content-wrapper .reactionsMenu > div .lessThanOne {
+.timeline .content-wrapper .reactionsMenu > div.lessThanOne {
   mix-blend-mode: luminosity;
+}
+.timeline .content-wrapper .reactionsMenu > div.lessThanOne:hover {
+  mix-blend-mode: normal;
 }
 .timeline .content-wrapper .reactionsMenu > div.active {
   background-color: #181919;

@@ -1,6 +1,6 @@
 ﻿<AuthorizeView>
     <Authorized>
-        <div @onclick=React class="@(TimelineEntry.ActiveReaction == ReactionType ? "active" : "")">
+        <div @onclick=React class="@(TimelineEntry.ActiveReactions.Contains(ReactionType) ? "active" : "") @(Count == 0 ? "lessThanOne" : "")">
             <img src="@Icons[ReactionType]" alt="@ReactionType emoji" />
             @if (Count > 0)
             {
@@ -9,7 +9,7 @@
         </div>
     </Authorized>
     <NotAuthorized>
-        <div class="inactive">
+        <div class="inactive @(Count == 0 ? "lessThanOne" : "")">
             <img src="@Icons[ReactionType]" alt="@ReactionType emoji" />
             @if (Count > 0)
             {

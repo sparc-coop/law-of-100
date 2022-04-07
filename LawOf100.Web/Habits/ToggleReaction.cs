@@ -1,9 +1,10 @@
-﻿using Sparc.Core;
+﻿using LawOf100.Features.Habits.Entities;
+using Sparc.Core;
 using Sparc.Features;
 
-namespace LawOf100.Features.Habits.Entities
+namespace LawOf100.Features.Habits
 {
-    public record ToggleReactionResponse(List<ReactionCount>? Reactions, string? ActiveReaction);
+    public record ToggleReactionResponse(List<ReactionCount>? Reactions, List<string> ActiveReactions);
     public class ToggleReaction : Feature<Reaction, ToggleReactionResponse>
     {
         public ToggleReaction(IRepository<Habit> habits, IRepository<Reaction> reactions)
@@ -18,7 +19,8 @@ namespace LawOf100.Features.Habits.Entities
         public override async Task<ToggleReactionResponse> ExecuteAsync(Reaction request)
         {
             var habit = await Habits.FindAsync(request.HabitId);
-            var reaction = Reactions.Query.FirstOrDefault(x => x.UserId == User.Id() && x.HabitId == request.HabitId && x.Day == request.Day);
+            var reactions = Reactions.Query.Where(x => x.UserId == User.Id() && x.HabitId == request.HabitId && x.Day == request.Day);
+            var reaction = reactions.FirstOrDefault(x => x.ReactionType == request.ReactionType);
 
             var progression = habit.Progressions.First(x => x.Day == request.Day);
             if (reaction == null)
@@ -46,7 +48,7 @@ namespace LawOf100.Features.Habits.Entities
 
             await Habits.UpdateAsync(habit);
 
-            return new(progression.Reactions, reaction?.ReactionType);
+            return new(progression.Reactions, reactions.Select(x => x.ReactionType).ToList());
         }
     }
 }
