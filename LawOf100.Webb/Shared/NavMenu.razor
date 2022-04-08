@@ -45,11 +45,6 @@
 </nav>
 
 <nav class="mobile-nav">
-    @*<div class="nav-left">
-        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-            Home
-        </NavLink>
-    </div>*@
     <div class="logo">
         <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
         <div class="box">
@@ -59,24 +54,6 @@
         </div>
         </NavLink>
     </div>
-@*    <AuthorizeView>
-        <NotAuthorized>
-            <div class="nav-right">
-                <NavLink class="nav-link" href="@ReturnUrl">
-                    Sign In
-                </NavLink>
-            </div>
-        </NotAuthorized>
-
-        <Authorized>
-            <div class="nav-right">
-                <button @onclick=BeginSignOut>
-                    Log Out
-                </button>
-            </div>
-        </Authorized>
-    </AuthorizeView>*@
-
     <div class="menu-wrapper">
         <input type="checkbox" class="toggler" />
         <div class="hamburger"><div></div></div>

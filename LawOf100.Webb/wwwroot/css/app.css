@@ -286,7 +286,7 @@ nav button {
   visibility: visible;
 }
 .menu-wrapper .toggler:checked ~ .menu > div {
-  transform: scale(1);
+  margin-top: 0px;
   transition-duration: 0.8s;
 }
 .menu-wrapper .toggler:checked ~ .menu > div > div {
@@ -313,8 +313,8 @@ nav button {
   flex: none;
   align-items: center;
   justify-content: center;
-  transform: scale(0);
-  transition: all 0.4s ease;
+  margin-top: -2020px;
+  transition: all 0.8s ease;
   z-index: 100001;
 }
 .menu-wrapper .menu > div > div {
