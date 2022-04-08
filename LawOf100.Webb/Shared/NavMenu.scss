@@ -17,7 +17,7 @@
             margin-right: 32px;
         }
 
-        .nav-link:hover{
+        .nav-link:hover {
             color: var(--secondary-500);
         }
     }
@@ -35,23 +35,81 @@
     }
 }
 
-.logo {
-    .box {
-        width: 32px;
-        height: 32px;
-        background-color: #181919;
-        border-radius: 6px;
-        cursor: pointer;
-    }
+.logo .box {
+    width: 32px;
+    height: 32px;
+    background-color: #181919;
+    border-radius: 6px;
+    cursor: pointer;
 
-    .box svg {
+    svg {
         position: absolute;
         margin: 6px 0 0 6px;
         transition: all 0.25s linear
     }
 
-    .box:hover svg {
+    &:hover svg {
         transform: scale(1.5);
+    }
+}
+
+.splash {
+    position: fixed;
+    top: calc(50vh - 32px);
+    left: calc(50vw - 32px);
+    z-index: 10000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    figure {
+        width: 64px;
+        height: 64px;
+        background-color: #181919;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        position: relative;
+    }
+
+    svg {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        animation: 2s ease-in-out splash infinite;
+    }
+
+    span {
+        color: var(--active-500);
+        font: 400 20px/28px 'Clash Display';
+        animation: 2s ease-in-out splashtext infinite;
+    }
+}
+
+@keyframes splash {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes splashtext {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 
@@ -70,140 +128,145 @@
     }
 }
 
-.mobile-nav{
+.mobile-nav {
     display: none;
 }
 
-.menu-wrapper {
+@media only screen and (max-width: 580px) {
+    .desktop-nav {
+        display: none;
+    }
+    .menu-wrapper {
 
-    .toggler {
-        position: absolute;
-        top: 0;
-        right: -3px;
-        z-index: 2;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        opacity: 0;
-    }
+        .toggler {
+            position: absolute;
+            top: 0;
+            right: -3px;
+            z-index: 2;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+        }
 
-    .hamburger {
-        position: absolute;
-        top: 4px;
-        right: 0;
-        z-index: 1;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    //Hambuger Line
-    .hamburger > div {
-        position: relative;
-        width: 100%;
-        height: 2px;
-        background-color: var(--primary-900);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.4s ease;
-    }
-    //Top and bottom lines
-    .hamburger > div:before, .hamburger > div:after {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: -10px;
-        width: 100%;
-        height: 2px;
-        background: inherit;
-    }
-    //Moves bottom line down.
-    .hamburger > div:after {
-        top: 10px;
-    }
-    //Toggler animate
-    .toggler:checked + .hamburger > div {
-        transform: rotate(135deg);
-    }
-    //Turn lines into X
-    .toggler:checked + .hamburger > div:before,
-    .toggler:checked + .hamburger > div:after {
-        top: 0;
-        transform: rotate(90deg);
-    }
-    //rotate on hover
-    .toggler:checked:hover + .hamburger > div {
-        transform: rotate(225deg);
-    }
-    //Show Menu
-    .toggler:checked ~ .menu {
-        visibility: visible;
-    }
+        .hamburger {
+            position: absolute;
+            top: 4px;
+            right: 0;
+            z-index: 1;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        //Hambuger Line
+        .hamburger > div {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-900);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+        //Top and bottom lines
+        .hamburger > div:before, .hamburger > div:after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: -10px;
+            width: 100%;
+            height: 2px;
+            background: inherit;
+        }
+        //Moves bottom line down.
+        .hamburger > div:after {
+            top: 10px;
+        }
+        //Toggler animate
+        .toggler:checked + .hamburger > div {
+            transform: rotate(135deg);
+        }
+        //Turn lines into X
+        .toggler:checked + .hamburger > div:before,
+        .toggler:checked + .hamburger > div:after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+        //rotate on hover
+        .toggler:checked:hover + .hamburger > div {
+            transform: rotate(225deg);
+        }
+        //Show Menu
+        .toggler:checked ~ .menu {
+            visibility: visible;
+        }
 
-    .toggler:checked ~ .menu > div {
-        margin-top: 0px;
-        transition-duration: 0.8s;
-    }
+        .toggler:checked ~ .menu > div {
+            margin-top: 0px;
+            transition-duration: 0.8s;
+        }
 
-    .toggler:checked ~ .menu > div > div {
-        opacity: 1;
-        transition: opacity 0.4s ease;
-    }
+        .toggler:checked ~ .menu > div > div {
+            opacity: 1;
+            transition: opacity 0.4s ease;
+        }
 
-    .menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        visibility: hidden;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .menu > div {
-        background: lightgrey;
-        width: 200vw;
-        height: 200vw;
-        display: flex;
-        flex: none;
-        align-items: center;
-        justify-content: center;
-        margin-top: -2020px;
-        transition: all 0.8s ease;
-        z-index: 100001;
-    }
+        .menu > div {
+            background: lightgrey;
+            width: 200vw;
+            height: 200vw;
+            display: flex;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+            margin-top: -2020px;
+            transition: all 0.8s ease;
+            z-index: 100001;
+        }
 
-    .menu > div > div {
-        text-align: center;
-        max-width: 90vw;
-        max-height: 100vh;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
+        .menu > div > div {
+            text-align: center;
+            max-width: 90vw;
+            max-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
 
-    .menu .nav-link-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 94px;
-        font-size: 32px;
-        line-height: 32px;
-        font-weight: 500;
-    }
+        .menu .nav-link-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 94px;
+            font-size: 32px;
+            line-height: 32px;
+            font-weight: 500;
+        }
 
-    .menu .nav-link-wrapper .nav-link {
-        transition: color 0.3s ease;
-        color: var(--primary-900);
-    }
+        .menu .nav-link-wrapper .nav-link {
+            transition: color 0.3s ease;
+            color: var(--primary-900);
+        }
 
-    .menu .nav-link-wrapper .nav-link:hover {
-        color: var(--active-500);
+        .menu .nav-link-wrapper .nav-link:hover {
+            color: var(--active-500);
+        }
     }
 }
 
@@ -230,3 +293,4 @@
         }
     }
 }
+

@@ -55,7 +55,7 @@ public class GetHabit : PublicFeature<GetHabitRequest, GetHabitResponse>
                 if (User.Id() == null && progression.IsPublic != true)
                     continue;
 
-                var myReaction = reactions.FirstOrDefault(x => x.Day == progression.Day)?.ReactionType;
+                var myReactions = reactions.Where(x => x.Day == progression.Day).Select(x => x.ReactionType).ToList();
                 var entry = new Timeline(habit.Id,
                     habit.HabitName,
                     null,
@@ -64,7 +64,7 @@ public class GetHabit : PublicFeature<GetHabitRequest, GetHabitResponse>
                     progression.Rating,
                     progression.Review,
                     progression.Reactions,
-                    myReaction);
+                    myReactions);
 
                 timelineEntries.Add(entry);
             }

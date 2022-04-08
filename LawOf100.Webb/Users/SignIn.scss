@@ -1,57 +1,71 @@
 ﻿.signin, .signup {
-    background: #f8f8f8;
-    height: 100vh;
+    background: var(--tertiary-500);
+    padding: 64px 32px;
+    text-align: center;
 
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding-top: 218px;
+    .container {
+        max-width: 350px;
+        margin: 0 auto;
+    }
 
-        h2 {
-            margin: 0;
-            margin-bottom: 8px;
-        }
-
-        .signin-signup {
-            margin: 0;
-            color: #838383;
-            font-size: 16px;
-            line-height: 22px;
-        }
-
-        .email, .password, .confirm-password {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 16px;
-        }
-
-        .confirm-password {
-            margin-bottom: 40px;
-        }
-
-        .btn-primary {
-            width: 109px;
-            height: 42px;
-            border-radius: 5.46px;
-            margin-bottom: 17px;
-        }
-
-        .content-wrapper {
-            color: #838383;
-
-            p.tos-text {
-                font-size: 12px;
-                line-height: 19px;
-                color: #838383;
-                margin: 0;
-            }
+    header {
+        margin-bottom: 32px;
+        h4 {
+            margin-bottom: 12px;
         }
     }
 
-    .section-intro, .content-wrapper {
-        max-width: 362px;
+    button {
+        margin-bottom: 24px;
         width: 100%;
     }
+    
+    .heading, .intro, .localAccount .divider {
+        display: none;
+    }
+
+    #createAccount {
+        display: block;
+    }
+
+    .password-label {
+        position: relative;
+    }
+
+    #forgotPassword {
+        position: absolute;
+        top: 6px;
+        right: 0;
+        font-size: 12px;
+    }
+    
+    .divider {
+        margin: 32px 0;
+        h2 {
+            font: 400 20px/20px 'Clash Display';
+            text-transform: lowercase; 
+        }
+    }
+
+    label[for] {
+        display: block;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+
+    input{
+        width: 100%;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .buttons {
+        text-align: right;
+    }
+
+    #next {
+        width: 50%;
+        text-align: center;
+    }
+        
 }
