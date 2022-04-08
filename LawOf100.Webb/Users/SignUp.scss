@@ -14,7 +14,8 @@
 }
 
 .signup {
-    .helpLink, .givenName_li, .displayName_li {
+    position: relative;
+    .helpLink, .givenName_li, .displayName_li, #cancel {
         display: none;
     }
 
@@ -27,8 +28,18 @@
         justify-content: space-between;
         flex-direction: row-reverse;
 
-        #continue, #cancel{
+        #continue{
             max-width: 35%;
+            text-align: center;
         }
+    }
+
+    .arrow-left{
+        position: absolute;
+        bottom: 15%;
+    }
+
+    .error{
+        margin-bottom: 4px;
     }
 }
