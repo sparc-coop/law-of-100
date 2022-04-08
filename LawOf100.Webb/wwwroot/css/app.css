@@ -970,6 +970,19 @@ nav {
 .signin btn-primary {
   margin-bottom: 0px; }
 
+.signup .helpLink, .signup .givenName_li, .signup .displayName_li {
+  display: none; }
+
+.signup .sendCode {
+  text-align: center; }
+
+.signup buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse; }
+  .signup buttons #continue, .signup buttons #cancel {
+    max-width: 35%; }
+
 .profile {
   text-align: center; }
   .profile h2 {

@@ -12,3 +12,23 @@
         margin-bottom: 0px;
     }
 }
+
+.signup {
+    .helpLink, .givenName_li, .displayName_li {
+        display: none;
+    }
+
+    .sendCode {
+        text-align: center;
+    }
+
+    buttons {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+
+        #continue, #cancel{
+            max-width: 35%;
+        }
+    }
+}
