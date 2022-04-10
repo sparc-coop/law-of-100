@@ -33,6 +33,10 @@
     button {
         position: relative;
     }
+
+    .logo{
+        z-index: 1;
+    }
 }
 
 .logo .box {
@@ -228,7 +232,7 @@
         }
 
         .menu > div {
-            background: lightgrey;
+            background: var(--tertiary-100);
             width: 200vw;
             height: 200vw;
             display: flex;
@@ -257,6 +261,17 @@
             font-size: 32px;
             line-height: 32px;
             font-weight: 500;
+
+            .nav-right {
+                flex-direction: column;
+                gap: 94px;
+                align-items: center;
+                width: 100%;
+
+                button{
+                    width: 100%;
+                }
+            }
         }
 
         .menu .nav-link-wrapper .nav-link {

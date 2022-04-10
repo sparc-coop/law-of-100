@@ -193,6 +193,9 @@ nav .nav-right {
 nav button {
   position: relative;
 }
+nav .logo {
+  z-index: 1;
+}
 
 .logo .box {
   width: 32px;
@@ -362,7 +365,7 @@ nav button {
     justify-content: center;
   }
   .menu-wrapper .menu > div {
-    background: lightgrey;
+    background: var(--tertiary-100);
     width: 200vw;
     height: 200vw;
     display: flex;
@@ -389,6 +392,15 @@ nav button {
     font-size: 32px;
     line-height: 32px;
     font-weight: 500;
+  }
+  .menu-wrapper .menu .nav-link-wrapper .nav-right {
+    flex-direction: column;
+    gap: 94px;
+    align-items: center;
+    width: 100%;
+  }
+  .menu-wrapper .menu .nav-link-wrapper .nav-right button {
+    width: 100%;
   }
   .menu-wrapper .menu .nav-link-wrapper .nav-link {
     transition: color 0.3s ease;
