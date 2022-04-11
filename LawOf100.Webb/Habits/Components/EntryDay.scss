@@ -80,15 +80,19 @@
         }
     }
 
-    #twitter{
+    #twitter {
         margin-right: 6px;
 
-        img{
+        img {
             vertical-align: text-bottom;
         }
     }
 
-    .twitter-share-button:hover{
+    .twitter-share-button {
+        margin: 6px auto 18px;
+    }
+
+    .twitter-share-button:hover {
         color: var(--primary-900);
     }
 }
@@ -172,7 +176,7 @@
     display: none;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 128%;
     background: #626666;
     top: 0;
     left: 0;
@@ -191,10 +195,15 @@
     padding: 8px 12px;
     border: 1px solid var(--primary-900);
     width: 100%;
-    max-width: 594px;
+    max-width: 484px;
     margin: auto;
     text-align: center;
     color: var(--primary-900);
+}
+
+.update-day:hover {
+    border: 1px solid var(--active-500);
+    color: var(--active-500);
 }
 
 @media only screen and (max-width: 768px) {
@@ -202,7 +211,7 @@
         height: 200%;
     }
 
-    .share-popup{
+    .share-popup {
         max-width: 78%;
         width: 100%;
     }

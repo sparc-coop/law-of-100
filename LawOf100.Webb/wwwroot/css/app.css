@@ -193,6 +193,9 @@ nav .nav-right {
 nav button {
   position: relative;
 }
+nav .logo {
+  z-index: 1;
+}
 
 .logo .box {
   width: 32px;
@@ -284,9 +287,137 @@ nav button {
     display: none;
   }
 
+  .menu-wrapper .toggler {
+    position: absolute;
+    top: 0;
+    right: -3px;
+    z-index: 2;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+  }
+  .menu-wrapper .hamburger {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    z-index: 1;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu-wrapper .hamburger > div {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+  }
+  .menu-wrapper .hamburger > div:before, .menu-wrapper .hamburger > div:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+  }
+  .menu-wrapper .hamburger > div:after {
+    top: 10px;
+  }
+  .menu-wrapper .toggler:checked + .hamburger > div {
+    transform: rotate(135deg);
+  }
+  .menu-wrapper .toggler:checked + .hamburger > div:before,
+.menu-wrapper .toggler:checked + .hamburger > div:after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  .menu-wrapper .toggler:checked:hover + .hamburger > div {
+    transform: rotate(225deg);
+  }
+  .menu-wrapper .toggler:checked ~ .menu {
+    visibility: visible;
+  }
+  .menu-wrapper .toggler:checked ~ .menu > div {
+    margin-top: 0px;
+    transition-duration: 0.8s;
+  }
+  .menu-wrapper .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+  .menu-wrapper .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .menu-wrapper .menu > div {
+    background: var(--tertiary-100);
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: -2020px;
+    transition: all 0.8s ease;
+    z-index: 100001;
+  }
+  .menu-wrapper .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .menu-wrapper .menu .nav-link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 94px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 500;
+  }
+  .menu-wrapper .menu .nav-link-wrapper .nav-right {
+    flex-direction: column;
+    gap: 94px;
+    align-items: center;
+    width: 100%;
+  }
+  .menu-wrapper .menu .nav-link-wrapper .nav-right button {
+    width: 100%;
+  }
+  .menu-wrapper .menu .nav-link-wrapper .nav-link {
+    transition: color 0.3s ease;
+    color: var(--primary-900);
+  }
+  .menu-wrapper .menu .nav-link-wrapper .nav-link:hover {
+    color: var(--active-500);
+  }
+}
+@media only screen and (max-width: 580px) {
+  .desktop-nav {
+    display: none;
+  }
+
   .mobile-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 32px 40px 80px 40px;
     position: relative;
@@ -306,8 +437,7 @@ nav button {
 }
 .home .header {
   max-width: 70%;
-  margin-bottom: 54px;
-  margin: auto;
+  margin: 54px auto;
 }
 .home .header p {
   max-width: 60%;
@@ -319,7 +449,7 @@ nav button {
   margin-top: 50px;
 }
 .home .the-law {
-  margin-bottom: 178px;
+  margin-bottom: 260px;
 }
 .home .the-law h6 {
   margin-bottom: 2px;
@@ -332,10 +462,13 @@ nav button {
   margin: auto;
 }
 .home .how-to-start {
-  margin-bottom: 190px;
+  margin-bottom: 260px;
 }
 .home .how-to-start .header-wrapper {
-  margin-bottom: 72px;
+  margin-bottom: 100px;
+}
+.home .how-to-start .header-wrapper h6 {
+  margin-bottom: 4px;
 }
 .home .how-to-start .step-wrapper {
   display: flex;
@@ -346,15 +479,15 @@ nav button {
   margin: auto;
 }
 .home .how-to-start .step-wrapper .steps p.xlarge {
-  margin-bottom: 16px;
-  margin-top: 24px;
+  margin-top: 12px;
+  font-weight: 500;
 }
 .home .how-to-start .step-wrapper .steps p.medium {
   max-width: 76%;
   margin: auto;
 }
 .home .overview {
-  margin-bottom: 206px;
+  margin-bottom: 260px;
 }
 .home .overview h4 {
   margin-bottom: 26px;
@@ -365,7 +498,7 @@ nav button {
 }
 .home .law-help-bg {
   background: var(--tertiary-700);
-  padding: 164px 0 214px;
+  padding: 260px 0;
 }
 .home .law-help h2 {
   margin-bottom: 32px;
@@ -385,8 +518,8 @@ nav button {
   margin: auto;
 }
 .home .law-help .law-features .feature p.xlarge {
-  margin-top: 32px;
-  margin-bottom: 16px;
+  margin-top: 16px;
+  font-weight: 500;
 }
 .home .law-help .law-features .feature p {
   max-width: 72%;
@@ -402,7 +535,7 @@ nav button {
   margin: auto;
 }
 .home .start-day-one {
-  margin-top: 193px;
+  margin-top: 260px;
 }
 .home .cut-off {
   max-height: 350px;
@@ -410,9 +543,18 @@ nav button {
   overflow: hidden;
 }
 
+.start-button a {
+  color: #CED1C9;
+}
+
+.start-button:hover a {
+  color: var(--active-500);
+}
+
 @media only screen and (max-width: 580px) {
   .home .header {
     max-width: 90%;
+    margin: auto;
   }
   .home .header p {
     max-width: 60%;
@@ -421,6 +563,9 @@ nav button {
   }
   .home .law p {
     max-width: 72%;
+  }
+  .home .how-to-start .header-wrapper {
+    margin-bottom: 40px;
   }
   .home .how-to-start .step-wrapper {
     display: flex;
@@ -431,27 +576,43 @@ nav button {
     width: 100%;
   }
   .home .how-to-start .step-wrapper .steps p.medium {
-    width: 44%;
+    width: 80%;
+  }
+  .home .law-help p {
+    max-width: 80%;
   }
   .home .law-help .law-features {
     flex-direction: column;
-    row-gap: 50px;
+    row-gap: 72px;
+    margin-top: 40px;
+  }
+  .home .law-help .law-features .feature {
+    max-width: 80%;
+  }
+  .home .law-help .law-features .feature p {
+    max-width: 100%;
+  }
+  .home .law-help .law-features .feature:nth-child(n+3) {
+    margin-top: 0px;
   }
   .home .the-law p, .home .overview p, .home law-help p {
     max-width: 80%;
   }
+  .home .calendar-container, .home .law, .home .how-to-start, .home .law-help {
+    margin-bottom: 120px;
+  }
+  .home .cut-off {
+    margin-bottom: 0px;
+  }
 
   .start-button {
-    margin: 32px 0px 64px;
+    margin: 32px 0px 0px 0px;
   }
   .start-button a {
     color: #CED1C9;
   }
 }
 @media only screen and (max-width: 481px) {
-  .home .how-to-start .step-wrapper .steps p.medium {
-    width: 80%;
-  }
   .home .law-help .law-features .feature {
     max-width: 100%;
   }
@@ -522,6 +683,7 @@ nav button {
 }
 .habit-index .timeline {
   grid-row: 3;
+  max-width: 484px;
 }
 .habit-index button.secondary {
   width: 100%;
@@ -747,6 +909,9 @@ nav button {
 .entry-day #twitter img {
   vertical-align: text-bottom;
 }
+.entry-day .twitter-share-button {
+  margin: 6px auto 18px;
+}
 .entry-day .twitter-share-button:hover {
   color: var(--primary-900);
 }
@@ -819,7 +984,7 @@ nav button {
   display: none;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 128%;
   background: #626666;
   top: 0;
   left: 0;
@@ -837,10 +1002,15 @@ nav button {
   padding: 8px 12px;
   border: 1px solid var(--primary-900);
   width: 100%;
-  max-width: 594px;
+  max-width: 484px;
   margin: auto;
   text-align: center;
   color: var(--primary-900);
+}
+
+.update-day:hover {
+  border: 1px solid var(--active-500);
+  color: var(--active-500);
 }
 
 @media only screen and (max-width: 768px) {
@@ -917,6 +1087,22 @@ nav button {
   }
   100% {
     transform: scale(1, 1) translate(-50%, -50%);
+  }
+}
+@media only screen and (max-width: 480px) {
+  .calendar-grid {
+    grid-template: repeat(10, 32px)/repeat(10, 32px);
+    grid-gap: 0px;
+    padding: 8px;
+  }
+
+  .calendar-grid .day-current::before {
+    background-size: 40px 40px;
+  }
+
+  .calendar-grid > * {
+    line-height: 32px;
+    font-size: 14px;
   }
 }
 .communityTimeline p {
@@ -1074,6 +1260,32 @@ nav button {
   margin-bottom: 0px;
 }
 
+.signup {
+  position: relative;
+}
+.signup .helpLink, .signup .givenName_li, .signup .displayName_li, .signup #cancel {
+  display: none;
+}
+.signup .sendCode {
+  text-align: center;
+}
+.signup buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+.signup buttons #continue {
+  max-width: 35%;
+  text-align: center;
+}
+.signup .arrow-left {
+  position: absolute;
+  bottom: 15%;
+}
+.signup .error {
+  margin-bottom: 4px;
+}
+
 .profile {
   text-align: center;
 }
@@ -1184,7 +1396,7 @@ button.cancel-button:hover:hover {
   display: none;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 580px) {
   .mobile {
     display: inline-flex;
   }

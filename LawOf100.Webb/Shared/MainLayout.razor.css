@@ -13,7 +13,7 @@ main {
 }
 
 .main{
-    min-height: 75vh;
+    min-height: 77vh;
 }
 
 .sidebar {
@@ -42,6 +42,10 @@ main {
 #app > footer div a {
     color: var(--primary-500);
 }
+
+    #app > footer div a:hover {
+        color: var(--active-500);
+    }
 
     #app > footer .logo {
         line-height: 0;
@@ -124,5 +128,18 @@ main {
     .top-row, article {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
+    }
+}
+
+@media only screen and (max-width: 580px) {
+    #app > footer .footer-left {
+        display: none;
+    }
+
+    #app > footer .logo {
+        line-height: 0;
+        width: auto;
+        display: flex;
+        justify-content: center;
     }
 }

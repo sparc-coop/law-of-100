@@ -218,3 +218,29 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+
+
+.signup .helpLink, .givenName_li, .displayName_li, #cancel {
+    display: none;
+}
+
+.signup .sendCode {
+    text-align: center;
+}
+
+.signup .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.signup .buttons #continue {
+    max-width: 35%;
+    text-align: center;
+}
+
+.signup .arrow-left {
+    position: absolute;
+    bottom: 18%;
+}

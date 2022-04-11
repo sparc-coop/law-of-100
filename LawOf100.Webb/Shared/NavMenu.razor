@@ -45,11 +45,6 @@
 </nav>
 
 <nav class="mobile-nav">
-    <div class="nav-left">
-        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
-            Home
-        </NavLink>
-    </div>
     <div class="logo">
         <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
         <div class="box">
@@ -59,23 +54,50 @@
         </div>
         </NavLink>
     </div>
-    <AuthorizeView>
-        <NotAuthorized>
-            <div class="nav-right">
-                <NavLink class="nav-link" href="@ReturnUrl">
-                    Sign In
-                </NavLink>
-            </div>
-        </NotAuthorized>
+    <div class="menu-wrapper">
+        <input type="checkbox" class="toggler" />
+        <div class="hamburger"><div></div></div>
+        <div class="menu">
+            <div>
+                <div>
+                    <div class="nav-link-wrapper">
+                        <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                            Home
+                        </NavLink>
+                        <NavLink class="nav-link" href="community">
+                            Community Timeline
+                        </NavLink>
 
-        <Authorized>
-            <div class="nav-right">
-                <button @onclick=BeginSignOut>
-                    Log Out
-                </button>
+                        <AuthorizeView>
+                            <NotAuthorized>
+                                    <NavLink class="nav-link" href="@ReturnUrl">
+                                        Sign In
+                                    </NavLink>
+                                    <NavLink class="nav-link" href="@ReturnUrl">
+                                        Create Account
+                                    </NavLink>
+                            </NotAuthorized>
+
+                            <Authorized>
+                                <div class="nav-right">
+                                    <NavLink class="nav-link" href="/habit">
+                                        Daily Tracker
+                                    </NavLink>
+                                    <NavLink class="nav-link" href="/profile">
+                                        Profile
+                                    </NavLink>
+                                    <button @onclick=BeginSignOut>
+                                        Log Out
+                                    </button>
+                                </div>
+                            </Authorized>
+                        </AuthorizeView>
+
+                    </div>
+                </div>
             </div>
-        </Authorized>
-    </AuthorizeView>
+        </div>
+    </div>
 </nav>
 
 <figure class="big-star">
