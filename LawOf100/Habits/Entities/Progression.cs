@@ -1,6 +1,4 @@
-﻿using Sparc.Core;
-
-namespace LawOf100.Features.Habits.Entities;
+﻿namespace LawOf100.Habits;
 
 public class Progression
 {

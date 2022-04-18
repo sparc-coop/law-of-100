@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "LawOf100.Features",
+    "title": "LawOf100",
     "version": "v1"
   },
   "paths": {
@@ -221,16 +221,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/api/GetAccount": {
@@ -290,19 +281,10 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
-    "/publicapi/GetCommunityTimeline": {
+    "/api/GetCommunityTimeline": {
       "post": {
         "tags": [
           "GetCommunityTimeline"
@@ -340,7 +322,7 @@
         }
       }
     },
-    "/publicapi/GetHabit": {
+    "/api/GetHabit": {
       "post": {
         "tags": [
           "GetHabit"
@@ -457,16 +439,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/api/TrackProgress": {
@@ -526,16 +499,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/api/UpdateAccount": {
@@ -595,16 +559,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     }
   },
@@ -1056,14 +1011,6 @@
           }
         },
         "additionalProperties": false
-      }
-    },
-    "securitySchemes": {
-      "bearer": {
-        "type": "http",
-        "description": "Enter JWT Bearer token **_only_**",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   }

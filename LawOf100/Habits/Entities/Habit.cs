@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace LawOf100.Features.Habits.Entities;
+namespace LawOf100.Habits;
 
 public class Habit : Root<string>
 {

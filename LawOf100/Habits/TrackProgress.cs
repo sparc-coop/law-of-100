@@ -1,9 +1,8 @@
-﻿using LawOf100.Features.Habits.Entities;
-using Sparc.Core;
-using Sparc.Features;
+﻿using Sparc.Core;
+using Sparc.Kernel;
 using Sparc.Notifications.Azure;
 
-namespace LawOf100.Features.Habits;
+namespace LawOf100.Habits;
 
 public record TrackProgressRequest(string HabitId, int Day, bool IsSuccessful, decimal Rating, string? Review, bool IsPublic);
 public class TrackProgress : Feature<TrackProgressRequest, Habit>

@@ -1,8 +1,8 @@
-﻿using LawOf100.Features.Habits.Entities;
-using LawOf100.Features.Users.Entities;
+﻿using LawOf100.Habits;
+using LawOf100.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace LawOf100.Features._Plugins;
+namespace LawOf100._Plugins;
 
 public class LawOf100Context : DbContext
 {

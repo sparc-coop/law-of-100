@@ -8,7 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<OpenApiReference Include="..\LawOf100.Web\swagger.json" CodeGenerator="NSwagCSharp" Namespace="LawOf100.Features" ClassName="LawOf100Api" Link="OpenAPIs\swagger.json" />
+		<OpenApiReference Include="..\LawOf100\swagger.json" CodeGenerator="NSwagCSharp" Namespace="LawOf100.Features" ClassName="LawOf100Api" Link="OpenAPIs\swagger.json" />
 	</ItemGroup>
 
 	<ItemGroup>

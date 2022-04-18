@@ -1,9 +1,8 @@
-﻿using LawOf100.Features.Habits.Entities;
-using LawOf100.Features.Users.Entities;
+﻿using LawOf100.Users;
 using Sparc.Core;
-using Sparc.Features;
+using Sparc.Kernel;
 
-namespace LawOf100.Features.Habits;
+namespace LawOf100.Habits;
 
 public record Timeline(string HabitId, string HabitName, string? Username, int Day, DateTime ActualDate, decimal? Rating, string? Review, List<ReactionCount?> Reactions, List<string> ActiveReactions);
 public record TimelineDay(string DayName, List<Timeline> Entries);

@@ -1,11 +1,11 @@
-using LawOf100.Features._Plugins;
+using LawOf100._Plugins;
 using Sparc.Authentication.AzureADB2C;
 using Sparc.Core;
-using Sparc.Features;
+using Sparc.Kernel;
 using Sparc.Notifications.Azure;
 using Sparc.Plugins.Database.Cosmos;
 
-namespace LawOf100.Features;
+namespace LawOf100;
 
 public class Startup
 {

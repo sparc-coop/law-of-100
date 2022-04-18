@@ -1,9 +1,8 @@
-﻿using LawOf100.Features.Habits.Entities;
-using LawOf100.Features.Users.Entities;
+﻿using LawOf100.Users;
 using Sparc.Core;
-using Sparc.Features;
+using Sparc.Kernel;
 
-namespace LawOf100.Features.Habits;
+namespace LawOf100.Habits;
 
 public record GetHabitRequest(string Username, string HabitId);
 public record GetHabitResponse(Habit Habit, List<Timeline> Timeline, bool IsEditable, DateTime? NextEditableDate);

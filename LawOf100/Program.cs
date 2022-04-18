@@ -1,4 +1,4 @@
-namespace LawOf100.Features;
+namespace LawOf100;
 
 public class Program
 {

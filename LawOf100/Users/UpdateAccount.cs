@@ -1,8 +1,7 @@
-﻿using LawOf100.Features.Users.Entities;
-using Sparc.Core;
-using Sparc.Features;
+﻿using Sparc.Core;
+using Sparc.Kernel;
 
-namespace LawOf100.Features.Users;
+namespace LawOf100.Users;
 
 public record UpdateAccountRequest(string Name, string? ShortIntro, string Nickname);
 public class UpdateAccount : Feature<UpdateAccountRequest, Account>

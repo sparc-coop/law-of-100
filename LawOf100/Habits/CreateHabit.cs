@@ -1,9 +1,8 @@
-﻿using LawOf100.Features.Habits.Entities;
-using LawOf100.Features.Users.Entities;
+﻿using LawOf100.Users;
 using Sparc.Core;
-using Sparc.Features;
+using Sparc.Kernel;
 
-namespace LawOf100.Features.Habits;
+namespace LawOf100.Habits;
 
 public record CreateHabitRequest(string HabitName, int RepeatEveryXHours, double FudgeFactor);
 public class CreateHabit : Feature<CreateHabitRequest, Habit>

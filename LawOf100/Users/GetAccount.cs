@@ -1,9 +1,8 @@
-﻿using LawOf100.Features.Users.Entities;
-using Sparc.Core;
-using Sparc.Features;
+﻿using Sparc.Core;
+using Sparc.Kernel;
 using Sparc.Notifications.Azure;
 
-namespace LawOf100.Features.Users;
+namespace LawOf100.Users;
 
 public class GetAccount : Feature<Device, Account>
 {

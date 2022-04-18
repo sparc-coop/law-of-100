@@ -1,6 +1,6 @@
 ﻿using Sparc.Core;
 
-namespace LawOf100.Features.Users.Entities;
+namespace LawOf100.Users;
 
 public class Account : Root<string>
 {
