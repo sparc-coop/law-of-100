@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "LawOf100.Web": {
+    "LawOf100": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

@@ -21,7 +21,7 @@
 
 @inject IJSRuntime Js
 @code {
-    [Parameter] public LawOf100.Features.Timeline TimelineEntry { get; set; }
+    [Parameter] public LawOf100.Timeline TimelineEntry { get; set; }
     [Parameter] public string? ReactionType { get; set; }
     [Parameter] public EventCallback<ToggleReactionResponse> ReactionChanged { get; set; }
     int Count;

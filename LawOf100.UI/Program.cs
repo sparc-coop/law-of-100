@@ -1,8 +1,7 @@
-using LawOf100.Features;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Sparc.Platforms.Web;
 
-namespace LawOf100.Web;
+namespace LawOf100.UI;
 
 public class Program
 {
