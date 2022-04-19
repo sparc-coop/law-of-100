@@ -242,5 +242,10 @@ ul {
 
 .signup .arrow-left {
     position: absolute;
-    bottom: 18%;
+    bottom: 12%;
+}
+
+.signup .verificationControlContent .buttons {
+    display: block;
+    text-align: center;
 }
