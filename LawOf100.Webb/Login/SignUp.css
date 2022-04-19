@@ -235,6 +235,11 @@ ul {
     flex-direction: row-reverse;
 }
 
+.signup #emailVerificationControl .buttons {
+    display: block;
+    text-align: center;
+}
+
 .signup .buttons #continue {
     max-width: 35%;
     text-align: center;
