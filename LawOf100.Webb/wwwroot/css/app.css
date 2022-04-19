@@ -1269,6 +1269,10 @@ nav .logo {
 .signup .sendCode {
   text-align: center;
 }
+.signup #emailVerificationControl .buttons {
+  display: block;
+  text-align: center;
+}
 .signup buttons {
   display: flex;
   justify-content: space-between;

@@ -15,6 +15,7 @@
 
 .signup {
     position: relative;
+
     .helpLink, .givenName_li, .displayName_li, #cancel {
         display: none;
     }
@@ -23,23 +24,28 @@
         text-align: center;
     }
 
+    #emailVerificationControl .buttons {
+        display: block;
+        text-align: center;
+    }
+
     buttons {
         display: flex;
         justify-content: space-between;
         flex-direction: row-reverse;
 
-        #continue{
+        #continue {
             max-width: 35%;
             text-align: center;
         }
     }
 
-    .arrow-left{
+    .arrow-left {
         position: absolute;
         bottom: 15%;
     }
 
-    .error{
+    .error {
         margin-bottom: 4px;
     }
 }
