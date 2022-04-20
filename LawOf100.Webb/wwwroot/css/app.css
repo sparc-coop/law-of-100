@@ -543,12 +543,17 @@ nav .logo {
   overflow: hidden;
 }
 
+.start-button {
+  max-width: 248px;
+  margin: auto;
+}
 .start-button a {
   color: #CED1C9;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .start-button:hover a {
-  color: var(--active-500);
+  background: var(--active-500);
 }
 
 @media only screen and (max-width: 580px) {
@@ -606,7 +611,7 @@ nav .logo {
   }
 
   .start-button {
-    margin: 32px 0px 0px 0px;
+    margin: 32px auto 0px auto;
   }
   .start-button a {
     color: #CED1C9;
