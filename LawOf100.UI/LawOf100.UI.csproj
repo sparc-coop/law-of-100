@@ -24,4 +24,13 @@
 		<PackageReference Include="Sparc.UI" Version="7.0.0-pre.6" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Update="Home\Index.razor">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Update="Home\Privacy.razor">
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
 </Project>

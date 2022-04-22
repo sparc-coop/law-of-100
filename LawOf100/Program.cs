@@ -1,16 +1,15 @@
-using LawOf100;
 using LawOf100._Plugins;
-
-#if !DEBUG
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using LawOf100.UI;
-#endif
 
 using Sparc.Authentication.AzureADB2C;
 using Sparc.Kernel;
 using Sparc.Notifications.Azure;
+using Sparc.Core;
+using Sparc.Plugins.Database.Cosmos;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args).Sparcify();
 
@@ -21,19 +20,23 @@ builder.Services
     .AddAzureADB2CAuthentication(builder.Configuration)
     .AddAzurePushNotifications(builder.Configuration.GetSection("Notifications"));
 
-#if !DEBUG
 builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
 builder.Services.AddScoped<SignOutSessionStateManager>();
 
-var client = builder.Services.AddHttpClient("api");
+var apiUrl = builder.Configuration["BaseUrl"] + "/";
+var client = builder.Services.AddHttpClient("api").ConfigureHttpClient(x => x.BaseAddress = new Uri(apiUrl));
 
 builder.Services.AddScoped(x =>
     (LawOf100Api)Activator.CreateInstance(typeof(LawOf100Api),
-    builder.WebHost.GetSetting(WebHostDefaults.ServerUrlsKey),
+    "",
     x.GetService<IHttpClientFactory>().CreateClient("api")));
-#endif
+
+builder.Services.Replace(ServiceDescriptor.Scoped(typeof(IRepository<>), typeof(CosmosDbRepository<>)));
+
 
 var app = builder.Build().Sparcify();
+
+app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
 app.Run();

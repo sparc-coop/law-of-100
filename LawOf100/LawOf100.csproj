@@ -11,17 +11,10 @@
   <ItemGroup>
 	  <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
 	  <PackageReference Include="Sparc.Core" Version="6.2.4" />
-	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.7" />
-	  <PackageReference Include="Sparc.Kernel" Version="7.0.0-pre.1.13" />
+	  <PackageReference Include="Sparc.Database.Cosmos" Version="7.0.0-pre.1" />
+	  <PackageReference Include="Sparc.Kernel" Version="7.0.0-pre.1.15" />
 	  <PackageReference Include="Sparc.Notifications.Azure" Version="6.0.11" />
-   </ItemGroup>
-
-	<ItemGroup Condition="'$(Configuration)' != 'Release'">
-		<Content Remove="Pages/**" />
-	</ItemGroup>
-	
-	<ItemGroup Condition="'$(Configuration)' == 'Release'">
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.4" />
-		<ProjectReference Include="..\LawOf100.Platforms.Web\LawOf100.Platforms.Web.csproj" />
-	</ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.4" />
+	  <ProjectReference Include="..\LawOf100.Platforms.Web\LawOf100.Platforms.Web.csproj" />
+  </ItemGroup>
 </Project>

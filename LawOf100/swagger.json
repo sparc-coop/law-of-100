@@ -221,7 +221,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
     "/api/GetAccount": {
@@ -281,10 +290,19 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
-    "/api/GetCommunityTimeline": {
+    "/publicapi/GetCommunityTimeline": {
       "post": {
         "tags": [
           "GetCommunityTimeline"
@@ -322,7 +340,7 @@
         }
       }
     },
-    "/api/GetHabit": {
+    "/publicapi/GetHabit": {
       "post": {
         "tags": [
           "GetHabit"
@@ -439,7 +457,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
     "/api/TrackProgress": {
@@ -499,7 +526,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     },
     "/api/UpdateAccount": {
@@ -559,7 +595,16 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "bearer": [
+              "Policy:",
+              "Roles:",
+              "AuthenticationSchemes:Bearer"
+            ]
+          }
+        ]
       }
     }
   },
@@ -1011,6 +1056,14 @@
           }
         },
         "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "description": "Enter JWT Bearer token **_only_**",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

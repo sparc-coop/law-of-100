@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
-    <PackageReference Include="Sparc.Platforms.Web" Version="7.0.0-pre.4" />
+    <PackageReference Include="Sparc.Platforms.Web" Version="7.0.0-pre.6" />
   </ItemGroup>
 
   <ItemGroup>
