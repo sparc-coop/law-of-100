@@ -12,7 +12,7 @@
         </div>
 
         <div class="start-button">
-            <a class="primary-button" href="/habit">Start your 100 days</a>
+            <a class="primary-button" href="@ReturnUrl">Start your 100 days</a>
         </div>
 
         <div class="calendar-container">
@@ -112,7 +112,7 @@
             </div>
 
             <div class="start-button">
-                <a class="primary-button" href="/habit">Start your 100 days</a>
+                <a class="primary-button" href="@ReturnUrl">Start your 100 days</a>
             </div>
 
             <div class="calendar-container cut-off">
@@ -122,7 +122,7 @@
     </div>
 </section>
 
-
+@inject SignOutSessionStateManager SignOutManager
 @code {
     Habit ExampleHabit = new() { CurrentDay = 1 };
     Habit StateHabit = new() { CurrentDay = 1 };
@@ -170,4 +170,13 @@
     {
         Timer!.Dispose();
     }
+
+    string ReturnUrl => "/authentication/login?returnUrl=" + Uri.EscapeDataString(Nav.ToAbsoluteUri("/habit").AbsoluteUri);
+
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Nav.NavigateTo("authentication/logout");
+    }
+
 }
