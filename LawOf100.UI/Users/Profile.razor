@@ -51,7 +51,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        ExistingAccount = await Api.GetAccountAsync(new LawOf100.Device
+        ExistingAccount = await Api.GetAccountAsync(new LawOf100.UI.Device
             {
                 Id = Device.Id,
                 PushToken = Device.PushToken,

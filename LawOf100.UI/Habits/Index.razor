@@ -61,7 +61,7 @@
     [Parameter] public string? Username { get; set; }
     [Parameter] public string? HabitId { get; set; }
     Habit? Habit { get; set; } = new();
-    ICollection<LawOf100.Timeline>? TimelineEntries { get; set; }
+    ICollection<LawOf100.UI.Timeline>? TimelineEntries { get; set; }
     Account? Account;
     bool IsAuthenticated;
     bool IsCreating;
@@ -76,7 +76,7 @@
 
         if (IsAuthenticated)
         {
-            Account = await Api.GetAccountAsync(new LawOf100.Device
+            Account = await Api.GetAccountAsync(new LawOf100.UI.Device
                 {
                     Id = Device.Id,
                     PushToken = Device.PushToken,

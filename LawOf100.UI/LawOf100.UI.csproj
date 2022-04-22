@@ -8,12 +8,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<OpenApiReference Include="..\LawOf100\swagger.json" CodeGenerator="NSwagCSharp" Namespace="LawOf100" ClassName="LawOf100Api" Link="OpenAPIs\swagger.json">
-		</OpenApiReference>
+	  <OpenApiReference Include="..\LawOf100\swagger.json" CodeGenerator="NSwagCSharp" Namespace="LawOf100.UI" ClassName="LawOf100Api" Link="OpenAPIs\swagger.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Sparc.UI" Version="7.0.0-pre.1" />
+		<PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Sparc.UI" Version="7.0.0-pre.6" />
 	</ItemGroup>
 
 </Project>
