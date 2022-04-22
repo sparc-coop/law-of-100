@@ -26,8 +26,8 @@ public class GetAccount : Feature<Device, Account>
 
         account.RegisterDevice(device);
 
-        if (device.Id != null && device.PushToken != null)
-            await Notifications.RegisterAsync(User.Id(), device);
+        //if (device.Id != null && device.PushToken != null)
+        //    await Notifications.RegisterAsync(User.Id(), device);
 
         await Accounts.UpdateAsync(account);
 

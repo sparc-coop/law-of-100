@@ -26,16 +26,13 @@
     </AuthorizeView>
 </div>
 
-
-@inject SignOutSessionStateManager SignOutManager
-
 @code{
     bool showMenu = false;
 
     private async Task BeginLogout(MouseEventArgs args)
     {
-        await SignOutManager.SetSignOutState();
-        Nav.NavigateTo("authentication/logout");
+        //await SignOutManager.SetSignOutState();
+        //Nav.NavigateTo("authentication/logout");
     }
 
     private void ToggleMenu()

@@ -21,7 +21,7 @@ public class ToggleReaction : Feature<Reaction, ToggleReactionResponse>
         var reactions = Reactions.Query.Where(x => x.UserId == User.Id() && x.HabitId == request.HabitId && x.Day == request.Day);
         var reaction = reactions.FirstOrDefault(x => x.ReactionType == request.ReactionType);
 
-        var progression = habit.Progressions.First(x => x.Day == request.Day);
+        var progression = habit!.Progressions.First(x => x.Day == request.Day);
         if (reaction == null)
         {
             reaction = new(User.Id(), request.HabitId, request.Day, request.ReactionType);

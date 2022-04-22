@@ -7,21 +7,19 @@
     <UserSecretsId>553d6ac6-0ce4-400c-b8e9-e102cab284e1</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.kernel\7.0.0-pre.1\contentFiles\any\net6.0\BrowserDebugHost.dll" />
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.kernel\7.0.0-pre.1\contentFiles\any\net6.0\BrowserDebugHost.runtimeconfig.json" />
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.kernel\7.0.0-pre.1\contentFiles\any\net6.0\BrowserDebugProxy.dll" />
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.kernel\7.0.0-pre.1\contentFiles\any\net6.0\Microsoft.CodeAnalysis.CSharp.dll" />
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.kernel\7.0.0-pre.1\contentFiles\any\net6.0\Microsoft.CodeAnalysis.dll" />
-    <Content Remove="C:\Users\josep\.nuget\packages\sparc.kernel\7.0.0-pre.1\contentFiles\any\net6.0\Newtonsoft.Json.dll" />
-  </ItemGroup>
 
   <ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.4" />
 	  <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
 	  <PackageReference Include="Sparc.Core" Version="6.2.4" />
 	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.7" />
-	  <PackageReference Include="Sparc.Kernel" Version="7.0.0-pre.1" />
+	  <PackageReference Include="Sparc.Kernel" Version="7.0.0-pre.1.8" />
 	  <PackageReference Include="Sparc.Notifications.Azure" Version="6.0.11" />
+   </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\LawOf100.UI\LawOf100.UI.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using LawOf100.Habits;
-using LawOf100.Users;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace LawOf100._Plugins;
 

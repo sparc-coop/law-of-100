@@ -8,14 +8,14 @@ public record CreateHabitRequest(string HabitName, int RepeatEveryXHours, double
 public class CreateHabit : Feature<CreateHabitRequest, Habit>
 {
 
-    public CreateHabit(IRepository<Habit> habits, IRepository<Account> accounts)
+    public CreateHabit(IRepository<Habit> habits, IRepository<Users.Account> accounts)
     {
         Habits = habits;
         Accounts = accounts;
     }
 
     public IRepository<Habit> Habits { get; }
-    public IRepository<Account> Accounts { get; }
+    public IRepository<Users.Account> Accounts { get; }
 
     public override async Task<Habit> ExecuteAsync(CreateHabitRequest request)
     {
