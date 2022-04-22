@@ -5,6 +5,7 @@ using LawOf100._Plugins;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using LawOf100.UI;
 #endif
 
 using Sparc.Authentication.AzureADB2C;
@@ -33,5 +34,6 @@ builder.Services.AddScoped(x =>
 #endif
 
 var app = builder.Build().Sparcify();
+app.UseStaticFiles();
 
 app.Run();
