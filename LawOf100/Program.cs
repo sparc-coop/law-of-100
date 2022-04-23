@@ -22,6 +22,7 @@ builder.Services
 
 builder.Services.AddScoped<AuthenticationStateProvider, ServerAuthenticationStateProvider>();
 builder.Services.AddScoped<SignOutSessionStateManager>();
+builder.Services.AddScoped<ApiCache>();
 
 var apiUrl = builder.Configuration["BaseUrl"] + "/";
 var client = builder.Services.AddHttpClient("api").ConfigureHttpClient(x => x.BaseAddress = new Uri(apiUrl));

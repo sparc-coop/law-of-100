@@ -5,5 +5,6 @@ using Sparc.Platforms.Web;
 var builder = WebAssemblyHostBuilder.CreateDefault(args).Sparcify();
 
 builder.AddB2CApi<LawOf100Api>(builder.Configuration["ApiUrl"]);
+builder.Services.AddScoped<ApiCache>();
 
 await builder.Build().RunAsync();

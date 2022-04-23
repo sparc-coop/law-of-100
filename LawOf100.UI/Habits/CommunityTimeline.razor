@@ -48,6 +48,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        TimelineDays = await Api.GetCommunityTimelineAsync();
+        TimelineDays = await Cache.Resolve(Api.GetCommunityTimelineAsync);
     }
 }
