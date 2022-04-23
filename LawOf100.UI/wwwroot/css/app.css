@@ -1324,6 +1324,11 @@ nav .logo {
 }
 
 /*Global Styles*/
+.sparc-app-prerendered *, .sparc-app-prerendered *::before {
+  transition: none !important;
+  animation: none !important;
+}
+
 body {
   background: #CED1C9;
   overflow-x: hidden;

@@ -1,3 +1,25 @@
-﻿<Sparc.Platforms.Web.SparcApp 
-        MainLayout="typeof(LawOf100.UI.Shared.MainLayout)" 
-        Startup="typeof(Program)" />
+﻿@using Microsoft.JSInterop;
+
+<div class="sparc-app">
+    <Sparc.Platforms.Web.SparcApp 
+            MainLayout="typeof(LawOf100.UI.Shared.MainLayout)" 
+            Startup="typeof(Program)" />
+</div>
+
+@inject IJSRuntime Js
+@inject NavigationManager Nav
+
+@code {
+    protected override void OnInitialized()
+    {
+        Nav.LocationChanged += async (sender, e) => await Js.InvokeVoidAsync("isPrerendered", false);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Js.InvokeVoidAsync("isPrerendered", true);
+        }
+    }
+}

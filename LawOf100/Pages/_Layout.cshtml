@@ -65,6 +65,12 @@
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
     <script>
         getElementRectangle = (element) => { return element.getBoundingClientRect(); };
+        isPrerendered = (is) => { 
+            if (is)
+                document.getElementsByClassName('sparc-app')[0].classList.add('sparc-app-prerendered');
+            else 
+                document.getElementsByClassName('sparc-app')[0].classList.remove('sparc-app-prerendered');
+        };
     </script>
 
     <script type="module">
