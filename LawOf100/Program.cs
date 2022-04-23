@@ -10,6 +10,8 @@ using Sparc.Notifications.Azure;
 using Sparc.Core;
 using Sparc.Plugins.Database.Cosmos;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Sparc.Platforms.Web;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args).Sparcify();
 
@@ -33,7 +35,8 @@ builder.Services.AddScoped(x =>
     x.GetService<IHttpClientFactory>().CreateClient("api")));
 
 builder.Services.Replace(ServiceDescriptor.Scoped(typeof(IRepository<>), typeof(CosmosDbRepository<>)));
-
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddScoped<Sparc.Core.Device, WebDevice>();
 
 var app = builder.Build().Sparcify();
 
