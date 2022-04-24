@@ -544,7 +544,7 @@ nav .logo {
 }
 
 .start-button {
-  max-width: 248px;
+  max-width: 300px;
   margin: auto;
 }
 .start-button a {
@@ -686,6 +686,14 @@ nav .logo {
 .habit-index .new-habit-animation .create-habit .container {
   opacity: 0;
 }
+.habit-index .is-precreated .create-habit {
+  max-height: 16px;
+  z-index: -1;
+}
+.habit-index .is-precreated .container {
+  transition: none;
+  opacity: 0;
+}
 .habit-index .timeline {
   grid-row: 3;
   max-width: 484px;
@@ -698,10 +706,17 @@ nav .logo {
 }
 @media only screen and (max-width: 768px) {
   .habit-index .entry-day-animation .entry-day {
-    transition: max-width 1s ease-out !important;
-    max-width: 450px;
+    transition: opacity 0.75s ease-in !important;
+    max-width: 768px;
     opacity: 1;
-    grid-row: 3;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    padding: 32px;
+    background-color: var(--tertiary-500);
+    z-index: 100000;
     margin: 0 auto;
     height: auto;
   }

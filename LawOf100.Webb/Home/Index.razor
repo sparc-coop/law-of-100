@@ -12,7 +12,14 @@
         </div>
 
         <div class="start-button">
-            <a class="primary-button" href="@ReturnUrl">Start your 100 days</a>
+            @if (IsAuthenticated)
+            {
+                <a class="primary-button" href="/habit">Continue your 100 days</a>
+            }
+            else
+            {
+                <a class="primary-button" href="@ReturnUrl">Start your 100 days</a>
+            }
         </div>
 
         <div class="calendar-container">
@@ -106,14 +113,28 @@
 
     <div class="container">
         <div class="start-day-one">
-            <div class="header">
-                <h2>Start your day one.</h2>
-                <p>Start your journey into making or breaking a habit now.</p>
-            </div>
+            @if (IsAuthenticated)
+            {
+                <div class="header">
+                    <h2>Keep your habit going.</h2>
+                    <p>You've done the hard part. You've started. Now keep it up!</p>
+                </div>
 
-            <div class="start-button">
-                <a class="primary-button" href="@ReturnUrl">Start your 100 days</a>
-            </div>
+                <div class="start-button">
+                    <a class="primary-button" href="/habit">Continue your 100 days</a>
+                </div>
+            }
+            else
+            {
+                <div class="header">
+                    <h2>Start your day one.</h2>
+                    <p>Start your journey into making or breaking a habit now.</p>
+                </div>
+
+                <div class="start-button">
+                    <a class="primary-button" href="@ReturnUrl">Start your 100 days</a>
+                </div>
+            }
 
             <div class="calendar-container cut-off">
                 <DayGrid Habit=StateHabit />
@@ -123,14 +144,19 @@
 </section>
 
 @inject SignOutSessionStateManager SignOutManager
+@inject AuthenticationStateProvider Auth
+
 @code {
     Habit ExampleHabit = new() { CurrentDay = 1 };
     Habit StateHabit = new() { CurrentDay = 1 };
     System.Threading.Timer? Timer;
     Random Random = new();
+    bool IsAuthenticated;
 
     protected override async Task OnInitializedAsync()
     {
+        IsAuthenticated = (await Auth.GetAuthenticationStateAsync()).User.Identity?.IsAuthenticated == true;
+
         ExampleHabit.Progressions = new List<Progression>();
         for (var i = 1; i <= 100; i++)
             ExampleHabit.Progressions.Add(new Progression { Day = i });

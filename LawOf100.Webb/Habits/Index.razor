@@ -18,7 +18,7 @@
             }
         </header>
 
-        <div class="grid-wrapper @(Habit?.Id == null ? "is-not-created" : "") @(IsCreating ? "new-habit-animation" : "") @(IsEnteringDay ? "entry-day-animation" : "")">
+        <div class="grid-wrapper @(!string.IsNullOrWhiteSpace(Username) ? "is-precreated" : "") @(Habit?.Id == null ? "is-not-created" : "") @(IsCreating ? "new-habit-animation" : "") @(IsEnteringDay ? "entry-day-animation" : "")">
             <CreateHabit OnSubmit="BeginHabit" />
 
             <div class="calendar-grid-wrapper">
