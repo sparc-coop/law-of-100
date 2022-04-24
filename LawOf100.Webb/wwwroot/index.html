@@ -43,30 +43,21 @@
     <meta name="twitter:title" content="Law of 100: Make or break a habit byt doing it 100 times.">
     <meta name="twitter:description" content="They say if you want to make or break a habit, you need to do it 100 times. Law of 100 helps you track that process, and share it with others on a similar journey.">
     <meta name="twitter:image" content="https://i.imgur.com/vowRLDJ.png">
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQ2LH8DGH3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-FQ2LH8DGH3');
-    </script>
 </head>
 
 <body>
     <div id="app">
-         <div class="splash">
+        <div class="splash">
             <figure>
                 <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.04602 0L4.71817 1.22898C5.2027 2.11491 5.93111 2.84332 6.81704 3.32785L8.04602 4L6.81704 4.67215C5.93111 5.15668 5.2027 5.88509 4.71817 6.77102L4.04602 8L3.37387 6.77102C2.88934 5.88509 2.16093 5.15668 1.275 4.67215L0.0460205 4L1.275 3.32785C2.16093 2.84332 2.88934 2.11491 3.37387 1.22898L4.04602 0Z" fill="#F24C00"/>
+                    <path d="M4.04602 0L4.71817 1.22898C5.2027 2.11491 5.93111 2.84332 6.81704 3.32785L8.04602 4L6.81704 4.67215C5.93111 5.15668 5.2027 5.88509 4.71817 6.77102L4.04602 8L3.37387 6.77102C2.88934 5.88509 2.16093 5.15668 1.275 4.67215L0.0460205 4L1.275 3.32785C2.16093 2.84332 2.88934 2.11491 3.37387 1.22898L4.04602 0Z" fill="#F24C00" />
                 </svg>
             </figure>
             <span>Loading...</span>
         </div>
     </div>
 
-       
+
     <div id="blazor-error-ui">
         An unhandled error has occurred.
         <a href="" class="reload">Reload</a>
@@ -74,29 +65,30 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
+    <script src="_content/Blazor-Analytics/blazor-analytics.js"></script>
 
     <script>
-    window.twttr = (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
+        window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
 
-        t._e = [];
-        t.ready = function (f) {
-            t._e.push(f);
-        };
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
 
-        return t;
-    }(document, "script", "twitter-wjs"));
+            return t;
+        }(document, "script", "twitter-wjs"));
     </script>
 
     <!-- Used for the Entry Day Confirmation/Share pop out box -->
     <script>
-    getElementRectangle = (element) => { return element.getBoundingClientRect(); };
+        getElementRectangle = (element) => { return element.getBoundingClientRect(); };
     </script>
 
     <script type="module">
@@ -134,7 +126,7 @@
             console.log('Message received. ', payload);
             // ...
         });
-  </script>
+    </script>
 </body>
 
 </html>
