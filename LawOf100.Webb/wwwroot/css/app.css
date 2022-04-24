@@ -690,7 +690,7 @@ nav .logo {
   max-height: 16px;
   z-index: -1;
 }
-.habit-index .is-precreated .container {
+.habit-index .is-precreated .create-habit .container {
   transition: none;
   opacity: 0;
 }
