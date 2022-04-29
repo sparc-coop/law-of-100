@@ -112,8 +112,15 @@ public class Habit : Root<string>
     {
         // returns a date if the habit is currently *not* editable until the returned date
         
-        var currentProgression = Progressions.Find(x => x.Day == CurrentDay);
-        var nextDate = currentProgression?.TargetDate.AddHours(-1 * Recurrence.RepeatEveryXHours * Recurrence.FudgeFactor);
+        var lastProgression = Progressions
+            .Where(x => x.ActualDate.HasValue)
+            .OrderByDescending(x => x.ActualDate!.Value)
+            .FirstOrDefault();
+
+        if (lastProgression == null)
+            return null;
+        
+        var nextDate = lastProgression.ActualDate!.Value.AddHours(12);
         if (nextDate > DateTime.UtcNow)
             return nextDate;
 
