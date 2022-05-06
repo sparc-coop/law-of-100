@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawOf100.Features", "LawOf100.Web\LawOf100.Features.csproj", "{69A1C9FB-0671-4845-8028-69069AB5FBCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawOf100.Features", "LawOf100.Features\LawOf100.Features.csproj", "{69A1C9FB-0671-4845-8028-69069AB5FBCF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawOf100.Web", "LawOf100.Webb\LawOf100.Web.csproj", "{25FD1223-651E-4FB7-8C7B-D6A9837EE864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawOf100.UI", "LawOf100.UI\LawOf100.UI.csproj", "{25FD1223-651E-4FB7-8C7B-D6A9837EE864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
