@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawOf100.Features", "LawOf1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawOf100.UI", "LawOf100.UI\LawOf100.UI.csproj", "{25FD1223-651E-4FB7-8C7B-D6A9837EE864}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawOf100.Web", "LawOf100.Web\LawOf100.Web.csproj", "{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{F18D3369-70D1-441B-BFC7-B7E69FE42D60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{25FD1223-651E-4FB7-8C7B-D6A9837EE864}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25FD1223-651E-4FB7-8C7B-D6A9837EE864}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25FD1223-651E-4FB7-8C7B-D6A9837EE864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799} = {F18D3369-70D1-441B-BFC7-B7E69FE42D60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3474D582-829A-4E45-AC12-D25412143496}
