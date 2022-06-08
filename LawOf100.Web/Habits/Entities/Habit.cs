@@ -105,6 +105,7 @@ public class Habit : Root<string>
             progression.Miss();
 
         LastTrackedDate = DateTime.UtcNow;
+        IsCompleted = (day == 100 && isSuccessful == true);
         Recalculate();
     }
 
@@ -135,4 +136,5 @@ public class Habit : Root<string>
     public int? CurrentDay => Progressions.FirstOrDefault(x => !x.IsTracked)?.Day;
     public List<Progression> Progressions { get; private set; }
     public Recurrence Recurrence { get; private set; }
+    public bool? IsCompleted { get; set; }
 }

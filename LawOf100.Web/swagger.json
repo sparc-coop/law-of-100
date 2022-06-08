@@ -233,6 +233,44 @@
         ]
       }
     },
+    "/publicapi/Get100Dayers": {
+      "post": {
+        "tags": [
+          "Get100Dayers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Get100DayersResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Get100DayersResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Get100DayersResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetAccount": {
       "post": {
         "tags": [
@@ -719,6 +757,28 @@
         },
         "additionalProperties": false
       },
+      "Get100DayersResponse": {
+        "type": "object",
+        "properties": {
+          "habitName": {
+            "type": "string",
+            "nullable": true
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "actualDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "review": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetHabitRequest": {
         "type": "object",
         "properties": {
@@ -813,6 +873,10 @@
             ],
             "nullable": true,
             "readOnly": true
+          },
+          "isCompleted": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
