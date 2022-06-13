@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawOf100.Web", "LawOf100.We
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{F18D3369-70D1-441B-BFC7-B7E69FE42D60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawOf100.Maui", "LawOf100.Maui\LawOf100.Maui.csproj", "{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +31,19 @@ Global
 		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8D01FF1C-756A-4F62-8A9E-C2BEC1BC1799} = {F18D3369-70D1-441B-BFC7-B7E69FE42D60}
+		{86DC30CF-C06E-4BFC-97CE-8E9945E597E6} = {F18D3369-70D1-441B-BFC7-B7E69FE42D60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3474D582-829A-4E45-AC12-D25412143496}
