@@ -59,18 +59,19 @@ public class SendMessage : Feature<SendMessageRequest, bool>
     //    }
     //}
 
-    public SendMessage(IRepository<Habit> habits, IRepository<Account> accounts)
+    public SendMessage(IRepository<Habit> habits, IRepository<Account> accounts, IConfiguration config)
     {
         Habits = habits;
         Accounts = accounts;
+        _config = config;
     }
 
     public IRepository<Habit> Habits { get; }
     public IRepository<Account> Accounts { get; }
 
+    private readonly IConfiguration _config;
     public override async Task<bool> ExecuteAsync(SendMessageRequest request)
     {
-        //HttpClient client = new HttpClient();
 
        Payload payload = new Payload()
         {
@@ -79,17 +80,19 @@ public class SendMessage : Feature<SendMessageRequest, bool>
             Text = request.userAt100 + " just hit 100 days on Law of 100!",
             AsUser = false,
         };
+      
 
         using (var client = new HttpClient())
         {
             client.BaseAddress = new Uri("https://slack.com/api/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("token", "=" + "xoxb-3985260459745-3998449427552-Y9LUxTudODgb2x75mkXzBvfe");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", "xoxb-3985260459745-3998449427552-Y9LUxTudODgb2x75mkXzBvfe");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _config["SlackToken"]);
 
             //var stringContent = new StringContent(req.ToString());
             //var str = JsonConvert.SerializeObject(req);
+
+            
             var content = new StringContent(payload.ToString(), Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync("chat.postMessage", content);
             if (response.IsSuccessStatusCode)
