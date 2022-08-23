@@ -7,6 +7,7 @@
 <section class="home">
     <div class="container">
         <div class="header">
+            <button @onclick="SendSlack">TEST</button>
             <h1>Make or break a habit, one day at a time.</h1>
             <p>Doing something 100 times can form new habits or break old ones. Law of 100 helps you choose, track and share your 100-day progress.</p>
         </div>
@@ -203,6 +204,11 @@
     {
         await SignOutManager.SetSignOutState();
         Nav.NavigateTo("authentication/logout");
+    }
+
+    async Task SendSlack() 
+    {
+        var sent = await Api.SendMessageAsync(new SendMessageRequest { UserAt100 = "Test" });
     }
 
 }
