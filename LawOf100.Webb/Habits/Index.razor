@@ -48,7 +48,7 @@
 
             @if (Habit?.Id != null)
             {
-                <EntryDay Habit=@Habit OnSubmit="RefreshHabit" />
+                <EntryDay Habit=@Habit Account=@Account OnSubmit="RefreshHabit" />
                 <Timeline Entries=TimelineEntries />
             }
         </div>

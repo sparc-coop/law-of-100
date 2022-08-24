@@ -400,7 +400,7 @@
         }
       }
     },
-    "/api/SendMessage": {
+    "/publicapi/SendMessage": {
       "post": {
         "tags": [
           "SendMessage"
@@ -442,31 +442,22 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Rootobject"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Rootobject"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "boolean"
+                  "$ref": "#/components/schemas/Rootobject"
                 }
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/api/ToggleReaction": {
@@ -886,6 +877,204 @@
         },
         "additionalProperties": false
       },
+      "Member": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "team_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "real_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "tz": {
+            "type": "string",
+            "nullable": true
+          },
+          "tz_label": {
+            "type": "string",
+            "nullable": true
+          },
+          "tz_offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profile": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Profile"
+              }
+            ],
+            "nullable": true
+          },
+          "is_admin": {
+            "type": "boolean"
+          },
+          "is_owner": {
+            "type": "boolean"
+          },
+          "is_primary_owner": {
+            "type": "boolean"
+          },
+          "is_restricted": {
+            "type": "boolean"
+          },
+          "is_ultra_restricted": {
+            "type": "boolean"
+          },
+          "is_bot": {
+            "type": "boolean"
+          },
+          "is_app_user": {
+            "type": "boolean"
+          },
+          "updated": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "is_email_confirmed": {
+            "type": "boolean"
+          },
+          "who_can_share_contact_card": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "skype": {
+            "type": "string",
+            "nullable": true
+          },
+          "real_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "real_name_normalized": {
+            "type": "string",
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "display_name_normalized": {
+            "type": "string",
+            "nullable": true
+          },
+          "status_text": {
+            "type": "string",
+            "nullable": true
+          },
+          "status_emoji": {
+            "type": "string",
+            "nullable": true
+          },
+          "status_emoji_display_info": {
+            "type": "array",
+            "items": { },
+            "nullable": true
+          },
+          "status_expiration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "avatar_hash": {
+            "type": "string",
+            "nullable": true
+          },
+          "always_active": {
+            "type": "boolean"
+          },
+          "first_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_24": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_32": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_48": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_72": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_192": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_512": {
+            "type": "string",
+            "nullable": true
+          },
+          "status_text_canonical": {
+            "type": "string",
+            "nullable": true
+          },
+          "team": {
+            "type": "string",
+            "nullable": true
+          },
+          "image_original": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_custom_image": {
+            "type": "boolean"
+          },
+          "image_1024": {
+            "type": "string",
+            "nullable": true
+          },
+          "api_app_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "bot_id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Progression": {
         "type": "object",
         "properties": {
@@ -990,6 +1179,19 @@
           "fudgeFactor": {
             "type": "number",
             "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Rootobject": {
+        "type": "object",
+        "properties": {
+          "members": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Member"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

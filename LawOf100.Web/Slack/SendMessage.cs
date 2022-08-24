@@ -15,7 +15,7 @@ using System.Text.Json.Nodes;
 namespace LawOf100.Features.Slack;
 
 public record SendMessageRequest(string userAt100);
-public class SendMessage : Feature<SendMessageRequest, bool>
+public class SendMessage : PublicFeature<SendMessageRequest, Rootobject>
 {
 
     //public class SlackClient
@@ -70,66 +70,46 @@ public class SendMessage : Feature<SendMessageRequest, bool>
     public IRepository<Account> Accounts { get; }
 
     private readonly IConfiguration _config;
-    public override async Task<bool> ExecuteAsync(SendMessageRequest request)
+    private readonly Encoding _encoding = new UTF8Encoding();
+    public override async Task<Rootobject> ExecuteAsync(SendMessageRequest request)
     {
 
        Payload payload = new Payload()
         {
             Channel = "C03ULPZ5VDG",
             Username = "SparcBot",
-            Text = request.userAt100 + " just hit 100 days on Law of 100!",
-            AsUser = false,
+            Text = request.userAt100 + " just hit 100 days on Law of 100!"
         };
-      
+
+        var stringPayload = JsonConvert.SerializeObject(payload);
+        var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+
+        Rootobject data = new Rootobject();
 
         using (var client = new HttpClient())
         {
             client.BaseAddress = new Uri("https://slack.com/api/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _config["SlackToken"]);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["SlackToken"]);
 
-            //var stringContent = new StringContent(req.ToString());
-            //var str = JsonConvert.SerializeObject(req);
+            //get user list api.slack.com/methods/users.list
+            //HttpResponseMessage response = await client.GetAsync("users.list?limit=10");
 
-            
-            var content = new StringContent(payload.ToString(), Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync("chat.postMessage", content);
+            //sent channel message api.slack.com/methods/chat.postMessage
+            HttpResponseMessage response = await client.PostAsync("chat.postMessage", httpContent);
             if (response.IsSuccessStatusCode)
             {
-                return true;
+                string responseText = await response.Content.ReadAsStringAsync();
+                //data = JsonConvert.DeserializeObject<Rootobject>(responseText);
+                return data;
             }
             else
             {
                 Console.WriteLine("Internal server Error");
-                return false;
+                return data;
             }
         }
-
-        //try
-        //{
-        //    string urlWithAccessToken = "https://slack.com/api/chat.postMessage?token={your_access_token}";
-
-        //    SlackClient client = new SlackClient(urlWithAccessToken);
-
-        //    client.PostMessage(username: "kamleshbhor",
-        //               text: "THIS IS A TEST MESSAGE!!",
-        //               channel: "#general");
-
-
-        //    var url = new Uri("");
-        //    var response = await client.GetAsync(url);
-        //    var responseBody = await response.Content.ReadAsStringAsync();
-
-        //    //colorContrast = JsonConvert.DeserializeObject<ContrastColorResponse>(responseBody);
-        //    return true;
-        //}
-        //catch (Exception ex)
-        //{
-        //    var error = ex;
-        //    return false;
-        //}
-
 
     }
 
@@ -145,7 +125,71 @@ public class SendMessage : Feature<SendMessageRequest, bool>
         [JsonProperty("text")]
         public string Text { get; set; }
 
-        [JsonProperty("as_user")]
-        public bool AsUser { get; set; }
     }
+
+
+
 }
+
+public class Rootobject
+{
+    public Member[] members { get; set; }
+}
+
+public class Member
+{
+    public string id { get; set; }
+    public string team_id { get; set; }
+    public string name { get; set; }
+    public bool deleted { get; set; }
+    public string color { get; set; }
+    public string real_name { get; set; }
+    public string tz { get; set; }
+    public string tz_label { get; set; }
+    public int tz_offset { get; set; }
+    public Profile profile { get; set; }
+    public bool is_admin { get; set; }
+    public bool is_owner { get; set; }
+    public bool is_primary_owner { get; set; }
+    public bool is_restricted { get; set; }
+    public bool is_ultra_restricted { get; set; }
+    public bool is_bot { get; set; }
+    public bool is_app_user { get; set; }
+    public int updated { get; set; }
+    public bool is_email_confirmed { get; set; }
+    public string who_can_share_contact_card { get; set; }
+}
+
+public class Profile
+{
+    public string title { get; set; }
+    public string phone { get; set; }
+    public string skype { get; set; }
+    public string real_name { get; set; }
+    public string real_name_normalized { get; set; }
+    public string display_name { get; set; }
+    public string display_name_normalized { get; set; }
+    public string status_text { get; set; }
+    public string status_emoji { get; set; }
+    public object[] status_emoji_display_info { get; set; }
+    public int status_expiration { get; set; }
+    public string avatar_hash { get; set; }
+    public bool always_active { get; set; }
+    public string first_name { get; set; }
+    public string last_name { get; set; }
+    public string image_24 { get; set; }
+    public string image_32 { get; set; }
+    public string image_48 { get; set; }
+    public string image_72 { get; set; }
+    public string image_192 { get; set; }
+    public string image_512 { get; set; }
+    public string status_text_canonical { get; set; }
+    public string team { get; set; }
+    public string image_original { get; set; }
+    public bool is_custom_image { get; set; }
+    public string image_1024 { get; set; }
+    public string api_app_id { get; set; }
+    public string bot_id { get; set; }
+}
+
+

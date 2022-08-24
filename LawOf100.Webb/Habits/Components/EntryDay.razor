@@ -100,6 +100,7 @@
 @code {
     [Parameter] public Habit? Habit { get; set; }
     [Parameter] public EventCallback<Habit> OnSubmit { get; set; }
+    [Parameter] public Account? User { get; set; }
 
     TrackProgressRequest Progression = new() { IsPublic = true };
     bool IsConfirmationPopoutVisible;
@@ -116,6 +117,11 @@
         Progression.Day = Habit!.CurrentDay ?? 0;
         var habit = await Api.TrackProgressAsync(Progression);
         await OnSubmit.InvokeAsync(habit);
+
+        var userName = User.Nickname != null ? User.Nickname : "A Law of 100 user";
+        if (Progression.Day == 100 & Progression.IsPublic) {
+            await Api.SendMessageAsync(new SendMessageRequest { UserAt100 = userName });
+        }
 
         ShareText = Uri.EscapeDataString($"💯 days to {Habit.HabitName}:\nDay {Progression.Day} {Math.Round(Progression.Rating, 1)}/5 {Progression.Review}");
         ShareUrl = Uri.EscapeDataString($"https://lawof100.co/{Nav.ToBaseRelativePath(Nav.Uri)}");
