@@ -11,53 +11,13 @@ using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using static IdentityServer4.IdentityServerConstants;
 using System.Text.Json.Nodes;
+using System.Linq.Expressions;
 
 namespace LawOf100.Features.Slack;
 
-public record SendMessageRequest(string userAt100);
+public record SendMessageRequest(string userAt100, int Days);
 public class SendMessage : PublicFeature<SendMessageRequest, Rootobject>
 {
-
-    //public class SlackClient
-    //{
-    //    private readonly Uri _uri;
-    //    private readonly Encoding _encoding = new UTF8Encoding();
-
-    //    public SlackClient(string urlWithAccessToken)
-    //    {
-    //        _uri = new Uri(urlWithAccessToken);
-    //    }
-
-    //    //Post a message using simple strings  
-    //    public void PostMessage(string text, string username, string channel)
-    //    {
-    //        SlackRequest req = new SlackRequest()
-    //        {
-    //            Channel = channel,
-    //            Username = username,
-    //            Text = text
-    //        };
-
-    //        PostMessage(req);
-    //    }
-
-    //    //Post a message using a Payload object  
-    //    public void PostMessage(SlackRequest req)
-    //    {
-    //        string payloadJson = JsonConvert.SerializeObject(req);
-
-    //        using (WebClient client = new WebClient())
-    //        {
-    //            NameValueCollection data = new NameValueCollection();
-    //            data["payload"] = payloadJson;
-
-    //            var response = client.UploadValues(_uri, "POST", data);
-
-    //            //The response text is usually "ok"  
-    //            string responseText = _encoding.GetString(response);
-    //        }
-    //    }
-    //}
 
     public SendMessage(IRepository<Habit> habits, IRepository<Account> accounts, IConfiguration config)
     {
@@ -73,18 +33,52 @@ public class SendMessage : PublicFeature<SendMessageRequest, Rootobject>
     private readonly Encoding _encoding = new UTF8Encoding();
     public override async Task<Rootobject> ExecuteAsync(SendMessageRequest request)
     {
+        // giphy api
+        HttpClient giphyClient = new HttpClient();
+            //var giphykey = "4N6leZuzErvFU6scwP4mnTotgocowAar";
+        giphyClient.BaseAddress = new Uri("https://api.giphy.com/v1/gifs/random");
+        giphyClient.DefaultRequestHeaders.Accept.Clear();
+        giphyClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-       Payload payload = new Payload()
+        HttpResponseMessage gifResponse = await giphyClient.GetAsync("?api_key=4N6leZuzErvFU6scwP4mnTotgocowAar&tag=you+did+it&rating=g");
+        string responseText = await gifResponse.Content.ReadAsStringAsync();
+        var gif = JsonConvert.DeserializeObject<Gifobject>(responseText);
+        var gifUrl = gif.Data.Images.Downsized.Url;
+        
+
+        var fifty = request.userAt100 + " just hit 50 days on Law of 100! Halfway there!";
+        var ninety = request.userAt100 + " just hit 90 days on Law of 100! 10 more to go!";
+        var hundred = request.userAt100 + " just hit 100 days on Law of 100!" + "\n" + gifUrl;
+
+        string msgText;
+        switch (request.Days)
+        {
+            case 50:
+                msgText = fifty;
+                break;
+            case 90:
+                msgText = ninety;
+                break;
+            case 100:
+                msgText = hundred;
+                break;
+            default:
+                msgText = "";
+                break;
+        }
+
+        Payload payload = new Payload()
         {
             Channel = "C03ULPZ5VDG",
-            Username = "SparcBot",
-            Text = request.userAt100 + " just hit 100 days on Law of 100!"
+            Text = msgText,
         };
 
         var stringPayload = JsonConvert.SerializeObject(payload);
         var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
         Rootobject data = new Rootobject();
+
+
 
         using (var client = new HttpClient())
         {
@@ -96,11 +90,11 @@ public class SendMessage : PublicFeature<SendMessageRequest, Rootobject>
             //get user list api.slack.com/methods/users.list
             //HttpResponseMessage response = await client.GetAsync("users.list?limit=10");
 
-            //sent channel message api.slack.com/methods/chat.postMessage
+            //send channel message api.slack.com/methods/chat.postMessage
             HttpResponseMessage response = await client.PostAsync("chat.postMessage", httpContent);
             if (response.IsSuccessStatusCode)
             {
-                string responseText = await response.Content.ReadAsStringAsync();
+                //string responseText = await response.Content.ReadAsStringAsync();
                 //data = JsonConvert.DeserializeObject<Rootobject>(responseText);
                 return data;
             }
@@ -110,6 +104,8 @@ public class SendMessage : PublicFeature<SendMessageRequest, Rootobject>
                 return data;
             }
         }
+
+       // return data;
 
     }
 
@@ -131,9 +127,36 @@ public class SendMessage : PublicFeature<SendMessageRequest, Rootobject>
 
 }
 
+public class Gifobject
+{
+    public Data Data { get; set; }
+}
+
+public class Data
+{
+    public string id { get; set; }
+    public string url { get; set; }
+    public string slug { get; set; }
+    public string bitly_gif_url { get; set; }
+    public string bitly_url { get; set; }
+    public string embed_url { get; set; }
+
+    public Images Images { get; set; }
+}
+
+public class Images
+{
+    public Downsized Downsized { get; set; }
+}
+
+public class Downsized
+{
+    public string Url { get; set; }
+}
+
 public class Rootobject
 {
-    public Member[] members { get; set; }
+    public Member[] Members { get; set; }
 }
 
 public class Member

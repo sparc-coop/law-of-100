@@ -1202,6 +1202,10 @@
           "userAt100": {
             "type": "string",
             "nullable": true
+          },
+          "days": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

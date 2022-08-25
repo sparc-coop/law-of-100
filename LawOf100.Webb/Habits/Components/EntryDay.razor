@@ -119,8 +119,8 @@
         await OnSubmit.InvokeAsync(habit);
 
         var userName = User.Nickname != null ? User.Nickname : "A Law of 100 user";
-        if (Progression.Day == 100 & Progression.IsPublic) {
-            await Api.SendMessageAsync(new SendMessageRequest { UserAt100 = userName });
+        if (Progression.IsPublic & (Progression.Day == 100 | Progression.Day == 50 | Progression.Day == 90)) {
+            await Api.SendMessageAsync(new SendMessageRequest { UserAt100 = userName, Days = Progression.Day });
         }
 
         ShareText = Uri.EscapeDataString($"💯 days to {Habit.HabitName}:\nDay {Progression.Day} {Math.Round(Progression.Rating, 1)}/5 {Progression.Review}");
