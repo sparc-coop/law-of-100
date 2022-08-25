@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Slack\Class.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="Sparc.Authentication.AzureADB2C" Version="6.0.0" />
 	  <PackageReference Include="Sparc.Core" Version="6.2.4" />
 	  <PackageReference Include="Sparc.Database.Cosmos" Version="6.0.7" />
