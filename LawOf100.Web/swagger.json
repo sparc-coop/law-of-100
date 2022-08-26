@@ -233,6 +233,44 @@
         ]
       }
     },
+    "/publicapi/Get100Dayers": {
+      "post": {
+        "tags": [
+          "Get100Dayers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Get100DayersResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Get100DayersResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Get100DayersResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/GetAccount": {
       "post": {
         "tags": [
@@ -802,6 +840,25 @@
             "nullable": true
           },
           "versionString": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Get100DayersResponse": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
             "type": "string",
             "nullable": true
           }
