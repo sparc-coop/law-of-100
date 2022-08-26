@@ -14,7 +14,7 @@ using LawOf100.Features.Slack.Entities;
 
 namespace LawOf100.Features.Slack
 {
-    public class GetMembers : PublicFeature<SendMessageRequest, Rootobject>
+    public class GetMembers : PublicFeature<Rootobject>
     {
 
         private readonly IConfiguration _config;
@@ -23,7 +23,7 @@ namespace LawOf100.Features.Slack
             _config = config;
         }
 
-        public override async Task<Rootobject> ExecuteAsync(SendMessageRequest request)
+        public override async Task<Rootobject> ExecuteAsync()
         {
             Rootobject data = new Rootobject();
 
@@ -35,7 +35,7 @@ namespace LawOf100.Features.Slack
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["SlackToken"]);
 
                 //get user list api.slack.com/methods/users.list
-                HttpResponseMessage response = await client.GetAsync("users.list?limit=10");
+                HttpResponseMessage response = await client.GetAsync("users.list?limit=100");
 
                 if (response.IsSuccessStatusCode)
                 {

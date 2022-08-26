@@ -1,0 +1,17 @@
+﻿<div class="members-display">
+    @foreach (var member in memberList.Take(6)) {
+        <img src="@member.Profile.Image_48" />
+    }
+    <div class="more">+@MoreCount</div>
+</div>
+
+@code {
+    List<Member> memberList = new List<Member>();
+    int MoreCount;
+    protected override async Task OnInitializedAsync() {
+        var rootobj = await Api.GetMembersAsync();
+        memberList = rootobj.Members.ToList();
+
+        MoreCount = memberList.Count() - 6 | 1;
+    }
+}

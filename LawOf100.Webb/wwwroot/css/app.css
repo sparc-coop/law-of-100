@@ -336,6 +336,25 @@ nav {
   nav .nav-left .nav-link, nav .nav-right .nav-link {
     margin-right: 16px; } }
 
+.members-display {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .members-display img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-left: -10px; }
+  .members-display .more {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background: #ffb600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -10px; }
+
 .home {
   text-align: center; }
   .home .container {
