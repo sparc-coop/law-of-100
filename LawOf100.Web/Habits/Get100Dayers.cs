@@ -30,8 +30,8 @@ namespace LawOf100.Features.Habits
           
             var habits = await Habits.Query
                         .OrderByDescending(x => x.LastTrackedDate)
-                        .Where(x => x.CurrentDay >= 100)
-                        .Take(10)
+                        //.Where(x => x.CurrentDay >= 100)
+                        //.Take(10)
                         .ToListAsync();
 
             foreach (var habit in habits)

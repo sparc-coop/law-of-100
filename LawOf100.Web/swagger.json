@@ -271,7 +271,7 @@
         }
       }
     },
-    "/api/GetAccount": {
+    "/publicapi/GetAccount": {
       "post": {
         "tags": [
           "GetAccount"
@@ -328,16 +328,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "bearer": [
-              "Policy:",
-              "Roles:",
-              "AuthenticationSchemes:Bearer"
-            ]
-          }
-        ]
+        }
       }
     },
     "/publicapi/GetCommunityTimeline": {
