@@ -18,16 +18,16 @@
             <div class="completedDays">
                 <div class="completedDays__title">
                     <p>Previous 100 Dayers</p>
-                    <p class="viewMore">View All</p>
+                    @*<p class="viewMore">View All</p>*@
                 </div>         
 
                 @if (get100s != null)
                 {
                     foreach (var entry in get100s) {
                         <div class="completedDay">
-                            <p class="completedDay__date">@entry.Date</p>
+                            <p class="completedDay__date">@entry.Date.GetValueOrDefault().ToString("mm/dd/yy")</p>
                             <p class="completedDay__text">@entry.Text</p>
-                            <p class="completedDay__user">@entry.User</p>
+                            <p class="completedDay__user"><a href="/habits/@entry.User/@entry.HabitId" class="username">@entry.User</a></p>
                         </div>
                     }
 

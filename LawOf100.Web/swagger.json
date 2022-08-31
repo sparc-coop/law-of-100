@@ -861,6 +861,10 @@
           "user": {
             "type": "string",
             "nullable": true
+          },
+          "habitId": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
