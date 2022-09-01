@@ -13,14 +13,15 @@ using static IdentityServer4.IdentityServerConstants;
 using System.Text.Json.Nodes;
 using System.Linq.Expressions;
 using LawOf100.Features.Slack.Entities;
+using System.Reflection.Metadata.Ecma335;
 
 namespace LawOf100.Features.Slack;
 
-public record SendMessageRequest(string userAt100, int Days);
-public class SendMessage : PublicFeature<SendMessageRequest, bool>
+public record UserSignUpRequest(string email);
+public class UserSignUp : PublicFeature<UserSignUpRequest, bool>
 {
 
-    public SendMessage(IRepository<Habit> habits, IRepository<Account> accounts, IConfiguration config)
+    public UserSignUp(IRepository<Habit> habits, IRepository<Account> accounts, IConfiguration config)
     {
         Habits = habits;
         Accounts = accounts;
@@ -31,39 +32,13 @@ public class SendMessage : PublicFeature<SendMessageRequest, bool>
     public IRepository<Account> Accounts { get; }
 
     private readonly IConfiguration _config;
-    public override async Task<bool> ExecuteAsync(SendMessageRequest request)
+    public override async Task<bool> ExecuteAsync(UserSignUpRequest request)
     {
-        // giphy api
-        HttpClient giphyClient = new HttpClient();
-        giphyClient.BaseAddress = new Uri("https://api.giphy.com/v1/gifs/random");
-        giphyClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-        HttpResponseMessage gifResponse = await giphyClient.GetAsync("?api_key=4N6leZuzErvFU6scwP4mnTotgocowAar&tag=you+did+it&rating=g");
-        string responseText = await gifResponse.Content.ReadAsStringAsync();
-        var gif = JsonConvert.DeserializeObject<Gifobject>(responseText);
-        var gifUrl = gif.Data.Images.Downsized.Url;
-
-        string msgText;
-        switch (request.Days)
-        {
-            case 50:
-                msgText = request.userAt100 + " just hit 50 days on Law of 100! Halfway there!";
-                break;
-            case 90:
-                msgText = request.userAt100 + " just hit 90 days on Law of 100! 10 more to go!";
-                break;
-            case 100:
-                msgText = request.userAt100 + " just hit 100 days on Law of 100!" + "\n" + gifUrl;
-                break;
-            default:
-                msgText = "";
-                break;
-        }
 
         Payload payload = new Payload()
         {
             Channel = "C03ULPZ5VDG",
-            Text = msgText,
+            Text = "A new join request!" + "/n" + "Email: " + request.email,
         };
 
         //var stringPayload = JsonConvert.SerializeObject(payload);
@@ -92,7 +67,6 @@ public class SendMessage : PublicFeature<SendMessageRequest, bool>
         return await new SlackService(_config).SlackApiPost(payload);
 
     }
-
 
 }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LawOf100.Features.Slack.Entities;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -10,16 +12,38 @@ namespace LawOf100.Features.Slack
 {
     public class SlackService
     {
-        HttpClient SlackApiClient = new HttpClient();
         private readonly IConfiguration _config;
         public SlackService(IConfiguration config)
         {
             _config = config;
         }
-        //SlackApiClient.BaseAddress = new Uri("https://slack.com/api/");
-        //SlackApiClient.DefaultRequestHeaders.Accept.Clear();
-        //    SlackApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //    SlackApiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["SlackToken"]);
+
+        public async Task<bool> SlackApiPost(Payload payload)
+        {
+
+            var stringPayload = JsonConvert.SerializeObject(payload);
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://slack.com/api/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _config["SlackToken"]);
+
+                //send channel message api.slack.com/methods/chat.postMessage
+                HttpResponseMessage response = await client.PostAsync("chat.postMessage", httpContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error");
+                    return false;
+                }
+            }
+        }
 
     }
     

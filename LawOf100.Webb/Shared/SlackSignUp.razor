@@ -1,0 +1,12 @@
+﻿<input @bind-value="@InputEmail" placeholder="Email" />
+<button @onclick="SubmitEmail">Submit</button>
+
+@code {
+    public string? InputEmail;
+
+    protected async void SubmitEmail() {
+        //sendgrid api
+
+        await Api.UserSignUpAsync(new UserSignUpRequest { Email = InputEmail });
+    }
+}
