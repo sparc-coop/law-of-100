@@ -37,8 +37,8 @@ public class UserSignUp : PublicFeature<UserSignUpRequest, bool>
 
         Payload payload = new Payload()
         {
-            Channel = "C03ULPZ5VDG",
-            Text = "A new join request!" + "/n" + "Email: " + request.email,
+            Channel = "C040XKHTEMA",
+            Text = "A new join request!" + "\n" + "Email: " + request.email,
         };
 
         //var stringPayload = JsonConvert.SerializeObject(payload);

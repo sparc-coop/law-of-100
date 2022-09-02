@@ -35,6 +35,7 @@ namespace LawOf100.Features.Slack
                 HttpResponseMessage response = await client.PostAsync("chat.postMessage", httpContent);
                 if (response.IsSuccessStatusCode)
                 {
+                    string responseText = await response.Content.ReadAsStringAsync();
                     return true;
                 }
                 else
