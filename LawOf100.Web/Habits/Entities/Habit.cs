@@ -105,9 +105,7 @@ public class Habit : Root<string>
             progression.Miss();
 
         LastTrackedDate = DateTime.UtcNow;
-
         IsCompleted = (day == 100 && isSuccessful == true);
-
         Recalculate();
     }
 
