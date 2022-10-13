@@ -26,6 +26,7 @@ public class Get100Dayers : PublicFeature<List<Get100DayersResponse>>
             .ToListAsync();
 
         var userIds = habits.Select(x => x.UserId).Distinct().ToList();
+
         var users = await Users.Query.Where(x => userIds.Contains(x.UserId)).ToListAsync();
 
         var timelineEntries = new List<Get100DayersResponse>();
